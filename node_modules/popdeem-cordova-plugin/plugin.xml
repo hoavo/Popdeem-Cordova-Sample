@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        id="popdeem-cordova-plugin" version="0.9.17">
+    <name>Popdeem SDK</name>
+    <description>Popdeem SDK Cordova Plugin</description>
+    <license>Apache 2.0</license>
+    <keywords>cordova,popdeem</keywords>
+
+    <asset src="www/popdeem.js" target="www/popdeem.js"/>
+    <js-module src="www/popdeem.js" name="popdeem">
+        <clobbers target="popdeem" />
+    </js-module>
+
+    <platform name="ios">
+
+        <framework src="PopdeemSDK" type="podspec" spec="~> 1.0.43" />
+        <framework src="PopdeemSDK/UIKit" type="podspec" spec="~> 1.0.43" />
+
+        <config-file target="config.xml" parent="/widget">
+          <feature name="Popdeem">
+            <param name="ios-package" value="Popdeem" />
+          </feature>
+        </config-file>
+
+        <header-file src="src/ios/Popdeem.h" target-dir="PopdeemPlugin"/>
+        <source-file src="src/ios/Popdeem.m" target-dir="PopdeemPlugin"/>
+        <header-file src="src/ios/AppDelegate+popdeem.h" target-dir="PopdeemPlugin"/>
+        <source-file src="src/ios/AppDelegate+popdeem.m" target-dir="PopdeemPlugin"/>
+      </platform>
+
+      <platform name="android">
+
+          <framework src="com.popdeem.sdk:sdk:1.2.9.8" />
+          <framework src="src/android/popdeem.gradle" custom="true" type="gradleReference"/>
+          <config-file parent="/*" target="res/xml/config.xml">
+      			<feature name="Popdeem">
+      				<param name="android-package" value="com.popdeem.cordova.plugin.Popdeem" />
+      				<param name="onload" value="true" />
+      			</feature>
+      		</config-file>
+
+          <source-file src="src/android/Popdeem.java" target-dir="src/com/popdeem/cordova/plugin" />
+          <source-file src="src/android/PopdeemApplication.java" target-dir="src/com/popdeem/cordova/plugin" />
+        </platform>
+
+
+</plugin>

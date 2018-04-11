@@ -1,0 +1,14 @@
+{
+    "PopdeemSDK": {
+        "name": "PopdeemSDK",
+        "type": "podspec",
+        "spec": "~> 1.0.43",
+        "count": 1
+    },
+    "PopdeemSDK/UIKit": {
+        "name": "PopdeemSDK/UIKit",
+        "type": "podspec",
+        "spec": "~> 1.0.43",
+        "count": 1
+    }
+}

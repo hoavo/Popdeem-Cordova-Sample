@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="io.cordova.hellocordova" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <feature name="Whitelist">
+        <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="Popdeem">
+        <param name="android-package" value="com.popdeem.cordova.plugin.Popdeem" />
+        <param name="onload" value="true" />
+    </feature>
+    <name>HelloCordova</name>
+    <description>
+        A sample Apache Cordova application that responds to the deviceready event.
+    </description>
+    <author email="dev@cordova.apache.org" href="http://cordova.io">
+        Apache Cordova Team
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <hook src="hooks/after_prepare/update_platform_config.js" type="after_prepare" />
+    <hook src="hooks/android/beforePluginInstall.js" type="after_prepare" />
+    <allow-intent href="market:*" />
+    <config-file parent="/*" target="AndroidManifest.xml">
+        <uses-permission android:name="android.permission.INTERNET" />
+        <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+        <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+        <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+        <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    </config-file>
+    <config-file parent="./application" target="AndroidManifest.xml">
+        <meta-data android:name="com.popdeem.sdk.ApiKey" android:value="9f4dbcd5-5155-4623-b160-fbed64ce478e" />
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_application_id" />
+        <meta-data android:name="TwitterConsumerKey" android:value="b2eSBD6GlT0pUMwptROy4agwO" />
+        <meta-data android:name="TwitterConsumerSecret" android:value="7PV8jmuUSqTOvGE1KBSXNSlvJaXh9BjMKhK2NK9VBgk9MQN5VQ" />
+        <meta-data android:name="InstagramClientId" android:value="721403853f784eea86023a9e96ccde44" />
+        <meta-data android:name="InstagramClientSecret" android:value="0b14e780896e42be88cefcddb3ac64dc" />
+        <meta-data android:name="InstagramCallbackUrl" android:value="https://www.popdeem.com/igredirect" />
+        <activity android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation" android:label="@string/app_name" android:name="com.facebook.FacebookActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+    </config-file>
+    <config-file parent="/*" target="res/values/strings.xml">
+        <string name="facebook_application_id">1706317436274686</string>
+        <string name="pd_wallet_title">History</string>
+        <string name="pd_home_banner_text">Share your FarmBoy experience on social networks to earn more rewards.</string>
+    </config-file>
+    <resource-file src="Popdeem/colors.xml" target="res/values/colors.xml" />
+    <resource-file src="Popdeem/drawable/hdpi/pd_home_banner.png" target="res/drawable-port-hdpi/pd_home_banner.png" />
+    <resource-file src="Popdeem/drawable/mdpi/pd_home_banner.png" target="res/drawable-port-mdpi/pd_home_banner.png" />
+    <resource-file src="Popdeem/drawable/xhdpi/pd_home_banner.png" target="res/drawable-port-xhdpi/pd_home_banner.png" />
+    <resource-file src="Popdeem/drawable/xxhdpi/pd_home_banner.png" target="res/drawable-port-xxhdpi/pd_home_banner.png" />
+    <resource-file src="Popdeem/drawable/xxxhdpi/pd_home_banner.png" target="res/drawable-port-xxxhdpi/pd_home_banner.png" />
+    <preference name="loglevel" value="DEBUG" />
+    <preference name="android-minSdkVersion" value="17" />
+    <preference name="android-targetSdkVersion" value="23" />
+</widget>
