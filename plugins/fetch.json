@@ -10,7 +10,7 @@
   "popdeem-cordova-plugin": {
     "source": {
       "type": "registry",
-      "id": "popdeem-cordova-plugin@^0.9.17"
+      "id": "popdeem-cordova-plugin"
     },
     "is_top_level": true,
     "variables": {}

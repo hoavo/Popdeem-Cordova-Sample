@@ -1,0 +1,1 @@
+../../../PopdeemSDK/PopdeemSDK/UIKit/Home/Cells/Rewards/PDUIRewardWithRulesTableViewCell.h

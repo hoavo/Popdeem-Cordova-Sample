@@ -1,0 +1,1 @@
+../../../PopdeemSDK/PopdeemSDK/UIKit/Home/Cells/Wallet/PDUIWalletRewardTableViewCell.h

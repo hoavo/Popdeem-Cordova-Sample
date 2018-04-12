@@ -30,7 +30,6 @@
 //
 //API URL Strings
 //
-extern NSString *const API_URL;
 extern NSString *const USERS_PATH;
 extern NSString *const REWARDS_PATH;
 extern NSString *const LOCATIONS_PATH;
@@ -40,6 +39,8 @@ extern NSString *const FEEDS_PATH;
 extern NSString *const BRANDS_PATH;
 extern NSString *const MOMENTS_PATH;
 extern NSString *const INSTAGRAM_URL;
+extern NSString *const CUSTOMER_PATH;
+extern NSString *const READ_TIER_PATH;
 
 extern NSString *const FACEBOOK_NETWORK;
 extern NSString *const TWITTER_NETWORK;
@@ -55,6 +56,8 @@ extern NSString *const PDBrandLogoImageDidDownload;
 extern NSString *const PDRewardCoverImageDidDownload;
 extern NSString *const PDFeedItemImageDidDownload;
 extern NSString *const PDUserDidLogout;
+extern NSString *const PDUserDidLogin;
+extern NSString *const PDUserDidUpdate;
 extern NSString *const InstagramLoginSuccess;
 extern NSString *const InstagramLoginFailure;
 extern NSString *const InstagramLoginuserDismissed;
@@ -67,6 +70,7 @@ extern NSString *const InstagramVerifyFailure;
 extern NSString *const InstagramVerifySuccessFromWallet;
 extern NSString *const InstagramVerifyFailureFromWallet;
 extern NSString *const InstagramVerifyNoAttempt;
+extern NSString *const InstagramAppReturn;
 extern NSString *const FacebookPublishSuccess;
 extern NSString *const FacebookPublishFailure;
 extern NSString *const FacebookLoginSuccess;
@@ -74,6 +78,7 @@ extern NSString *const FacebookLoginFailure;
 extern NSString *const InstagramPostMade;
 extern NSString *const NotificationReceived;
 extern NSString *const DidFetchBrands;
+extern NSString *const DirectToSocialHome;
     //
 //End NSNotificationCenter Strings
 //

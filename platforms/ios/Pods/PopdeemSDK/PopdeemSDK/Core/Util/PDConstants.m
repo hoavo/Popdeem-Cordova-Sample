@@ -9,17 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "PDConstants.h"
 #import "PDUtils.h"
-
+#import "PopdeemSDK.h"
 /*
  API URL Strings
  */
-//#define POPDEEM_ENV_STAGING
 
-#ifdef POPDEEM_ENV_STAGING
-NSString *const API_URL = @"http://api.staging.popdeem.com";
-#else
-NSString *const API_URL = @"https://api.popdeem.com";
-#endif
 NSString *const USERS_PATH = @"api/v2/users";
 NSString *const REWARDS_PATH = @"api/v2/rewards";
 NSString *const LOCATIONS_PATH = @"api/v2/locations";
@@ -29,6 +23,8 @@ NSString *const FEEDS_PATH = @"api/v2/feeds";
 NSString *const BRANDS_PATH = @"api/v2/brands";
 NSString *const MOMENTS_PATH = @"api/v2/moments";
 NSString *const INSTAGRAM_URL = @"https://api.instagram.com/v1";
+NSString *const CUSTOMER_PATH = @"api/v2/customer";
+NSString *const READ_TIER_PATH = @"readed_tier";
 /*
  End API URL Strings
  */
@@ -50,6 +46,8 @@ NSString *const PDBrandLogoImageDidDownload = @"BrandLogoImageDidDownload";
 NSString *const PDRewardCoverImageDidDownload = @"RewardCoverImageDidDownload";
 NSString *const PDFeedItemImageDidDownload = @"PDFeedItemImageDidDownload";
 NSString *const PDUserDidLogout = @"PDUserDidLogout";
+NSString *const PDUserDidLogin = @"PDUserDidLogin";
+NSString *const PDUserDidUpdate = @"PDUserDidUpdate";
 NSString *const InstagramLoginSuccess = @"InstagramLoginSuccess";
 NSString *const InstagramLoginFailure = @"InstagramLoginFailure";
 NSString *const InstagramLoginuserDismissed = @"InstagramLoginuserDismissed";
@@ -66,9 +64,11 @@ NSString *const PDUserLinkedToInstagram = @"PDUserLinkedToInstagram";
 NSString *const InstagramVerifySuccess = @"InstagramVerifySuccess";
 NSString *const InstagramVerifyFailure = @"InstagramVerifyFailure";
 NSString *const InstagramVerifyNoAttempt = @"InstagramVerifyNoAttempt";
+NSString *const InstagramAppReturn = @"InstagramAppReturn";
 NSString *const InstagramPostMade = @"InstagramPostMade";
 NSString *const NotificationReceived = @"NotificationReceived";
 NSString *const DidFetchBrands = @"DidFetchBrands";
+NSString *const DirectToSocialHome = @"DirectToSocialHome";
 /*
  End NSNotificationCenter Strings
  */

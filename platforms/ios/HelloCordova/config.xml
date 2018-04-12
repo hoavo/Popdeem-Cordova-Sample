@@ -115,6 +115,10 @@
             <string>fb-messenger-api20140430</string>
         </array>
     </config-file>
+    <resource-file src="Popdeem/theme.json" target="theme.json" />
+    <resource-file src="Popdeem/Ribs-Burgers_Header.png" target="Ribs-Burgers_Header.png" />
+    <resource-file src="Popdeem/Ribs-Burgers_Header@2x.png" target="Ribs-Burgers_Header@2x.png" />
+    <resource-file src="Popdeem/Ribs-Burgers_Header@3x.png" target="Ribs-Burgers_Header@3x.png" />
     <preference name="AllowInlineMediaPlayback" value="false" />
     <preference name="BackupWebStorage" value="cloud" />
     <preference name="DisallowOverscroll" value="false" />

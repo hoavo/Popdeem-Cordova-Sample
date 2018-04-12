@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '140BF4562C872EC39D6ED360A4DC43DD'
-               BlueprintName = 'STTwitter'
-               ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libSTTwitter.a'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "83F0F4339704139B6E14B652BFC768B0"
+               BlueprintName = "STTwitter"
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableName = "libSTTwitter.a">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

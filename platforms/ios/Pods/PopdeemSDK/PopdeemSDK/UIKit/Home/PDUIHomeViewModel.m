@@ -12,7 +12,9 @@
 #import "PDUIInboxButton.h"
 #import "PDMessageAPIService.h"
 #import "UIButton+MessageButtonFactory.h"
-
+#import "PDRFeedItem.h"
+#import "PDUIGratitudeViewController.h"
+#import "PDLocationStore.h"
 @implementation PDUIHomeViewModel
 
 - (instancetype) init {
@@ -33,14 +35,16 @@
 - (void) setup {
 	
 	[self fetchRewards];
-	[self fetchFeed];
+//  [self fetchFeed]
+  self.feed = [PDFeeds feed];
 	[self fetchWallet];
 	[self fetchInbox];
 	
 	_controller.title = translationForKey(@"popdeem.rewards.title", @"Rewards");
 	[_controller.view setBackgroundColor:PopdeemColor(PDThemeColorViewBackground)];
 	[_controller.tableView setBackgroundColor:PopdeemColor(PDThemeColorViewBackground)];
-	[_controller.tableView setSeparatorColor:PopdeemColor(PDThemeColorTableViewSeperator)];
+  [_controller.tableView setSeparatorColor:[UIColor clearColor]];
+  _controller.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 	
 }
 
@@ -102,20 +106,9 @@
 		}
 		dispatch_async(dispatch_get_main_queue(), ^{
       [weakSelf.controller.refreshControl endRefreshing];
-			[weakSelf refreshMessageIcon];
+      [weakSelf.controller.tableView reloadInputViews];
 		});
 	}];
-}
-
-- (void) refreshMessageIcon {
-	[_controller.inboxButton removeFromSuperview];
-	_controller.inboxButton = [UIButton inboxButtonWithFrame:CGRectMake(_controller.tableView.tableHeaderView.frame.size.width-5-20, 5, 20, 20)];
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wundeclared-selector"
-	[_controller.inboxButton addTarget:_controller action:@selector(inboxAction) forControlEvents:UIControlEventTouchUpInside];
-#pragma clang diagnostic pop
-	[_controller.tableView.tableHeaderView addSubview:_controller.inboxButton];
-	[_controller.view setNeedsDisplay];
 }
 
 - (void) brandImageDidDownload {
@@ -152,7 +145,7 @@
 	[[PDAPIClient sharedInstance] getRewardsInWalletSuccess:^() {
 		
 		NSMutableArray *arr = [NSMutableArray array];
-		for (PDReward *r in [PDWallet orderedByDate]) {
+		for (id r in [PDWallet orderedByDateMulti]) {
 //			if (r.brandId == _brand.identifier) {
 				[arr addObject:r];
 //			}
@@ -174,7 +167,7 @@
 - (void) fetchAllWallet {
 	__weak typeof(self) weakSelf = self;
 	[[PDAPIClient sharedInstance] getRewardsInWalletSuccess:^() {
-		weakSelf.wallet = [PDWallet orderedByDate];
+		weakSelf.wallet = [PDWallet orderedByDateMulti];
 		[weakSelf.controller.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
 		[weakSelf.controller.refreshControl endRefreshing];
 		[weakSelf.controller.tableView setUserInteractionEnabled:YES];
@@ -190,42 +183,17 @@
 
 - (void) fetchFeed {
 	_feedLoading = YES;
-	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-	NSString *documentsDirectory = [paths objectAtIndex:0];
-	NSString *appFile = [documentsDirectory stringByAppendingPathComponent:@"pdfeeds.fd"];
-	BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:appFile];
-	if (fileExists) {
-		NSMutableArray *data = [NSKeyedUnarchiver unarchiveObjectWithFile:appFile];
-		[PDFeeds initWithContentsOfArray:data];
-		_feed = [[PDFeeds feed] copy];
-	}
-	
 	__weak typeof(self) weakSelf = self;
 	[[PDAPIClient sharedInstance] getFeedsSuccess:^{
-		weakSelf.feedLoading = NO;
-		if (_brand) {
-			NSMutableArray *fd = [NSMutableArray array];
-			for (PDFeedItem *item in [PDFeeds feed]) {
-				if ([item.brandName isEqualToString:_brand.name]) {
-					[fd addObject:item];
-				}
-				weakSelf.feed = [fd copy];
-			}
-		} else {
-			weakSelf.feed = [PDFeeds feed];
-		}
-		dispatch_async(dispatch_get_main_queue(), ^{
-			[weakSelf.controller.tableView reloadData];
-			[weakSelf.controller.refreshControl endRefreshing];
-			[weakSelf.controller.tableView setUserInteractionEnabled:YES];
-		});
-		NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-		NSString *documentsDirectory = [paths objectAtIndex:0];
-		NSString *appFile = [documentsDirectory stringByAppendingPathComponent:@"pd_feeds.fd"];
-		[NSKeyedArchiver archiveRootObject:weakSelf.feed toFile:appFile];
+    weakSelf.feed = [PDFeeds feed];
+    [weakSelf.controller.refreshControl endRefreshing];
+    [weakSelf.controller.tableView setUserInteractionEnabled:YES];
+    _feedLoading = NO;
 	} failure:^(NSError *error){
 		//TODO: Handle Error
 		_feedLoading = NO;
+    [weakSelf.controller.refreshControl endRefreshing];
+    [weakSelf.controller.tableView setUserInteractionEnabled:YES];
 		dispatch_async(dispatch_get_main_queue(), ^{
 			[weakSelf.controller.tableView reloadData];
 			[weakSelf.controller.refreshControl endRefreshing];
@@ -246,26 +214,7 @@
 //	}
 		
 	[_controller.tableView.tableHeaderView setBackgroundColor:PopdeemColor(PDThemeColorPrimaryApp)];
-	
-	
-	[self refreshMessageIcon];
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wundeclared-selector"
-	[_controller.inboxButton addTarget:_controller action:@selector(inboxAction) forControlEvents:UIControlEventTouchUpInside];
-#pragma clang diagnostic pop
-	[_controller.tableView.tableHeaderView addSubview:_controller.inboxButton];
-	CGRect settingsButtonFrame = CGRectMake(5, 5, 20, 20);
-	_controller.settingsButton = [UIButton buttonWithType:UIButtonTypeSystem];
-	[_controller.settingsButton setBackgroundColor:[UIColor clearColor]];
-	[_controller.settingsButton setFrame:settingsButtonFrame];
-	_controller.settingsButton.tintColor = PopdeemColor(PDThemeColorHomeHeaderText);
-	[_controller.settingsButton setImage:PopdeemImage(@"pduikit_settings") forState:UIControlStateNormal];
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wundeclared-selector"
-	[_controller.settingsButton addTarget:_controller action:@selector(settingsAction) forControlEvents:UIControlEventTouchUpInside];
-#pragma clang diagnostic pop
-	[_controller.tableView.tableHeaderView addSubview:_controller.settingsButton];
-	
+  
 	if (!_tableHeaderImageView) {
 		if (PopdeemThemeHasValueForKey(@"popdeem.images.homeHeaderImage") || _brand.coverImage != nil) {
 			_tableHeaderImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, _controller.tableView.frame.size.width, 140)];
@@ -357,8 +306,6 @@
 		//Colours for Brand
 		if (_brand.theme) {
 			[_controller.tableView.tableHeaderView setBackgroundColor:PopdeemColorFromHex(_brand.theme.primaryAppColor)];
-			_controller.inboxButton.tintColor = PopdeemColor(PDThemeColorHomeHeaderText);
-			_controller.settingsButton.tintColor = PopdeemColor(PDThemeColorHomeHeaderText);
 			[_tableHeaderLabel setTextColor:PopdeemColor(PDThemeColorHomeHeaderText)];
 		}
 	}
@@ -376,10 +323,6 @@
 	if (_tableHeaderImageView) {
 		[_tableHeaderImageView setFrame:_controller.tableView.tableHeaderView.frame];
 	}
-	[_controller.inboxButton setFrame:CGRectMake(_controller.tableView.tableHeaderView.frame.size.width-5-20, 5, 20, 20)];
-	[_controller.settingsButton setFrame:CGRectMake(5, 5, 20, 20)];
-	[_controller.tableView.tableHeaderView bringSubviewToFront:_controller.settingsButton];
-	[_controller.tableView.tableHeaderView bringSubviewToFront:_controller.inboxButton];
 }
 
 - (void) claimNoAction:(PDReward*)reward closestLocation:(PDLocation*)loc {
@@ -394,8 +337,11 @@
 														 descriptionText:@"Claiming your Reward"];
 	
 	[_controller.loadingView showAnimated:YES];
+  PDLocation *location = [[PDLocation alloc] init];
+  location.latitude = 0.0;
+  location.longitude = 0.0;
 	[[PDAPIClient sharedInstance] claimReward:reward.identifier
-																	 location:loc
+																	 location:location
 																withMessage:nil
 															taggedFriends:nil
 																			image:nil
@@ -405,17 +351,12 @@
 																		success:^(){
 																			PDLog(@"No Action Reward Was Claimed");
 																			[PDRewardStore deleteReward:weakReward.identifier];
-																			weakSelf.rewards = [PDRewardStore allRewards];
+																			weakSelf.rewards = [PDRewardStore orderedByDate];
 																			[weakSelf.controller.tableView reloadData];
 																			if (weakSelf.controller.loadingView) {
 																				[weakSelf.controller.loadingView hideAnimated:YES];
 																			}
-																			UIAlertView *success = [[UIAlertView alloc] initWithTitle:@"Reward Claimed"
-																																												message:@"You have claimed your reward. It will be displayed in your wallet shortly"
-																																											 delegate:self.controller
-																																							cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
-																			[success setTag:2];
-																			[success show];
+                                      [weakSelf.controller moveToSection:2];
 																		} failure:^(NSError *error) {
 																			PDLog(@"An error occurred when Claiming No Action Reward;");
 																			[weakSelf.controller.loadingView hideAnimated:YES];

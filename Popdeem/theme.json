@@ -1,0 +1,30 @@
+{
+    "popdeem" : {
+      "colors" : {
+        "primaryAppColor" : "#0D4A6F",
+        "secondaryAppColor" : "#0D4A6F",
+        "primaryInverseColor" : "#FFFFFF",
+        "viewBackgroundColor" : "#FFFFFF",
+        "primaryFontColor" : "#000000",
+        "secondaryFontColor" : "#A2A4A6",
+        "tableViewCellBackgroundColor" : "#FFFFFF",
+        "navBarTintColor" : "#0D4A6F",
+        "segmentedControlBackgroundColor" : "#FFFFFF",
+        "segmentedControlForegroundColor" : "#0D4A6F",
+        "homeHeaderTextColor" : "#FFFFFF"
+      },
+      "images" : {
+        "loginImage" : "Ribs&Burgers_LoginImage",
+        "defaultItemImage" : "pduikit_starG",
+        "homeHeaderImage" : "Ribs&Burgers_Header"
+      },
+      "fonts" : {
+        "primaryFont" : "Avenir-Book",
+        "boldFont" : "Avenir-Heavy",
+        "lightFont" : "Avenir-Light"
+      },
+      "nav" : {
+        "useTheme" : "true"
+      }
+    }
+}

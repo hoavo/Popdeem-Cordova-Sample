@@ -17,6 +17,9 @@
 #import "UIImage+Resize.h"
 #import "PDUITwitterLoginViewController.h"
 #import "PDUserAPIService.h"
+#import "PDUIInstagramVerifyViewController.h"
+#import "PDUIGratitudeViewController.h"
+#import "PDUIKitUtils.h"
 
 @import Photos;
 
@@ -210,6 +213,8 @@
 		[fbV show];
 		return;
 	}
+  
+  [self validateHashTag];
 	
 	_willFacebook = _viewController.facebookSwitch.isOn;
 	if ([_viewController.facebookSwitch isOn]) {
@@ -217,8 +222,6 @@
 		_willTweet = NO;
 		[_viewController.instagramSwitch setOn:NO animated:YES];
 		_willInstagram = NO;
-		[_viewController.twitterForcedTagLabel setHidden:YES];
-		[_viewController.addHashtagButton setHidden:YES];
 		[_viewController.twitterCharacterCountLabel setHidden:YES];
 		if (![[PDSocialMediaManager manager] isLoggedInWithFacebook]) {
 			[self loginWithReadAndWritePerms];
@@ -256,8 +259,6 @@
 	
 	if (_willTweet) {
 		_willTweet = NO;
-		[_viewController.twitterForcedTagLabel setHidden:YES];
-		[_viewController.addHashtagButton setHidden:YES];
 		[_viewController.twitterCharacterCountLabel setHidden:YES];
 		[_viewController.twitterButton setSelected:NO];
 //		if ([_viewController.textView.text rangeOfString:_twitterPrefilledTextString].location != NSNotFound) {
@@ -306,8 +307,6 @@
 	}
 	if (!instagramSwitch.isOn) {
 		_willInstagram = NO;
-		[_viewController.twitterForcedTagLabel setHidden:YES];
-		[_viewController.addHashtagButton setHidden:YES];
 //		if ([_viewController.textView.text rangeOfString:_instagramPrefilledTextString].location != NSNotFound) {
 //			NSMutableAttributedString *mstr = [_viewController.textView.attributedText mutableCopy];
 //			[mstr replaceCharactersInRange:[_viewController.textView.text rangeOfString:_instagramPrefilledTextString] withString:@""];
@@ -379,7 +378,7 @@
 		endString = [endString stringByAppendingString:[NSString stringWithFormat:@" %@",sampleMediaString]];
 	}
 	
-	int charsLeft = 140 - (int)endString.length;
+	int charsLeft = 240 - (int)endString.length;
 	
 	if (charsLeft < 1) {
 		[_viewController.twitterCharacterCountLabel setTextColor:[UIColor redColor]];
@@ -461,6 +460,16 @@
 		[self loginWithWritePerms];
 		return;
 	}
+  if (_reward.forcedTag && !_hashtagValidated) {
+    UIAlertView *hashAV = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.claim.hashtagMissing.title", @"Oops!")
+                                                     message:[NSString stringWithFormat:translationForKey(@"popdeem.claim.hashtagMissing.message", @"Looks like you have forgotten to add the required hashtag %@, please add this to your message before posting to Twitter"),_reward.instagramForcedTag]
+                                                    delegate:self
+                                           cancelButtonTitle:@"OK"
+                                           otherButtonTitles: nil];
+    [hashAV show];
+    [_viewController.claimButtonView setUserInteractionEnabled:YES];
+    return;
+  }
 	[self makeClaim];
 }
 
@@ -567,16 +576,13 @@
 	isv.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	[_viewController presentViewController:isv animated:YES completion:^(void){}];
-//	[self makeClaim];
+  _didGoToInstagram = YES;
 	return;
 }
 
 - (void) textViewDidChange:(UITextView *)textView {
 	[self calculateTwitterCharsLeft];
-	if (_willTweet && !_tvSurpress) {
-		[self validateHashTag];
-	}
-	if (_willInstagram && !_tvSurpress) {
+	if (!_tvSurpress) {
 		[self validateHashTag];
 	}
 	_tvSurpress = NO;
@@ -605,7 +611,9 @@
     } else {
       searchString = _reward.instagramForcedTag;
     }
-	}
+  } else {
+    searchString = _reward.forcedTag;
+  }
 	
 	if (!searchString) {
 		_hashtagValidated = YES;
@@ -614,7 +622,7 @@
 		return;
 	}
 	
-	if ([_viewController.textView.text.lowercaseString rangeOfString:searchString.lowercaseString].location != NSNotFound && (_willTweet || _willInstagram)) {
+	if ([_viewController.textView.text.lowercaseString rangeOfString:searchString.lowercaseString].location != NSNotFound) {
 		_hashtagValidated = YES;
 		_tvSurpress = YES;
 		NSRange hashRange = [_viewController.textView.text.lowercaseString rangeOfString:searchString.lowercaseString];
@@ -631,10 +639,8 @@
 		[string setAttributes:@{} range:NSMakeRange(0, string.length)];
 		[string addAttribute:NSFontAttributeName value:PopdeemFont(PDThemeFontPrimary, 14) range:NSMakeRange(0, string.length)];
 		[_viewController.textView setAttributedText:string];
-		if (_willTweet || _willInstagram) {
-			[_viewController.addHashtagButton setHidden:NO];
-			[_viewController.twitterForcedTagLabel setHidden:NO];
-		}
+		[_viewController.addHashtagButton setHidden:NO];
+    [_viewController.twitterForcedTagLabel setHidden:NO];
 	}
 }
 
@@ -655,54 +661,65 @@
 	
 	__block NSInteger rewardId = _reward.identifier;
 	//location?
-	[client claimReward:_reward.identifier
-						 location:_location withMessage:message
-				taggedFriends:taggedFriends
-								image:_image facebook:_willFacebook
-							twitter:_willTweet
-						instagram:_willInstagram
-							success:^(){
-								
-								if (_willInstagram) {
-									[[NSNotificationCenter defaultCenter] postNotificationName:InstagramPostMade object:self userInfo:@{@"rewardId" : @(_reward.identifier)}];
-								}
-		[self didClaimRewardId:rewardId];
-								
-	} failure:^(NSError *error){
-		[self PDAPIClient:client didFailWithError:error];
-	}];
+  if (!_willInstagram) {
+    [client claimReward:_reward.identifier
+               location:_location withMessage:message
+          taggedFriends:taggedFriends
+                  image:_image facebook:_willFacebook
+                twitter:_willTweet
+              instagram:_willInstagram
+                success:^(){
+
+                  [self didClaimRewardId:rewardId];
+
+                } failure:^(NSError *error){
+                  [self PDAPIClient:client didFailWithError:error];
+                }];
+  } else {
+    if (_willInstagram) {
+      [[NSNotificationCenter defaultCenter] postNotificationName:InstagramPostMade object:self userInfo:@{@"rewardId" : @(_reward.identifier)}];
+    }
+  }
 	
-	_loadingView = [[PDUIModalLoadingView alloc] initForView:self.viewController.view
-																								 titleText:translationForKey(@"popdeem.claim.reward.claiming", @"Claiming Reward")
-																					 descriptionText:translationForKey(@"popdeem.claim.reward.claiming.message", @"This could take up to 30 seconds")];
-	[_loadingView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.8]];
-	[_loadingView showAnimated:YES];
+  _loadingView = [[PDUIModalLoadingView alloc] initForView:self.viewController.view
+                                                 titleText:translationForKey(@"popdeem.claim.reward.claiming", @"Claiming Reward")
+                                           descriptionText:translationForKey(@"popdeem.claim.reward.claiming.message", @"This could take up to 30 seconds")];
+  [_loadingView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.8]];
+  [_loadingView showAnimated:YES];
+
 }
 
 - (void) loginWithReadAndWritePerms {
-	[[PDSocialMediaManager manager] loginWithFacebookReadPermissions:@[
-																																		 @"public_profile",
-																																		 @"email",
-																																		 @"user_birthday",
-																																		 @"user_posts",
-																																		 @"user_friends",
-																																		 @"user_education_history"]
-																							 registerWithPopdeem:YES
-																													 success:^(void) {
-		_willFacebook = YES;
-		[self loginWithWritePerms];
-	} failure:^(NSError *error) {
-		UIAlertView *av = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.common.sorry", @"Sorry")
-																								 message:translationForKey(@"popdeem.claim.facebook.cannotConnect", @"We couldnt connect you to Facebook")
-																								delegate:nil
-																			 cancelButtonTitle:nil
-																			 otherButtonTitles:translationForKey(@"popdeem.common.ok", @"OK"), nil];
-		[av show];
-		_willFacebook = NO;
-    dispatch_async(dispatch_get_main_queue(), ^{
-      [_viewController.facebookSwitch setOn:NO animated:YES];
-    });
-	}];
+  
+  PDUIFBLoginWithWritePermsViewController *fbVC = [[PDUIFBLoginWithWritePermsViewController alloc] initForParent:self.viewController.navigationController
+                                                                                                         loginType:PDFacebookLoginTypeRead];
+  if (!fbVC) {
+    return;
+  }
+  self.viewController.definesPresentationContext = YES;
+  fbVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
+  fbVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(facebookLoginSuccess) name:FacebookLoginSuccess object:nil];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(facebookLoginFailure) name:FacebookLoginFailure object:nil];
+  [self.viewController presentViewController:fbVC animated:YES completion:^(void){
+  }];
+}
+
+- (void) facebookLoginSuccess {
+  
+  AbraLogEvent(ABRA_EVENT_CONNECTED_ACCOUNT, (@{
+                                                ABRA_PROPERTYNAME_SOCIAL_NETWORK : ABRA_PROPERTYVALUE_SOCIAL_NETWORK_FACEBOOK,
+                                                ABRA_PROPERTYNAME_SOURCE_PAGE : @"Claim Screen"
+                                                }));
+  
+  if (![[FBSDKAccessToken currentAccessToken] hasGranted:@"publish_actions"]) {
+    [self loginWithWritePerms];
+  }
+  [self.viewController.facebookSwitch setOn:YES];
+}
+
+- (void) facebookLoginFailure {
+  [self.viewController.facebookSwitch setOn:NO];
 }
 
 - (void) loginWithWritePerms {
@@ -738,6 +755,16 @@
 
 - (void) didClaimRewardId:(NSInteger)rewardId {
 	
+  //Here is where we will show the ambassador popup or verify the instagram action
+  
+  if (_willInstagram) {
+    //Do the verify flow.
+    NSLog(@"Instagram was Chosen");
+    PDUIInstagramVerifyViewController *verifyController = [[PDUIInstagramVerifyViewController alloc] initForParent:self.viewController forReward:_reward];
+    [self.viewController.navigationController pushViewController:verifyController animated:YES];
+    return;
+  }
+  
 	if (_viewController.claimTask != UIBackgroundTaskInvalid) {
 		[_viewController endBackgroundUpdateTask];
 	}
@@ -748,9 +775,7 @@
 	
 	_viewController.homeController.didClaim = YES;
 	
-	UIAlertView *av = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.claim.reward.claimed", @"Reward Claimed!") message:translationForKey(@"popdeem.claim.reward.success", @"You can view your reward in your wallet") delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-	[av setTag:9];
-	[av show];
+  [self.viewController.navigationController popViewControllerAnimated:YES];
 	
 	AbraLogEvent(ABRA_EVENT_CLAIMED, (@{
 																			ABRA_PROPERTYNAME_SOCIAL_NETWORKS : [self readableNetworksChosen],
@@ -817,9 +842,7 @@
     }
     [_loadingView hideAnimated:YES];
     [_viewController.twitterSwitch setOn:NO animated:NO];
-    [_viewController.twitterForcedTagLabel setHidden:YES];
     [_viewController.twitterCharacterCountLabel setHidden:YES];
-    [_viewController.addHashtagButton setHidden:YES];
   });
 }
 
@@ -833,7 +856,7 @@
 	
 	__weak __typeof(self) weakSelf = self;
 	
-	UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+	UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Choose Source" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
 	[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
 		weakSelf.alertWindow.hidden = YES;
 		weakSelf.alertWindow = nil;
@@ -875,7 +898,7 @@
 	
 	UIImagePickerController *picker = [[UIImagePickerController alloc] init];
 	picker.delegate = _viewController;
-	picker.allowsEditing = YES;
+	picker.allowsEditing = NO;
 	picker.sourceType = UIImagePickerControllerSourceTypeCamera;
 	picker.modalPresentationStyle = UIModalPresentationOverFullScreen;
 	picker.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
@@ -887,7 +910,7 @@
 	
 	UIImagePickerController *picker = [[UIImagePickerController alloc] init];
 	picker.delegate = _viewController;
-	picker.allowsEditing = YES;
+	picker.allowsEditing = NO;
 	picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
 	picker.modalPresentationStyle = UIModalPresentationOverFullScreen;
 	picker.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
@@ -928,7 +951,7 @@
 	img = [self normalizedImage:img];
 	CGRect cropRect = [info[@"UIImagePickerControllerCropRect"] CGRectValue];
 	
-	if (!CGRectEqualToRect(CGRectMake(0, 0, img.size.width, img.size.height), cropRect)) {
+	if (cropRect.size.width > 0 && !CGRectEqualToRect(CGRectMake(0, 0, img.size.width, img.size.height), cropRect)) {
 		CGImageRef imageRef = CGImageCreateWithImageInRect([img CGImage], cropRect);
 		img = [UIImage imageWithCGImage:imageRef];
 		CGImageRelease(imageRef);

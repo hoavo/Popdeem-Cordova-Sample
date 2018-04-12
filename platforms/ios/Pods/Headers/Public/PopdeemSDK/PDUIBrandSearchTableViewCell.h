@@ -1,0 +1,1 @@
+../../../PopdeemSDK/PopdeemSDK/UIKit/BrandList/PDUIBrandSearchTableViewCell.h

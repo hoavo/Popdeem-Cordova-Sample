@@ -9,6 +9,7 @@
 #import "PDUISegmentedControl.h"
 #import "PDTheme.h"
 #import "PDConstants.h"
+#import "PDMessageStore.h"
 
 @implementation PDUISegmentedControl
 
@@ -34,6 +35,8 @@
     //Set Text Attributes
     
     [self setSelectedSegmentIndex:0];
+    
+    NSUInteger unread = 2;
     
     return self;
   }
@@ -76,6 +79,41 @@
   UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
   UIGraphicsEndImageContext();
   return image;
+}
+
+- (void) didMoveToSuperview {
+
+    float center = self.frame.size.height/2;
+
+    NSString *segment3Text = [self titleForSegmentAtIndex:2];
+    UILabel *dummyLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 20)];
+    [dummyLabel setText:segment3Text];
+    [dummyLabel setFont:PopdeemFont(PDThemeFontPrimary, 14)];
+    [dummyLabel sizeToFit];
+
+    float segment3Width = self.frame.size.width/3;
+    float segment3Center = self.frame.size.width - (segment3Width/2);
+    float segment3TitleEnd = segment3Center + (dummyLabel.frame.size.width/2);
+  
+  if ([PDMessageStore unreadCount] > 0) {
+    if (!_badge) {
+      _badge = [PDUICustomBadge customBadgeWithString:[NSString stringWithFormat:@"%ld",(unsigned long)[PDMessageStore unreadCount]]
+                                      withStringColor:[UIColor whiteColor]
+                                       withInsetColor:[UIColor colorWithRed:0.98 green:0.05 blue:0.11 alpha:1.00]
+                                       withBadgeFrame:YES
+                                  withBadgeFrameColor:[UIColor whiteColor]
+                                            withScale:0.70];
+      [_badge setFrame:CGRectMake(segment3TitleEnd + 5, center-8.5, _badge.frame.size.width, _badge.frame.size.height)];
+      [self addSubview:_badge];
+    } else {
+      [_badge autoBadgeSizeWithString:[NSString stringWithFormat:@"%ld",(unsigned long)[PDMessageStore unreadCount]]];
+      [_badge setFrame:CGRectMake(segment3TitleEnd + 5, center-8.5, _badge.frame.size.width, _badge.frame.size.height)];
+    }
+  } else {
+    if (_badge) {
+      [_badge setHidden:YES];
+    }
+  }
 }
 
 @end

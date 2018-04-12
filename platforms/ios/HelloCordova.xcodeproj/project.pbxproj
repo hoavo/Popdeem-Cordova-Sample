@@ -5,39 +5,41 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		0207DA581B56EA530066E2B4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0207DA571B56EA530066E2B4 /* Images.xcassets */; };
+		1541852A27FF435480100AF2 /* Popdeem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9210B545F41F4F3C8857AFF2 /* Popdeem.m */; };
 		1D3623260D0F684500981E51 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		23E30F212BDE485CA2E9BED3 /* AppDelegate+popdeem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA79DCAD8054E70B3EE8C0E /* AppDelegate+popdeem.m */; };
+		269D573FE13249C993764F1E /* Ribs-Burgers_Header@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 034A3F5D03E4495CB97961DA /* Ribs-Burgers_Header@3x.png */; };
 		301BF552109A68D80062928A /* libCordova.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 301BF535109A57CC0062928A /* libCordova.a */; };
 		302D95F114D2391D003F00A1 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 302D95EF14D2391D003F00A1 /* MainViewController.m */; };
 		302D95F214D2391D003F00A1 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 302D95F014D2391D003F00A1 /* MainViewController.xib */; };
-		39FFECFF1FC39454006C9EBD /* theme.json in Resources */ = {isa = PBXBuildFile; fileRef = 39FFECFE1FC39454006C9EBD /* theme.json */; };
+		6A7D3F47CE7D177A54B8731B /* libPods-HelloCordova.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F3B4F8A829C5BAA00ED78C55 /* libPods-HelloCordova.a */; };
 		6AFF5BF91D6E424B00AB3073 /* CDVLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AFF5BF81D6E424B00AB3073 /* CDVLaunchScreen.storyboard */; };
-		7D8DA2851E2F49EB96EBE236 /* AppDelegate+popdeem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4166EE59B256484A8DEA9852 /* AppDelegate+popdeem.m */; };
-		C1F1A661D61780566A8ACBA4 /* libPods-HelloCordova.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D79227DF8C99E7B7212965F8 /* libPods-HelloCordova.a */; };
-		DB1346FDF1904EADBAAB667D /* Popdeem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C43A28BE3C84704B6E93577 /* Popdeem.m */; };
+		A5DE747DE2674B11A3C29F66 /* theme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3FF42296633B4D5BA1F950F2 /* theme.json */; };
+		A7398C912E624A6A8FCF00FB /* Ribs-Burgers_Header@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27B4D223CFCD4EC59C34FEE4 /* Ribs-Burgers_Header@2x.png */; };
+		ACD94337F00A41F08F89DE34 /* Ribs-Burgers_Header.png in Resources */ = {isa = PBXBuildFile; fileRef = 471C3E1A9A3E47BDB2BD08B1 /* Ribs-Burgers_Header.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		301BF534109A57CC0062928A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 301BF52D109A57CC0062928A /* CordovaLib/CordovaLib.xcodeproj */;
+			containerPortal = 301BF52D109A57CC0062928A /* CordovaLib.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = D2AAC07E0554694100DB518D;
 			remoteInfo = CordovaLib;
 		};
 		301BF550109A68C00062928A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 301BF52D109A57CC0062928A /* CordovaLib/CordovaLib.xcodeproj */;
+			containerPortal = 301BF52D109A57CC0062928A /* CordovaLib.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = D2AAC07D0554694100DB518D;
 			remoteInfo = CordovaLib;
 		};
-		39FFED011FC39455006C9EBD /* PBXContainerItemProxy */ = {
+		399DEEF8207F846C002EF6F4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 301BF52D109A57CC0062928A /* CordovaLib/CordovaLib.xcodeproj */;
+			containerPortal = 301BF52D109A57CC0062928A /* CordovaLib.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = C0C01EB21E3911D50056E6CB;
 			remoteInfo = Cordova;
@@ -46,12 +48,14 @@
 
 /* Begin PBXFileReference section */
 		0207DA571B56EA530066E2B4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = HelloCordova/Images.xcassets; sourceTree = SOURCE_ROOT; };
+		034A3F5D03E4495CB97961DA /* Ribs-Burgers_Header@3x.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; path = "Ribs-Burgers_Header@3x.png"; sourceTree = "<group>"; };
+		0F79E57814C649EAB4E27D00 /* AppDelegate+popdeem.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = "AppDelegate+popdeem.h"; path = "popdeem-cordova-plugin/PopdeemPlugin/AppDelegate+popdeem.h"; sourceTree = "<group>"; };
 		1D3623240D0F684500981E51 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* HelloCordova.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloCordova.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		23B2CC4ED90749C285487AF0 /* AppDelegate+popdeem.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = "AppDelegate+popdeem.h"; path = "popdeem-cordova-plugin/PopdeemPlugin/AppDelegate+popdeem.h"; sourceTree = "<group>"; };
+		27B4D223CFCD4EC59C34FEE4 /* Ribs-Burgers_Header@2x.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; path = "Ribs-Burgers_Header@2x.png"; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		301BF52D109A57CC0062928A /* CordovaLib/CordovaLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = CordovaLib/CordovaLib.xcodeproj; sourceTree = "<group>"; };
+		301BF52D109A57CC0062928A /* CordovaLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = CordovaLib/CordovaLib.xcodeproj; sourceTree = "<group>"; };
 		301BF56E109A69640062928A /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = SOURCE_ROOT; };
 		302D95EE14D2391D003F00A1 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		302D95EF14D2391D003F00A1 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
@@ -60,16 +64,17 @@
 		3047A5101AB8059700498E2A /* build-release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "build-release.xcconfig"; path = "cordova/build-release.xcconfig"; sourceTree = SOURCE_ROOT; };
 		3047A5111AB8059700498E2A /* build.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = build.xcconfig; path = cordova/build.xcconfig; sourceTree = SOURCE_ROOT; };
 		32CA4F630368D1EE00C91783 /* HelloCordova-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HelloCordova-Prefix.pch"; sourceTree = "<group>"; };
-		39FFECFE1FC39454006C9EBD /* theme.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = theme.json; sourceTree = "<group>"; };
-		4166EE59B256484A8DEA9852 /* AppDelegate+popdeem.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = "AppDelegate+popdeem.m"; path = "popdeem-cordova-plugin/PopdeemPlugin/AppDelegate+popdeem.m"; sourceTree = "<group>"; };
-		4C43A28BE3C84704B6E93577 /* Popdeem.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = Popdeem.m; path = "popdeem-cordova-plugin/PopdeemPlugin/Popdeem.m"; sourceTree = "<group>"; };
+		3FF42296633B4D5BA1F950F2 /* theme.json */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; path = theme.json; sourceTree = "<group>"; };
+		471C3E1A9A3E47BDB2BD08B1 /* Ribs-Burgers_Header.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; path = "Ribs-Burgers_Header.png"; sourceTree = "<group>"; };
+		5CA79DCAD8054E70B3EE8C0E /* AppDelegate+popdeem.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = "AppDelegate+popdeem.m"; path = "popdeem-cordova-plugin/PopdeemPlugin/AppDelegate+popdeem.m"; sourceTree = "<group>"; };
 		6AFF5BF81D6E424B00AB3073 /* CDVLaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CDVLaunchScreen.storyboard; path = HelloCordova/CDVLaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
 		8D1107310486CEB800E47090 /* HelloCordova-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "HelloCordova-Info.plist"; path = "HelloCordova/HelloCordova-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = SOURCE_ROOT; };
-		D79227DF8C99E7B7212965F8 /* libPods-HelloCordova.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HelloCordova.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9210B545F41F4F3C8857AFF2 /* Popdeem.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = Popdeem.m; path = "popdeem-cordova-plugin/PopdeemPlugin/Popdeem.m"; sourceTree = "<group>"; };
+		9A340EFF6AF14CB5850894E4 /* Popdeem.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = Popdeem.h; path = "popdeem-cordova-plugin/PopdeemPlugin/Popdeem.h"; sourceTree = "<group>"; };
 		EB87FDF31871DA8E0020F90C /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; name = www; path = ../../www; sourceTree = "<group>"; };
 		EB87FDF41871DAF40020F90C /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = ../../config.xml; sourceTree = "<group>"; };
 		ED33DF2A687741AEAF9F8254 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
-		F51392BADF9E483CB8A1CE99 /* Popdeem.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = Popdeem.h; path = "popdeem-cordova-plugin/PopdeemPlugin/Popdeem.h"; sourceTree = "<group>"; };
+		F3B4F8A829C5BAA00ED78C55 /* libPods-HelloCordova.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HelloCordova.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = HelloCordova/config.xml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -79,7 +84,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				301BF552109A68D80062928A /* libCordova.a in Frameworks */,
-				C1F1A661D61780566A8ACBA4 /* libPods-HelloCordova.a in Frameworks */,
+				6A7D3F47CE7D177A54B8731B /* libPods-HelloCordova.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,13 +104,6 @@
 			path = HelloCordova/Classes;
 			sourceTree = SOURCE_ROOT;
 		};
-		0C7E0DE04802C5A89BACE282 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -114,20 +112,20 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+		29B97314FDCFA39411CA2CEA = {
 			isa = PBXGroup;
 			children = (
 				EB87FDF41871DAF40020F90C /* config.xml */,
 				EB87FDF31871DA8E0020F90C /* www */,
 				EB87FDF11871DA420020F90C /* Staging */,
-				301BF52D109A57CC0062928A /* CordovaLib/CordovaLib.xcodeproj */,
+				301BF52D109A57CC0062928A /* CordovaLib.xcodeproj */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				307C750510C5A3420062BCA9 /* Plugins */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
-				0C7E0DE04802C5A89BACE282 /* Pods */,
+				2E38EBFB334A4AABFCF05659 /* Pods */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -138,7 +136,6 @@
 				32CA4F630368D1EE00C91783 /* HelloCordova-Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 				ED33DF2A687741AEAF9F8254 /* Bridging-Header.h */,
-				39FFECFE1FC39454006C9EBD /* theme.json */,
 			);
 			name = "Other Sources";
 			path = HelloCordova;
@@ -151,6 +148,10 @@
 				3047A50E1AB8057F00498E2A /* config */,
 				8D1107310486CEB800E47090 /* HelloCordova-Info.plist */,
 				6AFF5BF81D6E424B00AB3073 /* CDVLaunchScreen.storyboard */,
+				3FF42296633B4D5BA1F950F2 /* theme.json */,
+				471C3E1A9A3E47BDB2BD08B1 /* Ribs-Burgers_Header.png */,
+				27B4D223CFCD4EC59C34FEE4 /* Ribs-Burgers_Header@2x.png */,
+				034A3F5D03E4495CB97961DA /* Ribs-Burgers_Header@3x.png */,
 			);
 			name = Resources;
 			path = HelloCordova/Resources;
@@ -159,16 +160,23 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D79227DF8C99E7B7212965F8 /* libPods-HelloCordova.a */,
+				F3B4F8A829C5BAA00ED78C55 /* libPods-HelloCordova.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2E38EBFB334A4AABFCF05659 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		301BF52E109A57CC0062928A /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				301BF535109A57CC0062928A /* libCordova.a */,
-				39FFED021FC39455006C9EBD /* Cordova.framework */,
+				399DEEF9207F846C002EF6F4 /* Cordova.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -186,10 +194,10 @@
 		307C750510C5A3420062BCA9 /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
-				4C43A28BE3C84704B6E93577 /* Popdeem.m */,
-				4166EE59B256484A8DEA9852 /* AppDelegate+popdeem.m */,
-				F51392BADF9E483CB8A1CE99 /* Popdeem.h */,
-				23B2CC4ED90749C285487AF0 /* AppDelegate+popdeem.h */,
+				9210B545F41F4F3C8857AFF2 /* Popdeem.m */,
+				5CA79DCAD8054E70B3EE8C0E /* AppDelegate+popdeem.m */,
+				9A340EFF6AF14CB5850894E4 /* Popdeem.h */,
+				0F79E57814C649EAB4E27D00 /* AppDelegate+popdeem.h */,
 			);
 			name = Plugins;
 			path = HelloCordova/Plugins;
@@ -211,13 +219,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "HelloCordova" */;
 			buildPhases = (
-				064E134194CEBCCA92305466 /* [CP] Check Pods Manifest.lock */,
+				B3BEDC5AEF4D54B02FD4E5C7 /* [CP] Check Pods Manifest.lock */,
 				304B58A110DAC018002A0835 /* Copy www directory */,
 				1D60588D0D05DD3D006BFB54 /* Resources */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
 				1D60588F0D05DD3D006BFB54 /* Frameworks */,
-				9A8562D9D1361394AF96C858 /* [CP] Embed Pods Frameworks */,
-				3AC367359F93720772CBB1EA /* [CP] Copy Pods Resources */,
+				A83FC8DA7B3B6E868296F34E /* [CP] Embed Pods Frameworks */,
+				84F23340C3513698B8517A37 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -236,6 +244,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 510;
+				TargetAttributes = {
+					1D6058900D05DD3D006BFB54 = {
+						DevelopmentTeam = S648X26U8J;
+					};
+				};
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "HelloCordova" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -244,13 +257,13 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			mainGroup = 29B97314FDCFA39411CA2CEA;
 			productRefGroup = 19C28FACFE9D520D11CA2CBB /* Products */;
 			projectDirPath = "";
 			projectReferences = (
 				{
 					ProductGroup = 301BF52E109A57CC0062928A /* Products */;
-					ProjectRef = 301BF52D109A57CC0062928A /* CordovaLib/CordovaLib.xcodeproj */;
+					ProjectRef = 301BF52D109A57CC0062928A /* CordovaLib.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -268,11 +281,11 @@
 			remoteRef = 301BF534109A57CC0062928A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		39FFED021FC39455006C9EBD /* Cordova.framework */ = {
+		399DEEF9207F846C002EF6F4 /* Cordova.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = Cordova.framework;
-			remoteRef = 39FFED011FC39455006C9EBD /* PBXContainerItemProxy */;
+			remoteRef = 399DEEF8207F846C002EF6F4 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -283,33 +296,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				302D95F214D2391D003F00A1 /* MainViewController.xib in Resources */,
-				39FFECFF1FC39454006C9EBD /* theme.json in Resources */,
 				0207DA581B56EA530066E2B4 /* Images.xcassets in Resources */,
 				6AFF5BF91D6E424B00AB3073 /* CDVLaunchScreen.storyboard in Resources */,
+				A5DE747DE2674B11A3C29F66 /* theme.json in Resources */,
+				ACD94337F00A41F08F89DE34 /* Ribs-Burgers_Header.png in Resources */,
+				A7398C912E624A6A8FCF00FB /* Ribs-Burgers_Header@2x.png in Resources */,
+				269D573FE13249C993764F1E /* Ribs-Burgers_Header@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		064E134194CEBCCA92305466 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-HelloCordova-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		304B58A110DAC018002A0835 /* Copy www directory */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -325,7 +323,7 @@
 			shellScript = "NODEJS_PATH=/usr/local/bin; NVM_NODE_PATH=~/.nvm/versions/node/`nvm version 2>/dev/null`/bin; N_NODE_PATH=`find /usr/local/n/versions/node/* -maxdepth 0 -type d 2>/dev/null | tail -1`/bin; XCODE_NODE_PATH=`xcode-select --print-path`/usr/share/xcs/Node/bin; PATH=$NODEJS_PATH:$NVM_NODE_PATH:$N_NODE_PATH:$XCODE_NODE_PATH:$PATH && node cordova/lib/copy-www-build-step.js";
 			showEnvVarsInLog = 0;
 		};
-		3AC367359F93720772CBB1EA /* [CP] Copy Pods Resources */ = {
+		84F23340C3513698B8517A37 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -333,9 +331,55 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-HelloCordova/Pods-HelloCordova-resources.sh",
 				"${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle",
+				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/pduikit_brand_placeholder.png",
+				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/pduikit_cancelbutton.png",
+				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/pduikit_cancelbutton@2x.png",
+				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/pduikit_cancelbutton@3x.png",
+				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/pduikit_default_login.png",
+				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/pduikit_default_login@2x.png",
+				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/pduikit_default_login@3x.png",
+				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/pduikit_instagramstep1.png",
+				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/pduikit_instagramstep2.png",
+				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/pduikit_popdeemArrowB.png",
+				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/pduikit_popdeemArrowB@2x.png",
+				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/pduikit_popdeemArrowB@3x.png",
+				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/BrandList/PDUIBrandPlaceHolderTableViewCell.xib",
+				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/BrandList/PDUIBrandSearchTableViewCell.xib",
+				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/BrandList/PDUIBrandsListTableViewController.xib",
+				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/BrandList/PDUIBrandTableViewCell.xib",
+				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Claim/PDUIClaimViewController.xib",
+				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Claim/Post Scan Failure/PDUIScanFailViewController.xib",
+				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Claim/Post Scan/PDUIPostScanViewController.xib",
+				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Claim/Scan/PDUIInstagramScanViewController.xib",
+				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Claim/Scan/PDUIScanViewController.xib",
+				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Claim/Select Network/PDUISelectNetworkViewController.xib",
+				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Facebook/Login/PDUIFBLoginWithWritePermsViewController.xib",
+				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Friend Picker/PDUIFriendPickerViewController.xib",
+				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Gratutude/PDUIGratitudeViewController.xib",
+				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Home/Cells/No Rewards/PDUINoRewardTableViewCell.xib",
+				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Home/Cells/Profile/PDUIProfileButtonTableViewCell.xib",
+				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Home/Cells/Profile/ProfileTableViewCell.xib",
+				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Home/Cells/Rewards/PDUIRewardWithRulesTableViewCell.xib",
+				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Home/Cells/Rewards/V2/PDUIRewardV2TableViewCell.xib",
+				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Home/Cells/Wallet/PDUIInstagramUnverifiedWalletTableViewCell.xib",
+				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Home/Cells/Wallet/PDUITierEventTableViewCell.xib",
+				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Home/Cells/Wallet/PDUIWalletRewardTableViewCell.xib",
+				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Home/PDUIHomeViewController.xib",
+				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Instagram/PDUIInstagramWebViewController.xib",
+				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Login/MultiLogin/PDMultiLoginViewController.xib",
+				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Login/PDUISocialLoginViewController.xib",
+				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/MessageCenter/PDUIMessageCell.xib",
+				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/MessageCenter/PDUIMsgCntrTblViewController.xib",
+				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/MessageCenter/PDUISingleMessageViewController.xib",
+				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Placeholder/PlaceholderTableViewCell.xib",
+				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/ambassador_icon_default.png",
+				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/ambassador_icon_default@2x.png",
+				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/ambassador_icon_default@3x.png",
 				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/bluePopdeemHeader.png",
 				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/bluePopdeemHeader@2x.png",
 				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/bluePopdeemHeader@3x.png",
+				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/default.json",
+				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/default_theme.json",
 				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduikit-branddummycell.png",
 				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduikit-branddummycell@2x.png",
 				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduikit-branddummycell@3x.png",
@@ -348,6 +392,7 @@
 				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduikit_camera.png",
 				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduikit_camera@2x.png",
 				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduikit_camera@3x.png",
+				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduikit_default_user.png",
 				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduikit_deselectedCheck.png",
 				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduikit_deselectedCheck@2x.png",
 				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduikit_deselectedCheck@3x.png",
@@ -369,6 +414,7 @@
 				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduikit_instagrambutton_selected.png",
 				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduikit_instagrambutton_selected@2x.png",
 				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduikit_instagrambutton_selected@3x.png",
+				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduikit_instagramstep3.png",
 				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduikit_instagram_hi.png",
 				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduikit_instagram_hi@2x.png",
 				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduikit_instagram_hi@3x.png",
@@ -422,6 +468,15 @@
 				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduikit_x@2x.png",
 				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduikit_x@3x copy.png",
 				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduikit_x_icon.png",
+				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduirewardfacebookicon.png",
+				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduirewardfacebookicon@2x.png",
+				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduirewardfacebookicon@3x.png",
+				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduirewardinstagramicon.png",
+				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduirewardinstagramicon@2x.png",
+				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduirewardinstagramicon@3x.png",
+				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduirewardtwittericon.png",
+				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduirewardtwittericon@2x.png",
+				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduirewardtwittericon@3x.png",
 				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/PDUI_Back.png",
 				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/PDUI_Back@2x.png",
 				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/PDUI_Back@3x.png",
@@ -434,44 +489,6 @@
 				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/Twitter_Logo_Blue.png",
 				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/Twitter_Logo_Blue@2x.png",
 				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/Twitter_Logo_Blue@3x.png",
-				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/default.json",
-				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/default_theme.json",
-				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/pduikit_brand_placeholder.png",
-				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/pduikit_cancelbutton.png",
-				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/pduikit_cancelbutton@2x.png",
-				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/pduikit_cancelbutton@3x.png",
-				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/pduikit_default_login.png",
-				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/pduikit_default_login@2x.png",
-				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/pduikit_default_login@3x.png",
-				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/pduikit_default_user.png",
-				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/pduikit_instagramstep1.png",
-				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/pduikit_instagramstep2.png",
-				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/pduikit_popdeemArrowB.png",
-				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/pduikit_popdeemArrowB@2x.png",
-				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/pduikit_popdeemArrowB@3x.png",
-				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/BrandList/PDUIBrandPlaceHolderTableViewCell.xib",
-				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/BrandList/PDUIBrandSearchTableViewCell.xib",
-				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/BrandList/PDUIBrandsListTableViewController.xib",
-				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/BrandList/PDUIBrandTableViewCell.xib",
-				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Claim/PDUIClaimViewController.xib",
-				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Claim/Post Scan Failure/PDUIScanFailViewController.xib",
-				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Claim/Post Scan/PDUIPostScanViewController.xib",
-				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Claim/Scan/PDUIScanViewController.xib",
-				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Claim/Select Network/PDUISelectNetworkViewController.xib",
-				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Facebook/Login/PDUIFBLoginWithWritePermsViewController.xib",
-				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Friend Picker/PDUIFriendPickerViewController.xib",
-				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Home/Cells/No Rewards/PDUINoRewardTableViewCell.xib",
-				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Home/Cells/Rewards/PDUIRewardWithRulesTableViewCell.xib",
-				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Home/Cells/Wallet/PDUIInstagramUnverifiedWalletTableViewCell.xib",
-				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Home/Cells/Wallet/PDUIWalletRewardTableViewCell.xib",
-				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Home/PDUIHomeViewController.xib",
-				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Instagram/PDUIInstagramWebViewController.xib",
-				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Login/MultiLogin/PDMultiLoginViewController.xib",
-				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Login/PDUISocialLoginViewController.xib",
-				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/MessageCenter/PDUIMessageCell.xib",
-				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/MessageCenter/PDUIMsgCntrTblViewController.xib",
-				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/MessageCenter/PDUISingleMessageViewController.xib",
-				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Placeholder/PlaceholderTableViewCell.xib",
 				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Reward/PDUIRedeemViewController.xib",
 				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Settings/PDUILogoutTableViewCell.xib",
 				"${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Settings/PDUISettingsViewController.xib",
@@ -480,14 +497,177 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FacebookSDKStrings.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_brand_placeholder.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_cancelbutton.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_cancelbutton@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_cancelbutton@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_default_login.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_default_login@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_default_login@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_instagramstep1.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_instagramstep2.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_popdeemArrowB.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_popdeemArrowB@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_popdeemArrowB@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PDUIBrandPlaceHolderTableViewCell.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PDUIBrandSearchTableViewCell.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PDUIBrandsListTableViewController.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PDUIBrandTableViewCell.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PDUIClaimViewController.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PDUIScanFailViewController.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PDUIPostScanViewController.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PDUIInstagramScanViewController.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PDUIScanViewController.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PDUISelectNetworkViewController.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PDUIFBLoginWithWritePermsViewController.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PDUIFriendPickerViewController.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PDUIGratitudeViewController.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PDUINoRewardTableViewCell.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PDUIProfileButtonTableViewCell.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ProfileTableViewCell.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PDUIRewardWithRulesTableViewCell.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PDUIRewardV2TableViewCell.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PDUIInstagramUnverifiedWalletTableViewCell.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PDUITierEventTableViewCell.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PDUIWalletRewardTableViewCell.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PDUIHomeViewController.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PDUIInstagramWebViewController.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PDMultiLoginViewController.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PDUISocialLoginViewController.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PDUIMessageCell.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PDUIMsgCntrTblViewController.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PDUISingleMessageViewController.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PlaceholderTableViewCell.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ambassador_icon_default.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ambassador_icon_default@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ambassador_icon_default@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/bluePopdeemHeader.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/bluePopdeemHeader@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/bluePopdeemHeader@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/default.json",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/default_theme.json",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit-branddummycell.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit-branddummycell@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit-branddummycell@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_addFriend.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_addFriend@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_addFriend@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_arrowB.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_arrowB@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_arrowB@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_camera.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_camera@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_camera@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_default_user.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_deselectedCheck.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_deselectedCheck@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_deselectedCheck@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_facebook_hires.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_facebook_hires@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_facebook_hires@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_fbbutton_deselected.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_fbbutton_deselected@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_fbbutton_deselected@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_fbbutton_selected.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_fbbutton_selected@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_fbbutton_selected@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_fb_hi.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_fb_hi@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_fb_hi@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_instagrambutton_deselected.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_instagrambutton_deselected@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_instagrambutton_deselected@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_instagrambutton_selected.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_instagrambutton_selected@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_instagrambutton_selected@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_instagramstep3.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_instagram_hi.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_instagram_hi@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_instagram_hi@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_instagram_hires.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_mail.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_mail@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_mail@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_mailCircle.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_mail_blue.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_placeholder.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_popdeemHeader.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_popdeemHeader@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_popdeemHeader@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_popdeemHeaderLight.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_popdeemHeaderLight@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_popdeemHeaderLight@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_rainbow.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_rainbow@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_rainbow@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_refresh.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_refresh@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_refresh@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_rewardsIcon.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_rewardsIcon@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_rewardsIconSuccess.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_rewardsIconSuccess@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_search.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_selectedCheck.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_selectedCheck@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_selectedCheck@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_settings.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_settings@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_settings@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_starG.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_starG@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_starG@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_tagGoButton.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_tickG.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_tickG@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_tickG@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_tickGrey.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_tickGrey@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_tickGrey@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_twitterbutton_deselected.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_twitterbutton_deselected@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_twitterbutton_deselected@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_twitterbutton_selected.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_twitterbutton_selected@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_twitterbutton_selected@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_x@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_x@3x copy.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduikit_x_icon.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduirewardfacebookicon.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduirewardfacebookicon@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduirewardfacebookicon@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduirewardinstagramicon.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduirewardinstagramicon@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduirewardinstagramicon@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduirewardtwittericon.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduirewardtwittericon@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pduirewardtwittericon@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PDUI_Back.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PDUI_Back@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PDUI_Back@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PDUI_IGBG.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PDUI_IGBG@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PDUI_IGBG@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pd_message.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pd_message@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pd_message@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Twitter_Logo_Blue.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Twitter_Logo_Blue@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Twitter_Logo_Blue@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PDUIRedeemViewController.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PDUILogoutTableViewCell.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PDUISettingsViewController.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PDUISocialSettingsTableViewCell.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PDUITwitterLoginViewController.nib",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HelloCordova/Pods-HelloCordova-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9A8562D9D1361394AF96C858 /* [CP] Embed Pods Frameworks */ = {
+		A83FC8DA7B3B6E868296F34E /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -502,6 +682,24 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HelloCordova/Pods-HelloCordova-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		B3BEDC5AEF4D54B02FD4E5C7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HelloCordova-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -512,8 +710,8 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
 				302D95F114D2391D003F00A1 /* MainViewController.m in Sources */,
-				DB1346FDF1904EADBAAB667D /* Popdeem.m in Sources */,
-				7D8DA2851E2F49EB96EBE236 /* AppDelegate+popdeem.m in Sources */,
+				1541852A27FF435480100AF2 /* Popdeem.m in Sources */,
+				23E30F212BDE485CA2E9BED3 /* AppDelegate+popdeem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -538,6 +736,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = S648X26U8J;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -562,6 +761,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = YES;
+				DEVELOPMENT_TEAM = S648X26U8J;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HelloCordova/HelloCordova-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;

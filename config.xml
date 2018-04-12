@@ -131,9 +131,13 @@
                 <string>fb-messenger-api20140430</string>
             </array>
         </config-file>
+        <resource-file src="Popdeem/theme.json" target="theme.json" />
+        <resource-file src="Popdeem/Ribs-Burgers_Header.png" target="Ribs-Burgers_Header.png" />
+        <resource-file src="Popdeem/Ribs-Burgers_Header@2x.png" target="Ribs-Burgers_Header@2x.png" />
+        <resource-file src="Popdeem/Ribs-Burgers_Header@3x.png" target="Ribs-Burgers_Header@3x.png" />
     </platform>
     <plugin name="cordova-plugin-whitelist" spec="^1.3.2" />
-    <plugin name="popdeem-cordova-plugin" spec="^0.9.17" />
+    <plugin name="popdeem-cordova-plugin" spec="^0.9.19" />
     <engine name="android" spec="^6.3.0" />
-    <engine name="ios" spec="^4.5.3" />
+    <engine name="ios" spec="^4.5.4" />
 </widget>

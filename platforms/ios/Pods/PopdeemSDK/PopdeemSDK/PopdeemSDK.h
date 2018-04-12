@@ -53,20 +53,31 @@
 #import "PDUtils.h"
 #import "PDTheme.h"
 #import "PDBrand.h"
+#import "PDHomeSegueDelegate.h"
 
 NS_ASSUME_NONNULL_BEGIN
+
+typedef NS_ENUM(NSUInteger, PDEnv) {
+  PDEnvProduction = 0,
+  PDEnvStaging
+};
 
 @interface PopdeemSDK : NSObject
 
 @property (nonatomic, strong) NSString *apiKey;
 @property (nonatomic) BOOL debug;
+@property (nonatomic) PDEnv env;
+@property (nonatomic) id<PDHomeSegueDelegate> segueDelegate;
 
 + (id) sharedInstance;
+- (NSString*) apiURL;
++ (void) setEnv:(PDEnv)env;
 
 + (void) setDebug:(BOOL)debug;
 + (BOOL) debugMode;
 
 + (void) withAPIKey:(NSString*)apiKey;
++ (void) withAPIKey:(NSString*)apiKey env:(PDEnv)env;
 + (void) testingWithAPIKey:(NSString*)apiKey;
 + (void) startupBrands;
 + (void) setTwitterOAuthToken:(NSString*)token verifier:(NSString*)verifier;
@@ -76,6 +87,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (void) setUpThemeFile:(NSString*)themeName;
 
 + (void) presentRewardFlow;
++ (void) directToSocialHome;
 + (void) presentRewardsForBrand:(PDBrand*)b inNavigationController:(UINavigationController*)navController;
 + (void) presentHomeFlowInNavigationController:(UINavigationController*)navController;
 + (void) presentBrandFlowInNavigationController:(UINavigationController*)navController;

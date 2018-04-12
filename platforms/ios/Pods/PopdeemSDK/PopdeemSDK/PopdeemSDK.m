@@ -36,9 +36,11 @@
 #import "PDAPIClient.h"
 #import "PDMessageStore.h"
 #import <UserNotifications/UserNotifications.h>
+#import "PDRealm.h"
+#import "PDCustomerAPIService.h"
 
 @interface PopdeemSDK()
-@property (nonatomic, strong)id uiKitCore;
+  @property (nonatomic, strong)id uiKitCore;
 @end
 @implementation PopdeemSDK
 
@@ -49,9 +51,47 @@
     SDK = [[PopdeemSDK alloc] init];
 		if (SDK) {
 			[SDK setDebug:NO];
+      [SDK setEnv:PDEnvProduction];
 		}
   });
   return SDK;
+}
+
+- (void) fetchCustomer {
+  PDCustomerAPIService *service = [[PDCustomerAPIService alloc] init];
+  [service getCustomerWithCompletion:^(NSError *error) {
+    PDLog(@"Fetched Customer");
+  }];
+}
+
+- (id) init {
+  if (self = [super init]) {
+    return self;
+  }
+  return nil;
+}
+
++ (void) setEnv:(PDEnv)env {
+  PopdeemSDK *SDK = [PopdeemSDK sharedInstance];
+  [SDK setEnv:env];
+}
+  
+- (NSString*) apiURL {
+  PopdeemSDK *SDK = [PopdeemSDK sharedInstance];
+  if (SDK) {
+    switch ([SDK env]) {
+      case PDEnvProduction:
+        return @"https://api.popdeem.com";
+      break;
+      case PDEnvStaging:
+        return @"http://api.staging.popdeem.com";
+      break;
+      default:
+        return @"https://api.popdeem.com";
+      break;
+    }
+  }
+  return @"https://api.popdeem.com";
 }
 
 + (void) setDebug:(BOOL)debug {
@@ -74,10 +114,20 @@
     }];
 }
 
-+ (void) withAPIKey:(NSString*)apiKey {
++ (void) withAPIKey:(NSString*)apiKey env:(PDEnv)env {
   PopdeemSDK *SDK = [[self class] sharedInstance];
+  [SDK setEnv:env];
   [SDK setApiKey:apiKey];
   [SDK nonSocialRegister];
+  [PDRealm initRealmDB];
+  PDCustomerAPIService *service = [[PDCustomerAPIService alloc] init];
+  [service getCustomerWithCompletion:^(NSError *error) {
+    PDLog(@"Fetched Customer");
+  }];
+}
+
++ (void) withAPIKey:(NSString*)apiKey {
+  [PopdeemSDK withAPIKey:apiKey env:PDEnvProduction];
 }
 
 + (void) testingWithAPIKey:(NSString*)apiKey {
@@ -113,6 +163,16 @@
 + (void) presentRewardFlow {
   id uiKitCore = [[self sharedInstance]popdeemUIKitCore];
   SEL selector = NSSelectorFromString(@"presentRewardFlow");
+  
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+  [uiKitCore performSelector:selector];
+#pragma clang diagnostic pop
+}
+
++ (void) directToSocialHome {
+  id uiKitCore = [[self sharedInstance] popdeemUIKitCore];
+  SEL selector = NSSelectorFromString(@"directToSocialHome");
   
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"

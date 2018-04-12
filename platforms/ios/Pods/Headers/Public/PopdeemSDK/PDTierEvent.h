@@ -1,0 +1,1 @@
+../../../PopdeemSDK/PopdeemSDK/Core/Model/PDTierEvent.h

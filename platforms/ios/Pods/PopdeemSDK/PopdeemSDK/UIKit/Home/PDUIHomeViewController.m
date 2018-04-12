@@ -30,13 +30,26 @@
 #import "PDUIInboxButton.h"
 #import "PDBrandApiService.h"
 #import "PDUISocialLoginHandler.h"
-
+#import "PDUIRewardV2TableViewCell.h"
+#import "ProfileTableViewCell.h"
+#import "PDUIProfileButtonTableViewCell.h"
+#import "PDUIGratitudeViewController.h"
+#import "PDUserAPIService.h"
+#import "PDUICustomBadge.h"
+#import "PDMessageStore.h"
+#import "PDTierEvent.h"
+#import "PDUITierEventTableViewCell.h"
+#import "PDCustomer.h"
 
 #define kPlaceholderCell @"PlaceholderCell"
 #define kRewardWithRulesTableViewCell @"RewardWithRulesCell"
+#define kRewardV2Cell @"RewardV2Cell"
 #define kWalletTableViewCell @"WalletCell"
 #define kInstaUnverifiedTableViewCell @"kInstaUnverifiedTableViewCell"
 #define kNoRewardsCell @"NoRewardsCell"
+#define kNProfileCell @"ProfileCell"
+#define kProfileButtonCell @"PDUIProfileButtonTableViewCell"
+#define kTierCell @"PDUITierEventTableViewCell"
 
 @interface PDUIHomeViewController () {
   BOOL rewardsLoading, feedLoading, walletLoading;
@@ -52,6 +65,7 @@
 @property (nonatomic, strong) PDLocationValidator *locationValidator;
 @property (nonatomic, retain) UIColor *startingNavColor;
 @property (nonatomic, retain) UIColor *startingNavTextColor;
+@property (nonatomic, retain) UIView *historySectionView;
 @end
 
 @implementation PDUIHomeViewController
@@ -109,8 +123,10 @@
 }
 
 - (void) viewDidLayoutSubviews {
+  [super viewDidLayoutSubviews];
   [self.model updateSubViews];
   [self.view setNeedsDisplay];
+  self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
 }
 
 
@@ -123,6 +139,9 @@
   UINib *rwrcnib = [UINib nibWithNibName:@"PDUIRewardWithRulesTableViewCell" bundle:podBundle];
   [[self tableView] registerNib:rwrcnib forCellReuseIdentifier:kRewardWithRulesTableViewCell];
   
+  UINib *rwrc2nib = [UINib nibWithNibName:@"PDUIRewardV2TableViewCell" bundle:podBundle];
+  [[self tableView] registerNib:rwrc2nib forCellReuseIdentifier:kRewardV2Cell];
+  
   UINib *walletnib = [UINib nibWithNibName:@"PDUIWalletRewardTableViewCell" bundle:podBundle];
   [[self tableView] registerNib:walletnib forCellReuseIdentifier:kWalletTableViewCell];
   
@@ -132,6 +151,23 @@
   UINib *noRewards = [UINib nibWithNibName:@"PDUINoRewardTableViewCell" bundle:podBundle];
   [[self tableView] registerNib:noRewards forCellReuseIdentifier:kNoRewardsCell];
   
+  UINib *profile = [UINib nibWithNibName:@"ProfileTableViewCell" bundle:podBundle];
+  [[self tableView] registerNib:profile forCellReuseIdentifier:kNProfileCell];
+  
+  UINib *profileButton = [UINib nibWithNibName:@"PDUIProfileButtonTableViewCell" bundle:podBundle];
+  [[self tableView] registerNib:profileButton forCellReuseIdentifier:kProfileButtonCell];
+  
+  UINib *tierCell = [UINib nibWithNibName:@"PDUITierEventTableViewCell" bundle:podBundle];
+  [[self tableView] registerNib:tierCell forCellReuseIdentifier:kTierCell];
+  
+  
+}
+
+- (void) viewDidDisappear:(BOOL)animated {
+  if (@available(iOS 11.0, *)) {
+    self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    self.navigationController.navigationBar.translucent = YES;
+  }
 }
 
 - (void)viewDidLoad {
@@ -142,16 +178,24 @@
   } else {
     [self setup];
   }
+  if (@available(iOS 11.0, *)) {
+    self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    self.navigationController.navigationBar.translucent = YES;
+  }
+  
 }
 
 - (void) setup {
   
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidLogin) name:FacebookLoginSuccess object:nil];
+//  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidLogin) name:FacebookLoginSuccess object:nil];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(feedItemDidDownload) name:@"PDFeedItemImageDidDownload" object:nil];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(coverImageDidDownload) name:@"PDRewardCoverImageDidDownload" object:nil];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loggedOut) name:PDUserDidLogout object:nil];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(postVerified) name:InstagramVerifySuccessFromWallet object:nil];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramPostMade:) name:InstagramPostMade object:nil];
   [[NSNotificationCenter defaultCenter] addObserver:_model selector:@selector(fetchInbox) name:NotificationReceived object:nil];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidLogin) name:PDUserDidLogin object:nil];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didUpdateUser) name:PDUserDidUpdate object:nil];
   [self registerNibs];
   [super viewDidLoad];
   
@@ -211,21 +255,26 @@
   self.refreshControl.layer.zPosition = self.tableView.backgroundView.layer.zPosition + 1;
   
   self.title = translationForKey(@"popdeem.home.title", @"Rewards");
-  self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+  self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
   [self.view setBackgroundColor:PopdeemColor(PDThemeColorViewBackground)];
   dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
     [self.model fetchRewards];
-    [self.model fetchFeed];
+    if (self.model.feed.count == 0) {
+      [self.model fetchFeed];
+    }
     [self.model fetchWallet];
     [self.model fetchInbox];
   });
+  
+  self.model.feed = [PDFeeds feed];
   
   if (!_segmentedControl) {
     _segmentedControl = [[PDUISegmentedControl alloc] initWithItems:@[
 																																			translationForKey(@"popdeem.home.segmentedControl.rewards", @"Rewards"),
 																																			translationForKey(@"popdeem.home.segmentedControl.activity", @"Activity"),
-																																			translationForKey(@"popdeem.home.segmentedControl.wallet", @"History")
+																																			translationForKey(@"popdeem.home.segmentedControl.wallet", @"Profile")
 																																			]];
+    _segmentedControl.parentView = self.view;
     if (_brand.theme) {
       [_segmentedControl applyTheme:_brand.theme];
     }
@@ -250,6 +299,14 @@
   // Adding the swipe gesture on image view
   [self.tableView addGestureRecognizer:swipeLeft];
   [self.tableView addGestureRecognizer:swipeRight];
+  
+  _historySectionView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 40)];
+  UILabel *historyTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, self.view.frame.size.width - 40, 40)];
+  [historyTitleLabel setText:@"MY HISTORY"];
+  [historyTitleLabel setFont:PopdeemFont(PDThemeFontBold, 12)];
+  [historyTitleLabel setTextColor:[UIColor blackColor]];
+  [_historySectionView addSubview:historyTitleLabel];
+  [_historySectionView setBackgroundColor:[UIColor whiteColor]];
   
   [self renderView];
 }
@@ -306,6 +363,18 @@
     _model.rewards = [PDRewardStore orderedByDate];
     [self.tableView reloadData];
     [self.tableView reloadInputViews];
+    PDUIGratitudeViewController *gViewController = [[PDUIGratitudeViewController alloc] initWithType:PDGratitudeTypeShare];
+    
+    [self presentViewController:gViewController animated:YES completion:^{
+      
+    }];
+    PDUserAPIService *service = [[PDUserAPIService alloc] init];
+    NSString *ident = [NSString stringWithFormat:@"%ld",[[PDUser sharedInstance] identifier]];
+    [service getUserDetailsForId:ident authenticationToken:[[PDUser sharedInstance] userToken] completion:^(PDUser *user, NSError *error) {
+      PDLog(@"Fetch User Details");
+      [self.tableView reloadData];
+      [self.tableView reloadInputViews];
+    }];
   }
   if (_didLogin) {
     [self userDidLogin];
@@ -327,6 +396,10 @@
     if (PopdeemThemeHasValueForKey(@"popdeem.images.navigationBar")){
       [self.navigationController.navigationBar setBackgroundImage:PopdeemImage(@"popdeem.images.navigationBar") forBarMetrics:UIBarMetricsDefault];
     }
+    if (@available(iOS 11.0, *)) {
+      self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentAutomatic;
+      self.navigationController.navigationBar.translucent = YES;
+    }
   }
   
   //Brand Specific Theme
@@ -346,10 +419,7 @@
                                                                                           NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 16.0f)}
                                                                                forState:UIControlStateNormal];
   }
-  
-  //Refresh inboxButton
-  [_model refreshMessageIcon];
-  
+  [self addInboxBadge];
 }
 
 - (void) reloadAction {
@@ -391,8 +461,6 @@
   //																																						 forState:UIControlStateNormal];
 }
 
-- (void) viewDidDisappear:(BOOL)animated {
-}
 
 - (void) segmentedControlDidChangeValue:(PDUISegmentedControl*)sender {
   [self.tableView reloadData];
@@ -421,22 +489,50 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-  return 1;
+  switch (_segmentedControl.selectedSegmentIndex) {
+      case 0:
+        return 1;
+      break;
+      case 1:
+        return 1;
+      break;
+      case 2:
+        return 2;
+      break;
+      default:
+        return 1;
+      break;
+  }
 }
 
 - (UIView*) tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-  UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 1.0f)];
-  [footerView setBackgroundColor:PopdeemColor(PDThemeColorTableViewSeperator)];
-  return footerView;
+  if (section == 0 && _segmentedControl.selectedSegmentIndex != 2) {
+    UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 1.0f)];
+    [footerView setBackgroundColor:PopdeemColor(PDThemeColorTableViewSeperator)];
+    return footerView;
+  }
+  return nil;
 }
 
 - (UIView*) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-  return (section == 0) ? _segmentedControl : nil;
+  if (section == 0) {
+    return _segmentedControl;
+  }
+  if (_segmentedControl.selectedSegmentIndex == 2 && section == 1) {
+    return _historySectionView;
+  }
+  return nil;
 }
 
 
 - (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-  return (section == 0) ? 40 : 0;
+  if (section == 0) {
+    return 40;
+  }
+  if (section == 1) {
+    return 40;
+  }
+  return 0;
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
@@ -452,7 +548,16 @@
       return _model.feed.count > 0 ? _model.feed.count : 1;
       break;
     case 2:
-      return _model.wallet.count > 0 ? _model.wallet.count : 1;
+      if (section == 0) {
+        if ([[PDUser sharedInstance] isRegistered]) {
+          return 3;
+        } else {
+          return 2;
+        }
+      } else if (section == 1) {
+        return _model.wallet.count > 0 ? _model.wallet.count : 1;
+      }
+      return 1;
       break;
     default:
       return 1;
@@ -461,7 +566,7 @@
 
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   PDReward *reward;
-  PDFeedItem *feedItem;
+  PDRFeedItem *feedItem;
   switch (_segmentedControl.selectedSegmentIndex) {
     case 0:
       if (_model.rewards.count == 0) {
@@ -477,7 +582,7 @@
         }
       } else {
         reward = [_model.rewards objectAtIndex:indexPath.row];
-        PDUIRewardWithRulesTableViewCell *rwrcell = [self.tableView dequeueReusableCellWithIdentifier:kRewardWithRulesTableViewCell];
+        PDUIRewardV2TableViewCell *rwrcell = [self.tableView dequeueReusableCellWithIdentifier:kRewardV2Cell];
         if (_brand.theme != nil) {
           [rwrcell setupForReward:reward theme:_brand.theme];
         } else {
@@ -490,9 +595,10 @@
               UIImage *image = [UIImage imageWithData:data];
               if (image) {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                  PDUIRewardWithRulesTableViewCell *updateCell = (id)[tableView cellForRowAtIndexPath:indexPath];
-                  if (updateCell) {
-                    updateCell.rewardImageView.image = image;
+                  id updateCell = (id)[tableView cellForRowAtIndexPath:indexPath];
+                  if (updateCell != nil && [updateCell isKindOfClass:[PDUIRewardV2TableViewCell class]]) {
+                    PDUIRewardV2TableViewCell *updaterwrcell = (PDUIRewardV2TableViewCell*)updateCell;
+                    updaterwrcell.rewardImageView.image = image;
                     reward.coverImage = image;
                   }
                 });
@@ -519,105 +625,146 @@
         }
       } else {
         if (feedLoading) {
-          return nil;
+          return [self.tableView dequeueReusableCellWithIdentifier:kPlaceholderCell];
         }
         if (indexPath.row >= _model.feed.count) {
           return [self.tableView dequeueReusableCellWithIdentifier:kPlaceholderCell];
         }
         feedItem = [_model.feed objectAtIndex:indexPath.row];
-        if (feedItem.actionImage) {
-          return [[PDUIPhotoCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 165) forFeedItem:feedItem];
-        } else {
-          if (feedItem.imageUrlString) {
-            NSURL *url = [NSURL URLWithString:feedItem.imageUrlString];
-            NSURLSessionTask *imageTask = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-              if (data) {
-                UIImage *image = [UIImage imageWithData:data];
-                if (image) {
-                  feedItem.actionImage = image;
-                  dispatch_async(dispatch_get_main_queue(), ^{
-                    [self.tableView reloadData];
-                  });
-                }
-              }
-            }];
-            [imageTask resume];
-          }
-          return [[PDUICheckinCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 85) forFeedItem:feedItem];
-        }
+        float width = self.view.frame.size.width;
+        float feedHeight = 65 + 80 + 20 + width;
+        return [[PDUIFeedCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, feedHeight) forFeedItem:feedItem];
       }
       break;
     case 2:
-      if (_model.wallet.count == 0) {
-        if (!_model.walletLoading) {
-          PDUINoRewardTableViewCell *norw = [[self tableView] dequeueReusableCellWithIdentifier:kNoRewardsCell];
-          if (_brand.theme != nil) {
-            [norw setTheme:_brand.theme];
+      if (indexPath.section == 0) {
+        if ([[PDUser sharedInstance] isRegistered]) {
+          if (indexPath.row == 0) {
+            ProfileTableViewCell *profile = [[self tableView] dequeueReusableCellWithIdentifier:kNProfileCell];
+            [profile setProfile];
+            return profile;
           }
-          [norw setupWithMessage:translationForKey(@"popdeem.home.infoCell.noWallet",@"There is nothing in your history right now.\nPlease check back later.")];
-          return norw;
+          if (indexPath.row == 1) {
+            PDUIProfileButtonTableViewCell *socialAccountCell = [[self tableView] dequeueReusableCellWithIdentifier:kProfileButtonCell];
+            [socialAccountCell.label setText:@"Connect Social Media Accounts"];
+            socialAccountCell.shouldShowBadge = NO;
+            return socialAccountCell;
+          }
+          if (indexPath.row == 2) {
+            PDUIProfileButtonTableViewCell *messagesCell = [[self tableView] dequeueReusableCellWithIdentifier:kProfileButtonCell];
+            [messagesCell.label setText:@"Messages"];
+            messagesCell.shouldShowBadge = YES;
+            if ([PDMessageStore unreadCount] > 0) {
+              [messagesCell showBadge:YES];
+            } else {
+              [messagesCell showBadge:NO];
+            }
+            return messagesCell;
+          }
         } else {
-          return [self.tableView dequeueReusableCellWithIdentifier:kPlaceholderCell];
+          if (indexPath.row == 0) {
+            PDUIProfileButtonTableViewCell *socialAccountCell = [[self tableView] dequeueReusableCellWithIdentifier:kProfileButtonCell];
+            [socialAccountCell.label setText:@"Connect Social Media Accounts"];
+            socialAccountCell.shouldShowBadge = NO;
+            return socialAccountCell;
+          }
+          if (indexPath.row == 1) {
+            PDUIProfileButtonTableViewCell *messagesCell = [[self tableView] dequeueReusableCellWithIdentifier:kProfileButtonCell];
+            [messagesCell.label setText:@"Messages"];
+            messagesCell.shouldShowBadge = YES;
+            if ([PDMessageStore unreadCount] > 0) {
+              [messagesCell showBadge:YES];
+            } else {
+              [messagesCell showBadge:NO];
+            }
+            return messagesCell;
+          }
+        }
+        if (indexPath.row == 0) {
+          ProfileTableViewCell *profile = [[self tableView] dequeueReusableCellWithIdentifier:kNProfileCell];
+          [profile setProfile];
+          return profile;
         }
       } else {
-        reward = [_model.wallet objectAtIndex:indexPath.row];
-        
-        if (reward.claimedSocialNetwork == PDSocialMediaTypeInstagram && reward.instagramVerified == NO && reward.autoDiscovered == NO) {
-          PDUIInstagramUnverifiedWalletTableViewCell *walletCell = [self.tableView dequeueReusableCellWithIdentifier:kInstaUnverifiedTableViewCell];
-          [walletCell setupForReward:reward];
-          if (autoVerify && verifyRewardId == reward.identifier) {
-            [walletCell beginVerifying];
-            autoVerify = NO;
-          }
-          if (walletCell.rewardImageView.image == nil) {
-            NSURL *url = [NSURL URLWithString:reward.coverImageUrl];
-            NSURLSessionTask *task2 = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-              if (data) {
-                UIImage *image = [UIImage imageWithData:data];
-                if (image) {
-                  dispatch_async(dispatch_get_main_queue(), ^{
-                    PDUIRewardWithRulesTableViewCell *updateCell = (id)[tableView cellForRowAtIndexPath:indexPath];
-                    if (updateCell) {
-                      updateCell.rewardImageView.image = image;
-                    }
-                  });
-                }
-              }
-            }];
-            [task2 resume];
-          }
-          return walletCell;
-        } else {
-          PDUIWalletRewardTableViewCell *walletCell = [self.tableView dequeueReusableCellWithIdentifier:kWalletTableViewCell];
-          if (_brand.theme != nil) {
-            [walletCell setupForReward:reward theme:_brand.theme];
+        if (_model.wallet.count == 0) {
+          if (!_model.walletLoading) {
+            PDUINoRewardTableViewCell *norw = [[self tableView] dequeueReusableCellWithIdentifier:kNoRewardsCell];
+            if (_brand.theme != nil) {
+              [norw setTheme:_brand.theme];
+            }
+            [norw setupWithMessage:translationForKey(@"popdeem.home.infoCell.noWallet",@"There is nothing in your history right now.\nPlease check back later.")];
+            return norw;
           } else {
-            [walletCell setupForReward:reward];
+            return [self.tableView dequeueReusableCellWithIdentifier:kPlaceholderCell];
           }
-          if (walletCell.rewardImageView.image == nil) {
-            NSURL *url = [NSURL URLWithString:reward.coverImageUrl];
-            NSURLSessionTask *task2 = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-              if (data) {
-                UIImage *image = [UIImage imageWithData:data];
-                if (image) {
-                  dispatch_async(dispatch_get_main_queue(), ^{
-                    PDUIRewardWithRulesTableViewCell *updateCell = (id)[tableView cellForRowAtIndexPath:indexPath];
-                    if (updateCell) {
-                      updateCell.rewardImageView.image = image;
-                    }
-                  });
-                }
+        } else {
+          id item = [_model.wallet objectAtIndex:indexPath.row];
+          if ([item isKindOfClass:[PDReward class]]) {
+            reward = (PDReward*)item;
+            if (reward.claimedSocialNetwork == PDSocialMediaTypeInstagram &&
+                reward.instagramVerified == NO &&
+                reward.autoDiscovered == NO) {
+              PDUIInstagramUnverifiedWalletTableViewCell *walletCell = [self.tableView dequeueReusableCellWithIdentifier:kInstaUnverifiedTableViewCell];
+              [walletCell setupForReward:reward];
+              if (autoVerify && verifyRewardId == reward.identifier) {
+                [walletCell beginVerifying];
+                autoVerify = NO;
               }
-            }];
-            [task2 resume];
+              if (walletCell.rewardImageView.image == nil) {
+                NSURL *url = [NSURL URLWithString:reward.coverImageUrl];
+                NSURLSessionTask *task2 = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+                  if (data) {
+                    UIImage *image = [UIImage imageWithData:data];
+                    if (image) {
+                      dispatch_async(dispatch_get_main_queue(), ^{
+                        PDUIRewardWithRulesTableViewCell *updateCell = (id)[tableView cellForRowAtIndexPath:indexPath];
+                        if (updateCell) {
+                          updateCell.rewardImageView.image = image;
+                        }
+                      });
+                    }
+                  }
+                }];
+                [task2 resume];
+              }
+              return walletCell;
+            } else {
+              PDUIWalletRewardTableViewCell *walletCell = [self.tableView dequeueReusableCellWithIdentifier:kWalletTableViewCell];
+              if (_brand.theme != nil) {
+                [walletCell setupForReward:reward theme:_brand.theme];
+              } else {
+                [walletCell setupForReward:reward];
+              }
+              if (walletCell.rewardImageView.image == nil) {
+                NSURL *url = [NSURL URLWithString:reward.coverImageUrl];
+                NSURLSessionTask *task2 = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+                  if (data) {
+                    UIImage *image = [UIImage imageWithData:data];
+                    if (image) {
+                      dispatch_async(dispatch_get_main_queue(), ^{
+                        PDUIRewardWithRulesTableViewCell *updateCell = (id)[tableView cellForRowAtIndexPath:indexPath];
+                        if (updateCell) {
+                          updateCell.rewardImageView.image = image;
+                        }
+                      });
+                    }
+                  }
+                }];
+                [task2 resume];
+              }
+              return walletCell;
+            }
+          } else if ([item isKindOfClass:[PDTierEvent class]]) {
+            PDUITierEventTableViewCell *tierEventCell = [[self tableView] dequeueReusableCellWithIdentifier:kTierCell];
+            [tierEventCell setupForTierEvent:(PDTierEvent*)item];
+            return tierEventCell;
           }
-          return walletCell;
         }
       }
     default:
       break;
   }
-  return nil;
+  return [[UITableViewCell alloc] init];
 }
 
 - (void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -668,42 +815,71 @@
   return [self cellHeightForIndex:indexPath];
 }
 
+- (NSString*) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+  if (section == 1) {
+    return @"MY HISTORY";
+  }
+  return @"";
+}
+
 - (float) cellHeightForIndex:(NSIndexPath*)indexPath {
   NSInteger index = indexPath.row;
   switch (_segmentedControl.selectedSegmentIndex) {
     case 0:
       //Rewards
-      return 100;
+      if (_model.rewards.count == 0) {
+        return 100;
+      }
+      return 200;
       break;
     case 1:
       //Feed
       if (_model.feed.count == 0) {
         return 100;
       }
-      if (_model.feed.count > index && [(PDFeedItem*)[_model.feed objectAtIndex:index] actionImage] != nil) {
-        return 175;
+      if (_model.feed.count > index && [(PDRFeedItem*)[_model.feed objectAtIndex:index] actionImageData] != nil) {
+        float width = self.view.frame.size.width;
+        float feedHeight = 65 + 80 + 20 + width;
+        return feedHeight;
       } else {
         return 75;
       }
       break;
     case 2:
       //Wallet
-      if (walletSelectedIndex && [indexPath isEqual:walletSelectedIndex]) {
-        if (indexPath.row < _model.wallet.count) {
-          PDReward *r = _model.wallet[indexPath.row];
-          switch (r.type) {
-            case PDRewardTypeInstant:
-            case PDRewardTypeCoupon:
-              return 285;
-              break;
-            case PDRewardTypeSweepstake:
-              return 205;
-              break;
-            default:
-              break;
+      if (indexPath.section == 0) {
+        if ([[PDUser sharedInstance] isRegistered]) {
+          if (indexPath.row == 0) {
+            //Only show the profile ambassador bar if Customer uses ambassador
+            if ([[PDCustomer sharedInstance] incrementAdvocacyPoints] != nil) {
+              return 125;
+            } else {
+              return 50;
+            }
+          } else {
+            return 50;
           }
+        } else {
+          return 50;
         }
-        return 255;
+      } else {
+        if (walletSelectedIndex && [indexPath isEqual:walletSelectedIndex]) {
+          if (indexPath.row < _model.wallet.count) {
+            PDReward *r = _model.wallet[indexPath.row];
+            switch (r.type) {
+              case PDRewardTypeInstant:
+              case PDRewardTypeCoupon:
+                return 285;
+                break;
+              case PDRewardTypeSweepstake:
+                return 205;
+                break;
+              default:
+                break;
+            }
+          }
+          return 255;
+        }
       }
       return 100;
       break;
@@ -723,96 +899,102 @@
       //Rewards
       if (_model.rewards.count == 0) return;
       if ([_model.rewards objectAtIndex:indexPath.row]) {
-        //				if (![[PDSocialMediaManager manager] isLoggedInWithFacebook]) {
-        //					dispatch_async(dispatch_get_main_queue(), ^{
-        //						PDUIFBLoginWithWritePermsViewController *fbVC = [[PDUIFBLoginWithWritePermsViewController alloc] initForParent:self.navigationController
-        //																																																								 loginType:PDFacebookLoginTypeRead];
-        //						if (!fbVC) {
-        //							return;
-        //						}
-        //						self.definesPresentationContext = YES;
-        //						fbVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
-        //						fbVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-        //						[self presentViewController:fbVC animated:YES completion:^(void){}];
-        //					});
-        //					return;
-        //				}
         dispatch_async(dispatch_get_main_queue(), ^{
           [self processClaimForIndexPath:indexPath];
         });
+        return;
       }
       break;
     case 1:
-      //Feed
-      if (_model.feed.count == 0) return;
-      if ([(PDFeedItem*)_model.feed[indexPath.row] actionImage]) {
-        [self.view setUserInteractionEnabled:NO];
-        PDUIFeedImageViewController *ivc = [[PDUIFeedImageViewController alloc] init];
-        ivc.item = _model.feed[indexPath.row];
-        [[self navigationController] pushViewController:ivc animated:YES];
-      }
+      return;
       break;
     case 2:
-      if (_model.wallet.count == 0) return;
-      selectedWalletReward = [_model.wallet objectAtIndex:indexPath.row];
-      if (selectedWalletReward) {
-        if (selectedWalletReward.revoked) {
-          UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Reward Revoked"
-                                                       message:@"This reward has been revoked"
-                                                      delegate:self
-                                             cancelButtonTitle:@"OK"
-                                             otherButtonTitles: nil];
-          [av show];
-          return;
-        }
-        //For sweepstakes we dont show the alert
-        if (selectedWalletReward.type == PDRewardTypeSweepstake) {
-          wcell = (PDUIWalletRewardTableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath];
-          [wcell setSelectionStyle:UITableViewCellSelectionStyleNone];
-          if (walletSelectedIndex && [walletSelectedIndex isEqual:indexPath]) {
-            lastCell = (PDUIWalletRewardTableViewCell*)[self.tableView cellForRowAtIndexPath:walletSelectedIndex];
-            [lastCell rotateArrowRight];
-            walletSelectedIndex = nil;
-            [wcell rotateArrowRight];
-          } else {
-            if (walletSelectedIndex) {
-              //Rotate the previous cell back to right
-              PDUIWalletRewardTableViewCell *lastCell = (PDUIWalletRewardTableViewCell*)[self.tableView cellForRowAtIndexPath:walletSelectedIndex];
-              [lastCell rotateArrowRight];
-            }
-            walletSelectedIndex = indexPath;
-            [wcell rotateArrowDown];
+      if (indexPath.section == 0) {
+        if ([[PDUser sharedInstance] isRegistered]) {
+          if (indexPath.row == 1) {
+            //Settings
+            [self settingsAction];
+            return;
           }
-          [self.tableView beginUpdates];
-          [self.tableView endUpdates];
-          [self performSelector:@selector(scrollToIndexPath:) withObject:indexPath afterDelay:0.5];
+          if (indexPath.row == 2) {
+            //Messages
+            [self messagesTapped];
+            return;
+          }
+          return;
+        } else {
+          if (indexPath.row == 0) {
+            //Settings
+            [self settingsAction];
+            return;
+          }
+          if (indexPath.row == 1) {
+            //Messages
+            [self messagesTapped];
+            return;
+          }
+        }
+      } else {
+        if (_model.wallet.count == 0) return;
+        selectedWalletReward = [_model.wallet objectAtIndex:indexPath.row];
+        if (selectedWalletReward) {
+          if (selectedWalletReward.revoked) {
+            UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Reward Revoked"
+                                                         message:@"This reward has been revoked"
+                                                        delegate:self
+                                               cancelButtonTitle:@"OK"
+                                               otherButtonTitles: nil];
+            [av show];
+            return;
+          }
+          //For sweepstakes we dont show the alert
+          if (selectedWalletReward.type == PDRewardTypeSweepstake) {
+            wcell = (PDUIWalletRewardTableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath];
+            [wcell setSelectionStyle:UITableViewCellSelectionStyleNone];
+            if (walletSelectedIndex && [walletSelectedIndex isEqual:indexPath]) {
+              lastCell = (PDUIWalletRewardTableViewCell*)[self.tableView cellForRowAtIndexPath:walletSelectedIndex];
+              [lastCell rotateArrowRight];
+              walletSelectedIndex = nil;
+              [wcell rotateArrowRight];
+            } else {
+              if (walletSelectedIndex) {
+                //Rotate the previous cell back to right
+                PDUIWalletRewardTableViewCell *lastCell = (PDUIWalletRewardTableViewCell*)[self.tableView cellForRowAtIndexPath:walletSelectedIndex];
+                [lastCell rotateArrowRight];
+              }
+              walletSelectedIndex = indexPath;
+              [wcell rotateArrowDown];
+            }
+            [self.tableView beginUpdates];
+            [self.tableView endUpdates];
+            [self performSelector:@selector(xToIndexPath:) withObject:indexPath afterDelay:0.5];
+            return;
+          }
+          if (selectedWalletReward.creditString != nil && selectedWalletReward.creditString.length > 0) {
+            return;
+          }
+          if (selectedWalletReward.claimedSocialNetwork == PDSocialMediaTypeInstagram && selectedWalletReward.instagramVerified == NO) {
+            return;
+          }
           
-          return;
+          UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Redeem Reward Now?"
+                                                       message:@"You will be presented with a countdown timer you must show the merchant."
+                                                      delegate:self
+                                             cancelButtonTitle:@"Cancel"
+                                             otherButtonTitles:@"Redeem", nil];
+          [av setTag:400];
+          [av show];
+          
         }
-        if (selectedWalletReward.creditString != nil && selectedWalletReward.creditString.length > 0) {
-          return;
-        }
-        if (selectedWalletReward.claimedSocialNetwork == PDSocialMediaTypeInstagram && selectedWalletReward.instagramVerified == NO) {
-          return;
-        }
-        
-        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Redeem Reward"
-                                                     message:@"You are about to Redeem this Reward. Are you sure?"
-                                                    delegate:self
-                                           cancelButtonTitle:@"Cancel"
-                                           otherButtonTitles:@"Redeem", nil];
-        [av setTag:400];
-        [av show];
-        
       }
       break;
     default:
       break;
   }
-  [tableView beginUpdates];
-  [tableView deselectRowAtIndexPath:indexPath animated:NO];
-  //if you are doing any animation you have deselect the row here inside.
-  [tableView endUpdates];
+//  [tableView beginUpdates];
+//  [tableView deselectRowAtIndexPath:indexPath animated:NO];
+//  //if you are doing any animation you have deselect the row here inside.
+//  [tableView endUpdates];
 }
 
 - (void) redeemSelectedReward {
@@ -857,7 +1039,6 @@
     if (![[PDUser sharedInstance] isRegistered]) {
       PDUISocialLoginHandler *loginHandler = [[PDUISocialLoginHandler alloc] init];
       [loginHandler presentLoginModal];
-      _didLogin = YES;
       return;
     }
     return;
@@ -865,24 +1046,9 @@
     if (![[PDUser sharedInstance] isRegistered]) {
       PDUISocialLoginHandler *loginHandler = [[PDUISocialLoginHandler alloc] init];
       [loginHandler presentLoginModal];
-      _didLogin = YES;
       return;
     }
-    _locationValidator = [[PDLocationValidator alloc] init];
-    [_locationValidator validateLocationForReward:reward completion:^(BOOL validated, PDLocation *closestLocation){
-      if (validated) {
-        [self.model claimNoAction:reward closestLocation:closestLocation];
-      } else {
-        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Not at Location"
-                                                     message:translationForKey(
-                                                                               @"popdeem.claim.verifyLocationFailed",
-                                                                               @"You must be at this location to claim this reward. Please try later.")
-                                                    delegate:self
-                                           cancelButtonTitle:@"OK"
-                                           otherButtonTitles:nil];
-        [av show];
-      }
-    }];
+    [self.model claimNoAction:reward closestLocation:nil];
   } else {
     PDUIClaimViewController *claimController = [[PDUIClaimViewController alloc] initWithMediaTypes:reward.socialMediaTypes andReward:reward location:_closestLocation];
     if (_brand) {
@@ -950,13 +1116,34 @@
 
 - (void) userDidLogin {
   [self.model fetchRewards];
-  [self.model fetchFeed];
+  [self.model fetchInbox];
+  self.model.feed = [PDFeeds feed];
   [self.model fetchWallet];
-  [_segmentedControl setSelectedSegmentIndex:2];
   AbraLogEvent(ABRA_EVENT_CONNECTED_ACCOUNT, (@{
                                                 ABRA_PROPERTYNAME_SOCIAL_NETWORK : ABRA_PROPERTYVALUE_SOCIAL_NETWORK_FACEBOOK,
                                                 ABRA_PROPERTYNAME_SOURCE_PAGE : @"Rewards Home"
                                                 }));
+  if ([[PDUser sharedInstance] advocacyScore] <= 30) {
+    [self performSelector:@selector(showConnect) withObject:nil afterDelay:1.0];
+  }
+  
+  PDUserAPIService *service = [[PDUserAPIService alloc] init];
+  NSString *ident = [NSString stringWithFormat:@"%ld",[[PDUser sharedInstance] identifier]];
+  [service getUserDetailsForId:ident authenticationToken:[[PDUser sharedInstance] userToken] completion:^(PDUser *user, NSError *error) {
+    PDLog(@"Fetch User Details");
+    [self.tableView reloadData];
+    [self.tableView reloadInputViews];
+  }];
+  _didLogin = NO;
+  [_segmentedControl setSelectedSegmentIndex:2];
+}
+
+- (void) showConnect {
+  PDUIGratitudeViewController *gViewController = [[PDUIGratitudeViewController alloc] initWithType:PDGratitudeTypeConnect];
+  
+  [self presentViewController:gViewController animated:YES completion:^{
+    
+  }];
 }
 
 - (void) dealloc {
@@ -989,6 +1176,12 @@
 }
 
 - (void) feedItemDidDownload {
+  dispatch_async(dispatch_get_main_queue(), ^{
+    [self.tableView reloadData];
+  });
+}
+
+- (void) coverImageDidDownload {
   dispatch_async(dispatch_get_main_queue(), ^{
     [self.tableView reloadData];
   });
@@ -1032,5 +1225,49 @@
   
 }
 
+- (void)viewSafeAreaInsetsDidChange {
+  [super viewSafeAreaInsetsDidChange];
+  self.tableView.contentInset = self.view.safeAreaInsets;
+}
+
+- (void) moveToSection:(NSInteger)section {
+  if (section < 3) {
+    [self.segmentedControl setSelectedSegmentIndex:section];
+    [self scrollToIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    [self.tableView reloadData];
+    [self.tableView reloadInputViews];
+  }
+}
+
+- (void) addInboxBadge {
+////  if ([PDMessageStore unreadCount] > 0) {
+//  
+//    NSUInteger unread = 2;
+//    float width = self.view.frame.size.width;
+//    //    float height = self.frame.size.height;
+//  
+//    float
+//    CGRect topRight = CGRectMake(width-50, 140, 16, 16);
+//    UILabel *lbl_card_count = [[UILabel alloc] initWithFrame:topRight];
+//    lbl_card_count.textColor = [UIColor whiteColor];
+//    lbl_card_count.textAlignment = NSTextAlignmentCenter;
+//    lbl_card_count.text = [NSString stringWithFormat:@"%ld",(unsigned long)unread];
+//    lbl_card_count.layer.borderWidth = 1;
+//    lbl_card_count.layer.cornerRadius = 8;
+//    lbl_card_count.layer.masksToBounds = YES;
+//    lbl_card_count.layer.borderColor =[[UIColor clearColor] CGColor];
+//    lbl_card_count.layer.shadowColor = [[UIColor clearColor] CGColor];
+//    lbl_card_count.layer.shadowOffset = CGSizeMake(0.0, 0.0);
+//    lbl_card_count.layer.shadowOpacity = 0.0;
+//    lbl_card_count.backgroundColor = [UIColor colorWithRed:247.0/255.0 green:45.0/255.0 blue:143.0/255.0 alpha:1.0];
+//    lbl_card_count.font = [UIFont fontWithName:@"ArialMT" size:9];
+//    [self.tableView addSubview:lbl_card_count];
+////  }
+}
+
+- (void) didUpdateUser {
+  [self.tableView reloadInputViews];
+  [self.tableView reloadData];
+}
 
 @end

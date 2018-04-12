@@ -15,6 +15,7 @@
 #import "PDUser+Facebook.h"
 #import "PDSocialMediaFriend.h"
 #import "PDUISelectNetworkViewController.h"
+#import "PDUIPostScanViewController.h"
 
 @interface PDUIClaimViewController () {
   NSArray *_mediaTypes;
@@ -60,6 +61,7 @@
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramVerifyNoAttempt) name:InstagramVerifyNoAttempt object:nil];
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(facebookWritePermSuccess) name:FacebookPublishSuccess object:nil];
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(facebookWritePermFailure) name:FacebookPublishFailure object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backFromInstagram) name:UIApplicationDidBecomeActiveNotification object:nil];
     return self;
   }
   return nil;
@@ -159,7 +161,14 @@
 	
 	[self.twitterForcedTagLabel setTextColor:[UIColor lightGrayColor]];
 	[self.addHashtagButton setHidden:YES];
-	[self.addHashtagButton setTintColor:PopdeemColor(PDThemeColorPrimaryApp)];
+    UIColor *tertiaryFontColor = [UIColor blackColor];
+    if ([PDTheme.sharedInstance hasValueForKey:PDThemeColorTertiaryFont]) {
+        tertiaryFontColor = PopdeemColor(PDThemeColorTertiaryFont);
+    } else {
+        tertiaryFontColor = PopdeemColor(PDThemeColorPrimaryApp);
+    }
+	[self.addHashtagButton setTintColor:[UIColor blackColor]];
+    [self.addHashtagButton setTitleColor:tertiaryFontColor forState:UIControlStateNormal];
   [_refreshLocationButton addTarget:self action:@selector(refreshLocationTapped) forControlEvents:UIControlEventTouchUpInside];
   [_refreshLocationButton setUserInteractionEnabled:YES];
   
@@ -298,32 +307,22 @@
   [self.view bringSubviewToFront:_withLabel];
   
   if (_viewModel.willTweet) {
-    [self.twitterForcedTagLabel setHidden:NO];
-		if (_reward.twitterForcedTag.length > 0) {
-			[self.addHashtagButton setHidden:NO];
-		}
-    if (_viewModel.reward.forcedTag) {
-      [self.twitterForcedTagLabel setText:[NSString stringWithFormat:@"%@ Required",_viewModel.reward.forcedTag]];
-    } else if (_viewModel.reward.twitterForcedTag) {
-      [self.twitterForcedTagLabel setText:[NSString stringWithFormat:@"%@ Required",_viewModel.reward.twitterForcedTag]];
-    }
     [self.twitterCharacterCountLabel setHidden:NO];
     [_viewModel calculateTwitterCharsLeft];
+  }else {
+    [self.twitterCharacterCountLabel setHidden:YES];
   }
-	if (_viewModel.willInstagram) {
-		[self.twitterForcedTagLabel setHidden:NO];
-		if (_reward.forcedTag.length > 0) {
-			[self.addHashtagButton setHidden:NO];
-		}
-		[self.addHashtagButton setHidden:NO];
-    if (_viewModel.reward.forcedTag) {
-      [self.twitterForcedTagLabel setText:[NSString stringWithFormat:@"%@ Required", _viewModel.reward.forcedTag]];
-    }else if (_viewModel.reward.instagramForcedTag) {
-			[self.twitterForcedTagLabel setText:[NSString stringWithFormat:@"%@ Required", _viewModel.reward.instagramForcedTag]];
-		}
-		[self.twitterCharacterCountLabel setHidden:YES];
-	}
-	
+  
+  [self.twitterForcedTagLabel setHidden:NO];
+  if (_reward.twitterForcedTag.length > 0) {
+    [self.addHashtagButton setHidden:NO];
+  }
+  if (_viewModel.reward.forcedTag) {
+    [self.twitterForcedTagLabel setText:[NSString stringWithFormat:@"%@ Required",_viewModel.reward.forcedTag]];
+  } else if (_viewModel.reward.twitterForcedTag) {
+    [self.twitterForcedTagLabel setText:[NSString stringWithFormat:@"%@ Required",_viewModel.reward.twitterForcedTag]];
+  }
+  
 	AbraLogEvent(ABRA_EVENT_PAGE_VIEWED, (@{
 																					ABRA_PROPERTYNAME_SOURCE_PAGE : ABRA_PROPERTYVALUE_PAGE_CLAIM,
 																					ABRA_PROPERTYNAME_REWARD_TYPE : AbraKeyForRewardType(_reward.type),
@@ -548,8 +547,6 @@
   dispatch_async(dispatch_get_main_queue(), ^{
     [_viewModel instagramLoginFailure];
     [_instagramSwitch setOn:NO animated:YES];
-    [self.twitterForcedTagLabel setHidden:YES];
-    [self.addHashtagButton setHidden:YES];
   });
 }
 
@@ -568,8 +565,6 @@
                                          otherButtonTitles:nil];
       [av show];
     }
-    [self.twitterForcedTagLabel setHidden:YES];
-    [self.addHashtagButton setHidden:YES];
   });
 }
 
@@ -601,15 +596,11 @@
 - (void) instagramVerifyFailure {
 	self.homeController.didClaim = NO;
 	[self.navigationController popViewControllerAnimated:YES];
-	[self.twitterForcedTagLabel setHidden:YES];
-	[self.addHashtagButton setHidden:YES];
 }
 
 - (void) instagramVerifyNoAttempt {
 	self.homeController.didClaim = NO;
 	[self.navigationController popViewControllerAnimated:YES];
-	[self.twitterForcedTagLabel setHidden:YES];
-	[self.addHashtagButton setHidden:YES];
 }
 
 - (void) facebookWritePermSuccess {
@@ -665,7 +656,7 @@
       hashtagString = _reward.instagramForcedTag;;
     }
 	} else {
-		return;
+		hashtagString = _reward.forcedTag;
 	}
 	
 	if (_textView.text.length > 0) {
@@ -676,10 +667,20 @@
 	[self.textView setText:newText];
 	[_viewModel validateHashTag];
 }
+
 - (IBAction)alreadySharedButtonPressed:(id)sender {
   PDUISelectNetworkViewController *selNet = [[PDUISelectNetworkViewController alloc] initWithMediaTypes:_mediaTypes andReward:_reward brand:_brand];
   self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
   [self.navigationController pushViewController:selNet animated:YES];
+}
+
+- (void) backFromInstagram {
+  if (_viewModel.didGoToInstagram) {
+    //We know user was at Instagram, and instagram post is being attempted
+    NSLog(@"Back From Instagram");
+    PDUIPostScanViewController *scan = [[PDUIPostScanViewController alloc] initWithReward:_reward network:INSTAGRAM_NETWORK];
+    [self.navigationController pushViewController:scan animated:YES];
+  }
 }
 
 @end

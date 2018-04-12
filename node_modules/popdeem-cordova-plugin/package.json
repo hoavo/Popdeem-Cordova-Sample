@@ -1,8 +1,8 @@
 {
   "_from": "popdeem-cordova-plugin",
-  "_id": "popdeem-cordova-plugin@0.9.17",
+  "_id": "popdeem-cordova-plugin@0.9.19",
   "_inBundle": false,
-  "_integrity": "sha512-opkSW/RBUyNt+Zu7h3Zao1oS+dJsjrQKgH9jTPaybqY8MAt5spDehgwH/7D5zr3ywRqWzGZDFhtfWt2ijoIAXg==",
+  "_integrity": "sha512-gnHwvmCpwBHIH3/u50AfgItzDwrn/6/IZlXvcDZaJGxNmGpTjMbug96kARUTt4LXyE2jkKsIZsgHIUiBfxORSA==",
   "_location": "/popdeem-cordova-plugin",
   "_phantomChildren": {},
   "_requested": {
@@ -19,8 +19,8 @@
     "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/popdeem-cordova-plugin/-/popdeem-cordova-plugin-0.9.17.tgz",
-  "_shasum": "4c1e367f52e371758946f3433d525049fd3faeff",
+  "_resolved": "https://registry.npmjs.org/popdeem-cordova-plugin/-/popdeem-cordova-plugin-0.9.19.tgz",
+  "_shasum": "f9c3fc30e404a3442a5aec42ddf10f5be0d86717",
   "_spec": "popdeem-cordova-plugin",
   "_where": "/Users/niall/Developer/Personal/Cordova/Popdeem3",
   "author": {
@@ -52,5 +52,5 @@
     "type": "git",
     "url": "git+https://github.com/NQuinn27/Popdeem-Cordova-Plugin.git"
   },
-  "version": "0.9.17"
+  "version": "0.9.19"
 }

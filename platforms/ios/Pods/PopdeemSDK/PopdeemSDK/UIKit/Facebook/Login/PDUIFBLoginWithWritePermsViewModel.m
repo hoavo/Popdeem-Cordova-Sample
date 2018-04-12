@@ -35,14 +35,14 @@
 }
 
 - (void) setupForReadLogin {
-	self.labelText = translationForKey(@"popdeem.facebook.connect.read.labelText",@"You must log in using Facebook to claim this reward. We will never post to Facebook without your explicit permission.");
+	self.labelText = translationForKey(@"popdeem.facebook.connect.read.labelText",@"Connect your Facebook account to claim Facebook rewards.");
 	self.labelColor = PopdeemColor(PDThemeColorPrimaryFont);
-	self.labelFont = PopdeemFont(PDThemeFontPrimary, 14);
+	self.labelFont = PopdeemFont(PDThemeFontBold, 14);
 	
 	self.logoImage = PopdeemImage(@"pduikit_fb_hi");
 	
-	self.buttonColor = PopdeemColor(PDThemeColorPrimaryApp);
-	self.buttonTextColor = PopdeemColor(PDThemeColorPrimaryInverse);
+    self.buttonColor = [UIColor colorWithRed:0.24 green:0.35 blue:0.59 alpha:1.00];
+    self.buttonTextColor = [UIColor whiteColor];
 	self.buttonLabelFont = PopdeemFont(PDThemeFontBold, 16);
 	self.buttonText = translationForKey(@"popdeem.facebook.connect.read.actionButtonTitle", @"Continue");
 }
@@ -54,8 +54,8 @@
 	
 	self.logoImage = PopdeemImage(@"pduikit_fb_hi");
 	
-	self.buttonColor = PopdeemColor(PDThemeColorPrimaryApp);
-	self.buttonTextColor = PopdeemColor(PDThemeColorPrimaryInverse);
+	self.buttonColor = [UIColor colorWithRed:0.24 green:0.35 blue:0.59 alpha:1.00];
+    self.buttonTextColor = [UIColor whiteColor];
 	self.buttonLabelFont = PopdeemFont(PDThemeFontBold, 16);
 	self.buttonText = translationForKey(@"popdeem.facebook.connect.publish.actionButtonTitle", @"Continue");
 }
