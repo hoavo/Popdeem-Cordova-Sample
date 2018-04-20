@@ -1,0 +1,60 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/niall/Developer/Personal/Cordova/Popdeem3/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-pa/values-pa.xml",
+            "map": [
+                {
+                    "source": "/Users/niall/.gradle/caches/transforms-1/files-1.1/facebook-android-sdk-4.5.0.aar/822647fd26a81a52dd9e64e18b0f8dd7/res/values-pa/values-pa.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,22",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "164,286,409,505,578,650,717,790,866,963,1041,1119,1214,1329,1392,1461,1734",
+                        "endColumns": "121,122,95,72,71,66,72,75,96,77,77,94,114,62,68,146,59",
+                        "endOffsets": "281,404,500,573,645,712,785,861,958,1036,1114,1209,1324,1387,1456,1603,1789"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,35",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,227,350,446,519,591,658,731,807,904,982,1060,1155,1270,1333,1402,4149",
+                        "endColumns": "121,122,95,72,71,66,72,75,96,77,77,94,114,62,68,146,59",
+                        "endOffsets": "222,345,441,514,586,653,726,802,899,977,1055,1150,1265,1328,1397,1544,4204"
+                    }
+                },
+                {
+                    "source": "/Users/niall/.gradle/caches/transforms-1/files-1.1/play-services-basement-10.2.1.aar/8f6b87804a93c31d6c5193f9dc86befe/res/values-pa/values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "285",
+                        "endColumns": "209",
+                        "endOffsets": "494"
+                    },
+                    "to": {
+                        "startLines": "25",
+                        "startColumns": "4",
+                        "startOffsets": "2578",
+                        "endColumns": "209",
+                        "endOffsets": "2783"
+                    }
+                },
+                {
+                    "source": "/Users/niall/.gradle/caches/transforms-1/files-1.1/play-services-base-10.2.1.aar/0b005fe79bca9dd62ca227a916c766b8/res/values-pa/values.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
+                        "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
+                        "startOffsets": "283,388,595,723,830,1036,1163,1292,1513,1620,1820,1950,2161,2338,2430,2522",
+                        "endColumns": "104,206,127,106,205,126,128,220,106,199,129,210,176,91,91,106",
+                        "endOffsets": "387,594,722,829,1035,1162,1291,1512,1619,1819,1949,2160,2337,2429,2521,2628"
+                    },
+                    "to": {
+                        "startLines": "18,19,20,21,22,23,24,26,27,28,29,30,31,32,33,34",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "1549,1658,1865,1997,2108,2314,2445,2788,3009,3120,3320,3454,3665,3846,3942,4038",
+                        "endColumns": "108,206,131,110,205,130,132,220,110,199,133,210,180,95,95,110",
+                        "endOffsets": "1653,1860,1992,2103,2309,2440,2573,3004,3115,3315,3449,3660,3841,3937,4033,4144"
+                    }
+                }
+            ]
+        }
+    ]
+}

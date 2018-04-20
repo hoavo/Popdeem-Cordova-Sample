@@ -43,14 +43,6 @@
             <string name="pd_wallet_title">History</string>
             <string name="pd_home_banner_text">Share your FarmBoy experience on social networks to earn more rewards.</string>
         </config-file>
-        <resource-file src="Popdeem/colors.xml" target="res/values/colors.xml" />
-        <resource-file src="Popdeem/drawable/hdpi/pd_home_banner.png" target="res/drawable-port-hdpi/pd_home_banner.png" />
-        <resource-file src="Popdeem/drawable/mdpi/pd_home_banner.png" target="res/drawable-port-mdpi/pd_home_banner.png" />
-        <resource-file src="Popdeem/drawable/xhdpi/pd_home_banner.png" target="res/drawable-port-xhdpi/pd_home_banner.png" />
-        <resource-file src="Popdeem/drawable/xxhdpi/pd_home_banner.png" target="res/drawable-port-xxhdpi/pd_home_banner.png" />
-        <resource-file src="Popdeem/drawable/xxxhdpi/pd_home_banner.png" target="res/drawable-port-xxxhdpi/pd_home_banner.png" />
-        <preference name="android-minSdkVersion" value="17" />
-        <preference name="android-targetSdkVersion" value="23" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
@@ -138,6 +130,6 @@
     </platform>
     <plugin name="cordova-plugin-whitelist" spec="^1.3.2" />
     <plugin name="popdeem-cordova-plugin" spec="^0.9.19" />
-    <engine name="android" spec="^6.3.0" />
     <engine name="ios" spec="^4.5.4" />
+    <engine name="android" spec="^7.0.0" />
 </widget>

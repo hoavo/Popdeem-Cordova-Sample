@@ -1,9 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<resources>
-    <string name="app_name">HelloCordova</string>
-    <string name="launcher_name">@string/app_name</string>
-    <string name="activity_name">@string/launcher_name</string>
-    <string name="facebook_application_id">1706317436274686</string>
-    <string name="pd_home_banner_text">Share your FarmBoy experience on social networks to earn more rewards.</string>
-    <string name="pd_wallet_title">History</string>
-</resources>
