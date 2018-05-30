@@ -4,7 +4,7 @@
             "outputFile": "/Users/niall/Developer/Personal/Cordova/Popdeem3/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-sw600dp-v13/values-sw600dp-v13.xml",
             "map": [
                 {
-                    "source": "/Users/niall/.gradle/caches/transforms-1/files-1.1/design-25.1.1.aar/0c90bfc4fca56e4c4a3abe0ee08d16c8/res/values-sw600dp-v13/values-sw600dp-v13.xml",
+                    "source": "/Users/niall/.gradle/caches/transforms-1/files-1.1/design-27.1.1.aar/40584b00597839eb44990ee5d1c9425c/res/values-sw600dp-v13/values-sw600dp-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "/Users/niall/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.1.1.aar/b197753c34d6e14438fbf00499e1254a/res/values-sw600dp-v13/values-sw600dp-v13.xml",
+                    "source": "/Users/niall/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/ed9f3dfe7899abdf6e503bd970d84a02/res/values-sw600dp-v13/values-sw600dp-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",

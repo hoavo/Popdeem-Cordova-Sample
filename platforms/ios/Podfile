@@ -2,6 +2,7 @@
 platform :ios, '8.0'
 target 'HelloCordova' do
 	project 'HelloCordova.xcodeproj'
-	pod 'PopdeemSDK', '~> 1.1.2'
-	pod 'PopdeemSDK/UIKit', '~> 1.1.2'
+	pod 'PopdeemSDK', '~> 1.1.11'
+	pod 'FBSDKCoreKit', '< 4.30'
+	pod 'FBSDKLoginKit', '< 4.30'
 end

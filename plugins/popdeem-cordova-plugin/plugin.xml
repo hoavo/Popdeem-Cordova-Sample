@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-        id="popdeem-cordova-plugin" version="0.9.19">
+        id="popdeem-cordova-plugin" version="0.9.46">
     <name>Popdeem SDK</name>
     <description>Popdeem SDK Cordova Plugin</description>
     <license>Apache 2.0</license>
@@ -13,8 +13,9 @@
 
     <platform name="ios">
 
-        <framework src="PopdeemSDK" type="podspec" spec="~> 1.1.2" />
-        <framework src="PopdeemSDK/UIKit" type="podspec" spec="~> 1.1.2" />
+        <framework src="PopdeemSDK" type="podspec" spec="~> 1.1.11" />
+        <framework src="FBSDKCoreKit" type="podspec" spec="< 4.30" />
+        <framework src="FBSDKLoginKit" type="podspec" spec="< 4.30" />
 
         <config-file target="config.xml" parent="/widget">
           <feature name="Popdeem">
@@ -29,8 +30,7 @@
       </platform>
 
       <platform name="android">
-
-          <framework src="com.popdeem.sdk:sdk:1.2.9.8" />
+          <framework src="com.popdeem.sdk:sdk:1.2.28" />
           <framework src="src/android/popdeem.gradle" custom="true" type="gradleReference"/>
           <config-file parent="/*" target="res/xml/config.xml">
       			<feature name="Popdeem">
@@ -40,8 +40,8 @@
       		</config-file>
 
           <source-file src="src/android/Popdeem.java" target-dir="src/com/popdeem/cordova/plugin" />
+          <source-file src="src/android/CordovaFragment.java" target-dir="src/com/popdeem/cordova/plugin" />
+          <source-file src="src/android/PopdeemActivity.java" target-dir="src/com/popdeem/cordova/plugin" />
           <source-file src="src/android/PopdeemApplication.java" target-dir="src/com/popdeem/cordova/plugin" />
         </platform>
-
-
 </plugin>

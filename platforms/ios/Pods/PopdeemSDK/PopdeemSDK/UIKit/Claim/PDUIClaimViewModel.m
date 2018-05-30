@@ -35,6 +35,8 @@
 @property (nonatomic) BOOL hashtagValidated;
 @property (nonatomic) BOOL tvSurpress;
 @property (nonatomic) BOOL didAddPhoto;
+
+@property (nonatomic, retain) TOCropViewController *cropViewController;
 @end
 
 @implementation PDUIClaimViewModel
@@ -115,9 +117,9 @@
 	}
 	
   if (_reward.forcedTag) {
-    _twitterForcedTagString = [NSString stringWithFormat:@"%@ Required",_reward.forcedTag];
+    _twitterForcedTagString = [NSString stringWithFormat:@"%@ %@",_reward.forcedTag, translationForKey(@"popdeem.claim.hashtagRequired", @"Required")];
   } else if (_reward.twitterForcedTag) {
-		_twitterForcedTagString = [NSString stringWithFormat:@"%@ Required",_reward.twitterForcedTag];
+		_twitterForcedTagString = [NSString stringWithFormat:@"%@ %@",_reward.twitterForcedTag, translationForKey(@"popdeem.claim.hashtagRequired", @"Required")];
 	}
 	
 	if (_reward.instagramPrefilledMessage) {
@@ -125,97 +127,18 @@
 	}
 	
   if (_reward.forcedTag) {
-    _instagramForcedTagString = [NSString stringWithFormat:@"%@ Required",_reward.forcedTag];
+    _instagramForcedTagString = [NSString stringWithFormat:@"%@ %@",_reward.forcedTag, translationForKey(@"popdeem.claim.hashtagRequired", @"Required")];
   } else if (_reward.instagramForcedTag) {
-		_instagramForcedTagString = [NSString stringWithFormat:@"%@ Required",_reward.instagramForcedTag];
+		_instagramForcedTagString = [NSString stringWithFormat:@"%@ %@",_reward.instagramForcedTag, translationForKey(@"popdeem.claim.hashtagRequired", @"Required")];
 	}
 	
 	[_viewController.twitterForcedTagLabel setTextColor:PopdeemColor(PDThemeColorPrimaryApp)];
 }
 
-- (NSString*) actionText {
-	NSString *action;
-	NSArray *types = _reward.socialMediaTypes;
-	if (types.count > 0) {
-		if (types.count > 1) {
-			//Both Networks
-			switch (_reward.action) {
-				case PDRewardActionCheckin:
-					action = translationForKey(@"popdeem.claim.action.tweet.checkin", @"Check-in or Tweet Required");
-					break;
-				case PDRewardActionPhoto:
-					action = translationForKey(@"popdeem.claim.action.photo", @"Photo Required");
-					break;
-				case PDRewardActionNone:
-					action = translationForKey(@"popdeem.claim.action.none", @"No Action Required");
-					break;
-				default:
-					action = translationForKey(@"popdeem.claim.action.none", @"No Action Required");
-					break;
-			}
-		} else if ([types[0] isEqualToNumber:@(PDSocialMediaTypeFacebook)]) {
-			//Facebook Only
-			switch (_reward.action) {
-				case PDRewardActionCheckin:
-					action = translationForKey(@"popdeem.claim.action.checkin", @"Check-In required");
-					break;
-				case PDRewardActionPhoto:
-					action = translationForKey(@"popdeem.claim.action.photo", @"Photo Required");
-					break;
-				case PDRewardActionNone:
-					action = translationForKey(@"popdeem.claim.action.none", @"No Action Required");
-					break;
-				default:
-					action = translationForKey(@"popdeem.claim.action.none", @"No Action Required");
-					break;
-			}
-		} else if ([types[0] isEqualToNumber:@(PDSocialMediaTypeTwitter)]) {
-			//Twitter Only
-			switch (_reward.action) {
-				case PDRewardActionCheckin:
-					action = translationForKey(@"popdeem.claim.action.tweet", @"Tweet Required");
-					break;
-				case PDRewardActionPhoto:
-					action = translationForKey(@"popdeem.claim.action.tweet.photo", @"Tweet with Photo Required");
-					break;
-				case PDRewardActionNone:
-					action = translationForKey(@"popdeem.claim.action.none", @"No Action Required");
-					break;
-				default:
-					action = translationForKey(@"popdeem.claim.action.none", @"No Action Required");
-					break;
-			}
-		}
-	} else if (types.count == 0) {
-		switch (_reward.action) {
-			case PDRewardActionCheckin:
-				action = translationForKey(@"popdeem.claim.action.checkin", @"Check-In required");
-				break;
-			case PDRewardActionPhoto:
-				action = translationForKey(@"popdeem.claim.action.photo", @"Photo Required");
-				break;
-			case PDRewardActionNone:
-				action = translationForKey(@"popdeem.claim.action.none", @"No Action Required");
-				break;
-			default:
-				action = translationForKey(@"popdeem.claim.action.none", @"No Action Required");
-				break;
-		}
-	}
-	return action;
-}
 
 - (void) toggleFacebook {
-	if (_mustFacebook) {
-		[_viewController.facebookSwitch setOn:YES animated:NO];
-		_willFacebook = YES;
-		UIAlertView *fbV = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.claim.reward.cant.deselect", @"Cannot deselect") message:translationForKey(@"popdeem.claim.reward.facebookRequired", @"This reward must be claimed with a Facebook post. You can also post to Twitter if you wish") delegate:self cancelButtonTitle:translationForKey(@"common.ok", @"OK") otherButtonTitles:nil];
-		[fbV show];
-		return;
-	}
-  
   [self validateHashTag];
-	
+
 	_willFacebook = _viewController.facebookSwitch.isOn;
 	if ([_viewController.facebookSwitch isOn]) {
 		[_viewController.twitterSwitch setOn:NO animated:YES];
@@ -240,14 +163,6 @@
 }
 
 - (void) toggleTwitter {
-	if (_mustTweet) {
-		_willTweet = YES;
-		[_viewController.twitterSwitch setOn:YES animated:NO];
-		UIAlertView *twitterV = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.claim.reward.cant.deselect", @"Cannot deselect") message:translationForKey(@"popdeem.claim.connect.tweetRequired", @"This reward must be claimed with a tweet. You can also post to Facebook if you wish") delegate:self cancelButtonTitle:translationForKey(@"popdeem.common.ok", @"OK") otherButtonTitles:nil];
-		[twitterV show];
-		[self validateHashTag];
-		return;
-	}
 	
 	if ([_viewController.twitterSwitch isOn]) {
 		[_viewController.facebookSwitch setOn:NO animated:YES];
@@ -307,14 +222,6 @@
 	}
 	if (!instagramSwitch.isOn) {
 		_willInstagram = NO;
-//		if ([_viewController.textView.text rangeOfString:_instagramPrefilledTextString].location != NSNotFound) {
-//			NSMutableAttributedString *mstr = [_viewController.textView.attributedText mutableCopy];
-//			[mstr replaceCharactersInRange:[_viewController.textView.text rangeOfString:_instagramPrefilledTextString] withString:@""];
-//			if ([mstr.string rangeOfString:_instagramForcedTagString].location != NSNotFound) {
-//				[mstr replaceCharactersInRange:[mstr.string rangeOfString:_instagramForcedTagString] withString:@""];
-//			}
-//			[_viewController.textView setAttributedText:mstr];
-//		}
 		[self validateHashTag];
 		return;
 	}
@@ -353,7 +260,7 @@
 	}
 	if (_reward.instagramForcedTag) {
 		_instagramForcedTagString = _reward.instagramForcedTag;
-		[_viewController.twitterForcedTagLabel setText:[NSString stringWithFormat:@"%@ Required",_reward.instagramForcedTag]];
+		[_viewController.twitterForcedTagLabel setText:[NSString stringWithFormat:@"%@ %@",_reward.instagramForcedTag, translationForKey(@"popdeem.claim.hashtagRequired", @"Required")]];
 		[self validateHashTag];
 	}
 }
@@ -421,10 +328,10 @@
 	}
 	
 	if (_reward.action == PDRewardActionPhoto && _image == nil) {
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.claim.action.photo", @"Photo Required")
-																										message:translationForKey(@"popdeem.claim.action.photoMessage", @"A photo is required for this action. Please add a photo.")
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.claim.alert.photoRequired.title", @"Photo Required")
+																										message:translationForKey(@"popdeem.claim.alert.photoRequired.body", @"A photo is required for this action. Please add a photo.")
 																									 delegate:self
-																					cancelButtonTitle:@"OK"
+																					cancelButtonTitle:translationForKey(@"popdeem.claim.alert.cancelButton.title", @"OK")
 																					otherButtonTitles:nil];
 		[alert setTag:1];
 		[alert show];
@@ -462,7 +369,7 @@
 	}
   if (_reward.forcedTag && !_hashtagValidated) {
     UIAlertView *hashAV = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.claim.hashtagMissing.title", @"Oops!")
-                                                     message:[NSString stringWithFormat:translationForKey(@"popdeem.claim.hashtagMissing.message", @"Looks like you have forgotten to add the required hashtag %@, please add this to your message before posting to Twitter"),_reward.instagramForcedTag]
+                                                     message:[NSString stringWithFormat:translationForKey(@"popdeem.claim.hashtagMissing.message", @"Looks like you have forgotten to add the required hashtag %@, please add this to your message before posting to Facebook"),_reward.instagramForcedTag]
                                                     delegate:self
                                            cancelButtonTitle:@"OK"
                                            otherButtonTitles: nil];
@@ -561,7 +468,7 @@
 	}
 	if (_instagramForcedTagString && !_hashtagValidated) {
 		UIAlertView *hashAV = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.claim.hashtagMissing.title", @"Oops!")
-																										 message:[NSString stringWithFormat:translationForKey(@"popdeem.claim.hashtagMissing.message", @"Looks like you have forgotten to add the required hashtag %@, please add this to your message before posting to Twitter"),_reward.instagramForcedTag]
+																										 message:[NSString stringWithFormat:translationForKey(@"popdeem.claim.hashtagMissing.message", @"Looks like you have forgotten to add the required hashtag %@, please add this to your message before posting to Instagram"),_reward.instagramForcedTag]
 																										delegate:self
 																					 cancelButtonTitle:@"OK"
 																					 otherButtonTitles: nil];
@@ -836,10 +743,8 @@
 - (void) twitterLoginFailure {
   dispatch_async(dispatch_get_main_queue(), ^{
     PDLogError(@"Twitter didnt log in");
-    if (!_mustTweet) {
-      _willTweet = NO;
-      [_viewController.twitterButton setImage:[UIImage imageNamed:@"twitterDeselected"] forState:UIControlStateNormal];
-    }
+    _willTweet = NO;
+    [_viewController.twitterButton setImage:[UIImage imageNamed:@"twitterDeselected"] forState:UIControlStateNormal];
     [_loadingView hideAnimated:YES];
     [_viewController.twitterSwitch setOn:NO animated:NO];
     [_viewController.twitterCharacterCountLabel setHidden:YES];
@@ -895,59 +800,60 @@
 }
 
 - (void)takePhoto {
-	
-	UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-	picker.delegate = _viewController;
-	picker.allowsEditing = NO;
-	picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-	picker.modalPresentationStyle = UIModalPresentationOverFullScreen;
-	picker.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-	[_viewController presentViewController:picker animated:YES completion:NULL];
-	
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = _viewController;
+    picker.allowsEditing = NO;
+    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    picker.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    picker.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    _didGoToImagePicker = YES;
+    __weak typeof(_viewController) weakController = _viewController;
+    [_viewController presentViewController:picker animated:YES completion:^{
+        weakController.spoofView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, weakController.navigationController.view.frame.size.width, weakController.navigationController.view.frame.size.height)];
+        weakController.spoofView.backgroundColor = [UIColor colorWithRed:0.10 green:0.10 blue:0.10 alpha:1.00];
+        [weakController.navigationController.view addSubview:weakController.spoofView];
+    }];
 }
 
 - (void)selectPhoto {
-	
-	UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-	picker.delegate = _viewController;
-	picker.allowsEditing = NO;
-	picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-	picker.modalPresentationStyle = UIModalPresentationOverFullScreen;
-	picker.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-	[_viewController presentViewController:picker animated:YES completion:NULL];
-	
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = _viewController;
+    picker.allowsEditing = NO;
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    picker.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    picker.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    _didGoToImagePicker = YES;
+    __weak typeof(_viewController) weakController = _viewController;
+    [_viewController presentViewController:picker animated:YES completion:^{
+        weakController.spoofView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, weakController.navigationController.view.frame.size.width, weakController.navigationController.view.frame.size.height)];
+        weakController.spoofView.backgroundColor = [UIColor blackColor];
+        [weakController.navigationController.view addSubview:weakController.spoofView];
+    }];
+    
+}
+
+- (void) addPhotoToLibrary:(NSDictionary*)info {
+  __block PHObjectPlaceholder *placeholder;
+    __weak typeof(self) weakSelf = self;
+  [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
+    PHAssetChangeRequest *request = [PHAssetChangeRequest creationRequestForAssetFromImage:info[UIImagePickerControllerOriginalImage]];
+    placeholder = request.placeholderForCreatedAsset;
+    weakSelf.imageURLString = placeholder.localIdentifier;
+  } completionHandler:^(BOOL success, NSError *error){
+    if (success) {
+      PDLog(@"Saved Image");
+    }
+  }];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    [picker dismissViewControllerAnimated:NO completion:NULL];
 	[[NSNotificationCenter defaultCenter] addObserver:self
 																					 selector:@selector(keyboardWillShow:)
 																							 name:UIKeyboardWillShowNotification object:nil];
-
-	__block PHObjectPlaceholder *placeholder;
-  [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
-				PHAssetChangeRequest *request = [PHAssetChangeRequest creationRequestForAssetFromImage:info[UIImagePickerControllerOriginalImage]];
-				placeholder = request.placeholderForCreatedAsset;
-    _imageURLString = placeholder.localIdentifier;
-  } completionHandler:^(BOOL success, NSError *error){
-				if (success) {
-          PDLog(@"Saved Image");
-        }
-  }];
-	
-	if (!_imageView) {
-		_imageView = [[UIImageView alloc] initWithFrame:CGRectMake(_viewController.textView.frame.size.width-70, 10, 60, 60)];
-		[_viewController.textView addSubview:_imageView];
-		[_imageView setClipsToBounds:YES];
-		[_imageView setContentMode:UIViewContentModeScaleAspectFill];
-		[_imageView setHidden:YES];
-		UITapGestureRecognizer *imageTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showPhotoActionSheet)];
-		[_imageView addGestureRecognizer:imageTap];
-		[_imageView setUserInteractionEnabled:YES];
-	}
-	[self.imageView setHidden:NO];
-	
+    
+    
 	UIImage *img = info[UIImagePickerControllerOriginalImage];
-//	UIImage *resized = [img resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:CGSizeMake(480, 480) interpolationQuality:kCGInterpolationHigh];
 	img = [self normalizedImage:img];
 	CGRect cropRect = [info[@"UIImagePickerControllerCropRect"] CGRectValue];
 	
@@ -958,26 +864,17 @@
 	}
 	
 	_image = [self resizeImage:img withMinDimension:480];
-	_imageView.image = _image;
-	_imageView.contentMode = UIViewContentModeScaleAspectFit;
-	_imageView.backgroundColor = [UIColor blackColor];
-	_imageView.layer.masksToBounds = YES;
-	_imageView.layer.shadowColor = [UIColor colorWithRed:0.831 green:0.831 blue:0.831 alpha:1.000].CGColor;
-	_imageView.layer.shadowOpacity = 0.9;
-	_imageView.layer.shadowRadius = 1.0;
-	_imageView.clipsToBounds = YES;
-	_imageView.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
-	_imageView.layer.borderWidth = 2.0f;
-	[_imageView setHidden:NO];
-	[picker dismissViewControllerAnimated:YES completion:NULL];
-	
+    _cropViewController = [[TOCropViewController alloc] initWithImage:_image];
+    _cropViewController.delegate = self;
+    [_viewController presentViewController:_cropViewController animated:NO completion:nil];
 	_didAddPhoto = YES;
-	
+    
+    __weak typeof(self) weakSelf = self;
 	[UIView animateWithDuration:0.5
 												delay:1.0
 											options: UIViewAnimationOptionCurveEaseInOut
 									 animations:^{
-										 [_viewController.textView setTextContainerInset:UIEdgeInsetsMake(10, 8, 10, 70)];
+										 [weakSelf.viewController.textView setTextContainerInset:UIEdgeInsetsMake(10, 8, 10, 70)];
 									 }
 									 completion:^(BOOL finished){
 									 }];
@@ -985,6 +882,53 @@
 	[self calculateTwitterCharsLeft];
 	NSString *source = (picker.sourceType == UIImagePickerControllerSourceTypeCamera) ? @"Camera" : @"Photo Library";
 	AbraLogEvent(ABRA_EVENT_ADDED_CLAIM_CONTENT, (@{ABRA_PROPERTYNAME_PHOTO : @"Yes", @"Source" : source}));
+}
+
+- (void)cropViewController:(TOCropViewController *)cropViewController didCropToImage:(UIImage *)image withRect:(CGRect)cropRect angle:(NSInteger)angle
+{
+    [_viewController.spoofView removeFromSuperview];
+    if (_cropViewController) {
+        [_cropViewController dismissViewControllerAnimated:NO completion:nil];
+    }
+    if ([PHPhotoLibrary authorizationStatus] == PHAuthorizationStatusNotDetermined || [PHPhotoLibrary authorizationStatus] == PHAuthorizationStatusDenied) {
+        [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
+            if (status == PHAuthorizationStatusAuthorized) {
+                [self addPhotoToLibrary:@{UIImagePickerControllerOriginalImage: image}];
+            } else {
+                PDLog(@"Error saving photo to Library");
+            }
+        }];
+    } else {
+        [self addPhotoToLibrary:@{UIImagePickerControllerOriginalImage: image}];
+    }
+    if (!_imageView) {
+        _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(_viewController.textView.frame.size.width-70, 10, 60, 60)];
+        [_viewController.textView addSubview:_imageView];
+        [_imageView setClipsToBounds:YES];
+        [_imageView setContentMode:UIViewContentModeScaleAspectFill];
+        [_imageView setHidden:YES];
+        UITapGestureRecognizer *imageTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showPhotoActionSheet)];
+        [_imageView addGestureRecognizer:imageTap];
+        [_imageView setUserInteractionEnabled:YES];
+    }
+    _imageView.image = image;
+    _imageView.contentMode = UIViewContentModeScaleAspectFit;
+    _imageView.backgroundColor = [UIColor blackColor];
+    _imageView.layer.masksToBounds = YES;
+    _imageView.layer.shadowColor = [UIColor colorWithRed:0.831 green:0.831 blue:0.831 alpha:1.000].CGColor;
+    _imageView.layer.shadowOpacity = 0.9;
+    _imageView.layer.shadowRadius = 1.0;
+    _imageView.clipsToBounds = YES;
+    _imageView.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
+    _imageView.layer.borderWidth = 2.0f;
+    [_imageView setHidden:NO];
+}
+
+- (void)cropViewController:(nonnull TOCropViewController *)cropViewController didFinishCancelled:(BOOL)cancelled {
+    [_viewController.spoofView removeFromSuperview];
+    if (_cropViewController) {
+        [_cropViewController dismissViewControllerAnimated:NO completion:nil];
+    }
 }
 
 - (UIImage *)normalizedImage:(UIImage*)image {

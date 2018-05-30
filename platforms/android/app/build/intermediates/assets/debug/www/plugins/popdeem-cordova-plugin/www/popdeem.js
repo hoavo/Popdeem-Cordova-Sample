@@ -10,6 +10,9 @@ module.exports = {
   ,
   deliverThirdPartyToken: function (userToken, successCallback, errorCallback) {
     cordova.exec(successCallback, errorCallback, "Popdeem", "deliverThirdPartyToken", [userToken]);
+  },
+  logMoment: function (momentString, successCallback, errorCallback) {
+    cordova.exec(successCallback, errorCallback, "Popdeem", "logMoment", [momentString]);
   }
 
 };

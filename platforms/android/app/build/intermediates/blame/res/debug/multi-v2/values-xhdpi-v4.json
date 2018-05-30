@@ -4,7 +4,7 @@
             "outputFile": "/Users/niall/Developer/Personal/Cordova/Popdeem3/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-xhdpi-v4/values-xhdpi-v4.xml",
             "map": [
                 {
-                    "source": "/Users/niall/.gradle/caches/transforms-1/files-1.1/twitter-core-2.0.0.aar/547156fb22a28378a5a1ee7f3f6e5683/res/values-xhdpi-v4/values-xhdpi-v4.xml",
+                    "source": "/Users/niall/.gradle/caches/transforms-1/files-1.1/twitter-core-3.1.1.aar/86043caac8f05d17ceec86badc10bd2a/res/values-xhdpi-v4/values-xhdpi-v4.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

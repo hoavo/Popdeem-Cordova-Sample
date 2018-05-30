@@ -4,7 +4,7 @@
             "outputFile": "/Users/niall/Developer/Personal/Cordova/Popdeem3/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-port/values-port.xml",
             "map": [
                 {
-                    "source": "/Users/niall/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.1.1.aar/b197753c34d6e14438fbf00499e1254a/res/values-port/values-port.xml",
+                    "source": "/Users/niall/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/ed9f3dfe7899abdf6e503bd970d84a02/res/values-port/values-port.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

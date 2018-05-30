@@ -6,8 +6,8 @@
     android:versionName="1.0.0" >
 
     <uses-sdk
-        android:minSdkVersion="16"
-        android:targetSdkVersion="26" />
+        android:minSdkVersion="17"
+        android:targetSdkVersion="27" />
 
     <supports-screens
         android:anyDensity="true"
@@ -22,10 +22,13 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <!-- Permissions required for GCM -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
+        android:name="com.popdeem.cordova.plugin.PopdeemApplication"
         android:allowBackup="true"
         android:debuggable="true"
         android:hardwareAccelerated="true"
@@ -33,7 +36,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true" >
         <activity
-            android:name="io.cordova.hellocordova.MainActivity"
+            android:name="com.popdeem.cordova.plugin.PopdeemActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale"
             android:label="@string/activity_name"
             android:launchMode="singleTop"
@@ -48,16 +51,16 @@
 
         <meta-data
             android:name="com.popdeem.sdk.ApiKey"
-            android:value="9f4dbcd5-5155-4623-b160-fbed64ce478e" />
+            android:value="f788c257-3b7c-401c-8219-71ec7b73cdb9" />
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_application_id" />
         <meta-data
             android:name="TwitterConsumerKey"
-            android:value="b2eSBD6GlT0pUMwptROy4agwO" />
+            android:value="ATNUdmskpUiRfY64Gnr4Zzmzk" />
         <meta-data
             android:name="TwitterConsumerSecret"
-            android:value="7PV8jmuUSqTOvGE1KBSXNSlvJaXh9BjMKhK2NK9VBgk9MQN5VQ" />
+            android:value="Aa5ZgP7MZhJefj23Xdc8vGgJmxx8cCa5kaVZiF56ovFd8m8gJ9" />
         <meta-data
             android:name="InstagramClientId"
             android:value="721403853f784eea86023a9e96ccde44" />
@@ -68,11 +71,6 @@
             android:name="InstagramCallbackUrl"
             android:value="https://www.popdeem.com/igredirect" />
 
-        <activity
-            android:name="com.facebook.FacebookActivity"
-            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-            android:label="@string/app_name"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
             android:name="com.popdeem.sdk.uikit.activity.PDUIHomeFlowActivity"
             android:label="@string/pd_empty_string"
@@ -119,6 +117,15 @@
             android:screenOrientation="portrait"
             android:theme="@style/PopdeemSDKTheme.DarkerWindowBackgroundTheme"
             android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name="com.yalantis.ucrop.UCropActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/PopdeemSDKTheme.DarkerWindowBackgroundTheme" />
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
         <meta-data
             android:name="io.fabric.ApiKey"
@@ -134,6 +141,22 @@
 
         <service android:name="com.popdeem.sdk.core.gcm.GCMIntentService" />
 
+        <provider
+            android:name="com.popdeem.sdk.CustomFileProvider"
+            android:authorities="io.cordova.hellocordova.fileprovider"
+            android:grantUriPermissions="true" >
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/filepaths" />
+        </provider>
+
+        <activity
+            android:name="com.twitter.sdk.android.tweetui.PlayerActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/MediaTheme" />
+        <activity
+            android:name="com.twitter.sdk.android.tweetui.GalleryActivity"
+            android:theme="@style/MediaTheme" />
         <activity
             android:name="com.twitter.sdk.android.tweetcomposer.ComposerActivity"
             android:exported="false"
@@ -145,24 +168,10 @@
             android:exported="false" />
 
         <activity
-            android:name="com.twitter.sdk.android.tweetui.PlayerActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:theme="@style/MediaTheme" />
-        <activity
-            android:name="com.twitter.sdk.android.tweetui.GalleryActivity"
-            android:theme="@style/MediaTheme" />
-        <activity
             android:name="com.twitter.sdk.android.core.identity.OAuthActivity"
             android:configChanges="orientation|screenSize"
             android:excludeFromRecents="true"
             android:exported="false" />
-        <activity
-            android:name="com.twitter.sdk.android.core.identity.ShareEmailActivity"
-            android:configChanges="orientation|screenSize"
-            android:excludeFromRecents="true"
-            android:exported="false"
-            android:icon="@drawable/tw__transparent"
-            android:label="@string/kit_name" />
         <activity
             android:name="com.google.android.gms.common.api.GoogleApiActivity"
             android:exported="false"

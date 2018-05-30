@@ -52,16 +52,6 @@
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.title = translationForKey(@"popdeem.claims.title", @"Claim");
     self.friendPicker = [[PDUIFriendPickerViewController alloc] initFromNib];
-		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramLoginSuccess) name:InstagramLoginSuccess object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramLoginFailure:) name:InstagramLoginFailure object:nil];
-		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramLoginUserDismiss) name:InstagramLoginuserDismissed object:nil];
-		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramPostMade) name:PDUserLinkedToInstagram object:nil];
-		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramVerifySuccess) name:InstagramVerifySuccess object:nil];
-		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramVerifyFailure) name:InstagramVerifyFailure object:nil];
-		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramVerifyNoAttempt) name:InstagramVerifyNoAttempt object:nil];
-		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(facebookWritePermSuccess) name:FacebookPublishSuccess object:nil];
-		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(facebookWritePermFailure) name:FacebookPublishFailure object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backFromInstagram) name:UIApplicationDidBecomeActiveNotification object:nil];
     return self;
   }
   return nil;
@@ -88,6 +78,7 @@
   [_textView setDelegate:_viewModel];
 	[_textView setScrollEnabled:YES];
   [_textView setFont:PopdeemFont(PDThemeFontPrimary, 14)];
+  [self styleNavbar];
 }
 
 - (void) verifyLocation {
@@ -160,7 +151,7 @@
 	}
 	
 	[self.twitterForcedTagLabel setTextColor:[UIColor lightGrayColor]];
-	[self.addHashtagButton setHidden:YES];
+	[self.addHashtagButton setHidden:NO];
     UIColor *tertiaryFontColor = [UIColor blackColor];
     if ([PDTheme.sharedInstance hasValueForKey:PDThemeColorTertiaryFont]) {
         tertiaryFontColor = PopdeemColor(PDThemeColorTertiaryFont);
@@ -168,7 +159,7 @@
         tertiaryFontColor = PopdeemColor(PDThemeColorPrimaryApp);
     }
 	[self.addHashtagButton setTintColor:[UIColor blackColor]];
-    [self.addHashtagButton setTitleColor:tertiaryFontColor forState:UIControlStateNormal];
+  [self.addHashtagButton setTitleColor:tertiaryFontColor forState:UIControlStateNormal];
   [_refreshLocationButton addTarget:self action:@selector(refreshLocationTapped) forControlEvents:UIControlEventTouchUpInside];
   [_refreshLocationButton setUserInteractionEnabled:YES];
   
@@ -189,7 +180,7 @@
   }
   [self.alreadySharedButton.titleLabel setFont:PopdeemFont(PDThemeFontPrimary, 15.0)];
   [self.shareButton.titleLabel setFont:PopdeemFont(PDThemeFontPrimary, 15.0)];
-  
+  [self styleNavbar];
 }
 
 - (void) setupView {
@@ -217,48 +208,22 @@
 - (void) viewWillAppear:(BOOL)animated {
   [self renderView];
   [self drawBorders];
-	if (PopdeemThemeHasValueForKey(@"popdeem.nav")) {
-		self.navigationController.navigationBar.translucent = NO;
-		[self.navigationController.navigationBar setBarTintColor:PopdeemColor(PDThemeColorPrimaryApp)];
-		[self.navigationController.navigationBar setTintColor:PopdeemColor(PDThemeColorPrimaryInverse)];
-		[self.navigationController.navigationBar setTitleTextAttributes:@{
-																																			NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryInverse),
-																																			NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 16.0f)
-																																			}];
-		
-		[self.navigationController.navigationItem.rightBarButtonItem setTitleTextAttributes:@{
-																																													NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryInverse),
-																																													NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 16.0f)}
-																																							 forState:UIControlStateNormal];
-		if (PopdeemThemeHasValueForKey(@"popdeem.images.navigationBar")){
-			[self.navigationController.navigationBar setBackgroundImage:PopdeemImage(@"popdeem.images.navigationBar") forBarMetrics:UIBarMetricsDefault];
-		}
-	}
-	
-	//Brand Specific Theme
-	if (_brand.theme != nil) {
-		self.navigationController.navigationBar.translucent = NO;
-		[self.navigationController.navigationBar setBarTintColor:PopdeemColorFromHex(_brand.theme.primaryAppColor)];
-		[self.navigationController.navigationBar setTintColor:PopdeemColorFromHex(_brand.theme.primaryInverseColor)];
-		[self.navigationController.navigationBar setTitleTextAttributes:@{
-																																			NSForegroundColorAttributeName : PopdeemColorFromHex(_brand.theme.primaryInverseColor),
-																																			NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 16.0f)
-																																			}];
-		
-		[self.navigationController.navigationItem.rightBarButtonItem setTitleTextAttributes:@{
-																																													NSForegroundColorAttributeName : PopdeemColorFromHex(_brand.theme.primaryInverseColor),
-																																													NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 16.0f)}
-																																							 forState:UIControlStateNormal];
-    
-    [self.shareButton setBackgroundColor:PopdeemColorFromHex(_brand.theme.primaryAppColor)];
-    [self.shareButton setTitleColor:PopdeemColorFromHex(_brand.theme.primaryInverseColor) forState:UIControlStateNormal];
-    
-	}
+  [self styleNavbar];
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
   [[NSNotificationCenter defaultCenter] addObserver:_viewModel
                                            selector:@selector(keyboardWillShow:)
                                                name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramLoginSuccess) name:InstagramLoginSuccess object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramLoginFailure:) name:InstagramLoginFailure object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramLoginUserDismiss) name:InstagramLoginuserDismissed object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramPostMade) name:PDUserLinkedToInstagram object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramVerifySuccess) name:InstagramVerifySuccess object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramVerifyFailure) name:InstagramVerifyFailure object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramVerifyNoAttempt) name:InstagramVerifyNoAttempt object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(facebookWritePermSuccess) name:FacebookPublishSuccess object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(facebookWritePermFailure) name:FacebookPublishFailure object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backFromInstagram) name:UIApplicationDidBecomeActiveNotification object:nil];
 #pragma clang diagnostic pop
 }
 
@@ -489,10 +454,6 @@
   [_viewModel imagePickerController:picker didFinishPickingMediaWithInfo:info];
 }
 
-- (IBAction)addFriendsButtonTapped:(id)sender {
-  goingToTag = YES;
-  [self.navigationController pushViewController:_friendPicker animated:YES];
-}
 
 - (void) viewWillDisappear:(BOOL)animated {
   if (!goingToTag) {
@@ -504,7 +465,7 @@
   }
 	[_textView resignFirstResponder];
   [[NSNotificationCenter defaultCenter] removeObserver:self];
-	[[NSNotificationCenter defaultCenter] removeObserver:_viewModel];
+    [[NSNotificationCenter defaultCenter] removeObserver:_viewModel];
 }
 
 
@@ -680,6 +641,58 @@
     NSLog(@"Back From Instagram");
     PDUIPostScanViewController *scan = [[PDUIPostScanViewController alloc] initWithReward:_reward network:INSTAGRAM_NETWORK];
     [self.navigationController pushViewController:scan animated:YES];
+  }
+}
+
+- (void) styleNavbar {
+  if (PopdeemThemeHasValueForKey(@"popdeem.nav")) {
+    self.navigationController.navigationBar.translucent = NO;
+    [self.navigationController.navigationBar setBarTintColor:PopdeemColor(PDThemeColorPrimaryApp)];
+    [self.navigationController.navigationBar setTintColor:PopdeemColor(PDThemeColorPrimaryInverse)];
+    
+    UIFont *headerFont;
+    if (PopdeemThemeHasValueForKey(PDThemeFontNavbar)) {
+      headerFont = PopdeemFont(PDThemeFontNavbar, 22.0f);
+    } else {
+      headerFont = PopdeemFont(PDThemeFontBold, 17.0f);
+    }
+    
+    [self.navigationController.navigationBar setTitleTextAttributes:@{
+                                                                      NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryInverse),
+                                                                      NSFontAttributeName : headerFont
+                                                                      }];
+    
+    [self.navigationController.navigationItem.rightBarButtonItem setTitleTextAttributes:@{
+                                                                                          NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryInverse),
+                                                                                          NSFontAttributeName : PopdeemFont(PDThemeFontNavbar, 17.0f)}
+                                                                               forState:UIControlStateNormal];
+    if (PopdeemThemeHasValueForKey(@"popdeem.images.navigationBar")){
+      [self.navigationController.navigationBar setBackgroundImage:PopdeemImage(@"popdeem.images.navigationBar") forBarMetrics:UIBarMetricsDefault];
+    }
+  }
+  
+  //Brand Specific Theme
+  if (_brand.theme != nil) {
+    self.navigationController.navigationBar.translucent = NO;
+    [self.navigationController.navigationBar setBarTintColor:PopdeemColorFromHex(_brand.theme.primaryAppColor)];
+    [self.navigationController.navigationBar setTintColor:PopdeemColorFromHex(_brand.theme.primaryInverseColor)];
+    
+    UIFont *headerFont;
+    if (PopdeemThemeHasValueForKey(PDThemeFontNavbar)) {
+      headerFont = PopdeemFont(PDThemeFontNavbar, 17.0f);
+    } else {
+      headerFont = PopdeemFont(PDThemeFontBold, 17.0f);
+    }
+    
+    [self.navigationController.navigationBar setTitleTextAttributes:@{
+                                                                      NSForegroundColorAttributeName : PopdeemColorFromHex(_brand.theme.primaryInverseColor),
+                                                                      NSFontAttributeName : headerFont
+                                                                      }];
+    
+    [self.navigationController.navigationItem.rightBarButtonItem setTitleTextAttributes:@{
+                                                                                          NSForegroundColorAttributeName : PopdeemColorFromHex(_brand.theme.primaryInverseColor),
+                                                                                          NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 16.0f)}
+                                                                               forState:UIControlStateNormal];
   }
 }
 

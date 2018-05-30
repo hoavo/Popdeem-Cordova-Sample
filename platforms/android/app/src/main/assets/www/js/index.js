@@ -40,6 +40,30 @@ var app = {
         tokenButton.addEventListener('click',function(){ popdeem.deliverThirdPartyToken("francois@spoonity.com", function() {}, function() {});}, false);
 
         this.receivedEvent('deviceready');
+
+        const push = PushNotification.init({
+            ios: {
+              alert: 'true',
+              badge: true,
+              sound: 'false'
+            }
+          });
+
+        push.subscribe(
+            'my-topic',
+            () => {
+              console.log('success');
+            },
+            e => {
+              console.log('error:', e);
+            }
+        );
+
+        PushNotification.hasPermission(data => {
+            if (data.isEnabled) {
+                navigator.notification.alert('Is Enabled', ok, 'Title', 'Button!');
+            }
+        });
     },
 
     // Update DOM on a Received Event

@@ -15,6 +15,12 @@
 #import "PDRFeedItem.h"
 #import "PDUIGratitudeViewController.h"
 #import "PDLocationStore.h"
+
+@interface PDUIHomeViewModel(){
+    NSArray *oldRewards;
+}
+@end
+
 @implementation PDUIHomeViewModel
 
 - (instancetype) init {
@@ -64,14 +70,12 @@
 		_rewardsLoading = NO;
 		dispatch_async(dispatch_get_main_queue(), ^{
 			[weakSelf.controller.tableView reloadData];
-			[weakSelf.controller.refreshControl endRefreshing];
 			[weakSelf.controller.tableView setUserInteractionEnabled:YES];
 		});
 	} failure:^(NSError * _Nonnull error) {
 		dispatch_async(dispatch_get_main_queue(), ^{
 			_rewardsLoading = NO;
 			[weakSelf.controller.tableView reloadData];
-			[weakSelf.controller.refreshControl endRefreshing];
 			[weakSelf.controller.tableView setUserInteractionEnabled:YES];
 		});
 	}];
@@ -80,18 +84,16 @@
 - (void) fetchAllRewards {
 	__weak typeof(self) weakSelf = self;
 	[[PDAPIClient sharedInstance] getAllRewardsSuccess:^{
+        oldRewards = weakSelf.rewards;
 		weakSelf.rewards =  [PDRewardStore orderedByDate];
 		_rewardsLoading = NO;
 		dispatch_async(dispatch_get_main_queue(), ^{
 			[weakSelf.controller.tableView reloadData];
-			[weakSelf.controller.refreshControl endRefreshing];
 			[weakSelf.controller.tableView setUserInteractionEnabled:YES];
 		});
 	} failure:^(NSError * _Nonnull error) {
 		dispatch_async(dispatch_get_main_queue(), ^{
 			_rewardsLoading = NO;
-			[weakSelf.controller.tableView reloadData];
-			[weakSelf.controller.refreshControl endRefreshing];
 			[weakSelf.controller.tableView setUserInteractionEnabled:YES];
 		});
 	}];
@@ -105,7 +107,6 @@
 			PDLogError(@"Error while fetching messages. Error: %@", error.localizedDescription);
 		}
 		dispatch_async(dispatch_get_main_queue(), ^{
-      [weakSelf.controller.refreshControl endRefreshing];
       [weakSelf.controller.tableView reloadInputViews];
 		});
 	}];
@@ -152,13 +153,11 @@
 		}
 		weakSelf.wallet = [arr copy];
 		[weakSelf.controller.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
-		[weakSelf.controller.refreshControl endRefreshing];
 		[weakSelf.controller.tableView setUserInteractionEnabled:YES];
 	} failure:^(NSError *error) {
 		//TODO: Handle Error
 		dispatch_async(dispatch_get_main_queue(), ^{
 			[weakSelf.controller.tableView reloadData];
-			[weakSelf.controller.refreshControl endRefreshing];
 			[weakSelf.controller.tableView setUserInteractionEnabled:YES];
 		});
 	}];
@@ -169,13 +168,11 @@
 	[[PDAPIClient sharedInstance] getRewardsInWalletSuccess:^() {
 		weakSelf.wallet = [PDWallet orderedByDateMulti];
 		[weakSelf.controller.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
-		[weakSelf.controller.refreshControl endRefreshing];
 		[weakSelf.controller.tableView setUserInteractionEnabled:YES];
 	} failure:^(NSError *error) {
 		//TODO: Handle Error
 		dispatch_async(dispatch_get_main_queue(), ^{
 			[weakSelf.controller.tableView reloadData];
-			[weakSelf.controller.refreshControl endRefreshing];
 			[weakSelf.controller.tableView setUserInteractionEnabled:YES];
 		});
 	}];
@@ -186,18 +183,17 @@
 	__weak typeof(self) weakSelf = self;
 	[[PDAPIClient sharedInstance] getFeedsSuccess:^{
     weakSelf.feed = [PDFeeds feed];
-    [weakSelf.controller.refreshControl endRefreshing];
     [weakSelf.controller.tableView setUserInteractionEnabled:YES];
+    [weakSelf.controller.tableView reloadData];
     _feedLoading = NO;
 	} failure:^(NSError *error){
 		//TODO: Handle Error
 		_feedLoading = NO;
-    [weakSelf.controller.refreshControl endRefreshing];
     [weakSelf.controller.tableView setUserInteractionEnabled:YES];
 		dispatch_async(dispatch_get_main_queue(), ^{
 			[weakSelf.controller.tableView reloadData];
-			[weakSelf.controller.refreshControl endRefreshing];
 			[weakSelf.controller.tableView setUserInteractionEnabled:YES];
+      _feedLoading = NO;
 		});
 	}];
 }
@@ -250,7 +246,7 @@
 		_tableHeaderLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 27.5, _controller.tableView.tableHeaderView.frame.size.width-40, 100)];
 		[_tableHeaderLabel setTextAlignment:NSTextAlignmentCenter];
 		[_tableHeaderLabel setNumberOfLines:3];
-		[_tableHeaderLabel setFont:PopdeemFont(PDThemeFontPrimary,14)];
+		[_tableHeaderLabel setFont:PopdeemFont(PDThemeFontBold, 14)];
 		[_tableHeaderLabel setTextColor:PopdeemColor(PDThemeColorHomeHeaderText)];
 		if (_brand) {
 			[_tableHeaderLabel setText:[NSString stringWithFormat:@"Share your %@ experience on social networks to earn more rewards.", _brand.name]];

@@ -26,11 +26,21 @@
 }
 
 - (void) deliverThirdPartyToken:(CDVInvokedUrlCommand*)command {
-  NSString *userToken = [[[command arguments] objectAtIndex:0] stringValue];
+  NSString *userToken = [[command arguments] objectAtIndex:0];
   [PopdeemSDK setThirdPartyUserToken:userToken];
   CDVPluginResult* result = [CDVPluginResult
                             resultWithStatus:CDVCommandStatus_OK
                             messageAsString:@"Delivered User Token"];
+
+  [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
+}
+
+- (void) logMoment:(CDVInvokedUrlCommand*)command {
+  NSString *momentString = [[[command arguments] objectAtIndex:0] stringValue];
+  [PopdeemSDK logMoment:momentString];
+  CDVPluginResult* result = [CDVPluginResult
+                            resultWithStatus:CDVCommandStatus_OK
+                            messageAsString:@"Logged Post Payment Moment"];
 
   [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
 }

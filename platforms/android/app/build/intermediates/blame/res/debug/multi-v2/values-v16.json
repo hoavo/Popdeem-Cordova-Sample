@@ -4,26 +4,26 @@
             "outputFile": "/Users/niall/Developer/Personal/Cordova/Popdeem3/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v16/values-v16.xml",
             "map": [
                 {
-                    "source": "/Users/niall/.gradle/caches/transforms-1/files-1.1/tweet-ui-2.0.0.aar/dea84063a66a117875173753ca2e1450/res/values-v16/values-v16.xml",
+                    "source": "/Users/niall/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/ed9f3dfe7899abdf6e503bd970d84a02/res/values-v16/values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
                         "startOffsets": "55",
-                        "endLines": "6",
+                        "endLines": "5",
                         "endColumns": "12",
-                        "endOffsets": "305"
+                        "endOffsets": "223"
                     },
                     "to": {
                         "startLines": "3",
                         "startColumns": "4",
                         "startOffsets": "121",
-                        "endLines": "7",
+                        "endLines": "6",
                         "endColumns": "12",
-                        "endOffsets": "371"
+                        "endOffsets": "289"
                     }
                 },
                 {
-                    "source": "/Users/niall/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.1.1.aar/b197753c34d6e14438fbf00499e1254a/res/values-v16/values-v16.xml",
+                    "source": "/Users/niall/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/e30829179a54a3ada9ed369d39840464/res/values-v16/values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

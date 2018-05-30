@@ -13,8 +13,6 @@
         <item quantity="other">%d秒</item>
     </plurals>
     <string msgid="4600421777120114993" name="abc_action_bar_home_description">"ホームへ移動"</string>
-    <string msgid="1397052879051804371" name="abc_action_bar_home_description_format">"%1$s、%2$s"</string>
-    <string msgid="6623331958280229229" name="abc_action_bar_home_subtitle_description_format">"%1$s、%2$s、%3$s"</string>
     <string msgid="1594238315039666878" name="abc_action_bar_up_description">"上へ移動"</string>
     <string msgid="3588849162933574182" name="abc_action_menu_overflow_description">"その他のオプション"</string>
     <string msgid="4076576682505996667" name="abc_action_mode_done">"完了"</string>
@@ -29,7 +27,7 @@
     <string msgid="8928215447528550784" name="abc_searchview_description_submit">"検索キーワードを送信"</string>
     <string msgid="893419373245838918" name="abc_searchview_description_voice">"音声検索"</string>
     <string msgid="3421042268587513524" name="abc_shareactionprovider_share_with">"共有"</string>
-    <string msgid="7165123711973476752" name="abc_shareactionprovider_share_with_application">"%sと共有"</string>
+    <string msgid="3300176832234831527" name="abc_shareactionprovider_share_with_application">"<ns1:g id="APPLICATION_NAME">%s</ns1:g>と共有"</string>
     <string msgid="1603543279005712093" name="abc_toolbar_collapse_description">"折りたたむ"</string>
     <string name="com_facebook_image_download_unknown_error">画像のダウンロード中に予期しないエラーが発生しました。</string>
     <string name="com_facebook_internet_permission_error_message">WebViewログインにはINTERNET権限が必要です</string>
@@ -53,6 +51,7 @@
     <string msgid="9115728400623041681" name="common_google_play_services_install_button">"インストール"</string>
     <string msgid="8179894293032530091" name="common_google_play_services_install_text">"「<ns1:g id="APP_NAME">%1$s</ns1:g>」の実行には Google Play 開発者サービスが必要ですが、お使いの端末にはインストールされていません。"</string>
     <string msgid="7442193194585196676" name="common_google_play_services_install_title">"Google Play開発者サービスの入手"</string>
+    <string msgid="4293541511340436975" name="common_google_play_services_notification_channel_name">"Google Play 開発者サービスの利用"</string>
     <string msgid="180394615667698242" name="common_google_play_services_notification_ticker">"Google Play開発者サービスのエラー"</string>
     <string msgid="2518680582564677258" name="common_google_play_services_unknown_issue">"「<ns1:g id="APP_NAME">%1$s</ns1:g>」で Google Play 開発者サービスに問題が発生しています。もう一度お試しください。"</string>
     <string msgid="5501187292256987189" name="common_google_play_services_unsupported_text">"「<ns1:g id="APP_NAME">%1$s</ns1:g>」の実行には Google Play 開発者サービスが必要ですが、お使いの端末ではサポートされていません。"</string>
@@ -69,25 +68,24 @@
     <string name="crop__pick_error">画像が見つかりません</string>
     <string name="crop__saving">保存中…</string>
     <string name="crop__wait">お待ちください…</string>
+    <string msgid="9521340570209730" name="gcm_fallback_notification_channel_label">"その他"</string>
     <string name="messenger_send_button_text">送信</string>
     <string msgid="146198913615257606" name="search_menu_title">"検索"</string>
     <string msgid="2869576371154716097" name="status_bar_notification_info_overflow">"999+"</string>
-    <string name="tw__allow_btn_txt">許可</string>
-    <string name="tw__cta_text">Vineで開く</string>
+    <string name="tw__composer_hint">いまどうしてる?</string>
     <string name="tw__like_tweet">ツイートにいいねする</string>
     <string name="tw__liked_tweet">いいねを取り消す</string>
     <string name="tw__loading_tweet">ツイートを読込中</string>
     <string name="tw__login_btn_txt">Twitterにログイン</string>
-    <string name="tw__not_now_btn_txt">今はしない</string>
+    <string name="tw__max_tweet_chars">140</string>
     <string name="tw__pause">一時停止</string>
     <string name="tw__play">再生</string>
+    <string name="tw__post_tweet">ツイート</string>
     <string name="tw__relative_date_format_long">y/M/d</string>
     <string name="tw__relative_date_format_short">M月d日</string>
     <string name="tw__replay">リプレイ</string>
     <string name="tw__retweeted_by_format">%1$sさんがリツイート</string>
     <string name="tw__share_content_format">\@%1$sさんのツイートをチェックしましょう　 https://twitter.com/%1$s/status/%2$s</string>
-    <string name="tw__share_email_desc">あなたのTwitterアカウント\@%2$sに登録されているメールアドレスへのアクセスを%1$sに許可します。%1$sはそのメールアドレスをプライバシーポリシーに従って使用できるようになります。たとえば、%1$sはそのアドレス宛に更新情報などを送信することができます。</string>
-    <string name="tw__share_email_title">メールアドレスを共有</string>
     <string name="tw__share_subject_format">%1$s (\@%2$s)さんからのツイート</string>
     <string name="tw__share_tweet">ツイートを共有</string>
     <string name="tw__tweet_content_description">%1$s、 %2$s、 %3$s。</string>

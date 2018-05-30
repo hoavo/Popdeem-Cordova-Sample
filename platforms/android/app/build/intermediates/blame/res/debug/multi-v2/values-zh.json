@@ -4,7 +4,24 @@
             "outputFile": "/Users/niall/Developer/Personal/Cordova/Popdeem3/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-zh/values-zh.xml",
             "map": [
                 {
-                    "source": "/Users/niall/.gradle/caches/transforms-1/files-1.1/android-crop-1.0.1.aar/b6fc288106182854e7be69c5ed9dd638/res/values-zh/values-zh.xml",
+                    "source": "/Users/niall/.gradle/caches/transforms-1/files-1.1/ucrop-2.2.2.aar/100210c793932e22e6b063d57e227d4f/res/values-zh/values-zh.xml",
+                    "from": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,109,163",
+                        "endColumns": "53,53,46",
+                        "endOffsets": "104,158,205"
+                    },
+                    "to": {
+                        "startLines": "7,8,9",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "354,408,462",
+                        "endColumns": "53,53,46",
+                        "endOffsets": "403,457,504"
+                    }
+                },
+                {
+                    "source": "/Users/niall/.gradle/caches/transforms-1/files-1.1/android-crop-1.0.1.aar/a4c5fd6bfc7312ef77a0f9088a9b11f0/res/values-zh/values-zh.xml",
                     "from": {
                         "startLines": "4,5,6,7,8",
                         "startColumns": "4,4,4,4,4",

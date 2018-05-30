@@ -24,78 +24,34 @@
     <string>1.0.0</string>
     <key>CFBundleSignature</key>
     <string>????</string>
-    <key>CFBundleVersion</key>
-    <string>1.0.0</string>
-    <key>LSRequiresIPhoneOS</key>
-    <true/>
-    <key>NSMainNibFile</key>
-    <string/>
-    <key>NSMainNibFile~ipad</key>
-    <string/>
-    <key>UISupportedInterfaceOrientations</key>
-    <array>
-      <string>UIInterfaceOrientationPortrait</string>
-      <string>UIInterfaceOrientationLandscapeLeft</string>
-      <string>UIInterfaceOrientationLandscapeRight</string>
-    </array>
-    <key>UISupportedInterfaceOrientations~ipad</key>
-    <array>
-      <string>UIInterfaceOrientationPortrait</string>
-      <string>UIInterfaceOrientationLandscapeLeft</string>
-      <string>UIInterfaceOrientationPortraitUpsideDown</string>
-      <string>UIInterfaceOrientationLandscapeRight</string>
-    </array>
-    <key>UIRequiresFullScreen</key>
-    <true/>
-    <key>NSAppTransportSecurity</key>
-    <dict>
-      <key>NSAllowsArbitraryLoads</key>
-      <true/>
-    </dict>
-    <key>PopdeemApiKey</key>
-    <string>9f4dbcd5-5155-4623-b160-fbed64ce478e</string>
-    <key>PopdeemThemeFileName</key>
-    <string>theme</string>
-    <key>FacebookAppID</key>
-    <string>1706317436274686</string>
-    <key>FacebookDisplayName</key>
-    <string>Popdeem</string>
-    <key>FacebookNamespace</key>
-    <string>popdeemrewards</string>
-    <key>FacebookUrlSchemeSuffix</key>
-    <string>farmboy</string>
-    <key>TwitterAppConsumerKey</key>
-    <string>b2eSBD6GlT0pUMwptROy4agwO</string>
-    <key>TwitterAppConsumerSecret</key>
-    <string>7PV8jmuUSqTOvGE1KBSXNSlvJaXh9BjMKhK2NK9VBgk9MQN5VQ</string>
-    <key>TwitterCallbackScheme</key>
-    <string>popdeemtwitterfarmboy</string>
-    <key>InstagramClientId</key>
-    <string>721403853f784eea86023a9e96ccde44</string>
-    <key>InstagramClientSecret</key>
-    <string>0b14e780896e42be88cefcddb3ac64dc</string>
-    <key>InstagramCallback</key>
-    <string>https://www.popdeem.com/igredirect</string>
     <key>CFBundleURLTypes</key>
     <array>
       <dict>
         <key>CFBundleURLSchemes</key>
         <array>
-          <string>fb1706317436274686farmboy</string>
-          <string>popdeemtwitterfarmboy</string>
+          <string>fb1528213564167350ribsburgers</string>
+          <string>popdeemtwitterribsburgers</string>
         </array>
       </dict>
     </array>
-    <key>NSLocationWhenInUseUsageDescription</key>
-    <string>We use your location to deliver local rewards.</string>
-    <key>NSCameraUsageDescription</key>
-    <string>We need access to your camera when you decide to share a
-        photo.</string>
-    <key>NSPhotoLibraryUsageDescription</key>
-    <string>We access your photo gallery when you decide to share a photo.</string>
+    <key>CFBundleVersion</key>
+    <string>1.0.0</string>
+    <key>FacebookAppID</key>
+    <string>1528213564167350</string>
+    <key>FacebookDisplayName</key>
+    <string>Popdeem</string>
+    <key>FacebookNamespace</key>
+    <string>popdeemrewards</string>
+    <key>FacebookUrlSchemeSuffix</key>
+    <string>ribsburgers</string>
+    <key>InstagramCallback</key>
+    <string>https://www.popdeem.com/igredirect</string>
+    <key>InstagramClientId</key>
+    <string>721403853f784eea86023a9e96ccde44</string>
+    <key>InstagramClientSecret</key>
+    <string>0b14e780896e42be88cefcddb3ac64dc</string>
     <key>LSApplicationQueriesSchemes</key>
     <array>
-      <string>instagram</string>
       <string>instagram</string>
       <string>fbapi</string>
       <string>fbapi20130214</string>
@@ -111,5 +67,49 @@
       <string>fbauth2</string>
       <string>fb-messenger-api20140430</string>
     </array>
+    <key>LSRequiresIPhoneOS</key>
+    <true/>
+    <key>NSAppTransportSecurity</key>
+    <dict>
+      <key>NSAllowsArbitraryLoads</key>
+      <true/>
+    </dict>
+    <key>NSCameraUsageDescription</key>
+    <string>We need access to your camera when you decide to share a photo.</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>We use your location to deliver local rewards.</string>
+    <key>NSMainNibFile</key>
+    <string/>
+    <key>NSMainNibFile~ipad</key>
+    <string/>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>We access your photo gallery when you decide to share a photo.</string>
+    <key>PopdeemApiKey</key>
+    <string>f788c257-3b7c-401c-8219-71ec7b73cdb9</string>
+    <key>PopdeemThemeFileName</key>
+    <string>theme</string>
+    <key>TwitterAppConsumerKey</key>
+    <string>ATNUdmskpUiRfY64Gnr4Zzmzk</string>
+    <key>TwitterAppConsumerSecret</key>
+    <string>Aa5ZgP7MZhJefj23Xdc8vGgJmxx8cCa5kaVZiF56ovFd8m8gJ9</string>
+    <key>TwitterCallbackScheme</key>
+    <string>popdeemtwitterribsburgers</string>
+    <key>UIRequiresFullScreen</key>
+    <true/>
+    <key>UISupportedInterfaceOrientations</key>
+    <array>
+      <string>UIInterfaceOrientationPortrait</string>
+      <string>UIInterfaceOrientationLandscapeLeft</string>
+      <string>UIInterfaceOrientationLandscapeRight</string>
+    </array>
+    <key>UISupportedInterfaceOrientations~ipad</key>
+    <array>
+      <string>UIInterfaceOrientationPortrait</string>
+      <string>UIInterfaceOrientationLandscapeLeft</string>
+      <string>UIInterfaceOrientationPortraitUpsideDown</string>
+      <string>UIInterfaceOrientationLandscapeRight</string>
+    </array>
+    <key>UILaunchStoryboardName</key>
+    <string>CDVLaunchScreen</string>
   </dict>
 </plist>

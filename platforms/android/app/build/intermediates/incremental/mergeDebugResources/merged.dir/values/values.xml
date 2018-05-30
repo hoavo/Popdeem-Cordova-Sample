@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:ns1="http://schemas.android.com/tools" xmlns:ns2="urn:oasis:names:tc:xliff:document:1.2">
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2" xmlns:ns2="http://schemas.android.com/tools">
     <string-array name="home_flow_tab_titles">
         <item>@string/pd_rewards_title</item>
         <item>@string/pd_activity_title</item>
@@ -9,23 +9,136 @@
         <item>@string/pd_claim_add_photo_gallery_text</item>
         <item>@string/pd_claim_add_photo_camera_text</item>
     </string-array>
+    <string-array name="pd_gratuity_strings_login_body">
+    </string-array>
+    <string-array name="pd_gratuity_strings_login_title">
+    </string-array>
+    <string-array name="pd_gratuity_strings_share_coupon_body">
+    </string-array>
+    <string-array name="pd_gratuity_strings_share_coupon_title">
+    </string-array>
+    <string-array name="pd_gratuity_strings_share_credit_body">
+    </string-array>
+    <string-array name="pd_gratuity_strings_share_credit_title">
+    </string-array>
+    <string-array name="pd_gratuity_strings_share_sweepstake_body">
+    </string-array>
+    <string-array name="pd_gratuity_strings_share_sweepstake_title">
+    </string-array>
+    <string-array name="pd_login_images">
+        <item>@drawable/pd_social_login_header</item>
+    </string-array>
+    <string-array name="pd_share_images">
+        <item>@drawable/ambassador_icon</item>
+    </string-array>
     <array name="pd_swipe_refresh_colors_array">
         <item>@color/pd_rainbow_color_3</item>
         <item>@color/pd_rainbow_color_2</item>
         <item>@color/pd_rainbow_color_4</item>
         <item>@color/pd_rainbow_color_1</item>
     </array>
+    <attr format="reference" name="cardViewStyle"/>
+    <attr format="reference" name="constraintSet"/>
+    <attr format="reference" name="coordinatorLayoutStyle"/>
     <attr format="reference" name="cropImageStyle"/>
     <attr format="reference" name="drawerArrowStyle"/>
     <attr format="dimension" name="height"/>
     <attr format="boolean" name="isLightTheme"/>
+    <attr format="integer" name="layout_constraintBaseline_creator"/>
+    <attr format="reference|enum" name="layout_constraintBaseline_toBaselineOf">
+        <enum name="parent" value="0"/>
+    </attr>
+    <attr format="integer" name="layout_constraintBottom_creator"/>
+    <attr format="reference|enum" name="layout_constraintBottom_toBottomOf">
+        <enum name="parent" value="0"/>
+    </attr>
+    <attr format="reference|enum" name="layout_constraintBottom_toTopOf">
+        <enum name="parent" value="0"/>
+    </attr>
+    <attr format="string" name="layout_constraintDimensionRatio"/>
+    <attr format="reference|enum" name="layout_constraintEnd_toEndOf">
+        <enum name="parent" value="0"/>
+    </attr>
+    <attr format="reference|enum" name="layout_constraintEnd_toStartOf">
+        <enum name="parent" value="0"/>
+    </attr>
+    <attr format="dimension" name="layout_constraintGuide_begin"/>
+    <attr format="dimension" name="layout_constraintGuide_end"/>
+    <attr format="float" name="layout_constraintGuide_percent"/>
+    <attr name="layout_constraintHeight_default">
+        <enum name="spread" value="0"/>
+        <enum name="wrap" value="1"/>
+    </attr>
+    <attr format="dimension" name="layout_constraintHeight_max"/>
+    <attr format="dimension" name="layout_constraintHeight_min"/>
+    <attr format="float" name="layout_constraintHorizontal_bias"/>
+    <attr format="enum" name="layout_constraintHorizontal_chainStyle">
+        <enum name="spread" value="0"/>
+        <enum name="spread_inside" value="1"/>
+        <enum name="packed" value="2"/>
+    </attr>
+    <attr format="float" name="layout_constraintHorizontal_weight"/>
+    <attr format="integer" name="layout_constraintLeft_creator"/>
+    <attr format="reference|enum" name="layout_constraintLeft_toLeftOf">
+        <enum name="parent" value="0"/>
+    </attr>
+    <attr format="reference|enum" name="layout_constraintLeft_toRightOf">
+        <enum name="parent" value="0"/>
+    </attr>
+    <attr format="integer" name="layout_constraintRight_creator"/>
+    <attr format="reference|enum" name="layout_constraintRight_toLeftOf">
+        <enum name="parent" value="0"/>
+    </attr>
+    <attr format="reference|enum" name="layout_constraintRight_toRightOf">
+        <enum name="parent" value="0"/>
+    </attr>
+    <attr format="reference|enum" name="layout_constraintStart_toEndOf">
+        <enum name="parent" value="0"/>
+    </attr>
+    <attr format="reference|enum" name="layout_constraintStart_toStartOf">
+        <enum name="parent" value="0"/>
+    </attr>
+    <attr format="integer" name="layout_constraintTop_creator"/>
+    <attr format="reference|enum" name="layout_constraintTop_toBottomOf">
+        <enum name="parent" value="0"/>
+    </attr>
+    <attr format="reference|enum" name="layout_constraintTop_toTopOf">
+        <enum name="parent" value="0"/>
+    </attr>
+    <attr format="float" name="layout_constraintVertical_bias"/>
+    <attr format="enum" name="layout_constraintVertical_chainStyle">
+        <enum name="spread" value="0"/>
+        <enum name="spread_inside" value="1"/>
+        <enum name="packed" value="2"/>
+    </attr>
+    <attr format="float" name="layout_constraintVertical_weight"/>
+    <attr name="layout_constraintWidth_default">
+        <enum name="spread" value="0"/>
+        <enum name="wrap" value="1"/>
+    </attr>
+    <attr format="dimension" name="layout_constraintWidth_max"/>
+    <attr format="dimension" name="layout_constraintWidth_min"/>
+    <attr format="dimension" name="layout_editor_absoluteX"/>
+    <attr format="dimension" name="layout_editor_absoluteY"/>
+    <attr format="dimension" name="layout_goneMarginBottom"/>
+    <attr format="dimension" name="layout_goneMarginEnd"/>
+    <attr format="dimension" name="layout_goneMarginLeft"/>
+    <attr format="dimension" name="layout_goneMarginRight"/>
+    <attr format="dimension" name="layout_goneMarginStart"/>
+    <attr format="dimension" name="layout_goneMarginTop"/>
+    <attr name="layout_optimizationLevel">
+        <flag name="none" value="1"/>
+        <flag name="all" value="2"/>
+        <flag name="basic" value="4"/>
+        <flag name="chains" value="8"/>
+    </attr>
     <attr format="string" name="title"/>
     <attr format="reference" name="tw__twitter_logo"/>
     <bool name="abc_action_bar_embed_tabs">true</bool>
-    <bool name="abc_allow_stacked_button_bar">true</bool>
+    <bool name="abc_allow_stacked_button_bar">false</bool>
     <bool name="abc_config_actionMenuItemAllCaps">true</bool>
-    <bool name="abc_config_closeDialogWhenTouchOutside">true</bool>
     <bool name="abc_config_showMenuShortcutsWhenKeyboardPresent">false</bool>
+    <color name="DEBUG">#00ff00ff</color>
     <color name="abc_input_method_navigation_guard">@android:color/black</color>
     <color name="abc_search_url_text_normal">#7fa87f</color>
     <color name="abc_search_url_text_pressed">@android:color/black</color>
@@ -44,7 +157,12 @@
     <color name="bright_foreground_material_light">@android:color/black</color>
     <color name="button_material_dark">#ff5a595b</color>
     <color name="button_material_light">#ffd6d7d7</color>
-    <color name="colorAccent">@color/pd_accent</color>
+    <color name="cardview_dark_background">#FF424242</color>
+    <color name="cardview_light_background">#FFFFFFFF</color>
+    <color name="cardview_shadow_end_color">#03000000</color>
+    <color name="cardview_shadow_start_color">#37000000</color>
+    <color name="clear">#00ffffff</color>
+    <color name="colorAccent">@color/pd_toolbar_color</color>
     <color name="colorPrimary">@color/pd_toolbar_color</color>
     <color name="colorPrimaryDark">@color/pd_toolbar_color</color>
     <color name="com_facebook_blue">#3B5998</color>
@@ -81,12 +199,11 @@
     <color name="design_fab_stroke_top_inner_color">#1AFFFFFF</color>
     <color name="design_fab_stroke_top_outer_color">#2EFFFFFF</color>
     <color name="design_snackbar_background_color">#323232</color>
-    <color name="design_textinput_error_color_dark">#FFFF6E6E</color>
-    <color name="design_textinput_error_color_light">#FFD50000</color>
     <color name="dim_foreground_disabled_material_dark">#80bebebe</color>
     <color name="dim_foreground_disabled_material_light">#80323232</color>
     <color name="dim_foreground_material_dark">#ffbebebe</color>
     <color name="dim_foreground_material_light">#ff323232</color>
+    <color name="error_color_material">#F4511E</color>
     <color name="foreground_material_dark">@android:color/white</color>
     <color name="foreground_material_light">@android:color/black</color>
     <color name="highlighted_text_material_dark">#6680cbc4</color>
@@ -106,7 +223,7 @@
     <color name="notification_action_color_filter">#ffffffff</color>
     <color name="notification_icon_bg_color">#ff9e9e9e</color>
     <color name="notification_material_background_media_default_color">#ff424242</color>
-    <color name="pd_accent">#dba7ac</color>
+    <color name="pd_accent">#0D4A6F </color>
     <color name="pd_back_button_color">@color/pd_toolbar_text_color</color>
     <color name="pd_claim_add_hashtag_button_text_color">@color/pd_toolbar_color</color>
     <color name="pd_claim_add_hashtag_text_color">#A2A2A1</color>
@@ -120,10 +237,18 @@
     <color name="pd_claim_share_button_text_color">#ffffff</color>
     <color name="pd_claim_switch_tint_color">@color/pd_toolbar_color</color>
     <color name="pd_claim_tagged_friends_text_color">@color/pd_toolbar_color</color>
+    <color name="pd_claim_verification_text_color">#000000</color>
     <color name="pd_connect_social_account_background_color">#aa000000</color>
+    <color name="pd_crop_active_widget_colour">@color/pd_accent</color>
+    <color name="pd_crop_content_background_colour">#ffffff</color>
+    <color name="pd_crop_status_bar_colour">@color/pd_toolbar_color_dark</color>
+    <color name="pd_crop_toolbar_colour">@color/pd_toolbar_color</color>
+    <color name="pd_crop_toolbar_widget_colour">@color/pd_toolbar_text_color</color>
+    <color name="pd_dialog_bg_bg">#ccffffff</color>
     <color name="pd_divider_color">#DCDCDF</color>
     <color name="pd_facebook_blue">#3b5998</color>
-    <color name="pd_feed_background">#ffffff</color>
+    <color name="pd_facebook_color">#3B5998</color>
+    <color name="pd_feed_background">#aaaaaa</color>
     <color name="pd_feed_item_comment_text_color">#888888</color>
     <color name="pd_feed_item_default_text_color">#A2A2A1</color>
     <color name="pd_feed_item_name_text_color">#000000</color>
@@ -132,9 +257,10 @@
     <color name="pd_feed_list_background_color">#ffffff</color>
     <color name="pd_feed_list_divider_color">#C0C0C0</color>
     <color name="pd_feed_no_feed_text_color">#000000</color>
+    <color name="pd_gratitude_bg">#ccffffff</color>
     <color name="pd_home_flow_banner_bg_color">@color/pd_toolbar_color</color>
-    <color name="pd_home_flow_banner_text_color">@color/pd_toolbar_text_color</color>
-    <color name="pd_home_flow_settings_icon_color">@color/pd_toolbar_text_color</color>
+    <color name="pd_home_flow_banner_text_color">#FFFFFF</color>
+    <color name="pd_home_flow_settings_icon_color">#FFFFFF</color>
     <color name="pd_horizontal_progress_background_color">#dba7ac</color>
     <color name="pd_horizontal_progress_color">@color/pd_toolbar_color</color>
     <color name="pd_image_border_color">#efeff4</color>
@@ -155,6 +281,9 @@
     <color name="pd_login_terms_text_color">#474747</color>
     <color name="pd_notification_dialog_message_text_color">#000000</color>
     <color name="pd_notification_dialog_title_text_color">#000000</color>
+    <color name="pd_progress_back_color">#efeff4</color>
+    <color name="pd_progress_border_color">#969696</color>
+    <color name="pd_progress_filled_color">@color/pd_toolbar_color</color>
     <color name="pd_rainbow_color_1">#eac34b</color>
     <color name="pd_rainbow_color_2">#3e96a7</color>
     <color name="pd_rainbow_color_3">@color/pd_toolbar_color</color>
@@ -171,23 +300,26 @@
     <color name="pd_reward_list_divider_color">#C0C0C0</color>
     <color name="pd_reward_list_item_info_text_color">#A2A2A1</color>
     <color name="pd_reward_list_item_subtitle_text_color">#000000</color>
+    <color name="pd_reward_list_item_time_text_color">@color/pd_toolbar_color</color>
     <color name="pd_reward_list_item_title_text_color">#000000</color>
     <color name="pd_rewards_background_color">#ffffff</color>
     <color name="pd_rewards_no_rewards_text_color">#000000</color>
     <color name="pd_settings_social_networks_header_color">#56575c</color>
-    <color name="pd_social_login_back_button_color">@color/pd_back_button_color</color>
-    <color name="pd_tab_background_color">@color/pd_toolbar_color</color>
+    <color name="pd_social_connect_button_color">@color/pd_toolbar_color</color>
+    <color name="pd_social_login_back_button_color">#000000</color>
+    <color name="pd_tab_background_color">#FFFFFF</color>
     <color name="pd_tab_indicator_color">@color/pd_accent</color>
-    <color name="pd_tab_selected_text_color">@color/pd_toolbar_text_color</color>
-    <color name="pd_tab_unselected_text_color">@color/pd_accent</color>
+    <color name="pd_tab_selected_text_color">#0D4A6F</color>
+    <color name="pd_tab_unselected_text_color">#0D4A6F</color>
     <color name="pd_tag_friends_background_color">#ffffff</color>
     <color name="pd_tagged_friends_color">#3DA8F2</color>
     <color name="pd_tagged_friends_color_pressed">#ff2d7db5</color>
     <color name="pd_tagged_friends_text_color">#ffffff</color>
-    <color name="pd_toolbar_color">#da4d59</color>
-    <color name="pd_toolbar_color_dark">#cc4752</color>
-    <color name="pd_toolbar_text_color">#ffffff</color>
+    <color name="pd_toolbar_color">#0D4A6F</color>
+    <color name="pd_toolbar_color_dark">#0D4A6F</color>
+    <color name="pd_toolbar_text_color">#ffffff </color>
     <color name="pd_twitter_blue">#FF5BAAF4</color>
+    <color name="pd_twitter_color">#00aced</color>
     <color name="pd_wallet_background_color">#ffffff</color>
     <color name="pd_wallet_item_background_color">#ffffff</color>
     <color name="pd_wallet_item_default_text_color">#000000</color>
@@ -212,9 +344,11 @@
     <color name="switch_thumb_disabled_material_light">#ffbdbdbd</color>
     <color name="switch_thumb_normal_material_dark">#ffbdbdbd</color>
     <color name="switch_thumb_normal_material_light">#fff1f1f1</color>
+    <color name="tooltip_background_dark">#e6616161</color>
+    <color name="tooltip_background_light">#e6FFFFFF</color>
+    <color name="tw__black_opacity_10">#1a000000</color>
     <color name="tw__blue_default">#FF5BAAF4</color>
     <color name="tw__blue_pressed">#FF4186C8</color>
-    <color name="tw__blue_pressed_light">#ffe1e8ed</color>
     <color name="tw__composer_black">#ff292f33</color>
     <color name="tw__composer_blue">#ff1da1f2</color>
     <color name="tw__composer_blue_text">#ff1b95e0</color>
@@ -228,7 +362,6 @@
     <color name="tw__seekbar_thumb_inner_color">#ffffffff</color>
     <color name="tw__seekbar_thumb_outer_color">#4dffffff</color>
     <color name="tw__solid_white">#FFFFFFFF</color>
-    <color name="tw__transparent">#00000000</color>
     <color name="tw__tweet_action_color">#55acee</color>
     <color name="tw__tweet_action_dark_highlight_color">#667580</color>
     <color name="tw__tweet_action_light_highlight_color">#ebeef0</color>
@@ -236,6 +369,19 @@
     <color name="tw__tweet_dark_primary_text_color">#e1ffffff</color>
     <color name="tw__tweet_light_container_bg_color">#ffffff</color>
     <color name="tw__tweet_light_primary_text_color">#292f33</color>
+    <color name="ucrop_color_crop_background">#000</color>
+    <color name="ucrop_color_default_crop_frame">#ffffff</color>
+    <color name="ucrop_color_default_crop_grid">#80ffffff</color>
+    <color name="ucrop_color_default_dimmed">#8c000000</color>
+    <color name="ucrop_color_default_logo">#4f212121</color>
+    <color name="ucrop_color_progress_wheel_line">#808080</color>
+    <color name="ucrop_color_statusbar">#CC5833</color>
+    <color name="ucrop_color_toolbar">#FF6E40</color>
+    <color name="ucrop_color_toolbar_widget">#fff</color>
+    <color name="ucrop_color_widget">#000</color>
+    <color name="ucrop_color_widget_active">#FF6E40</color>
+    <color name="ucrop_color_widget_background">#fff</color>
+    <color name="ucrop_color_widget_text">#000</color>
     <declare-styleable name="AVLoadingIndicatorView"><attr format="dimension" name="minWidth"/><attr format="dimension" name="maxWidth"/><attr format="dimension" name="minHeight"/><attr format="dimension" name="maxHeight"/><attr format="string" name="indicatorName"/><attr format="color" name="indicatorColor"/></declare-styleable>
     <declare-styleable name="ActionBar"><attr name="navigationMode">
             
@@ -258,8 +404,8 @@
     <declare-styleable name="ActionMenuView"/>
     <declare-styleable name="ActionMode"><attr name="titleTextStyle"/><attr name="subtitleTextStyle"/><attr name="background"/><attr name="backgroundSplit"/><attr name="height"/><attr format="reference" name="closeItemLayout"/></declare-styleable>
     <declare-styleable name="ActivityChooserView"><attr format="string" name="initialActivityCount"/><attr format="reference" name="expandActivityOverflowButtonDrawable"/></declare-styleable>
-    <declare-styleable name="AlertDialog"><attr name="android:layout"/><attr format="reference" name="buttonPanelSideLayout"/><attr format="reference" name="listLayout"/><attr format="reference" name="multiChoiceItemLayout"/><attr format="reference" name="singleChoiceItemLayout"/><attr format="reference" name="listItemLayout"/><attr format="boolean" name="showTitle"/></declare-styleable>
-    <declare-styleable name="AppBarLayout"><attr name="elevation"/><attr name="android:background"/><attr format="boolean" name="expanded"/></declare-styleable>
+    <declare-styleable name="AlertDialog"><attr name="android:layout"/><attr format="reference" name="buttonPanelSideLayout"/><attr format="reference" name="listLayout"/><attr format="reference" name="multiChoiceItemLayout"/><attr format="reference" name="singleChoiceItemLayout"/><attr format="reference" name="listItemLayout"/><attr format="boolean" name="showTitle"/><attr format="dimension" name="buttonIconDimen"/></declare-styleable>
+    <declare-styleable name="AppBarLayout"><attr name="elevation"/><attr name="android:background"/><attr format="boolean" name="expanded"/><attr name="android:keyboardNavigationCluster"/><attr name="android:touchscreenBlocksFocus"/></declare-styleable>
     <declare-styleable name="AppBarLayoutStates"><attr format="boolean" name="state_collapsed"/><attr format="boolean" name="state_collapsible"/></declare-styleable>
     <declare-styleable name="AppBarLayout_Layout"><attr name="layout_scrollFlags">
             
@@ -277,7 +423,20 @@
             
             <flag name="snap" value="0x10"/>
         </attr><attr format="reference" name="layout_scrollInterpolator"/></declare-styleable>
-    <declare-styleable name="AppCompatImageView"><attr name="android:src"/><attr format="reference" name="srcCompat"/></declare-styleable>
+    <declare-styleable name="AppCompatImageView"><attr name="android:src"/><attr format="reference" name="srcCompat"/><attr format="color" name="tint"/><attr name="tintMode">
+            
+            <enum name="src_over" value="3"/>
+            
+            <enum name="src_in" value="5"/>
+            
+            <enum name="src_atop" value="9"/>
+            
+            <enum name="multiply" value="14"/>
+            
+            <enum name="screen" value="15"/>
+            
+            <enum name="add" value="16"/>
+        </attr></declare-styleable>
     <declare-styleable name="AppCompatSeekBar"><attr name="android:thumb"/><attr format="reference" name="tickMark"/><attr format="color" name="tickMarkTint"/><attr name="tickMarkTintMode">
             
             <enum name="src_over" value="3"/>
@@ -293,10 +452,20 @@
             <enum name="add" value="16"/>
         </attr></declare-styleable>
     <declare-styleable name="AppCompatTextHelper"><attr name="android:drawableLeft"/><attr name="android:drawableTop"/><attr name="android:drawableRight"/><attr name="android:drawableBottom"/><attr name="android:drawableStart"/><attr name="android:drawableEnd"/><attr name="android:textAppearance"/></declare-styleable>
-    <declare-styleable name="AppCompatTextView"><attr format="reference|boolean" name="textAllCaps"/><attr name="android:textAppearance"/></declare-styleable>
+    <declare-styleable name="AppCompatTextView"><attr format="reference|boolean" name="textAllCaps"/><attr name="android:textAppearance"/><attr format="enum" name="autoSizeTextType">
+            
+            <enum name="none" value="0"/>
+            
+            <enum name="uniform" value="1"/>
+        </attr><attr format="dimension" name="autoSizeStepGranularity"/><attr format="reference" name="autoSizePresetSizes"/><attr format="dimension" name="autoSizeMinTextSize"/><attr format="dimension" name="autoSizeMaxTextSize"/><attr format="string" name="fontFamily"/></declare-styleable>
     <declare-styleable name="AppCompatTheme"><attr format="boolean" name="windowActionBar"/><attr format="boolean" name="windowNoTitle"/><attr format="boolean" name="windowActionBarOverlay"/><attr format="boolean" name="windowActionModeOverlay"/><attr format="dimension|fraction" name="windowFixedWidthMajor"/><attr format="dimension|fraction" name="windowFixedHeightMinor"/><attr format="dimension|fraction" name="windowFixedWidthMinor"/><attr format="dimension|fraction" name="windowFixedHeightMajor"/><attr format="dimension|fraction" name="windowMinWidthMajor"/><attr format="dimension|fraction" name="windowMinWidthMinor"/><attr name="android:windowIsFloating"/><attr name="android:windowAnimationStyle"/><attr format="reference" name="actionBarTabStyle"/><attr format="reference" name="actionBarTabBarStyle"/><attr format="reference" name="actionBarTabTextStyle"/><attr format="reference" name="actionOverflowButtonStyle"/><attr format="reference" name="actionOverflowMenuStyle"/><attr format="reference" name="actionBarPopupTheme"/><attr format="reference" name="actionBarStyle"/><attr format="reference" name="actionBarSplitStyle"/><attr format="reference" name="actionBarTheme"/><attr format="reference" name="actionBarWidgetTheme"/><attr format="dimension" name="actionBarSize">
             <enum name="wrap_content" value="0"/>
-        </attr><attr format="reference" name="actionBarDivider"/><attr format="reference" name="actionBarItemBackground"/><attr format="reference" name="actionMenuTextAppearance"/><attr format="color|reference" name="actionMenuTextColor"/><attr format="reference" name="actionModeStyle"/><attr format="reference" name="actionModeCloseButtonStyle"/><attr format="reference" name="actionModeBackground"/><attr format="reference" name="actionModeSplitBackground"/><attr format="reference" name="actionModeCloseDrawable"/><attr format="reference" name="actionModeCutDrawable"/><attr format="reference" name="actionModeCopyDrawable"/><attr format="reference" name="actionModePasteDrawable"/><attr format="reference" name="actionModeSelectAllDrawable"/><attr format="reference" name="actionModeShareDrawable"/><attr format="reference" name="actionModeFindDrawable"/><attr format="reference" name="actionModeWebSearchDrawable"/><attr format="reference" name="actionModePopupWindowStyle"/><attr format="reference" name="textAppearanceLargePopupMenu"/><attr format="reference" name="textAppearanceSmallPopupMenu"/><attr format="reference" name="textAppearancePopupMenuHeader"/><attr format="reference" name="dialogTheme"/><attr format="dimension" name="dialogPreferredPadding"/><attr format="reference" name="listDividerAlertDialog"/><attr format="reference" name="actionDropDownStyle"/><attr format="dimension" name="dropdownListPreferredItemHeight"/><attr format="reference" name="spinnerDropDownItemStyle"/><attr format="reference" name="homeAsUpIndicator"/><attr format="reference" name="actionButtonStyle"/><attr format="reference" name="buttonBarStyle"/><attr format="reference" name="buttonBarButtonStyle"/><attr format="reference" name="selectableItemBackground"/><attr format="reference" name="selectableItemBackgroundBorderless"/><attr format="reference" name="borderlessButtonStyle"/><attr format="reference" name="dividerVertical"/><attr format="reference" name="dividerHorizontal"/><attr format="reference" name="activityChooserViewStyle"/><attr format="reference" name="toolbarStyle"/><attr format="reference" name="toolbarNavigationButtonStyle"/><attr format="reference" name="popupMenuStyle"/><attr format="reference" name="popupWindowStyle"/><attr format="reference|color" name="editTextColor"/><attr format="reference" name="editTextBackground"/><attr format="reference" name="imageButtonStyle"/><attr format="reference" name="textAppearanceSearchResultTitle"/><attr format="reference" name="textAppearanceSearchResultSubtitle"/><attr format="reference|color" name="textColorSearchUrl"/><attr format="reference" name="searchViewStyle"/><attr format="dimension" name="listPreferredItemHeight"/><attr format="dimension" name="listPreferredItemHeightSmall"/><attr format="dimension" name="listPreferredItemHeightLarge"/><attr format="dimension" name="listPreferredItemPaddingLeft"/><attr format="dimension" name="listPreferredItemPaddingRight"/><attr format="reference" name="dropDownListViewStyle"/><attr format="reference" name="listPopupWindowStyle"/><attr format="reference" name="textAppearanceListItem"/><attr format="reference" name="textAppearanceListItemSmall"/><attr format="reference" name="panelBackground"/><attr format="dimension" name="panelMenuListWidth"/><attr format="reference" name="panelMenuListTheme"/><attr format="reference" name="listChoiceBackgroundIndicator"/><attr format="color" name="colorPrimary"/><attr format="color" name="colorPrimaryDark"/><attr format="color" name="colorAccent"/><attr format="color" name="colorControlNormal"/><attr format="color" name="colorControlActivated"/><attr format="color" name="colorControlHighlight"/><attr format="color" name="colorButtonNormal"/><attr format="color" name="colorSwitchThumbNormal"/><attr format="reference" name="controlBackground"/><attr format="color" name="colorBackgroundFloating"/><attr format="reference" name="alertDialogStyle"/><attr format="reference" name="alertDialogButtonGroupStyle"/><attr format="boolean" name="alertDialogCenterButtons"/><attr format="reference" name="alertDialogTheme"/><attr format="reference|color" name="textColorAlertDialogListItem"/><attr format="reference" name="buttonBarPositiveButtonStyle"/><attr format="reference" name="buttonBarNegativeButtonStyle"/><attr format="reference" name="buttonBarNeutralButtonStyle"/><attr format="reference" name="autoCompleteTextViewStyle"/><attr format="reference" name="buttonStyle"/><attr format="reference" name="buttonStyleSmall"/><attr format="reference" name="checkboxStyle"/><attr format="reference" name="checkedTextViewStyle"/><attr format="reference" name="editTextStyle"/><attr format="reference" name="radioButtonStyle"/><attr format="reference" name="ratingBarStyle"/><attr format="reference" name="ratingBarStyleIndicator"/><attr format="reference" name="ratingBarStyleSmall"/><attr format="reference" name="seekBarStyle"/><attr format="reference" name="spinnerStyle"/><attr format="reference" name="switchStyle"/><attr format="reference" name="listMenuViewStyle"/></declare-styleable>
+        </attr><attr format="reference" name="actionBarDivider"/><attr format="reference" name="actionBarItemBackground"/><attr format="reference" name="actionMenuTextAppearance"/><attr format="color|reference" name="actionMenuTextColor"/><attr format="reference" name="actionModeStyle"/><attr format="reference" name="actionModeCloseButtonStyle"/><attr format="reference" name="actionModeBackground"/><attr format="reference" name="actionModeSplitBackground"/><attr format="reference" name="actionModeCloseDrawable"/><attr format="reference" name="actionModeCutDrawable"/><attr format="reference" name="actionModeCopyDrawable"/><attr format="reference" name="actionModePasteDrawable"/><attr format="reference" name="actionModeSelectAllDrawable"/><attr format="reference" name="actionModeShareDrawable"/><attr format="reference" name="actionModeFindDrawable"/><attr format="reference" name="actionModeWebSearchDrawable"/><attr format="reference" name="actionModePopupWindowStyle"/><attr format="reference" name="textAppearanceLargePopupMenu"/><attr format="reference" name="textAppearanceSmallPopupMenu"/><attr format="reference" name="textAppearancePopupMenuHeader"/><attr format="reference" name="dialogTheme"/><attr format="dimension" name="dialogPreferredPadding"/><attr format="reference" name="listDividerAlertDialog"/><attr format="reference" name="actionDropDownStyle"/><attr format="dimension" name="dropdownListPreferredItemHeight"/><attr format="reference" name="spinnerDropDownItemStyle"/><attr format="reference" name="homeAsUpIndicator"/><attr format="reference" name="actionButtonStyle"/><attr format="reference" name="buttonBarStyle"/><attr format="reference" name="buttonBarButtonStyle"/><attr format="reference" name="selectableItemBackground"/><attr format="reference" name="selectableItemBackgroundBorderless"/><attr format="reference" name="borderlessButtonStyle"/><attr format="reference" name="dividerVertical"/><attr format="reference" name="dividerHorizontal"/><attr format="reference" name="activityChooserViewStyle"/><attr format="reference" name="toolbarStyle"/><attr format="reference" name="toolbarNavigationButtonStyle"/><attr format="reference" name="popupMenuStyle"/><attr format="reference" name="popupWindowStyle"/><attr format="reference|color" name="editTextColor"/><attr format="reference" name="editTextBackground"/><attr format="reference" name="imageButtonStyle"/><attr format="reference" name="textAppearanceSearchResultTitle"/><attr format="reference" name="textAppearanceSearchResultSubtitle"/><attr format="reference|color" name="textColorSearchUrl"/><attr format="reference" name="searchViewStyle"/><attr format="dimension" name="listPreferredItemHeight"/><attr format="dimension" name="listPreferredItemHeightSmall"/><attr format="dimension" name="listPreferredItemHeightLarge"/><attr format="dimension" name="listPreferredItemPaddingLeft"/><attr format="dimension" name="listPreferredItemPaddingRight"/><attr format="reference" name="dropDownListViewStyle"/><attr format="reference" name="listPopupWindowStyle"/><attr format="reference" name="textAppearanceListItem"/><attr format="reference" name="textAppearanceListItemSecondary"/><attr format="reference" name="textAppearanceListItemSmall"/><attr format="reference" name="panelBackground"/><attr format="dimension" name="panelMenuListWidth"/><attr format="reference" name="panelMenuListTheme"/><attr format="reference" name="listChoiceBackgroundIndicator"/><attr format="color" name="colorPrimary"/><attr format="color" name="colorPrimaryDark"/><attr format="color" name="colorAccent"/><attr format="color" name="colorControlNormal"/><attr format="color" name="colorControlActivated"/><attr format="color" name="colorControlHighlight"/><attr format="color" name="colorButtonNormal"/><attr format="color" name="colorSwitchThumbNormal"/><attr format="reference" name="controlBackground"/><attr format="color" name="colorBackgroundFloating"/><attr format="reference" name="alertDialogStyle"/><attr format="reference" name="alertDialogButtonGroupStyle"/><attr format="boolean" name="alertDialogCenterButtons"/><attr format="reference" name="alertDialogTheme"/><attr format="reference|color" name="textColorAlertDialogListItem"/><attr format="reference" name="buttonBarPositiveButtonStyle"/><attr format="reference" name="buttonBarNegativeButtonStyle"/><attr format="reference" name="buttonBarNeutralButtonStyle"/><attr format="reference" name="autoCompleteTextViewStyle"/><attr format="reference" name="buttonStyle"/><attr format="reference" name="buttonStyleSmall"/><attr format="reference" name="checkboxStyle"/><attr format="reference" name="checkedTextViewStyle"/><attr format="reference" name="editTextStyle"/><attr format="reference" name="radioButtonStyle"/><attr format="reference" name="ratingBarStyle"/><attr format="reference" name="ratingBarStyleIndicator"/><attr format="reference" name="ratingBarStyleSmall"/><attr format="reference" name="seekBarStyle"/><attr format="reference" name="spinnerStyle"/><attr format="reference" name="switchStyle"/><attr format="reference" name="listMenuViewStyle"/><attr format="reference" name="tooltipFrameBackground"/><attr format="reference|color" name="tooltipForegroundColor"/><attr format="reference|color" name="colorError"/><attr format="string" name="viewInflaterClass"/></declare-styleable>
+    <declare-styleable name="AspectRatioFrameLayout"><attr format="float" name="tw__frame_layout_aspect_ratio"/><attr format="enum" name="tw__frame_layout_dimension_to_adjust">
+            <enum name="height" value="0"/>
+            <enum name="width" value="1"/>
+        </attr></declare-styleable>
+    <declare-styleable name="BadgedTabLayout"><attr format="color" name="badgeTextColor"/><attr format="dimension" name="badgeTextSize"/><attr format="color" name="badgeSelectedTextColor"/><attr format="color" name="badgeBackgroundColor"/><attr format="color" name="badgeSelectedBackgroundColor"/><attr format="dimension" name="tabTextSize"/></declare-styleable>
     <declare-styleable name="BezelImageView"><attr format="reference" name="maskDrawable"/><attr format="reference" name="borderDrawable"/><attr format="boolean" name="desaturateOnPress"/></declare-styleable>
     <declare-styleable name="BottomNavigationView"><attr name="menu"/><attr name="itemIconTint"/><attr name="itemTextColor"/><attr name="itemBackground"/><attr name="elevation"/></declare-styleable>
     <declare-styleable name="BottomSheetBehavior_Layout"><attr format="dimension" name="behavior_peekHeight">
@@ -304,6 +473,7 @@
             <enum name="auto" value="-1"/>
         </attr><attr format="boolean" name="behavior_hideable"/><attr format="boolean" name="behavior_skipCollapsed"/></declare-styleable>
     <declare-styleable name="ButtonBarLayout"><attr format="boolean" name="allowStacking"/></declare-styleable>
+    <declare-styleable name="CardView"><attr format="color" name="cardBackgroundColor"/><attr format="dimension" name="cardCornerRadius"/><attr format="dimension" name="cardElevation"/><attr format="dimension" name="cardMaxElevation"/><attr format="boolean" name="cardUseCompatPadding"/><attr format="boolean" name="cardPreventCornerOverlap"/><attr format="dimension" name="contentPadding"/><attr format="dimension" name="contentPaddingLeft"/><attr format="dimension" name="contentPaddingRight"/><attr format="dimension" name="contentPaddingTop"/><attr format="dimension" name="contentPaddingBottom"/><attr name="android:minWidth"/><attr name="android:minHeight"/></declare-styleable>
     <declare-styleable name="CollapsingToolbarLayout"><attr format="dimension" name="expandedTitleMargin"/><attr format="dimension" name="expandedTitleMarginStart"/><attr format="dimension" name="expandedTitleMarginTop"/><attr format="dimension" name="expandedTitleMarginEnd"/><attr format="dimension" name="expandedTitleMarginBottom"/><attr format="reference" name="expandedTitleTextAppearance"/><attr format="reference" name="collapsedTitleTextAppearance"/><attr format="color" name="contentScrim"/><attr format="color" name="statusBarScrim"/><attr format="reference" name="toolbarId"/><attr format="dimension" name="scrimVisibleHeightTrigger"/><attr format="integer" name="scrimAnimationDuration"/><attr name="collapsedTitleGravity">
             
             <flag name="top" value="0x30"/>
@@ -367,8 +537,12 @@
             <enum name="multiply" value="14"/>
             
             <enum name="screen" value="15"/>
+            
+            <enum name="add" value="16"/>
         </attr></declare-styleable>
-    <declare-styleable name="CoordinatorLayout"><attr format="reference" name="keylines"/><attr format="reference" name="statusBarBackground"/></declare-styleable>
+    <declare-styleable name="ConstraintLayout_Layout"><attr name="android:orientation"/><attr name="android:minWidth"/><attr name="android:minHeight"/><attr name="android:maxWidth"/><attr name="android:maxHeight"/><attr name="layout_optimizationLevel"/><attr name="constraintSet"/><attr name="layout_constraintGuide_begin"/><attr name="layout_constraintGuide_end"/><attr name="layout_constraintGuide_percent"/><attr name="layout_constraintLeft_toLeftOf"/><attr name="layout_constraintLeft_toRightOf"/><attr name="layout_constraintRight_toLeftOf"/><attr name="layout_constraintRight_toRightOf"/><attr name="layout_constraintTop_toTopOf"/><attr name="layout_constraintTop_toBottomOf"/><attr name="layout_constraintBottom_toTopOf"/><attr name="layout_constraintBottom_toBottomOf"/><attr name="layout_constraintBaseline_toBaselineOf"/><attr name="layout_constraintStart_toEndOf"/><attr name="layout_constraintStart_toStartOf"/><attr name="layout_constraintEnd_toStartOf"/><attr name="layout_constraintEnd_toEndOf"/><attr name="layout_goneMarginLeft"/><attr name="layout_goneMarginTop"/><attr name="layout_goneMarginRight"/><attr name="layout_goneMarginBottom"/><attr name="layout_goneMarginStart"/><attr name="layout_goneMarginEnd"/><attr name="layout_constraintHorizontal_bias"/><attr name="layout_constraintVertical_bias"/><attr name="layout_constraintWidth_default"/><attr name="layout_constraintHeight_default"/><attr name="layout_constraintWidth_min"/><attr name="layout_constraintWidth_max"/><attr name="layout_constraintHeight_min"/><attr name="layout_constraintHeight_max"/><attr name="layout_constraintLeft_creator"/><attr name="layout_constraintTop_creator"/><attr name="layout_constraintRight_creator"/><attr name="layout_constraintBottom_creator"/><attr name="layout_constraintBaseline_creator"/><attr name="layout_constraintDimensionRatio"/><attr name="layout_constraintHorizontal_weight"/><attr name="layout_constraintVertical_weight"/><attr name="layout_constraintHorizontal_chainStyle"/><attr name="layout_constraintVertical_chainStyle"/><attr name="layout_editor_absoluteX"/><attr name="layout_editor_absoluteY"/></declare-styleable>
+    <declare-styleable name="ConstraintSet"><attr name="android:orientation"/><attr name="android:id"/><attr name="android:visibility"/><attr name="android:alpha"/><attr name="android:elevation"/><attr name="android:rotationX"/><attr name="android:rotationY"/><attr name="android:scaleX"/><attr name="android:scaleY"/><attr name="android:transformPivotX"/><attr name="android:transformPivotY"/><attr name="android:translationX"/><attr name="android:translationY"/><attr name="android:translationZ"/><attr name="android:layout_width"/><attr name="android:layout_height"/><attr name="android:layout_marginStart"/><attr name="android:layout_marginBottom"/><attr name="android:layout_marginTop"/><attr name="android:layout_marginEnd"/><attr name="android:layout_marginLeft"/><attr name="android:layout_marginRight"/><attr name="layout_constraintGuide_begin"/><attr name="layout_constraintGuide_end"/><attr name="layout_constraintGuide_percent"/><attr name="layout_constraintLeft_toLeftOf"/><attr name="layout_constraintLeft_toRightOf"/><attr name="layout_constraintRight_toLeftOf"/><attr name="layout_constraintRight_toRightOf"/><attr name="layout_constraintTop_toTopOf"/><attr name="layout_constraintTop_toBottomOf"/><attr name="layout_constraintBottom_toTopOf"/><attr name="layout_constraintBottom_toBottomOf"/><attr name="layout_constraintBaseline_toBaselineOf"/><attr name="layout_constraintStart_toEndOf"/><attr name="layout_constraintStart_toStartOf"/><attr name="layout_constraintEnd_toStartOf"/><attr name="layout_constraintEnd_toEndOf"/><attr name="layout_goneMarginLeft"/><attr name="layout_goneMarginTop"/><attr name="layout_goneMarginRight"/><attr name="layout_goneMarginBottom"/><attr name="layout_goneMarginStart"/><attr name="layout_goneMarginEnd"/><attr name="layout_constraintHorizontal_bias"/><attr name="layout_constraintVertical_bias"/><attr name="layout_constraintWidth_default"/><attr name="layout_constraintHeight_default"/><attr name="layout_constraintWidth_min"/><attr name="layout_constraintWidth_max"/><attr name="layout_constraintHeight_min"/><attr name="layout_constraintHeight_max"/><attr name="layout_constraintLeft_creator"/><attr name="layout_constraintTop_creator"/><attr name="layout_constraintRight_creator"/><attr name="layout_constraintBottom_creator"/><attr name="layout_constraintBaseline_creator"/><attr name="layout_constraintDimensionRatio"/><attr name="layout_constraintHorizontal_weight"/><attr name="layout_constraintVertical_weight"/><attr name="layout_constraintHorizontal_chainStyle"/><attr name="layout_constraintVertical_chainStyle"/><attr name="layout_editor_absoluteX"/><attr name="layout_editor_absoluteY"/></declare-styleable>
+    <declare-styleable name="CoordinatorLayout"><attr format="reference" name="keylines"/><attr format="color|reference" name="statusBarBackground"/></declare-styleable>
     <declare-styleable name="CoordinatorLayout_Layout"><attr name="android:layout_gravity"/><attr format="string" name="layout_behavior"/><attr format="reference" name="layout_anchor"/><attr format="integer" name="layout_keyline"/><attr name="layout_anchorGravity">
             
             <flag name="top" value="0x30"/>
@@ -408,7 +582,7 @@
             
             <enum name="left" value="0x03"/>
             
-            <enum name="right" value="0x03"/>
+            <enum name="right" value="0x05"/>
             
             <enum name="start" value="0x00800003"/>
             
@@ -423,7 +597,7 @@
             
             <flag name="left" value="0x03"/>
             
-            <flag name="right" value="0x03"/>
+            <flag name="right" value="0x05"/>
             
             <flag name="start" value="0x00800003"/>
             
@@ -432,7 +606,8 @@
             <flag name="all" value="0x77"/>
         </attr></declare-styleable>
     <declare-styleable name="CropImageView"><attr format="reference|color" name="highlightColor"/><attr format="boolean" name="showThirds"/><attr format="boolean" name="showCircle"/><attr name="showHandles"><enum name="changing" value="0"/><enum name="always" value="1"/><enum name="never" value="2"/></attr></declare-styleable>
-    <declare-styleable name="DesignTheme"><attr format="reference" name="bottomSheetDialogTheme"/><attr format="reference" name="bottomSheetStyle"/><attr format="color" name="textColorError"/></declare-styleable>
+    <declare-styleable name="DesignTheme"><attr format="reference" name="bottomSheetDialogTheme"/><attr format="reference" name="bottomSheetStyle"/><attr format="reference|color" name="textColorError"/></declare-styleable>
+    <declare-styleable name="DilatingDotsProgressBar"><attr name="android:radius"/><attr name="android:color"/><attr format="integer" name="dd_numDots"/><attr format="float" name="dd_scaleMultiplier"/><attr format="integer" name="dd_animationDuration"/><attr format="dimension" name="dd_horizontalSpacing"/></declare-styleable>
     <declare-styleable name="DrawerArrowToggle"><attr format="color" name="color"/><attr format="boolean" name="spinBars"/><attr format="dimension" name="drawableSize"/><attr format="dimension" name="gapBetweenBars"/><attr format="dimension" name="arrowHeadLength"/><attr format="dimension" name="arrowShaftLength"/><attr format="dimension" name="barLength"/><attr format="dimension" name="thickness"/></declare-styleable>
     <declare-styleable name="FloatingActionButton"><attr name="backgroundTint"/><attr name="backgroundTintMode"/><attr format="color" name="rippleColor"/><attr name="fabSize">
             
@@ -441,9 +616,23 @@
             <enum name="normal" value="0"/>
             
             <enum name="mini" value="1"/>
-        </attr><attr name="elevation"/><attr format="dimension" name="pressedTranslationZ"/><attr format="dimension" name="borderWidth"/><attr format="boolean" name="useCompatPadding"/></declare-styleable>
+        </attr><attr format="dimension" name="fabCustomSize"/><attr name="elevation"/><attr format="dimension" name="pressedTranslationZ"/><attr format="dimension" name="borderWidth"/><attr format="boolean" name="useCompatPadding"/></declare-styleable>
     <declare-styleable name="FloatingActionButton_Behavior_Layout"><attr format="boolean" name="behavior_autoHide"/></declare-styleable>
+    <declare-styleable name="FontFamily"><attr format="string" name="fontProviderAuthority"/><attr format="string" name="fontProviderPackage"/><attr format="string" name="fontProviderQuery"/><attr format="reference" name="fontProviderCerts"/><attr name="fontProviderFetchStrategy">
+            
+            <enum name="blocking" value="0"/>
+            
+            <enum name="async" value="1"/>
+        </attr><attr format="integer" name="fontProviderFetchTimeout">
+          
+            <enum name="forever" value="-1"/>
+        </attr></declare-styleable>
+    <declare-styleable name="FontFamilyFont"><attr name="fontStyle">
+            <enum name="normal" value="0"/>
+            <enum name="italic" value="1"/>
+        </attr><attr format="reference" name="font"/><attr format="integer" name="fontWeight"/><attr name="android:fontStyle"/><attr name="android:font"/><attr name="android:fontWeight"/></declare-styleable>
     <declare-styleable name="ForegroundLinearLayout"><attr name="android:foreground"/><attr name="android:foregroundGravity"/><attr format="boolean" name="foregroundInsidePadding"/></declare-styleable>
+    <declare-styleable name="LinearConstraintLayout"><attr name="android:orientation"/></declare-styleable>
     <declare-styleable name="LinearLayoutCompat"><attr name="android:orientation"/><attr name="android:gravity"/><attr name="android:baselineAligned"/><attr name="android:baselineAlignedChildIndex"/><attr name="android:weightSum"/><attr format="boolean" name="measureWithLargestChild"/><attr name="divider"/><attr name="showDividers">
             <flag name="none" value="0"/>
             <flag name="beginning" value="1"/>
@@ -461,7 +650,21 @@
 
 </attr><attr format="float" name="imageAspectRatio"/><attr format="boolean" name="circleCrop"/></declare-styleable>
     <declare-styleable name="MenuGroup"><attr name="android:id"/><attr name="android:menuCategory"/><attr name="android:orderInCategory"/><attr name="android:checkableBehavior"/><attr name="android:visible"/><attr name="android:enabled"/></declare-styleable>
-    <declare-styleable name="MenuItem"><attr name="android:id"/><attr name="android:menuCategory"/><attr name="android:orderInCategory"/><attr name="android:title"/><attr name="android:titleCondensed"/><attr name="android:icon"/><attr name="android:alphabeticShortcut"/><attr name="android:numericShortcut"/><attr name="android:checkable"/><attr name="android:checked"/><attr name="android:visible"/><attr name="android:enabled"/><attr name="android:onClick"/><attr name="showAsAction">
+    <declare-styleable name="MenuItem"><attr name="android:id"/><attr name="android:menuCategory"/><attr name="android:orderInCategory"/><attr name="android:title"/><attr name="android:titleCondensed"/><attr name="android:icon"/><attr name="android:alphabeticShortcut"/><attr name="alphabeticModifiers">
+            <flag name="META" value="0x10000"/>
+            <flag name="CTRL" value="0x1000"/>
+            <flag name="ALT" value="0x02"/>
+            <flag name="SHIFT" value="0x1"/>
+            <flag name="SYM" value="0x4"/>
+            <flag name="FUNCTION" value="0x8"/>
+        </attr><attr name="android:numericShortcut"/><attr name="numericModifiers">
+            <flag name="META" value="0x10000"/>
+            <flag name="CTRL" value="0x1000"/>
+            <flag name="ALT" value="0x02"/>
+            <flag name="SHIFT" value="0x1"/>
+            <flag name="SYM" value="0x4"/>
+            <flag name="FUNCTION" value="0x8"/>
+        </attr><attr name="android:checkable"/><attr name="android:checked"/><attr name="android:visible"/><attr name="android:enabled"/><attr name="android:onClick"/><attr name="showAsAction">
             
             <flag name="never" value="0"/>
             
@@ -472,13 +675,26 @@
             <flag name="withText" value="4"/>
             
             <flag name="collapseActionView" value="8"/>
-        </attr><attr format="reference" name="actionLayout"/><attr format="string" name="actionViewClass"/><attr format="string" name="actionProviderClass"/></declare-styleable>
+        </attr><attr format="reference" name="actionLayout"/><attr format="string" name="actionViewClass"/><attr format="string" name="actionProviderClass"/><attr format="string" name="contentDescription"/><attr format="string" name="tooltipText"/><attr format="color" name="iconTint"/><attr name="iconTintMode">
+            
+            <enum name="src_over" value="3"/>
+            
+            <enum name="src_in" value="5"/>
+            
+            <enum name="src_atop" value="9"/>
+            
+            <enum name="multiply" value="14"/>
+            
+            <enum name="screen" value="15"/>
+            
+            <enum name="add" value="16"/>
+        </attr></declare-styleable>
     <declare-styleable name="MenuView"><attr name="android:itemTextAppearance"/><attr name="android:horizontalDivider"/><attr name="android:verticalDivider"/><attr name="android:headerBackground"/><attr name="android:itemBackground"/><attr name="android:windowAnimationStyle"/><attr name="android:itemIconDisabledAlpha"/><attr format="boolean" name="preserveIconSpacing"/><attr format="reference" name="subMenuArrow"/></declare-styleable>
     <declare-styleable name="NavigationView"><attr name="android:background"/><attr name="android:fitsSystemWindows"/><attr name="android:maxWidth"/><attr name="elevation"/><attr format="reference" name="menu"/><attr format="color" name="itemIconTint"/><attr format="color" name="itemTextColor"/><attr format="reference" name="itemBackground"/><attr format="reference" name="itemTextAppearance"/><attr format="reference" name="headerLayout"/></declare-styleable>
     <declare-styleable name="PopupWindow"><attr format="boolean" name="overlapAnchor"/><attr name="android:popupBackground"/><attr name="android:popupAnimationStyle"/></declare-styleable>
     <declare-styleable name="PopupWindowBackgroundState"><attr format="boolean" name="state_above_anchor"/></declare-styleable>
     <declare-styleable name="RecycleListView"><attr format="dimension" name="paddingBottomNoButtons"/><attr format="dimension" name="paddingTopNoTitle"/></declare-styleable>
-    <declare-styleable name="RecyclerView"><attr format="string" name="layoutManager"/><attr name="android:orientation"/><attr name="android:descendantFocusability"/><attr format="integer" name="spanCount"/><attr format="boolean" name="reverseLayout"/><attr format="boolean" name="stackFromEnd"/></declare-styleable>
+    <declare-styleable name="RecyclerView"><attr format="string" name="layoutManager"/><attr name="android:orientation"/><attr name="android:descendantFocusability"/><attr format="integer" name="spanCount"/><attr format="boolean" name="reverseLayout"/><attr format="boolean" name="stackFromEnd"/><attr format="boolean" name="fastScrollEnabled"/><attr format="reference" name="fastScrollVerticalThumbDrawable"/><attr format="reference" name="fastScrollVerticalTrackDrawable"/><attr format="reference" name="fastScrollHorizontalThumbDrawable"/><attr format="reference" name="fastScrollHorizontalTrackDrawable"/></declare-styleable>
     <declare-styleable name="ScrimInsetsFrameLayout"><attr format="color|reference" name="insetForeground"/></declare-styleable>
     <declare-styleable name="ScrollingViewBehavior_Layout"><attr format="dimension" name="behavior_overlapTop"/></declare-styleable>
     <declare-styleable name="SearchView"><attr format="reference" name="layout"/><attr format="boolean" name="iconifiedByDefault"/><attr name="android:maxWidth"/><attr format="string" name="queryHint"/><attr format="string" name="defaultQueryHint"/><attr name="android:imeOptions"/><attr name="android:inputType"/><attr format="reference" name="closeIcon"/><attr format="reference" name="goIcon"/><attr format="reference" name="searchIcon"/><attr format="reference" name="searchHintIcon"/><attr format="reference" name="voiceIcon"/><attr format="reference" name="commitIcon"/><attr format="reference" name="suggestionRowLayout"/><attr format="reference" name="queryBackground"/><attr format="reference" name="submitBackground"/><attr name="android:focusable"/></declare-styleable>
@@ -534,7 +750,7 @@
             <enum name="fill" value="0"/>
             <enum name="center" value="1"/>
         </attr><attr format="dimension" name="tabMinWidth"/><attr format="dimension" name="tabMaxWidth"/><attr format="reference" name="tabTextAppearance"/><attr format="color" name="tabTextColor"/><attr format="color" name="tabSelectedTextColor"/><attr format="dimension" name="tabPaddingStart"/><attr format="dimension" name="tabPaddingTop"/><attr format="dimension" name="tabPaddingEnd"/><attr format="dimension" name="tabPaddingBottom"/><attr format="dimension" name="tabPadding"/></declare-styleable>
-    <declare-styleable name="TextAppearance"><attr name="android:textSize"/><attr name="android:textColor"/><attr name="android:textColorHint"/><attr name="android:textStyle"/><attr name="android:typeface"/><attr name="textAllCaps"/><attr name="android:shadowColor"/><attr name="android:shadowDy"/><attr name="android:shadowDx"/><attr name="android:shadowRadius"/></declare-styleable>
+    <declare-styleable name="TextAppearance"><attr name="android:textSize"/><attr name="android:textColor"/><attr name="android:textColorHint"/><attr name="android:textColorLink"/><attr name="android:textStyle"/><attr name="android:typeface"/><attr name="android:fontFamily"/><attr name="fontFamily"/><attr name="textAllCaps"/><attr name="android:shadowColor"/><attr name="android:shadowDy"/><attr name="android:shadowDx"/><attr name="android:shadowRadius"/></declare-styleable>
     <declare-styleable name="TextInputLayout"><attr format="reference" name="hintTextAppearance"/><attr name="android:hint"/><attr format="boolean" name="hintEnabled"/><attr format="boolean" name="errorEnabled"/><attr format="reference" name="errorTextAppearance"/><attr format="boolean" name="counterEnabled"/><attr format="integer" name="counterMaxLength"/><attr format="reference" name="counterTextAppearance"/><attr format="reference" name="counterOverflowTextAppearance"/><attr name="android:textColorHint"/><attr format="boolean" name="hintAnimationEnabled"/><attr format="boolean" name="passwordToggleEnabled"/><attr format="reference" name="passwordToggleDrawable"/><attr format="string" name="passwordToggleContentDescription"/><attr format="color" name="passwordToggleTint"/><attr name="passwordToggleTintMode">
             
             <enum name="src_over" value="3"/>
@@ -566,13 +782,16 @@
             <enum name="multiply" value="14"/>
             
             <enum name="screen" value="15"/>
+            
+            <enum name="add" value="16"/>
         </attr></declare-styleable>
     <declare-styleable name="ViewStubCompat"><attr name="android:layout"/><attr name="android:inflatedId"/><attr name="android:id"/></declare-styleable>
     <declare-styleable name="com_facebook_like_view"><attr format="color" name="com_facebook_foreground_color"/><attr format="string" name="com_facebook_object_id"/><attr name="com_facebook_object_type"><enum name="unknown" value="0"/><enum name="open_graph" value="1"/><enum name="page" value="2"/></attr><attr name="com_facebook_style"><enum name="standard" value="0"/><enum name="button" value="1"/><enum name="box_count" value="2"/></attr><attr name="com_facebook_auxiliary_view_position"><enum name="bottom" value="0"/><enum name="inline" value="1"/><enum name="top" value="2"/></attr><attr name="com_facebook_horizontal_alignment"><enum name="center" value="0"/><enum name="left" value="1"/><enum name="right" value="2"/></attr></declare-styleable>
     <declare-styleable name="com_facebook_login_view"><attr format="boolean" name="com_facebook_confirm_logout"/><attr format="string" name="com_facebook_login_text"/><attr format="string" name="com_facebook_logout_text"/><attr name="com_facebook_tooltip_mode"><enum name="automatic" value="0"/><enum name="display_always" value="1"/><enum name="never_display" value="2"/></attr></declare-styleable>
     <declare-styleable name="com_facebook_profile_picture_view"><attr name="com_facebook_preset_size"><enum name="small" value="-2"/><enum name="normal" value="-3"/><enum name="large" value="-4"/></attr><attr format="boolean" name="com_facebook_is_cropped"/></declare-styleable>
-    <declare-styleable name="tw__AspectRatioImageView"><attr format="float" name="tw__image_aspect_ratio"/><attr format="enum" name="tw__image_dimension_to_adjust"><enum name="height" value="0"/><enum name="width" value="1"/></attr></declare-styleable>
     <declare-styleable name="tw__TweetView"><attr format="string" name="tw__tweet_id"/><attr format="color" name="tw__container_bg_color"/><attr format="color" name="tw__primary_text_color"/><attr format="color" name="tw__action_color"/><attr format="color" name="tw__action_highlight_color"/><attr format="boolean" name="tw__tweet_actions_enabled"/></declare-styleable>
+    <declare-styleable name="ucrop_AspectRatioTextView"><attr format="string" name="ucrop_artv_ratio_title"/><attr format="float" name="ucrop_artv_ratio_x"/><attr format="float" name="ucrop_artv_ratio_y"/></declare-styleable>
+    <declare-styleable name="ucrop_UCropView"><attr format="float" name="ucrop_aspect_ratio_x"/><attr format="float" name="ucrop_aspect_ratio_y"/><attr format="boolean" name="ucrop_show_oval_crop_frame"/><attr format="boolean" name="ucrop_circle_dimmed_layer"/><attr format="color" name="ucrop_dimmed_color"/><attr format="dimension" name="ucrop_grid_stroke_size"/><attr format="color" name="ucrop_grid_color"/><attr format="integer" name="ucrop_grid_row_count"/><attr format="integer" name="ucrop_grid_column_count"/><attr format="boolean" name="ucrop_show_grid"/><attr format="dimension" name="ucrop_frame_stroke_size"/><attr format="color" name="ucrop_frame_color"/><attr format="boolean" name="ucrop_show_frame"/></declare-styleable>
     <dimen name="abc_action_bar_content_inset_material">16dp</dimen>
     <dimen name="abc_action_bar_content_inset_with_nav">72dp</dimen>
     <dimen name="abc_action_bar_default_height_material">56dp</dimen>
@@ -582,7 +801,6 @@
     <dimen name="abc_action_bar_icon_vertical_padding_material">16dp</dimen>
     <dimen name="abc_action_bar_overflow_padding_end_material">10dp</dimen>
     <dimen name="abc_action_bar_overflow_padding_start_material">6dp</dimen>
-    <dimen name="abc_action_bar_progress_bar_size">40dp</dimen>
     <dimen name="abc_action_bar_stacked_max_height">48dp</dimen>
     <dimen name="abc_action_bar_stacked_tab_max_width">180dp</dimen>
     <dimen name="abc_action_bar_subtitle_bottom_margin_material">5dp</dimen>
@@ -591,6 +809,7 @@
     <dimen name="abc_action_button_min_width_material">48dp</dimen>
     <dimen name="abc_action_button_min_width_overflow_material">36dp</dimen>
     <dimen name="abc_alert_dialog_button_bar_height">48dp</dimen>
+    <dimen name="abc_alert_dialog_button_dimen">48dp</dimen>
     <dimen name="abc_button_inset_horizontal_material">@dimen/abc_control_inset_material</dimen>
     <dimen name="abc_button_inset_vertical_material">6dp</dimen>
     <dimen name="abc_button_padding_horizontal_material">8dp</dimen>
@@ -649,6 +868,10 @@
     <dimen name="abc_text_size_title_material_toolbar">20dp</dimen>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="badge_text_size">11sp</dimen>
+    <dimen name="cardview_compat_inset_shadow">1dp</dimen>
+    <dimen name="cardview_default_elevation">2dp</dimen>
+    <dimen name="cardview_default_radius">2dp</dimen>
     <dimen name="com_facebook_likeboxcountview_border_radius">3dp</dimen>
     <dimen name="com_facebook_likeboxcountview_border_width">1dp</dimen>
     <dimen name="com_facebook_likeboxcountview_caret_height">3dp</dimen>
@@ -668,6 +891,11 @@
     <dimen name="com_facebook_share_button_padding_top">12dp</dimen>
     <dimen name="com_facebook_share_button_text_size">16.0sp</dimen>
     <dimen name="com_facebook_tooltip_horizontal_padding">10dp</dimen>
+    <dimen name="compat_button_inset_horizontal_material">4dp</dimen>
+    <dimen name="compat_button_inset_vertical_material">6dp</dimen>
+    <dimen name="compat_button_padding_horizontal_material">8dp</dimen>
+    <dimen name="compat_button_padding_vertical_material">4dp</dimen>
+    <dimen name="compat_control_corner_material">2dp</dimen>
     <dimen name="crop__bar_height">56dp</dimen>
     <dimen name="design_appbar_elevation">4dp</dimen>
     <dimen name="design_bottom_navigation_active_item_max_width">168dp</dimen>
@@ -710,6 +938,9 @@
     <item format="float" name="disabled_alpha_material_dark" type="dimen">0.30</item>
     <item format="float" name="disabled_alpha_material_light" type="dimen">0.26</item>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="fastscroll_default_thickness">8dp</dimen>
+    <dimen name="fastscroll_margin">0dp</dimen>
+    <dimen name="fastscroll_minimum_range">50dp</dimen>
     <item format="float" name="highlight_alpha_material_colored" type="dimen">0.26</item>
     <item format="float" name="highlight_alpha_material_dark" type="dimen">0.20</item>
     <item format="float" name="highlight_alpha_material_light" type="dimen">0.12</item>
@@ -735,6 +966,7 @@
     <dimen name="notification_subtext_size">13sp</dimen>
     <dimen name="notification_top_pad">10dp</dimen>
     <dimen name="notification_top_pad_large_text">5dp</dimen>
+    <dimen name="pd_button_corner_radius">6dp</dimen>
     <dimen name="pd_feed_profile_image_dimen">60dp</dimen>
     <dimen name="pd_feed_shared_image_dimen">100dp</dimen>
     <dimen name="pd_home_flow_banner_height">160dp</dimen>
@@ -744,20 +976,21 @@
     <dimen name="pd_settings_image_dimen">90dp</dimen>
     <dimen name="social_login_body_text_size">13sp</dimen>
     <dimen name="social_login_header_text_size">20sp</dimen>
-    <dimen name="social_login_padding">25dp</dimen>
+    <dimen name="social_login_padding">15dp</dimen>
     <dimen name="social_login_sign_in_button_text_size">17sp</dimen>
     <dimen name="social_login_terms_text_size">9dp</dimen>
+    <dimen name="tab_text_max_width">600dp</dimen>
+    <dimen name="tab_text_size">11sp</dimen>
+    <dimen name="toolbarPadding">16dp</dimen>
+    <dimen name="tooltip_corner_radius">2dp</dimen>
+    <dimen name="tooltip_horizontal_padding">16dp</dimen>
+    <dimen name="tooltip_margin">8dp</dimen>
+    <dimen name="tooltip_precise_anchor_extra_offset">8dp</dimen>
+    <dimen name="tooltip_precise_anchor_threshold">96dp</dimen>
+    <dimen name="tooltip_vertical_padding">6.5dp</dimen>
+    <dimen name="tooltip_y_offset_non_touch">0dp</dimen>
+    <dimen name="tooltip_y_offset_touch">16dp</dimen>
     <dimen name="tw__badge_padding">4dp</dimen>
-    <dimen name="tw__btn_bar_margin_left">8dp</dimen>
-    <dimen name="tw__btn_bar_margin_right">8dp</dimen>
-    <dimen name="tw__card_font_size_medium">18sp</dimen>
-    <dimen name="tw__card_font_size_small">14sp</dimen>
-    <dimen name="tw__card_maximum_width">400dp</dimen>
-    <dimen name="tw__card_radius_medium">6dp</dimen>
-    <dimen name="tw__card_radius_small">4dp</dimen>
-    <dimen name="tw__card_spacing_large">16dp</dimen>
-    <dimen name="tw__card_spacing_medium">8dp</dimen>
-    <dimen name="tw__card_spacing_small">4dp</dimen>
     <dimen name="tw__compact_tweet_action_bar_offset_left">-12dp</dimen>
     <dimen name="tw__compact_tweet_attribution_line_margin_right">36dp</dimen>
     <dimen name="tw__compact_tweet_avatar_margin_left">12dp</dimen>
@@ -765,12 +998,15 @@
     <dimen name="tw__compact_tweet_avatar_margin_top">5.5dp</dimen>
     <dimen name="tw__compact_tweet_container_bottom_separator">13dp</dimen>
     <dimen name="tw__compact_tweet_container_padding_top">10.5dp</dimen>
+    <dimen name="tw__compact_tweet_full_name_margin_right">0dp</dimen>
     <dimen name="tw__compact_tweet_full_name_margin_top">0dp</dimen>
     <dimen name="tw__compact_tweet_logo_margin_right">12dp</dimen>
     <dimen name="tw__compact_tweet_logo_margin_top">5dp</dimen>
     <dimen name="tw__compact_tweet_media_margin_bottom">3dp</dimen>
     <dimen name="tw__compact_tweet_media_margin_right">12dp</dimen>
     <dimen name="tw__compact_tweet_media_margin_top">7dp</dimen>
+    <dimen name="tw__compact_tweet_quote_tweet_margin_left">0dp</dimen>
+    <dimen name="tw__compact_tweet_quote_tweet_margin_right">12dp</dimen>
     <dimen name="tw__compact_tweet_retweeted_by_drawable_padding">7dp</dimen>
     <dimen name="tw__compact_tweet_retweeted_by_margin_bottom">0dp</dimen>
     <dimen name="tw__compact_tweet_retweeted_by_margin_left">-25dp</dimen>
@@ -799,16 +1035,22 @@
     <dimen name="tw__cta_margin_top">12dp</dimen>
     <dimen name="tw__cta_padding">8dp</dimen>
     <dimen name="tw__cta_radius">14dp</dimen>
+    <dimen name="tw__gallery_page_margin">12dp</dimen>
     <dimen name="tw__login_btn_drawable_padding">4dp</dimen>
     <dimen name="tw__login_btn_height">32dp</dimen>
     <dimen name="tw__login_btn_left_padding">8dp</dimen>
     <dimen name="tw__login_btn_radius">5dp</dimen>
     <dimen name="tw__login_btn_right_padding">12dp</dimen>
     <dimen name="tw__login_btn_text_size">14sp</dimen>
-    <dimen name="tw__padding_permission_horizontal_container">24dp</dimen>
-    <dimen name="tw__padding_permission_vertical_container">24dp</dimen>
-    <dimen name="tw__permission_description_text_size">16sp</dimen>
-    <dimen name="tw__permission_title_text_size">24sp</dimen>
+    <dimen name="tw__media_view_divider_size">1dp</dimen>
+    <dimen name="tw__media_view_radius">5dp</dimen>
+    <dimen name="tw__quote_tweet_attribution_text_margin_horizontal">8dp</dimen>
+    <dimen name="tw__quote_tweet_attribution_text_margin_top">7dp</dimen>
+    <dimen name="tw__quote_tweet_border_width">1dp</dimen>
+    <dimen name="tw__quote_tweet_media_margin_bottom">1dp</dimen>
+    <dimen name="tw__quote_tweet_media_margin_horizontal">1dp</dimen>
+    <dimen name="tw__quote_tweet_text_margin_bottom">8dp</dimen>
+    <dimen name="tw__quote_tweet_text_margin_horizontal">8dp</dimen>
     <dimen name="tw__seekbar_thumb_inner_padding">13dp</dimen>
     <dimen name="tw__seekbar_thumb_outer_padding">7dp</dimen>
     <dimen name="tw__seekbar_thumb_size">32dp</dimen>
@@ -826,12 +1068,14 @@
     <dimen name="tw__tweet_avatar_margin_top">18dp</dimen>
     <dimen name="tw__tweet_avatar_size">36dp</dimen>
     <dimen name="tw__tweet_container_bottom_separator">18dp</dimen>
-    <dimen name="tw__tweet_container_padding_top">0dp</dimen>
+    <dimen name="tw__tweet_full_name_drawable_padding">3dp</dimen>
+    <dimen name="tw__tweet_full_name_margin_right">36dp</dimen>
     <dimen name="tw__tweet_full_name_margin_top">15dp</dimen>
     <dimen name="tw__tweet_logo_margin_right">20dp</dimen>
     <dimen name="tw__tweet_logo_margin_top">18dp</dimen>
-    <item format="float" name="tw__tweet_media_aspect_ratio" type="dimen">1.777777</item>
     <dimen name="tw__tweet_media_badge_margin">4dp</dimen>
+    <dimen name="tw__tweet_quote_tweet_margin_horizontal">20dp</dimen>
+    <dimen name="tw__tweet_quote_tweet_margin_top">8dp</dimen>
     <dimen name="tw__tweet_retweeted_by_drawable_padding">3dp</dimen>
     <dimen name="tw__tweet_retweeted_by_margin_bottom">-10dp</dimen>
     <dimen name="tw__tweet_retweeted_by_margin_left">20dp</dimen>
@@ -843,10 +1087,27 @@
     <dimen name="tw__tweet_text_margin_top">12dp</dimen>
     <dimen name="tw__tweet_timestamp_margin_top">-4dp</dimen>
     <dimen name="tw__tweet_timestamp_padding_left">4dp</dimen>
-    <dimen name="tw__tweet_verified_check_padding_left">3dp</dimen>
-    <dimen name="tw__tweet_verified_margin_bottom">3dp</dimen>
     <dimen name="tw__video_control_height">32dp</dimen>
     <dimen name="tw__video_control_text_size">13sp</dimen>
+    <dimen name="ucrop_default_crop_frame_stoke_width">1dp</dimen>
+    <dimen name="ucrop_default_crop_grid_stoke_width">1dp</dimen>
+    <dimen name="ucrop_default_crop_logo_size">200dp</dimen>
+    <dimen name="ucrop_default_crop_rect_corner_touch_area_line_length">10dp</dimen>
+    <dimen name="ucrop_default_crop_rect_corner_touch_threshold">30dp</dimen>
+    <dimen name="ucrop_default_crop_rect_min_size">100dp</dimen>
+    <dimen name="ucrop_height_crop_aspect_ratio_text">40dp</dimen>
+    <dimen name="ucrop_height_divider_shadow">3dp</dimen>
+    <dimen name="ucrop_height_horizontal_wheel_progress_line">20dp</dimen>
+    <dimen name="ucrop_height_wrapper_controls">64dp</dimen>
+    <dimen name="ucrop_height_wrapper_states">72dp</dimen>
+    <dimen name="ucrop_margin_horizontal_wheel_progress_line">10dp</dimen>
+    <dimen name="ucrop_margit_top_widget_text">10sp</dimen>
+    <dimen name="ucrop_padding_crop_frame">16dp</dimen>
+    <dimen name="ucrop_progress_size">30dp</dimen>
+    <dimen name="ucrop_size_dot_scale_text_view">8dp</dimen>
+    <dimen name="ucrop_size_wrapper_rotate_button">50dp</dimen>
+    <dimen name="ucrop_text_size_widget_text">13sp</dimen>
+    <dimen name="ucrop_width_horizontal_wheel_progress_line">2dp</dimen>
     <dimen name="wallet_image_dimen">50dp</dimen>
     <drawable name="notification_template_icon_bg">#3333B5E5</drawable>
     <drawable name="notification_template_icon_low_bg">#0cffffff</drawable>
@@ -854,15 +1115,30 @@
     <item name="action_bar_spinner" type="id"/>
     <item name="action_menu_divider" type="id"/>
     <item name="action_menu_presenter" type="id"/>
+    <item name="ghost_view" type="id"/>
     <item name="home" type="id"/>
     <item name="item_touch_helper_previous_elevation" type="id"/>
+    <item name="line1" type="id"/>
+    <item name="line3" type="id"/>
+    <item name="parent_matrix" type="id"/>
     <item name="progress_circular" type="id"/>
     <item name="progress_horizontal" type="id"/>
+    <item name="save_image_matrix" type="id"/>
+    <item name="save_non_transition_alpha" type="id"/>
+    <item name="save_scale_type" type="id"/>
     <item name="split_action_bar" type="id"/>
+    <item name="tag_transition_group" type="id"/>
+    <item name="text" type="id"/>
+    <item name="text2" type="id"/>
     <item name="textinput_counter" type="id"/>
     <item name="textinput_error" type="id"/>
+    <item name="title" type="id"/>
     <item name="transition_current_scene" type="id"/>
+    <item name="transition_layout_save" type="id"/>
+    <item name="transition_position" type="id"/>
     <item name="transition_scene_layoutid_cache" type="id"/>
+    <item name="transition_transform" type="id"/>
+    <item name="tw__entity_index" type="id"/>
     <item name="up" type="id"/>
     <item name="view_offset_helper" type="id"/>
     <integer name="abc_config_activityDefaultDur">220</integer>
@@ -870,11 +1146,14 @@
     <integer name="app_bar_elevation_anim_duration">150</integer>
     <integer name="bottom_sheet_slide_duration">150</integer>
     <integer name="cancel_button_image_alpha">127</integer>
+    <integer name="config_tooltipAnimTime">150</integer>
     <integer name="design_snackbar_text_max_lines">2</integer>
-    <integer name="google_play_services_version">10298000</integer>
+    <integer name="google_play_services_version">11910000</integer>
     <integer name="hide_password_duration">320</integer>
     <integer name="show_password_duration">200</integer>
     <integer name="status_bar_notification_info_maxnum">999</integer>
+    <integer name="transition">150</integer>
+    <integer name="ucrop_progress_loading_anim_time">1500</integer>
     <plurals name="tw__time_hours">
         <item quantity="one">1h</item>
         <item quantity="other">%dh</item>
@@ -888,8 +1167,6 @@
         <item quantity="other">%ds</item>
     </plurals>
     <string name="abc_action_bar_home_description">Navigate home</string>
-    <string name="abc_action_bar_home_description_format">%1$s, %2$s</string>
-    <string name="abc_action_bar_home_subtitle_description_format">%1$s, %2$s, %3$s</string>
     <string name="abc_action_bar_up_description">Navigate up</string>
     <string name="abc_action_menu_overflow_description">More options</string>
     <string name="abc_action_mode_done">Done</string>
@@ -916,14 +1193,14 @@
     <string name="abc_searchview_description_submit">Submit query</string>
     <string name="abc_searchview_description_voice">Voice search</string>
     <string name="abc_shareactionprovider_share_with">Share with</string>
-    <string name="abc_shareactionprovider_share_with_application">Share with %s</string>
+    <string name="abc_shareactionprovider_share_with_application">Share with <ns1:g example="Mail" id="application_name">%s</ns1:g></string>
     <string name="abc_toolbar_collapse_description">Collapse</string>
     <string name="activity_name">@string/launcher_name</string>
     <string name="app_name">HelloCordova</string>
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="bottom_sheet_behavior" translatable="false">android.support.design.widget.BottomSheetBehavior</string>
     <string name="character_counter_pattern" translatable="false">%1$d / %2$d</string>
-    <string name="com.crashlytics.android.build_id" ns1:ignore="UnusedResources,TypographyDashes" translatable="false">e0c592f1-a51a-416e-810e-f8b817054e3c</string>
+    <string name="com.crashlytics.android.build_id" ns2:ignore="UnusedResources,TypographyDashes" translatable="false">47e51b26-2a70-4d2f-bb2b-a4bec6b0e9fc</string>
     <string name="com_facebook_image_download_unknown_error">Unexpected error while downloading an image.</string>
     <string name="com_facebook_internet_permission_error_message">WebView login requires INTERNET permission</string>
     <string name="com_facebook_internet_permission_error_title">AndroidManifest Error</string>
@@ -941,37 +1218,39 @@
     <string name="com_facebook_share_button_text">Share</string>
     <string name="com_facebook_tooltip_default">New! You\'re in control - choose what info you want to share with apps.</string>
     <string msgid="2523291102206661146" name="common_google_play_services_enable_button">Enable</string>
-    <string msgid="227660514972886228" name="common_google_play_services_enable_text"><ns2:g id="app_name">%1$s</ns2:g> won\'t work unless you enable Google Play services.</string>
+    <string msgid="227660514972886228" name="common_google_play_services_enable_text"><ns1:g id="app_name">%1$s</ns1:g> won\'t work unless you enable Google Play services.</string>
     <string msgid="5122002158466380389" name="common_google_play_services_enable_title">Enable Google Play services</string>
     <string msgid="7153882981874058840" name="common_google_play_services_install_button">Install</string>
-    <string name="common_google_play_services_install_text"><ns2:g id="app_name">%1$s</ns2:g> won\'t run without Google Play services, which are missing from your device.</string>
+    <string name="common_google_play_services_install_text"><ns1:g id="app_name">%1$s</ns1:g> won\'t run without Google Play services, which are missing from your device.</string>
     <string msgid="7215213145546190223" name="common_google_play_services_install_title">Get Google Play services</string>
+    <string name="common_google_play_services_notification_channel_name">Google Play services availability</string>
     <string name="common_google_play_services_notification_ticker">Google Play services error</string>
-    <string name="common_google_play_services_unknown_issue"><ns2:g id="app_name">%1$s</ns2:g> is having trouble with Google Play services. Please try again.</string>
-    <string name="common_google_play_services_unsupported_text"><ns2:g id="app_name">%1$s</ns2:g> won\'t run without Google Play services, which are not supported by your device.</string>
+    <string name="common_google_play_services_unknown_issue"><ns1:g id="app_name">%1$s</ns1:g> is having trouble with Google Play services. Please try again.</string>
+    <string name="common_google_play_services_unsupported_text"><ns1:g id="app_name">%1$s</ns1:g> won\'t run without Google Play services, which are not supported by your device.</string>
     <string msgid="6556509956452265614" name="common_google_play_services_update_button">Update</string>
-    <string msgid="9053896323427875356" name="common_google_play_services_update_text"><ns2:g id="app_name">%1$s</ns2:g> won\'t run unless you update Google Play services.</string>
+    <string msgid="9053896323427875356" name="common_google_play_services_update_text"><ns1:g id="app_name">%1$s</ns1:g> won\'t run unless you update Google Play services.</string>
     <string msgid="6006316683626838685" name="common_google_play_services_update_title">Update Google Play services</string>
-    <string name="common_google_play_services_updating_text"><ns2:g id="app_name">%1$s</ns2:g> won\'t run without Google Play services, which are currently updating.</string>
+    <string name="common_google_play_services_updating_text"><ns1:g id="app_name">%1$s</ns1:g> won\'t run without Google Play services, which are currently updating.</string>
     <string name="common_google_play_services_wear_update_text">New version of Google Play services needed. It will update itself shortly.</string>
     <string name="common_open_on_phone">Open on phone</string>
     <string name="common_signin_button_text">Sign in</string>
     <string name="common_signin_button_text_long">Sign in with Google</string>
-    <string name="crop__cancel" ns1:ignore="ButtonCase">CANCEL</string>
+    <string name="content_authority">com.popdeem.sdk</string>
+    <string name="crop__cancel" ns2:ignore="ButtonCase">CANCEL</string>
     <string name="crop__done">DONE</string>
     <string name="crop__pick_error">No image sources available</string>
     <string name="crop__saving">Saving picture…</string>
     <string name="crop__wait">Please wait…</string>
-    <string name="facebook_application_id">1706317436274686</string>
+    <string name="facebook_application_id">1528213564167350</string>
     <string name="facebook_url_scheme">sdkscheme</string>
-    <string name="kit_name">Twitter</string>
+    <string name="gcm_fallback_notification_channel_label">Miscellaneous</string>
     <string name="launcher_name">@string/app_name</string>
     <string name="messenger_send_button_text">Send</string>
     <string name="password_toggle_content_description">Toggle password visibility</string>
-    <string name="path_password_eye">M12,4.5C7,4.5 2.73,7.61 1,12c1.73,4.39 6,7.5 11,7.5s9.27,-3.11 11,-7.5c-1.73,-4.39 -6,-7.5 -11,-7.5zM12,17c-2.76,0 -5,-2.24 -5,-5s2.24,-5 5,-5 5,2.24 5,5 -2.24,5 -5,5zM12,9c-1.66,0 -3,1.34 -3,3s1.34,3 3,3 3,-1.34 3,-3 -1.34,-3 -3,-3z</string>
-    <string name="path_password_eye_mask_strike_through">M2,4.27 L19.73,22 L22.27,19.46 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>
-    <string name="path_password_eye_mask_visible">M2,4.27 L2,4.27 L4.54,1.73 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>
-    <string name="path_password_strike_through">M3.27,4.27 L19.74,20.74</string>
+    <string name="path_password_eye" translatable="false">M12,4.5C7,4.5 2.73,7.61 1,12c1.73,4.39 6,7.5 11,7.5s9.27,-3.11 11,-7.5c-1.73,-4.39 -6,-7.5 -11,-7.5zM12,17c-2.76,0 -5,-2.24 -5,-5s2.24,-5 5,-5 5,2.24 5,5 -2.24,5 -5,5zM12,9c-1.66,0 -3,1.34 -3,3s1.34,3 3,3 3,-1.34 3,-3 -1.34,-3 -3,-3z</string>
+    <string name="path_password_eye_mask_strike_through" translatable="false">M2,4.27 L19.73,22 L22.27,19.46 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>
+    <string name="path_password_eye_mask_visible" translatable="false">M2,4.27 L2,4.27 L4.54,1.73 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>
+    <string name="path_password_strike_through" translatable="false">M3.27,4.27 L19.74,20.74</string>
     <string name="pd_activity_title">Activity</string>
     <string name="pd_add_text">Add</string>
     <string name="pd_are_you_sure_string">Are you sure?</string>
@@ -982,6 +1261,8 @@
     <string name="pd_claim_action_checkin">Check-in Required</string>
     <string name="pd_claim_action_none">No Action Required</string>
     <string name="pd_claim_action_photo">Photo required</string>
+    <string name="pd_claim_action_photo_camera">\uD83D\uDCF8 Photo Required</string>
+    <string name="pd_claim_action_social_login">Social Login</string>
     <string name="pd_claim_action_tweet">Tweet Required</string>
     <string name="pd_claim_action_tweet_checkin">Check-in or Tweet Required</string>
     <string name="pd_claim_action_tweet_photo">Tweet with Photo Required</string>
@@ -989,6 +1270,7 @@
     <string name="pd_claim_add_photo_gallery_text">Gallery</string>
     <string name="pd_claim_add_photo_title_text">Add Photo</string>
     <string name="pd_claim_already_shared_default">I\'ve already shared</string>
+    <string name="pd_claim_back_text">Back to Reward</string>
     <string name="pd_claim_cannot_deselect_text">Cannot Deselect</string>
     <string name="pd_claim_choose_friends_search_text">Search</string>
     <string name="pd_claim_choose_friends_title">Choose Friends</string>
@@ -1024,8 +1306,10 @@
     <string name="pd_common_please_wait_text">Please wait</string>
     <string name="pd_common_something_wrong_text">Something went wrong. Please try again later.</string>
     <string name="pd_common_sorry_text">Sorry</string>
-    <string name="pd_connect_dialog_button_text">Connect %1s Account</string>
-    <string name="pd_connect_dialog_message_text">You must connect your %1s account to claim this reward</string>
+    <string formatted="false" name="pd_connect_dialog_button_text">Connect %1s Account</string>
+    <string name="pd_connect_dialog_button_text_settings">Continue</string>
+    <string formatted="false" name="pd_connect_dialog_message_text">You must connect your %1s account to claim this reward</string>
+    <string formatted="false" name="pd_connect_dialog_message_text_settings">Connect your %1s account to claim %1s rewards</string>
     <string name="pd_connect_facebook">Connect to Facebook</string>
     <string name="pd_connect_facebook_title">Facebook</string>
     <string name="pd_connect_instagram">Connect to Instagram</string>
@@ -1034,9 +1318,26 @@
     <string name="pd_connect_twitter_title">Twitter</string>
     <string name="pd_draw_takes_place_in_string">Draw takes place in</string>
     <string name="pd_empty_string"/>
+    <string name="pd_event_congrats_1">Congratulations, you earned</string>
+    <string name="pd_event_congrats_2">ambassador status</string>
+    <string name="pd_event_emoji_0">\uD83C\uDFC5</string>
+    <string name="pd_event_emoji_1">\uD83E\uDD49</string>
+    <string name="pd_event_emoji_2">\uD83E\uDD48</string>
+    <string name="pd_event_emoji_3">\uD83E\uDD47</string>
+    <string name="pd_event_now">You are now a</string>
+    <string name="pd_event_now_2">ambassador</string>
     <string name="pd_feed_no_items_text">There is nothing in the feed right now.\nPlease check back later.</string>
     <string name="pd_go_to_wallet_text">Go to Wallet</string>
-    <string name="pd_home_banner_text">Share your FarmBoy experience on social networks to earn more rewards.</string>
+    <string formatted="false" name="pd_gratitude_connect_body_text">You earned %s points for connecting. Share photo’s with #RibsandBurgers to earn additional rewards!</string>
+    <string name="pd_gratitude_go_to_profile_button">Go to Profile</string>
+    <string formatted="false" name="pd_gratitude_share_body_text">Thanks for sharing. You earned an additional %s points to your account and moved up in status.</string>
+    <string name="pd_gratitude_share_text">Thanks for sharing, your reward has been added to your profile. Enjoy!</string>
+    <string formatted="false" name="pd_gratitude_share_text_coupon">Thanks for sharing. %s has been added to your account. Enjoy!</string>
+    <string name="pd_gratitude_thanks_for_connecting">Welcome</string>
+    <string formatted="false" name="pd_gratitude_thanks_text">Thanks for sharing. You earned an additional %s points to your account and moved up in status</string>
+    <string name="pd_gratitude_title">You\'re Brilliant!</string>
+    <string name="pd_gratitude_unlock_offers_text">Unlock new rewards and VIP offers as you move up in status.</string>
+    <string name="pd_home_banner_text">Share your RibsandBurgers experience on social networks to earn more rewards.</string>
     <string name="pd_inbox_message_body_tag_text">Body:</string>
     <string name="pd_inbox_message_date_tag_text">Date:</string>
     <string name="pd_inbox_message_sender_tag_text">Sender:</string>
@@ -1048,19 +1349,25 @@
     <string name="pd_location_permission_are_you_sure_text">We use your location to deliver local rewards. Would you like to give permission to access your location?</string>
     <string name="pd_location_permission_rationale_text">We use your location to deliver local rewards</string>
     <string name="pd_location_permission_title_text">Locations Permission</string>
-    <string name="pd_log_in_with_facebook_text">Sign in with Facebook</string>
-    <string name="pd_log_in_with_instagram_text">Sign in with Instagram</string>
-    <string name="pd_log_in_with_twitter_text">Sign in with Twitter</string>
+    <string name="pd_log_in_with_facebook_text">Log in with Facebook</string>
+    <string name="pd_log_in_with_instagram_text">Log in with Instagram</string>
+    <string name="pd_log_in_with_twitter_text">Log in with Twitter</string>
     <string name="pd_log_out">Log Out</string>
     <string name="pd_log_out_facebook_text">Log out</string>
     <string name="pd_notification_go_button_text">GO</string>
     <string name="pd_ok">OK</string>
+    <string name="pd_profile_bronze_ambassador">\uD83E\uDD49\nBronze\nAmbassador</string>
+    <string name="pd_profile_connect_text">Connect Social Media Accounts</string>
+    <string name="pd_profile_gold_ambassador">\uD83E\uDD47\nGold\nAmbassador</string>
+    <string name="pd_profile_history_text">MY HISTORY</string>
+    <string name="pd_profile_messages_text">Messages</string>
+    <string name="pd_profile_silver_ambassador">\uD83E\uDD48\nSilver\nAmbassador</string>
     <string name="pd_redeem_button_string">Redeem</string>
     <string name="pd_redeem_done_alert_body_text">You will not be able to redeem your reward after leaving this screen</string>
     <string name="pd_redeem_done_alert_title_text">Have you redeemed your reward?</string>
     <string name="pd_redeem_done_text">Done</string>
     <string name="pd_redeem_info_text">Share this screen at the location\nbefore the timer runs out</string>
-    <string name="pd_redeem_reward_info_title_string">How to Redeem</string>
+    <string name="pd_redeem_reward_info_title_string">Redeem Reward Now?</string>
     <string name="pd_redeem_sweepstake_reward_info_message_string">- You are now in the draw.\n\n- You will be notified if you are the winner.</string>
     <string name="pd_redeem_sweepstake_reward_info_title_string">Sweepstake Reward</string>
     <string name="pd_redeem_sweepstake_reward_no_date_message_string">\n\n- There is no date set for this draw.</string>
@@ -1096,45 +1403,47 @@
     <string name="pd_suspended_message_string">You have been suspended. You cannot claim any rewards at this time.</string>
     <string name="pd_suspended_message_with_date_string">You have been suspended. Your account will become active on %1s</string>
     <string name="pd_suspended_title_string">Suspended</string>
-    <string name="pd_wallet_coupon_info_message_text">- Once you\'re ready to redeem your reward, tap \"Redeem\".\n\n- After tapping \"Redeem\" you have %1$s minutes to get the reward.\n\n- You must show the cashier the following screen within %2$s minutes.</string>
+    <string name="pd_tier_1_name">Bronze</string>
+    <string name="pd_tier_2_name">Silver</string>
+    <string name="pd_tier_3_name">Gold</string>
+    <string name="pd_unlocked_reward_text">Hey Richard, we found your post with #hashtag. Thanks for sharing! You have unlocked your reward!</string>
+    <string name="pd_wallet_coupon_info_message_text">You will be presented with a countdown timer you must show the merchant.</string>
     <string name="pd_wallet_credit_reward_text">was added to your account on</string>
     <string name="pd_wallet_no_items_text">There is nothing in your history right now.\nPlease check back later.</string>
     <string name="pd_wallet_recurs_day">Draw takes place on</string>
     <string name="pd_wallet_recurs_monthly">Draw takes place monthly.</string>
     <string name="pd_wallet_redeem_text">Redeem at the point of sale.</string>
-    <string name="pd_wallet_reward_must_be_verified_text">Press verify to claim your reward.</string>
-    <string name="pd_wallet_sweepstake_must_be_verified_text">Press verify to enter into the competition.</string>
+    <string name="pd_wallet_reward_must_be_verified_text">This reward must be verified.</string>
+    <string name="pd_wallet_sweepstake_must_be_verified_text">This reward must be verified.</string>
     <string name="pd_wallet_sweepstake_redeem_text">You will be notified if you are the winner.</string>
     <string name="pd_wallet_sweepstakes_text">You have been entered into the draw.</string>
-    <string name="pd_wallet_title">History</string>
+    <string name="pd_wallet_title">Profile</string>
     <string name="pd_wallet_verify_button_text">Verify</string>
     <string name="search_menu_title">Search</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="tw__allow_btn_txt">Allow</string>
     <string name="tw__composer_hint">What\'s Happening?</string>
-    <string name="tw__cta_text">Open in Vine</string>
-    <string name="tw__install">Install</string>
     <string name="tw__like_tweet">Like Tweet</string>
     <string name="tw__liked_tweet">Undo Like</string>
     <string name="tw__loading_tweet">Loading Tweet</string>
     <string name="tw__login_btn_txt">Log in with Twitter</string>
     <string name="tw__max_tweet_chars">140</string>
-    <string name="tw__not_now_btn_txt">Not now</string>
     <string name="tw__pause">pause</string>
     <string name="tw__play">play</string>
-    <string name="tw__play_store">Google Play</string>
     <string name="tw__post_tweet">Tweet</string>
     <string name="tw__relative_date_format_long">MM/dd/yy</string>
     <string name="tw__relative_date_format_short">MMM dd</string>
     <string name="tw__replay">replay</string>
     <string name="tw__retweeted_by_format">Retweeted by %1$s</string>
     <string name="tw__share_content_format">Check out @%1$s\'s Tweet: https://twitter.com/%1$s/status/%2$s</string>
-    <string name="tw__share_email_desc">Allow %1$s to access the email address associated with your Twitter account \@%2$s so that %1$s can use it according to its privacy policy. For example, %1$s could send you updates and other information at that address.</string>
-    <string name="tw__share_email_title">Share your email address</string>
     <string name="tw__share_subject_format">Tweet from %1$s (@%2$s)</string>
     <string name="tw__share_tweet">Share Tweet</string>
     <string name="tw__tweet_content_description">%1$s. %2$s. %3$s.</string>
     <string name="tw__tweet_media">Tweet Media</string>
+    <string name="ucrop_error_input_data_is_absent" translatable="false">Both input and output Uri must be specified</string>
+    <string name="ucrop_label_edit_photo">Edit Photo</string>
+    <string name="ucrop_label_original">Original</string>
+    <string name="ucrop_menu_crop">Crop</string>
+    <string name="ucrop_mutate_exception_hint" translatable="false">Therefore, override color resource (ucrop_color_toolbar_widget) in your app to make it work on pre-L devices</string>
     <style name="AVLoadingIndicatorView">
         <item name="minWidth">48dip</item>
         <item name="maxWidth">48dip</item>
@@ -1158,8 +1467,14 @@
     </style>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>
+    <style name="AlertDialogCustom" parent="Base.Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:textColorPrimary">@color/pd_notification_dialog_message_text_color</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+    </style>
     <style name="Animation.AppCompat.Dialog" parent="Base.Animation.AppCompat.Dialog"/>
     <style name="Animation.AppCompat.DropDownUp" parent="Base.Animation.AppCompat.DropDownUp"/>
+    <style name="Animation.AppCompat.Tooltip" parent="Base.Animation.AppCompat.Tooltip"/>
     <style name="Animation.Design.BottomSheetDialog" parent="Animation.AppCompat.Dialog">
         <item name="android:windowEnterAnimation">@anim/design_bottom_sheet_slide_in</item>
         <item name="android:windowExitAnimation">@anim/design_bottom_sheet_slide_out</item>
@@ -1170,6 +1485,7 @@
         <item name="listItemLayout">@layout/select_dialog_item_material</item>
         <item name="multiChoiceItemLayout">@layout/select_dialog_multichoice_material</item>
         <item name="singleChoiceItemLayout">@layout/select_dialog_singlechoice_material</item>
+        <item name="buttonIconDimen">@dimen/abc_alert_dialog_button_dimen</item>
     </style>
     <style name="Base.AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat"/>
     <style name="Base.Animation.AppCompat.Dialog" parent="android:Animation">
@@ -1179,6 +1495,17 @@
     <style name="Base.Animation.AppCompat.DropDownUp" parent="android:Animation">
         <item name="android:windowEnterAnimation">@anim/abc_grow_fade_in_from_bottom</item>
         <item name="android:windowExitAnimation">@anim/abc_shrink_fade_out_from_bottom</item>
+    </style>
+    <style name="Base.Animation.AppCompat.Tooltip" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/abc_tooltip_enter</item>
+        <item name="android:windowExitAnimation">@anim/abc_tooltip_exit</item>
+    </style>
+    <style name="Base.CardView" parent="android:Widget">
+        <item name="cardCornerRadius">@dimen/cardview_default_radius</item>
+        <item name="cardElevation">@dimen/cardview_default_elevation</item>
+        <item name="cardMaxElevation">@dimen/cardview_default_elevation</item>
+        <item name="cardUseCompatPadding">false</item>
+        <item name="cardPreventCornerOverlap">true</item>
     </style>
     <style name="Base.DialogWindowTitle.AppCompat" parent="android:Widget">
         <item name="android:maxLines">1</item>
@@ -1208,7 +1535,7 @@
     </style>
     <style name="Base.TextAppearance.AppCompat.Button">
         <item name="android:textSize">@dimen/abc_text_size_button_material</item>
-        <item name="textAllCaps">true</item>
+        <item name="android:textAllCaps">true</item>
         <item name="android:textColor">?android:textColorPrimary</item>
     </style>
     <style name="Base.TextAppearance.AppCompat.Caption">
@@ -1238,6 +1565,8 @@
     <style name="Base.TextAppearance.AppCompat.Inverse">
         <item name="android:textColor">?android:attr/textColorPrimaryInverse</item>
         <item name="android:textColorHint">?android:attr/textColorHintInverse</item>
+        <item name="android:textColorHighlight">?android:attr/textColorHighlightInverse</item>
+        <item name="android:textColorLink">?android:attr/textColorLinkInverse</item>
     </style>
     <style name="Base.TextAppearance.AppCompat.Large">
         <item name="android:textSize">@dimen/abc_text_size_large_material</item>
@@ -1246,6 +1575,8 @@
     <style name="Base.TextAppearance.AppCompat.Large.Inverse">
         <item name="android:textColor">?android:attr/textColorPrimaryInverse</item>
         <item name="android:textColorHint">?android:attr/textColorHintInverse</item>
+        <item name="android:textColorHighlight">?android:attr/textColorHighlightInverse</item>
+        <item name="android:textColorLink">?android:attr/textColorLinkInverse</item>
     </style>
     <style name="Base.TextAppearance.AppCompat.Medium">
         <item name="android:textSize">@dimen/abc_text_size_medium_material</item>
@@ -1254,6 +1585,8 @@
     <style name="Base.TextAppearance.AppCompat.Medium.Inverse">
         <item name="android:textColor">?android:attr/textColorSecondaryInverse</item>
         <item name="android:textColorHint">?android:attr/textColorHintInverse</item>
+        <item name="android:textColorHighlight">?android:attr/textColorHighlightInverse</item>
+        <item name="android:textColorLink">?android:attr/textColorLinkInverse</item>
     </style>
     <style name="Base.TextAppearance.AppCompat.Menu">
         <item name="android:textSize">@dimen/abc_text_size_menu_material</item>
@@ -1278,6 +1611,8 @@
     <style name="Base.TextAppearance.AppCompat.Small.Inverse">
         <item name="android:textColor">?android:attr/textColorTertiaryInverse</item>
         <item name="android:textColorHint">?android:attr/textColorHintInverse</item>
+        <item name="android:textColorHighlight">?android:attr/textColorHighlightInverse</item>
+        <item name="android:textColorLink">?android:attr/textColorLinkInverse</item>
     </style>
     <style name="Base.TextAppearance.AppCompat.Subhead">
         <item name="android:textSize">@dimen/abc_text_size_subhead_material</item>
@@ -1286,6 +1621,8 @@
     <style name="Base.TextAppearance.AppCompat.Subhead.Inverse">
         <item name="android:textColor">?android:attr/textColorPrimaryInverse</item>
         <item name="android:textColorHint">?android:attr/textColorHintInverse</item>
+        <item name="android:textColorHighlight">?android:attr/textColorHighlightInverse</item>
+        <item name="android:textColorLink">?android:attr/textColorLinkInverse</item>
     </style>
     <style name="Base.TextAppearance.AppCompat.Title">
         <item name="android:textSize">@dimen/abc_text_size_title_material</item>
@@ -1294,6 +1631,11 @@
     <style name="Base.TextAppearance.AppCompat.Title.Inverse">
         <item name="android:textColor">?android:attr/textColorPrimaryInverse</item>
         <item name="android:textColorHint">?android:attr/textColorHintInverse</item>
+        <item name="android:textColorHighlight">?android:attr/textColorHighlightInverse</item>
+        <item name="android:textColorLink">?android:attr/textColorLinkInverse</item>
+    </style>
+    <style name="Base.TextAppearance.AppCompat.Tooltip">
+        <item name="android:textSize">14sp</item>
     </style>
     <style name="Base.TextAppearance.AppCompat.Widget.ActionBar.Menu" parent="TextAppearance.AppCompat.Button">
         <item name="android:textColor">?attr/actionMenuTextColor</item>
@@ -1354,8 +1696,8 @@
     </style>
     <style name="Base.Theme.AppCompat.Dialog" parent="Base.V7.Theme.AppCompat.Dialog"/>
     <style name="Base.Theme.AppCompat.Dialog.Alert">
-        <item name="windowMinWidthMajor">@dimen/abc_dialog_min_width_major</item>
-        <item name="windowMinWidthMinor">@dimen/abc_dialog_min_width_minor</item>
+        <item name="android:windowMinWidthMajor">@dimen/abc_dialog_min_width_major</item>
+        <item name="android:windowMinWidthMinor">@dimen/abc_dialog_min_width_minor</item>
     </style>
     <style name="Base.Theme.AppCompat.Dialog.FixedSize">
         <item name="windowFixedWidthMajor">@dimen/abc_dialog_fixed_width_major</item>
@@ -1364,8 +1706,8 @@
         <item name="windowFixedHeightMinor">@dimen/abc_dialog_fixed_height_minor</item>
     </style>
     <style name="Base.Theme.AppCompat.Dialog.MinWidth">
-        <item name="windowMinWidthMajor">@dimen/abc_dialog_min_width_major</item>
-        <item name="windowMinWidthMinor">@dimen/abc_dialog_min_width_minor</item>
+        <item name="android:windowMinWidthMajor">@dimen/abc_dialog_min_width_major</item>
+        <item name="android:windowMinWidthMinor">@dimen/abc_dialog_min_width_minor</item>
     </style>
     <style name="Base.Theme.AppCompat.DialogWhenLarge" parent="Theme.AppCompat"/>
     <style name="Base.Theme.AppCompat.Light" parent="Base.V7.Theme.AppCompat.Light">
@@ -1383,8 +1725,8 @@
     </style>
     <style name="Base.Theme.AppCompat.Light.Dialog" parent="Base.V7.Theme.AppCompat.Light.Dialog"/>
     <style name="Base.Theme.AppCompat.Light.Dialog.Alert">
-        <item name="windowMinWidthMajor">@dimen/abc_dialog_min_width_major</item>
-        <item name="windowMinWidthMinor">@dimen/abc_dialog_min_width_minor</item>
+        <item name="android:windowMinWidthMajor">@dimen/abc_dialog_min_width_major</item>
+        <item name="android:windowMinWidthMinor">@dimen/abc_dialog_min_width_minor</item>
     </style>
     <style name="Base.Theme.AppCompat.Light.Dialog.FixedSize">
         <item name="windowFixedWidthMajor">@dimen/abc_dialog_fixed_width_major</item>
@@ -1393,8 +1735,8 @@
         <item name="windowFixedHeightMinor">@dimen/abc_dialog_fixed_height_minor</item>
     </style>
     <style name="Base.Theme.AppCompat.Light.Dialog.MinWidth">
-        <item name="windowMinWidthMajor">@dimen/abc_dialog_min_width_major</item>
-        <item name="windowMinWidthMinor">@dimen/abc_dialog_min_width_minor</item>
+        <item name="android:windowMinWidthMajor">@dimen/abc_dialog_min_width_major</item>
+        <item name="android:windowMinWidthMinor">@dimen/abc_dialog_min_width_minor</item>
     </style>
     <style name="Base.Theme.AppCompat.Light.DialogWhenLarge" parent="Theme.AppCompat.Light"/>
     <style name="Base.ThemeOverlay.AppCompat" parent="Platform.ThemeOverlay.AppCompat"/>
@@ -1435,8 +1777,8 @@
     </style>
     <style name="Base.ThemeOverlay.AppCompat.Dialog" parent="Base.V7.ThemeOverlay.AppCompat.Dialog"/>
     <style name="Base.ThemeOverlay.AppCompat.Dialog.Alert">
-        <item name="windowMinWidthMajor">@dimen/abc_dialog_min_width_major</item>
-        <item name="windowMinWidthMinor">@dimen/abc_dialog_min_width_minor</item>
+        <item name="android:windowMinWidthMajor">@dimen/abc_dialog_min_width_major</item>
+        <item name="android:windowMinWidthMinor">@dimen/abc_dialog_min_width_minor</item>
     </style>
     <style name="Base.ThemeOverlay.AppCompat.Light" parent="Platform.ThemeOverlay.AppCompat.Light">
         <item name="android:windowBackground">@color/background_material_light</item>
@@ -1466,7 +1808,11 @@
         <!-- Used by MediaRouter -->
         <item name="isLightTheme">true</item>
     </style>
+    <style name="Base.V14.Widget.Design.AppBarLayout" parent="android:Widget">
+        <item name="android:background">?attr/colorPrimary</item>
+    </style>
     <style name="Base.V7.Theme.AppCompat" parent="Platform.AppCompat">
+        <item name="viewInflaterClass">android.support.v7.app.AppCompatViewInflater</item>
         <item name="windowNoTitle">false</item>
         <item name="windowActionBar">true</item>
         <item name="windowActionBarOverlay">false</item>
@@ -1529,6 +1875,7 @@
         <!-- List attributes -->
         <item name="textAppearanceListItem">@style/TextAppearance.AppCompat.Subhead</item>
         <item name="textAppearanceListItemSmall">@style/TextAppearance.AppCompat.Subhead</item>
+        <item name="textAppearanceListItemSecondary">@style/TextAppearance.AppCompat.Body1</item>
         <item name="listPreferredItemHeight">64dp</item>
         <item name="listPreferredItemHeightSmall">48dp</item>
         <item name="listPreferredItemHeightLarge">80dp</item>
@@ -1624,6 +1971,12 @@
         <item name="windowFixedWidthMinor">@null</item>
         <item name="windowFixedHeightMajor">@null</item>
         <item name="windowFixedHeightMinor">@null</item>
+
+        <!-- Tooltip attributes -->
+        <item name="tooltipFrameBackground">@drawable/tooltip_frame_light</item>
+        <item name="tooltipForegroundColor">@color/foreground_material_light</item>
+
+        <item name="colorError">@color/error_color_material</item>
     </style>
     <style name="Base.V7.Theme.AppCompat.Dialog" parent="Base.Theme.AppCompat">
         <item name="android:colorBackground">?attr/colorBackgroundFloating</item>
@@ -1646,8 +1999,14 @@
         <item name="listPreferredItemPaddingRight">24dip</item>
 
         <item name="android:listDivider">@null</item>
+
+        <item name="android:buttonBarStyle">@style/Widget.AppCompat.ButtonBar.AlertDialog</item>
+        <item name="android:borderlessButtonStyle">@style/Widget.AppCompat.Button.Borderless</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
     </style>
     <style name="Base.V7.Theme.AppCompat.Light" parent="Platform.AppCompat.Light">
+        <item name="viewInflaterClass">android.support.v7.app.AppCompatViewInflater</item>
+
         <item name="windowNoTitle">false</item>
         <item name="windowActionBar">true</item>
         <item name="windowActionBarOverlay">false</item>
@@ -1710,6 +2069,7 @@
         <!-- List attributes -->
         <item name="textAppearanceListItem">@style/TextAppearance.AppCompat.Subhead</item>
         <item name="textAppearanceListItemSmall">@style/TextAppearance.AppCompat.Subhead</item>
+        <item name="textAppearanceListItemSecondary">@style/TextAppearance.AppCompat.Body1</item>
         <item name="listPreferredItemHeight">64dp</item>
         <item name="listPreferredItemHeightSmall">48dp</item>
         <item name="listPreferredItemHeightLarge">80dp</item>
@@ -1805,6 +2165,12 @@
         <item name="windowFixedWidthMinor">@null</item>
         <item name="windowFixedHeightMajor">@null</item>
         <item name="windowFixedHeightMinor">@null</item>
+
+        <!-- Tooltip attributes -->
+        <item name="tooltipFrameBackground">@drawable/tooltip_frame_dark</item>
+        <item name="tooltipForegroundColor">@color/foreground_material_dark</item>
+
+        <item name="colorError">@color/error_color_material</item>
     </style>
     <style name="Base.V7.Theme.AppCompat.Light.Dialog" parent="Base.Theme.AppCompat.Light">
         <item name="android:colorBackground">?attr/colorBackgroundFloating</item>
@@ -1827,6 +2193,10 @@
         <item name="listPreferredItemPaddingRight">24dip</item>
 
         <item name="android:listDivider">@null</item>
+
+        <item name="android:buttonBarStyle">@style/Widget.AppCompat.ButtonBar.AlertDialog</item>
+        <item name="android:borderlessButtonStyle">@style/Widget.AppCompat.Button.Borderless</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
     </style>
     <style name="Base.V7.ThemeOverlay.AppCompat.Dialog" parent="Base.ThemeOverlay.AppCompat">
         <item name="android:colorBackgroundCacheHint">@null</item>
@@ -1854,6 +2224,10 @@
         <item name="windowFixedWidthMinor">@null</item>
         <item name="windowFixedHeightMajor">@null</item>
         <item name="windowFixedHeightMinor">@null</item>
+
+        <item name="android:buttonBarStyle">@style/Widget.AppCompat.ButtonBar.AlertDialog</item>
+        <item name="android:borderlessButtonStyle">@style/Widget.AppCompat.Button.Borderless</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
     </style>
     <style name="Base.V7.Widget.AppCompat.AutoCompleteTextView" parent="android:Widget.AutoCompleteTextView">
         <item name="android:dropDownSelector">?attr/listChoiceBackgroundIndicator</item>
@@ -1861,11 +2235,27 @@
         <item name="android:background">?attr/editTextBackground</item>
         <item name="android:textColor">?attr/editTextColor</item>
         <item name="android:textAppearance">?android:attr/textAppearanceMediumInverse</item>
+        <item name="android:textCursorDrawable">@drawable/abc_text_cursor_material</item>
     </style>
     <style name="Base.V7.Widget.AppCompat.EditText" parent="android:Widget.EditText">
         <item name="android:background">?attr/editTextBackground</item>
         <item name="android:textColor">?attr/editTextColor</item>
         <item name="android:textAppearance">?android:attr/textAppearanceMediumInverse</item>
+        <item name="android:textCursorDrawable">@drawable/abc_text_cursor_material</item>
+    </style>
+    <style name="Base.V7.Widget.AppCompat.Toolbar" parent="android:Widget">
+        <item name="titleTextAppearance">@style/TextAppearance.Widget.AppCompat.Toolbar.Title</item>
+        <item name="subtitleTextAppearance">@style/TextAppearance.Widget.AppCompat.Toolbar.Subtitle</item>
+        <item name="android:minHeight">?attr/actionBarSize</item>
+        <item name="titleMargin">4dp</item>
+        <item name="maxButtonHeight">@dimen/abc_action_bar_default_height_material</item>
+        <item name="buttonGravity">top</item>
+        <item name="collapseIcon">?attr/homeAsUpIndicator</item>
+        <item name="collapseContentDescription">@string/abc_toolbar_collapse_description</item>
+        <item name="contentInsetStart">16dp</item>
+        <item name="contentInsetStartWithNavigation">@dimen/abc_action_bar_content_inset_with_nav</item>
+        <item name="android:paddingLeft">@dimen/abc_action_bar_default_padding_start_material</item>
+        <item name="android:paddingRight">@dimen/abc_action_bar_default_padding_end_material</item>
     </style>
     <style name="Base.Widget.AppCompat.ActionBar" parent="">
         <item name="displayOptions">showTitle</item>
@@ -2078,13 +2468,9 @@
     </style>
     <style name="Base.Widget.AppCompat.PopupWindow" parent="android:Widget.PopupWindow">
     </style>
-    <style name="Base.Widget.AppCompat.ProgressBar" parent="android:Widget.ProgressBar">
-        <item name="android:minWidth">@dimen/abc_action_bar_progress_bar_size</item>
-        <item name="android:maxWidth">@dimen/abc_action_bar_progress_bar_size</item>
-        <item name="android:minHeight">@dimen/abc_action_bar_progress_bar_size</item>
-        <item name="android:maxHeight">@dimen/abc_action_bar_progress_bar_size</item>
+    <style name="Base.Widget.AppCompat.ProgressBar" parent="android:Widget.Holo.ProgressBar">
     </style>
-    <style name="Base.Widget.AppCompat.ProgressBar.Horizontal" parent="android:Widget.ProgressBar.Horizontal">
+    <style name="Base.Widget.AppCompat.ProgressBar.Horizontal" parent="android:Widget.Holo.ProgressBar.Horizontal">
     </style>
     <style name="Base.Widget.AppCompat.RatingBar" parent="android:Widget.RatingBar">
         <item name="android:progressDrawable">@drawable/abc_ratingbar_material</item>
@@ -2155,28 +2541,13 @@
         <item name="android:paddingLeft">8dp</item>
         <item name="android:paddingRight">8dp</item>
     </style>
-    <style name="Base.Widget.AppCompat.Toolbar" parent="android:Widget">
-        <item name="titleTextAppearance">@style/TextAppearance.Widget.AppCompat.Toolbar.Title</item>
-        <item name="subtitleTextAppearance">@style/TextAppearance.Widget.AppCompat.Toolbar.Subtitle</item>
-        <item name="android:minHeight">?attr/actionBarSize</item>
-        <item name="titleMargin">4dp</item>
-        <item name="maxButtonHeight">@dimen/abc_action_bar_default_height_material</item>
-        <item name="buttonGravity">top</item>
-        <item name="collapseIcon">?attr/homeAsUpIndicator</item>
-        <item name="collapseContentDescription">@string/abc_toolbar_collapse_description</item>
-        <item name="contentInsetStart">16dp</item>
-        <item name="contentInsetStartWithNavigation">@dimen/abc_action_bar_content_inset_with_nav</item>
-        <item name="android:paddingLeft">@dimen/abc_action_bar_default_padding_start_material</item>
-        <item name="android:paddingRight">@dimen/abc_action_bar_default_padding_end_material</item>
-    </style>
+    <style name="Base.Widget.AppCompat.Toolbar" parent="Base.V7.Widget.AppCompat.Toolbar"/>
     <style name="Base.Widget.AppCompat.Toolbar.Button.Navigation" parent="android:Widget">
         <item name="android:background">?attr/controlBackground</item>
         <item name="android:minWidth">56dp</item>
         <item name="android:scaleType">center</item>
     </style>
-    <style name="Base.Widget.Design.AppBarLayout" parent="android:Widget">
-        <item name="android:background">?attr/colorPrimary</item>
-    </style>
+    <style name="Base.Widget.Design.AppBarLayout" parent="Base.V14.Widget.Design.AppBarLayout"/>
     <style name="Base.Widget.Design.TabLayout" parent="android:Widget">
         <item name="tabMaxWidth">@dimen/design_tab_max_width</item>
         <item name="tabIndicatorColor">?attr/colorAccent</item>
@@ -2186,6 +2557,14 @@
         <item name="tabBackground">?attr/selectableItemBackground</item>
         <item name="tabTextAppearance">@style/TextAppearance.Design.Tab</item>
         <item name="tabSelectedTextColor">?android:textColorPrimary</item>
+    </style>
+    <style name="CardView" parent="Base.CardView">
+    </style>
+    <style name="CardView.Dark">
+        <item name="cardBackgroundColor">@color/cardview_dark_background</item>
+    </style>
+    <style name="CardView.Light">
+        <item name="cardBackgroundColor">@color/cardview_light_background</item>
     </style>
     <style name="ComposerDark" parent="@android:style/Theme">
         <item name="android:textColor">@color/tw__composer_white</item>
@@ -2230,9 +2609,22 @@
         <item name="android:layout_height">@dimen/crop__bar_height</item>
         <item name="android:orientation">horizontal</item>
         <item name="android:divider">@drawable/crop__divider</item>
-        <item name="android:showDividers" ns1:ignore="NewApi">middle</item>
-        <item name="android:dividerPadding" ns1:ignore="NewApi">12dp</item>
+        <item name="android:showDividers" ns2:ignore="NewApi">middle</item>
+        <item name="android:dividerPadding" ns2:ignore="NewApi">12dp</item>
         <item name="android:background">@color/crop__button_bar</item>
+    </style>
+    <style name="CustomActivityAnimation" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/slide_in_right</item>
+        <item name="android:activityOpenExitAnimation">@anim/slide_out_left</item>
+        <item name="android:activityCloseEnterAnimation">@anim/slide_in_left</item>
+        <item name="android:activityCloseExitAnimation">@anim/slide_out_right</item>
+    </style>
+    <style name="DialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/slide_up_dialog</item>
+        <item name="android:windowExitAnimation">@anim/slide_out_down</item>
+    </style>
+    <style name="FullScreenDialogStyle" parent="@android:style/Theme.Dialog">
+        <item name="android:windowAnimationStyle">@style/DialogAnimation</item>
     </style>
     <style name="MediaTheme" parent="@android:style/Theme">
         <item name="android:windowBackground">@android:color/black</item>
@@ -2295,8 +2687,13 @@
     <style name="MessengerButtonText.White.Small">
     <item name="android:drawableLeft">@drawable/messenger_bubble_small_blue</item>
   </style>
-    <style name="Platform.AppCompat" parent="android:Theme">
+    <style name="Platform.AppCompat" parent="android:Theme.Holo">
         <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+
+        <item name="android:buttonBarStyle">?attr/buttonBarStyle</item>
+        <item name="android:buttonBarButtonStyle">?attr/buttonBarButtonStyle</item>
+        <item name="android:borderlessButtonStyle">?attr/borderlessButtonStyle</item>
 
         <!-- Window colors -->
         <item name="android:colorForeground">@color/foreground_material_dark</item>
@@ -2318,7 +2715,10 @@
         <item name="android:textColorHint">@color/abc_hint_foreground_material_dark</item>
         <item name="android:textColorHintInverse">@color/abc_hint_foreground_material_light</item>
         <item name="android:textColorHighlight">@color/highlighted_text_material_dark</item>
+        <item name="android:textColorHighlightInverse">@color/highlighted_text_material_light</item>
         <item name="android:textColorLink">?attr/colorAccent</item>
+        <item name="android:textColorLinkInverse">?attr/colorAccent</item>
+        <item name="android:textColorAlertDialogListItem">@color/abc_primary_text_material_dark</item>
 
         <!-- Text styles -->
         <item name="android:textAppearance">@style/TextAppearance.AppCompat</item>
@@ -2333,12 +2733,25 @@
         <item name="android:listChoiceIndicatorSingle">@drawable/abc_btn_radio_material</item>
         <item name="android:listChoiceIndicatorMultiple">@drawable/abc_btn_check_material</item>
 
+        <item name="android:listPreferredItemPaddingLeft">@dimen/abc_list_item_padding_horizontal_material</item>
+        <item name="android:listPreferredItemPaddingRight">@dimen/abc_list_item_padding_horizontal_material</item>
+
+        <item name="android:actionModeCutDrawable">?actionModeCutDrawable</item>
+        <item name="android:actionModeCopyDrawable">?actionModeCopyDrawable</item>
+        <item name="android:actionModePasteDrawable">?actionModePasteDrawable</item>
+        <item name="android:actionModeSelectAllDrawable">?actionModeSelectAllDrawable</item>
+
         <item name="android:textSelectHandle">@drawable/abc_text_select_handle_middle_mtrl_dark</item>
         <item name="android:textSelectHandleLeft">@drawable/abc_text_select_handle_left_mtrl_dark</item>
         <item name="android:textSelectHandleRight">@drawable/abc_text_select_handle_right_mtrl_dark</item>
     </style>
-    <style name="Platform.AppCompat.Light" parent="android:Theme.Light">
+    <style name="Platform.AppCompat.Light" parent="android:Theme.Holo.Light">
         <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+
+        <item name="android:buttonBarStyle">?attr/buttonBarStyle</item>
+        <item name="android:buttonBarButtonStyle">?attr/buttonBarButtonStyle</item>
+        <item name="android:borderlessButtonStyle">?attr/borderlessButtonStyle</item>
 
         <!-- Window colors -->
         <item name="android:colorForeground">@color/foreground_material_light</item>
@@ -2361,7 +2774,10 @@
         <item name="android:textColorHint">@color/abc_hint_foreground_material_light</item>
         <item name="android:textColorHintInverse">@color/abc_hint_foreground_material_dark</item>
         <item name="android:textColorHighlight">@color/highlighted_text_material_light</item>
+        <item name="android:textColorHighlightInverse">@color/highlighted_text_material_dark</item>
         <item name="android:textColorLink">?attr/colorAccent</item>
+        <item name="android:textColorLinkInverse">?attr/colorAccent</item>
+        <item name="android:textColorAlertDialogListItem">@color/abc_primary_text_material_light</item>
 
         <!-- Text styles -->
         <item name="android:textAppearance">@style/TextAppearance.AppCompat</item>
@@ -2375,6 +2791,14 @@
 
         <item name="android:listChoiceIndicatorSingle">@drawable/abc_btn_radio_material</item>
         <item name="android:listChoiceIndicatorMultiple">@drawable/abc_btn_check_material</item>
+
+        <item name="android:listPreferredItemPaddingLeft">@dimen/abc_list_item_padding_horizontal_material</item>
+        <item name="android:listPreferredItemPaddingRight">@dimen/abc_list_item_padding_horizontal_material</item>
+
+        <item name="android:actionModeCutDrawable">?actionModeCutDrawable</item>
+        <item name="android:actionModeCopyDrawable">?actionModeCopyDrawable</item>
+        <item name="android:actionModePasteDrawable">?actionModePasteDrawable</item>
+        <item name="android:actionModeSelectAllDrawable">?actionModeSelectAllDrawable</item>
 
         <item name="android:textSelectHandle">@drawable/abc_text_select_handle_middle_mtrl_light</item>
         <item name="android:textSelectHandleLeft">@drawable/abc_text_select_handle_left_mtrl_light</item>
@@ -2400,24 +2824,29 @@
         <item name="android:autoCompleteTextViewStyle">@style/Widget.AppCompat.Light.AutoCompleteTextView</item>
         <item name="android:dropDownItemStyle">@style/Widget.AppCompat.DropDownItem.Spinner</item>
     </style>
-    <style name="Platform.Widget.AppCompat.Spinner" parent="android:Widget.Spinner"/>
+    <style name="Platform.Widget.AppCompat.Spinner" parent="android:Widget.Holo.Spinner"/>
     <style name="PopdeemSDKTheme" parent="Base.Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowAnimationStyle">@style/CustomActivityAnimation</item>
     </style>
     <style name="PopdeemSDKTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
         <item name="android:textColorPrimary">@color/pd_toolbar_text_color</item>
+        <item name="android:textColor">@color/pd_toolbar_text_color</item>
+        <item name="contentInsetStart">16dp</item>
     </style>
     <style name="PopdeemSDKTheme.ClaimSwitchStyle">
         <item name="colorControlActivated">@color/pd_claim_switch_tint_color</item>
     </style>
     <style name="PopdeemSDKTheme.DarkerWindowBackgroundTheme" parent="PopdeemSDKTheme.NoActionBar">
         <item name="android:windowBackground">@color/pd_claim_background_color</item>
+        <item name="android:windowAnimationStyle">@style/CustomActivityAnimation</item>
     </style>
     <style name="PopdeemSDKTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="android:windowAnimationStyle">@style/CustomActivityAnimation</item>
     </style>
     <style name="PopdeemSDKTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
     <style name="PopdeemSDKTheme.TabLayoutText" parent="TextAppearance.AppCompat.Button">
@@ -2494,28 +2923,6 @@
     <style name="TextAppearance.AppCompat.Medium" parent="Base.TextAppearance.AppCompat.Medium"/>
     <style name="TextAppearance.AppCompat.Medium.Inverse" parent="Base.TextAppearance.AppCompat.Medium.Inverse"/>
     <style name="TextAppearance.AppCompat.Menu" parent="Base.TextAppearance.AppCompat.Menu"/>
-    <style name="TextAppearance.AppCompat.Notification">
-        <item name="android:textSize">14sp</item>
-        <item name="android:textColor">?android:attr/textColorSecondary</item>
-    </style>
-    <style name="TextAppearance.AppCompat.Notification.Info">
-        <item name="android:textSize">12sp</item>
-        <item name="android:textColor">?android:attr/textColorSecondary</item>
-    </style>
-    <style name="TextAppearance.AppCompat.Notification.Info.Media"/>
-    <style name="TextAppearance.AppCompat.Notification.Line2" parent="TextAppearance.AppCompat.Notification.Info"/>
-    <style name="TextAppearance.AppCompat.Notification.Line2.Media" parent="TextAppearance.AppCompat.Notification.Info.Media"/>
-    <style name="TextAppearance.AppCompat.Notification.Media"/>
-    <style name="TextAppearance.AppCompat.Notification.Time">
-        <item name="android:textSize">12sp</item>
-        <item name="android:textColor">?android:attr/textColorSecondary</item>
-    </style>
-    <style name="TextAppearance.AppCompat.Notification.Time.Media"/>
-    <style name="TextAppearance.AppCompat.Notification.Title">
-        <item name="android:textSize">16sp</item>
-        <item name="android:textColor">?android:attr/textColorPrimary</item>
-    </style>
-    <style name="TextAppearance.AppCompat.Notification.Title.Media"/>
     <style name="TextAppearance.AppCompat.SearchResult.Subtitle" parent="Base.TextAppearance.AppCompat.SearchResult.Subtitle">
     </style>
     <style name="TextAppearance.AppCompat.SearchResult.Title" parent="Base.TextAppearance.AppCompat.SearchResult.Title">
@@ -2526,6 +2933,7 @@
     <style name="TextAppearance.AppCompat.Subhead.Inverse" parent="Base.TextAppearance.AppCompat.Subhead.Inverse"/>
     <style name="TextAppearance.AppCompat.Title" parent="Base.TextAppearance.AppCompat.Title"/>
     <style name="TextAppearance.AppCompat.Title.Inverse" parent="Base.TextAppearance.AppCompat.Title.Inverse"/>
+    <style name="TextAppearance.AppCompat.Tooltip" parent="Base.TextAppearance.AppCompat.Tooltip"/>
     <style name="TextAppearance.AppCompat.Widget.ActionBar.Menu" parent="Base.TextAppearance.AppCompat.Widget.ActionBar.Menu">
     </style>
     <style name="TextAppearance.AppCompat.Widget.ActionBar.Subtitle" parent="Base.TextAppearance.AppCompat.Widget.ActionBar.Subtitle"/>
@@ -2551,6 +2959,22 @@
     <style name="TextAppearance.AppCompat.Widget.PopupMenu.Small" parent="Base.TextAppearance.AppCompat.Widget.PopupMenu.Small"/>
     <style name="TextAppearance.AppCompat.Widget.Switch" parent="Base.TextAppearance.AppCompat.Widget.Switch"/>
     <style name="TextAppearance.AppCompat.Widget.TextView.SpinnerItem" parent="Base.TextAppearance.AppCompat.Widget.TextView.SpinnerItem"/>
+    <style name="TextAppearance.Compat.Notification" parent="@android:style/TextAppearance.StatusBar.EventContent"/>
+    <style name="TextAppearance.Compat.Notification.Info">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+    </style>
+    <style name="TextAppearance.Compat.Notification.Info.Media"/>
+    <style name="TextAppearance.Compat.Notification.Line2" parent="TextAppearance.Compat.Notification.Info"/>
+    <style name="TextAppearance.Compat.Notification.Line2.Media" parent="TextAppearance.Compat.Notification.Info.Media"/>
+    <style name="TextAppearance.Compat.Notification.Media"/>
+    <style name="TextAppearance.Compat.Notification.Time">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+    </style>
+    <style name="TextAppearance.Compat.Notification.Time.Media"/>
+    <style name="TextAppearance.Compat.Notification.Title" parent="@android:style/TextAppearance.StatusBar.EventContent.Title"/>
+    <style name="TextAppearance.Compat.Notification.Title.Media"/>
     <style name="TextAppearance.Design.CollapsingToolbar.Expanded" parent="TextAppearance.AppCompat.Display1">
         <item name="android:textColor">?android:attr/textColorPrimary</item>
     </style>
@@ -2573,11 +2997,6 @@
         <item name="android:textColor">?android:textColorSecondary</item>
         <item name="textAllCaps">true</item>
     </style>
-    <style name="TextAppearance.StatusBar.EventContent" parent=""/>
-    <style name="TextAppearance.StatusBar.EventContent.Info" parent=""/>
-    <style name="TextAppearance.StatusBar.EventContent.Line2" parent=""/>
-    <style name="TextAppearance.StatusBar.EventContent.Time" parent=""/>
-    <style name="TextAppearance.StatusBar.EventContent.Title" parent=""/>
     <style name="TextAppearance.Widget.AppCompat.ExpandedMenu.Item" parent="Base.TextAppearance.Widget.AppCompat.ExpandedMenu.Item">
     </style>
     <style name="TextAppearance.Widget.AppCompat.Toolbar.Subtitle" parent="Base.TextAppearance.Widget.AppCompat.Toolbar.Subtitle">
@@ -2614,7 +3033,8 @@
         <item name="windowNoTitle">true</item>
     </style>
     <style name="Theme.Design" parent="Theme.AppCompat">
-        <item name="textColorError">@color/design_textinput_error_color_dark</item>
+        <item name="textColorError">?attr/colorError</item>
+        <item name="coordinatorLayoutStyle">@style/Widget.Design.CoordinatorLayout</item>
     </style>
     <style name="Theme.Design.BottomSheetDialog" parent="Theme.AppCompat.Dialog">
         <item name="android:windowBackground">@android:color/transparent</item>
@@ -2622,7 +3042,8 @@
         <item name="bottomSheetStyle">@style/Widget.Design.BottomSheet.Modal</item>
     </style>
     <style name="Theme.Design.Light" parent="Theme.AppCompat.Light">
-        <item name="textColorError">@color/design_textinput_error_color_light</item>
+        <item name="textColorError">?attr/colorError</item>
+        <item name="coordinatorLayoutStyle">@style/Widget.Design.CoordinatorLayout</item>
     </style>
     <style name="Theme.Design.Light.BottomSheetDialog" parent="Theme.AppCompat.Light.Dialog">
         <item name="android:windowBackground">@android:color/transparent</item>
@@ -2644,6 +3065,12 @@
     <style name="ThemeOverlay.AppCompat.Dialog" parent="Base.ThemeOverlay.AppCompat.Dialog"/>
     <style name="ThemeOverlay.AppCompat.Dialog.Alert" parent="Base.ThemeOverlay.AppCompat.Dialog.Alert"/>
     <style name="ThemeOverlay.AppCompat.Light" parent="Base.ThemeOverlay.AppCompat.Light"/>
+    <style name="ToolbarTitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textColorPrimary">@color/pd_toolbar_text_color</item>
+        <item name="android:textColor">@color/pd_toolbar_text_color</item>
+        <item name="actionMenuTextColor">@color/pd_toolbar_text_color</item>
+        <item name="android:textSize">22sp</item>
+    </style>
     <style name="Widget.AppCompat.ActionBar" parent="Base.Widget.AppCompat.ActionBar">
     </style>
     <style name="Widget.AppCompat.ActionBar.Solid" parent="Base.Widget.AppCompat.ActionBar.Solid">
@@ -2715,8 +3142,6 @@
     <style name="Widget.AppCompat.ListView" parent="Base.Widget.AppCompat.ListView"/>
     <style name="Widget.AppCompat.ListView.DropDown" parent="Base.Widget.AppCompat.ListView.DropDown"/>
     <style name="Widget.AppCompat.ListView.Menu" parent="Base.Widget.AppCompat.ListView.Menu"/>
-    <style name="Widget.AppCompat.NotificationActionContainer" parent=""/>
-    <style name="Widget.AppCompat.NotificationActionText" parent=""/>
     <style name="Widget.AppCompat.PopupMenu" parent="Base.Widget.AppCompat.PopupMenu"/>
     <style name="Widget.AppCompat.PopupMenu.Overflow" parent="Base.Widget.AppCompat.PopupMenu.Overflow">
     </style>
@@ -2740,6 +3165,8 @@
     <style name="Widget.AppCompat.TextView.SpinnerItem" parent="Base.Widget.AppCompat.TextView.SpinnerItem"/>
     <style name="Widget.AppCompat.Toolbar" parent="Base.Widget.AppCompat.Toolbar"/>
     <style name="Widget.AppCompat.Toolbar.Button.Navigation" parent="Base.Widget.AppCompat.Toolbar.Button.Navigation"/>
+    <style name="Widget.Compat.NotificationActionContainer" parent=""/>
+    <style name="Widget.Compat.NotificationActionText" parent=""/>
     <style name="Widget.Design.AppBarLayout" parent="Base.Widget.Design.AppBarLayout">
     </style>
     <style name="Widget.Design.BottomNavigationView" parent="">
@@ -2748,7 +3175,7 @@
     </style>
     <style name="Widget.Design.BottomSheet.Modal" parent="android:Widget">
         <item name="android:background">?android:attr/colorBackground</item>
-        <item name="android:elevation" ns1:ignore="NewApi">@dimen/design_bottom_sheet_modal_elevation</item>
+        <item name="android:elevation" ns2:ignore="NewApi">@dimen/design_bottom_sheet_modal_elevation</item>
         <item name="behavior_peekHeight">auto</item>
         <item name="behavior_hideable">true</item>
         <item name="behavior_skipCollapsed">false</item>
@@ -2757,7 +3184,7 @@
         <item name="expandedTitleMargin">32dp</item>
         <item name="statusBarScrim">?attr/colorPrimaryDark</item>
     </style>
-    <style name="Widget.Design.CoordinatorLayout" parent="android:Widget">
+    <style name="Widget.Design.CoordinatorLayout" parent="@style/Widget.Support.CoordinatorLayout">
         <item name="statusBarBackground">?attr/colorPrimaryDark</item>
     </style>
     <style name="Widget.Design.FloatingActionButton" parent="android:Widget">
@@ -2800,6 +3227,9 @@
         <item name="passwordToggleTint">@color/design_tint_password_toggle</item>
         <item name="passwordToggleContentDescription">@string/password_toggle_content_description</item>
     </style>
+    <style name="Widget.Support.CoordinatorLayout" parent="android:Widget">
+        <item name="statusBarBackground">#000000</item>
+    </style>
     <style name="com_facebook_button" parent="@android:style/Widget.Button">
         <item name="android:background">@drawable/com_facebook_button_background</item>
         <item name="android:drawablePadding">6dp</item>
@@ -2839,7 +3269,7 @@
 	    <item name="android:shadowRadius">0.25</item>
 	    <item name="android:shadowColor">#40000000</item>
     </style>
-    <style name="tw__AttributionText" ns1:ignore="NewApi">
+    <style name="tw__AttributionText" ns2:ignore="NewApi">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">@dimen/tw__text_size_medium</item>
@@ -2860,62 +3290,12 @@
         <item name="android:textSize">@dimen/tw__text_size_small</item>
         <item name="android:textStyle">bold</item>
     </style>
-    <style name="tw__Button">
-        <item name="android:background">@drawable/tw__login_btn</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textSize">@dimen/tw__login_btn_text_size</item>
-        <item name="android:textColor">@color/tw__solid_white</item>
-        <item name="android:paddingLeft">@dimen/tw__login_btn_left_padding</item>
-        <item name="android:paddingRight">@dimen/tw__login_btn_right_padding</item>
-    </style>
-    <style name="tw__Button.Light">
-        <item name="android:background">@drawable/tw__login_btn_light</item>
-        <item name="android:textColor">@drawable/tw__login_btn_text_color_light</item>
-    </style>
-    <style name="tw__ButtonBar">
-        <item name="android:paddingLeft">0dp</item>
-        <item name="android:paddingTop">32dp</item>
-        <item name="android:paddingRight">0dp</item>
-        <item name="android:paddingBottom">0dp</item>
-    </style>
-    <style name="tw__CardAppInfoLayout">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@drawable/tw__app_info_layout_border</item>
-        <item name="android:padding">@dimen/tw__card_spacing_medium</item>
-    </style>
-    <style name="tw__CardAppName">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:singleLine">true</item>
-        <item name="android:ellipsize">end</item>
-        <item name="android:textSize">@dimen/tw__card_font_size_medium</item>
-        <item name="android:textColor">?android:attr/textColor</item>
-        <item name="android:layout_marginBottom">@dimen/tw__card_spacing_small</item>
-    </style>
-    <style name="tw__CardAppStoreName">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:singleLine">true</item>
-        <item name="android:text">@string/tw__play_store</item>
-        <item name="android:textColor">?android:attr/textColorSecondary</item>
-        <item name="android:textSize">@dimen/tw__card_font_size_small</item>
-    </style>
-    <style name="tw__CardInstallButton">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:text">@string/tw__install</item>
-        <item name="android:textSize">@dimen/tw__card_font_size_small</item>
-        <item name="android:background">@drawable/tw__install_button_border</item>
-    </style>
-    <style name="tw__CompactAttributionLine" ns1:ignore="NewApi">
+    <style name="tw__CompactAttributionLine" ns2:ignore="NewApi">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginRight">@dimen/tw__compact_tweet_attribution_line_margin_right</item>
+        <item name="android:layout_marginEnd">@dimen/tw__compact_tweet_attribution_line_margin_right</item>
         <item name="android:importantForAccessibility">noHideDescendants</item>
-    </style>
-    <style name="tw__CompactTweetContainer" parent="tw__TweetFillWidth">
-        <item name="android:paddingTop">@dimen/tw__compact_tweet_container_padding_top</item>
     </style>
     <style name="tw__ComposerAvatar">
         <item name="android:layout_width">@dimen/tw__composer_avatar_size</item>
@@ -2989,21 +3369,29 @@
         <item name="android:imeOptions">actionSend</item>
         <item name="android:imeActionLabel">@string/tw__post_tweet</item>
     </style>
-    <style name="tw__Permission_Container">
-        <item name="android:paddingLeft">@dimen/tw__padding_permission_horizontal_container</item>
-        <item name="android:paddingRight">@dimen/tw__padding_permission_horizontal_container</item>
-        <item name="android:paddingTop">@dimen/tw__padding_permission_vertical_container</item>
-        <item name="android:paddingBottom">@dimen/tw__padding_permission_vertical_container</item>
+    <style name="tw__QuoteAttributionLine" ns2:ignore="NewApi">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:importantForAccessibility">noHideDescendants</item>
+        <item name="android:layout_marginTop">@dimen/tw__quote_tweet_attribution_text_margin_top</item>
+        <item name="android:layout_marginLeft">@dimen/tw__quote_tweet_attribution_text_margin_horizontal</item>
+        <item name="android:layout_marginStart">@dimen/tw__quote_tweet_attribution_text_margin_horizontal</item>
+        <item name="android:layout_marginRight">@dimen/tw__quote_tweet_attribution_text_margin_horizontal</item>
+        <item name="android:layout_marginEnd">@dimen/tw__quote_tweet_attribution_text_margin_horizontal</item>
     </style>
-    <style name="tw__Permission_Description">
-        <item name="android:textColor">?android:attr/textColorSecondary</item>
-        <item name="android:textSize">@dimen/tw__permission_description_text_size</item>
+    <style name="tw__QuoteTweetContainer" ns2:ignore="NewApi">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:visibility">gone</item>
+        <item name="android:layout_marginLeft">@dimen/tw__tweet_quote_tweet_margin_horizontal</item>
+        <item name="android:layout_marginRight">@dimen/tw__tweet_quote_tweet_margin_horizontal</item>
+        <item name="android:layout_marginTop">@dimen/tw__tweet_quote_tweet_margin_top</item>
     </style>
-    <style name="tw__Permission_Title">
-        <item name="android:textColor">?android:attr/textColorPrimary</item>
-        <item name="android:textSize">@dimen/tw__permission_title_text_size</item>
-        <item name="android:layout_marginBottom">5dp</item>
-        <item name="android:layout_marginTop">30dp</item>
+    <style name="tw__QuoteTweetContainer.Compact" ns2:ignore="NewApi">
+        <item name="android:layout_marginLeft">@dimen/tw__compact_tweet_quote_tweet_margin_left</item>
+        <item name="android:layout_marginStart">@dimen/tw__compact_tweet_quote_tweet_margin_left</item>
+        <item name="android:layout_marginRight">@dimen/tw__compact_tweet_quote_tweet_margin_right</item>
+        <item name="android:layout_marginEnd">@dimen/tw__compact_tweet_quote_tweet_margin_right</item>
     </style>
     <style name="tw__TweetActionButton">
         <item name="android:layout_width">wrap_content</item>
@@ -3018,39 +3406,41 @@
         <item name="android:background">@null</item>
         <item name="android:padding">@dimen/tw__tweet_action_share_padding</item>
     </style>
-    <style name="tw__TweetActionButtonBar">
+    <style name="tw__TweetActionButtonBar" ns2:ignore="NewApi">
         <item name="android:layout_marginLeft">@dimen/tw__tweet_action_bar_offset_left</item>
+        <item name="android:layout_marginStart">@dimen/tw__tweet_action_bar_offset_left</item>
         <item name="android:layout_marginBottom">@dimen/tw__tweet_action_bar_offset_bottom</item>
     </style>
-    <style name="tw__TweetActionButtonBar.Compact">
+    <style name="tw__TweetActionButtonBar.Compact" ns2:ignore="NewApi">
         <item name="android:layout_marginLeft">@dimen/tw__compact_tweet_action_bar_offset_left</item>
+        <item name="android:layout_marginStart">@dimen/tw__compact_tweet_action_bar_offset_left</item>
         <item name="android:layout_marginBottom">@dimen/tw__tweet_action_bar_offset_bottom</item>
     </style>
-    <style name="tw__TweetAvatar">
+    <style name="tw__TweetAvatar" ns2:ignore="NewApi">
         <item name="android:layout_width">@dimen/tw__tweet_avatar_size</item>
         <item name="android:layout_height">@dimen/tw__tweet_avatar_size</item>
         <item name="android:layout_marginTop">@dimen/tw__tweet_avatar_margin_top</item>
         <item name="android:layout_marginLeft">@dimen/tw__tweet_avatar_margin_left</item>
+        <item name="android:layout_marginStart">@dimen/tw__tweet_avatar_margin_left</item>
         <item name="android:layout_marginRight">@dimen/tw__tweet_avatar_margin_right</item>
+        <item name="android:layout_marginEnd">@dimen/tw__tweet_avatar_margin_right</item>
         <item name="android:focusable">false</item>
     </style>
-    <style name="tw__TweetAvatar.Compact" parent="tw__TweetAvatar">
+    <style name="tw__TweetAvatar.Compact" ns2:ignore="NewApi" parent="tw__TweetAvatar">
         <item name="android:layout_width">@dimen/tw__tweet_avatar_size</item>
         <item name="android:layout_height">@dimen/tw__tweet_avatar_size</item>
         <item name="android:layout_marginTop">@dimen/tw__compact_tweet_avatar_margin_top</item>
         <item name="android:layout_marginLeft">@dimen/tw__compact_tweet_avatar_margin_left</item>
+        <item name="android:layout_marginStart">@dimen/tw__compact_tweet_avatar_margin_left</item>
         <item name="android:layout_marginRight">@dimen/tw__compact_tweet_avatar_margin_right</item>
+        <item name="android:layout_marginEnd">@dimen/tw__compact_tweet_avatar_margin_right</item>
         <item name="android:focusable">false</item>
     </style>
-    <style name="tw__TweetBadge">
+    <style name="tw__TweetBadge" ns2:ignore="NewApi">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginLeft">@dimen/tw__tweet_media_badge_margin</item>
-        <item name="android:layout_marginBottom">@dimen/tw__tweet_media_badge_margin</item>
+        <item name="android:layout_margin">@dimen/tw__tweet_media_badge_margin</item>
         <item name="android:layout_gravity">bottom|left</item>
-    </style>
-    <style name="tw__TweetContainer" parent="tw__TweetFillWidth">
-        <item name="android:paddingTop">@dimen/tw__tweet_container_padding_top</item>
     </style>
     <style name="tw__TweetDarkStyle">
         <item name="tw__container_bg_color">@color/tw__tweet_dark_container_bg_color</item>
@@ -3068,15 +3458,21 @@
     <style name="tw__TweetFullName" parent="tw__TweetFullNameBase">
         <item name="android:textStyle">bold</item>
     </style>
-    <style name="tw__TweetFullName.Compact">
+    <style name="tw__TweetFullName.Compact" ns2:ignore="NewApi">
         <item name="android:layout_marginTop">@dimen/tw__compact_tweet_full_name_margin_top</item>
+        <item name="android:layout_marginRight">@dimen/tw__compact_tweet_full_name_margin_right</item>
+        <item name="android:layout_marginEnd">@dimen/tw__compact_tweet_full_name_margin_right</item>
         <item name="android:ellipsize">none</item>
     </style>
-    <style name="tw__TweetFullNameBase" parent="tw__AttributionText">
+    <style name="tw__TweetFullNameBase" ns2:ignore="NewApi" parent="tw__AttributionText">
         <item name="android:layout_marginTop">@dimen/tw__tweet_full_name_margin_top</item>
+        <item name="android:layout_marginRight">@dimen/tw__tweet_full_name_margin_right</item>
+        <item name="android:layout_marginEnd">@dimen/tw__tweet_full_name_margin_right</item>
         <item name="android:textSize">@dimen/tw__text_size_large</item>
         <item name="android:textColor">@color/tw__tweet_light_primary_text_color</item>
+        <item name="android:drawablePadding">@dimen/tw__tweet_full_name_drawable_padding</item>
         <item name="android:focusable">false</item>
+        <item name="android:importantForAccessibility">no</item>
     </style>
     <style name="tw__TweetLightStyle">
         <item name="tw__container_bg_color">@color/tw__tweet_light_container_bg_color</item>
@@ -3089,30 +3485,33 @@
     </style>
     <style name="tw__TweetMedia">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:focusable">false</item>
-        <item name="tw__image_aspect_ratio">@dimen/tw__tweet_media_aspect_ratio</item>
-        <item name="tw__image_dimension_to_adjust">height</item>
+        <item name="android:layout_height">match_parent</item>
     </style>
     <style name="tw__TweetMediaContainer">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:visibility">gone</item>
     </style>
-    <style name="tw__TweetMediaContainer.Compact">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
+    <style name="tw__TweetMediaContainer.Compact" ns2:ignore="NewApi">
         <item name="android:layout_marginTop">@dimen/tw__compact_tweet_media_margin_top</item>
         <item name="android:layout_marginBottom">@dimen/tw__compact_tweet_media_margin_bottom</item>
         <item name="android:layout_marginRight">@dimen/tw__compact_tweet_media_margin_right</item>
+        <item name="android:layout_marginEnd">@dimen/tw__compact_tweet_media_margin_right</item>
     </style>
-    <style name="tw__TweetRetweetedBy" ns1:ignore="NewApi">
+    <style name="tw__TweetMediaContainer.Quote">
+        <item name="android:layout_marginBottom">@dimen/tw__quote_tweet_media_margin_bottom</item>
+        <item name="android:layout_marginRight">@dimen/tw__quote_tweet_media_margin_horizontal</item>
+        <item name="android:layout_marginLeft">@dimen/tw__quote_tweet_media_margin_horizontal</item>
+    </style>
+    <style name="tw__TweetRetweetedBy" ns2:ignore="NewApi">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">@dimen/tw__tweet_retweeted_by_margin_top</item>
         <item name="android:layout_marginLeft">@dimen/tw__tweet_retweeted_by_margin_left</item>
+        <item name="android:layout_marginStart">@dimen/tw__tweet_retweeted_by_margin_left</item>
         <item name="android:layout_marginBottom">@dimen/tw__tweet_retweeted_by_margin_bottom</item>
         <item name="android:drawableLeft">@drawable/tw__ic_retweet_light</item>
+        <item name="android:drawableStart">@drawable/tw__ic_retweet_light</item>
         <item name="android:drawablePadding">@dimen/tw__tweet_retweeted_by_drawable_padding</item>
         <item name="android:textSize">@dimen/tw__text_size_medium</item>
         <item name="android:fontFamily">sans-serif</item>
@@ -3121,35 +3520,39 @@
         <item name="android:ellipsize">end</item>
         <item name="android:visibility">gone</item>
     </style>
-    <style name="tw__TweetRetweetedBy.Compact">
+    <style name="tw__TweetRetweetedBy.Compact" ns2:ignore="NewApi">
         <item name="android:layout_marginLeft">@dimen/tw__compact_tweet_retweeted_by_margin_left</item>
+        <item name="android:layout_marginStart">@dimen/tw__compact_tweet_retweeted_by_margin_left</item>
         <item name="android:layout_marginBottom">@dimen/tw__compact_tweet_retweeted_by_margin_bottom</item>
         <item name="android:layout_marginTop">@dimen/tw__compact_tweet_retweeted_by_margin_top</item>
         <item name="android:drawablePadding">@dimen/tw__compact_tweet_retweeted_by_drawable_padding</item>
     </style>
-    <style name="tw__TweetScreenName" ns1:ignore="NewApi" parent="tw__AttributionText">
+    <style name="tw__TweetScreenName" ns2:ignore="NewApi" parent="tw__AttributionText">
         <item name="android:layout_marginTop">@dimen/tw__tweet_screen_name_margin_top</item>
         <item name="android:layout_marginBottom">@dimen/tw__tweet_screen_name_margin_bottom</item>
         <item name="android:ellipsize">end</item>
         <item name="android:focusable">false</item>
         <item name="android:importantForAccessibility">no</item>
     </style>
-    <style name="tw__TweetScreenName.Compact" ns1:ignore="NewApi">
+    <style name="tw__TweetScreenName.Compact" ns2:ignore="NewApi">
         <item name="android:layout_width">@dimen/tw__compact_tweet_screen_name_layout_width</item>
         <item name="android:layout_weight">1</item>
         <item name="android:layout_marginTop">@dimen/tw__compact_tweet_screen_name_margin_top</item>
         <item name="android:layout_marginBottom">@dimen/tw__compact_tweet_screen_name_margin_bottom</item>
         <item name="android:paddingLeft">@dimen/tw__compact_tweet_screen_name_padding_left</item>
+        <item name="android:paddingStart">@dimen/tw__compact_tweet_screen_name_padding_left</item>
         <item name="android:fontFamily">sans-serif-light</item>
         <item name="android:textSize">@dimen/tw__text_size_medium</item>
         <item name="android:ellipsize">end</item>
     </style>
-    <style name="tw__TweetText" ns1:ignore="NewApi">
+    <style name="tw__TweetText" ns2:ignore="NewApi">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">@dimen/tw__tweet_text_margin_top</item>
         <item name="android:layout_marginLeft">@dimen/tw__tweet_text_margin_left</item>
+        <item name="android:layout_marginStart">@dimen/tw__tweet_text_margin_left</item>
         <item name="android:layout_marginRight">@dimen/tw__tweet_text_margin_right</item>
+        <item name="android:layout_marginEnd">@dimen/tw__tweet_text_margin_right</item>
         <item name="android:fontFamily">sans-serif-light</item>
         <item name="android:textSize">@dimen/tw__text_size_large</item>
         <item name="android:lineSpacingExtra">2dp</item>
@@ -3158,47 +3561,84 @@
         <item name="android:focusable">false</item>
         <item name="android:importantForAccessibility">no</item>
     </style>
-    <style name="tw__TweetText.Compact" ns1:ignore="NewApi">
+    <style name="tw__TweetText.Compact" ns2:ignore="NewApi">
         <item name="android:layout_marginTop">@dimen/tw__compact_tweet_text_margin_top</item>
         <item name="android:layout_marginLeft">@dimen/tw__compact_tweet_text_margin_left</item>
+        <item name="android:layout_marginStart">@dimen/tw__compact_tweet_text_margin_left</item>
         <item name="android:layout_marginRight">@dimen/tw__compact_tweet_text_margin_right</item>
-        <item name="android:fontFamily">sans-serif-light</item>
-        <item name="android:textSize">@dimen/tw__text_size_large</item>
+        <item name="android:layout_marginEnd">@dimen/tw__compact_tweet_text_margin_right</item>
     </style>
-    <style name="tw__TweetTimestamp" ns1:ignore="NewApi" parent="tw__AttributionText">
+    <style name="tw__TweetText.Quote" ns2:ignore="NewApi">
+        <item name="android:layout_marginTop">@dimen/tw__compact_tweet_text_margin_top</item>
+        <item name="android:layout_marginBottom">@dimen/tw__quote_tweet_text_margin_bottom</item>
+        <item name="android:layout_marginLeft">@dimen/tw__quote_tweet_text_margin_horizontal</item>
+        <item name="android:layout_marginStart">@dimen/tw__quote_tweet_text_margin_horizontal</item>
+        <item name="android:layout_marginRight">@dimen/tw__quote_tweet_text_margin_horizontal</item>
+        <item name="android:layout_marginEnd">@dimen/tw__quote_tweet_text_margin_horizontal</item>
+    </style>
+    <style name="tw__TweetTimestamp" ns2:ignore="NewApi" parent="tw__AttributionText">
         <item name="android:layout_marginTop">@dimen/tw__tweet_timestamp_margin_top</item>
         <item name="android:paddingLeft">@dimen/tw__tweet_timestamp_padding_left</item>
         <item name="android:ellipsize">none</item>
         <item name="android:focusable">false</item>
         <item name="android:importantForAccessibility">no</item>
     </style>
-    <style name="tw__TweetTimestamp.Compact" ns1:ignore="NewApi">
+    <style name="tw__TweetTimestamp.Compact" ns2:ignore="NewApi">
         <item name="android:layout_marginTop">@dimen/tw__compact_tweet_timestamp_margin_top</item>
         <item name="android:fontFamily">sans-serif-light</item>
         <item name="android:textSize">@dimen/tw__text_size_medium</item>
         <item name="android:ellipsize">none</item>
     </style>
-    <style name="tw__TweetVerifiedCheck">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginBottom">@dimen/tw__tweet_verified_margin_bottom</item>
-        <item name="android:paddingLeft">@dimen/tw__tweet_verified_check_padding_left</item>
-        <item name="android:src">@drawable/tw__ic_tweet_verified</item>
-        <item name="android:focusable">false</item>
-    </style>
-    <style name="tw__TwitterLogo">
+    <style name="tw__TwitterLogo" ns2:ignore="NewApi">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">@dimen/tw__tweet_logo_margin_top</item>
         <item name="android:layout_marginRight">@dimen/tw__tweet_logo_margin_right</item>
+        <item name="android:layout_marginEnd">@dimen/tw__tweet_logo_margin_right</item>
         <item name="android:src">@drawable/tw__ic_logo_blue</item>
         <item name="android:focusable">false</item>
     </style>
-    <style name="tw__TwitterLogo.Compact">
+    <style name="tw__TwitterLogo.Compact" ns2:ignore="NewApi">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">@dimen/tw__compact_tweet_logo_margin_top</item>
         <item name="android:layout_marginRight">@dimen/tw__compact_tweet_logo_margin_right</item>
+        <item name="android:layout_marginEnd">@dimen/tw__compact_tweet_logo_margin_right</item>
         <item name="android:src">@drawable/tw__ic_logo_blue</item>
+    </style>
+    <style name="ucrop_ImageViewWidgetIcon">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:duplicateParentState">true</item>
+    </style>
+    <style name="ucrop_TextViewCropAspectRatio">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/ucrop_height_crop_aspect_ratio_text</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:duplicateParentState">true</item>
+        <item name="android:textColor">@color/ucrop_scale_text_view_selector</item>
+    </style>
+    <style name="ucrop_TextViewWidgetText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_marginTop">@dimen/ucrop_margit_top_widget_text</item>
+        <item name="android:textColor">@color/ucrop_color_widget_text</item>
+        <item name="android:textSize">@dimen/ucrop_text_size_widget_text</item>
+    </style>
+    <style name="ucrop_WrapperIconState">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
+        <item name="android:clickable">true</item>
+    </style>
+    <style name="ucrop_WrapperRotateButton">
+        <item name="android:layout_width">@dimen/ucrop_size_wrapper_rotate_button</item>
+        <item name="android:layout_height">@dimen/ucrop_size_wrapper_rotate_button</item>
+        <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
+        <item name="android:clickable">true</item>
     </style>
 </resources>

@@ -13,6 +13,7 @@
 #import "PDLocation.h"
 #import "PDUIModalLoadingView.h"
 #import "PDBrand.h"
+#import "PDReward.h"
 NS_ASSUME_NONNULL_BEGIN
 @interface PDUIHomeViewController : UITableViewController <UIAlertViewDelegate>
 
@@ -29,6 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UIButton *inboxButton;
 @property (nonatomic, strong) UIButton *settingsButton;
 @property (nonnull, strong) NSString *brandVendorSearchTerm;
+@property (nonatomic, retain) PDReward *willClaimReward;
 
 - (_Nullable instancetype) initFromNib;
 - (_Nullable instancetype) initWithBrand:(PDBrand*)b;
@@ -36,6 +38,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) redeemButtonPressed;
 - (void) setBrandVendorSearchTerm:(NSString *)brandVendorSearchTerm;
 - (void) moveToSection:(NSInteger)section;
+- (void) updateRewardData;
 
 @end
 NS_ASSUME_NONNULL_END

@@ -5,14 +5,14 @@ PODS:
   - Bolts/AppLinks (1.9.0):
     - Bolts/Tasks
   - Bolts/Tasks (1.9.0)
-  - FBSDKCoreKit (4.31.1):
+  - FBSDKCoreKit (4.29.0):
     - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.31.1):
+  - FBSDKLoginKit (4.29.0):
     - FBSDKCoreKit
   - JSONModel (1.7.0)
-  - PopdeemSDK (1.1.2):
-    - PopdeemSDK/Core (= 1.1.2)
-  - PopdeemSDK/Core (1.1.2):
+  - PopdeemSDK (1.1.11):
+    - PopdeemSDK/Core (= 1.1.11)
+  - PopdeemSDK/Core (1.1.11):
     - Bolts
     - FBSDKCoreKit
     - FBSDKLoginKit
@@ -20,28 +20,42 @@ PODS:
     - Realm
     - Shimmer
     - STTwitter
-  - PopdeemSDK/UIKit (1.1.2):
-    - PopdeemSDK/Core
-  - Realm (3.3.2):
-    - Realm/Headers (= 3.3.2)
-  - Realm/Headers (3.3.2)
+    - TOCropViewController
+  - Realm (3.5.0):
+    - Realm/Headers (= 3.5.0)
+  - Realm/Headers (3.5.0)
   - Shimmer (1.0.2)
   - STTwitter (0.2.6)
+  - TOCropViewController (2.3.6)
 
 DEPENDENCIES:
-  - PopdeemSDK (~> 1.1.2)
-  - PopdeemSDK/UIKit (~> 1.1.2)
+  - FBSDKCoreKit (< 4.30)
+  - FBSDKLoginKit (< 4.30)
+  - PopdeemSDK (~> 1.1.11)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Bolts
+    - FBSDKCoreKit
+    - FBSDKLoginKit
+    - JSONModel
+    - PopdeemSDK
+    - Realm
+    - Shimmer
+    - STTwitter
+    - TOCropViewController
 
 SPEC CHECKSUMS:
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
-  FBSDKCoreKit: e08ccfcefa7bc1347a07c276dac9bf6c7fe57024
-  FBSDKLoginKit: 99797ac39252fef6f72600b886f6ee60b4b29cab
+  FBSDKCoreKit: 6f139173dc63a1deaff4430a55f2fe5bb222d2af
+  FBSDKLoginKit: 56a057ca6822535ea0faa25f57a7c41edb697fd4
   JSONModel: 840bc0fcffb24b8454d2c026bf26fea454b8e98d
-  PopdeemSDK: 3a9479933921d8cf561917bc59c57f7ebed20c83
-  Realm: d927fbf66df5532cfafc08afb5f7e53ded37b894
+  PopdeemSDK: ac8ded05851e2caf3422a293b280d1efa239f9fd
+  Realm: 0378021c424e4e2bd6a0e63b27881e929d9b9ad1
   Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
   STTwitter: 30ee2f79eff78c3d633a1edc869e97db9c9ead59
+  TOCropViewController: 6d972f2c609372312648f96758e13a7f689efbc0
 
-PODFILE CHECKSUM: ee9ce115f35a4c040e741f4971a3840994174d71
+PODFILE CHECKSUM: 059c18d61f25fceea16569ac4af35d613c2f970a
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.0

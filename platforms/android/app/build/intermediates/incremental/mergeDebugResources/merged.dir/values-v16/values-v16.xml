@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="notification_right_side_padding_top">4dp</dimen>
-    <style name="tw__TweetFullName" parent="tw__TweetFullNameBase">
-        <item name="android:textStyle">bold</item>
+    <style name="TextAppearance.AppCompat.Tooltip">
         <item name="android:fontFamily">sans-serif</item>
-        <item name="android:importantForAccessibility">no</item>
+        <item name="android:textSize">14sp</item>
     </style>
 </resources>

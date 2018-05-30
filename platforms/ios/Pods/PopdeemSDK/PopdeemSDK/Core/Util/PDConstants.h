@@ -103,6 +103,7 @@ extern NSString *const PDThemeImageDefaultItem;
 extern NSString *const PDThemeImageDefaultBrand;
 extern NSString *const PDThemeFontPrimary;
 extern NSString *const PDThemeFontBold;
+extern NSString *const PDThemeFontNavbar;
 extern NSString *const PDThemeFontLight;
 extern NSString *const PDThemeNavUseTheme;
 extern NSString *const PDThemeColorHomeHeaderText;
@@ -132,6 +133,16 @@ extern NSString *const kEncodeKeyPDCaptionString;
 // End NSCoding Keys
 //
 
+extern NSString *const PDGratitudeLastCreditCouponUsed;
+extern NSString *const PDGratitudeLastCouponUsed;
+extern NSString *const PDGratitudeLastSweepstakeUsed;
+extern NSString *const PDGratitudeLastConnectUsed;
+extern NSString *const PDGratitudeLastLoginUsed;
+extern NSString *const PDGratCouponVariations;
+extern NSString *const PDGratSweepstakeVariations;
+extern NSString *const PDGratCreditCouponVariations;
+extern NSString *const PDGratConnectVariations;
+extern NSString *const PDGratLoginVariations;
 
 //Errors
 //Error codes

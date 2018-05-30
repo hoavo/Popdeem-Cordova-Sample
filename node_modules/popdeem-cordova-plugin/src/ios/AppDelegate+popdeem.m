@@ -23,6 +23,34 @@
     swizzled = class_getInstanceMethod(self, @selector(swizzled_application: didFinishLaunchingWithOptions:));
     method_exchangeImplementations(original, swizzled);
 
+    original = class_getInstanceMethod(self, @selector(application: openURL: sourceApplication: annotation:));
+    swizzled = class_getInstanceMethod(self, @selector(swizzled_application: openURL: sourceApplication: annotation:));
+    method_exchangeImplementations(original, swizzled);
+
+    original = class_getInstanceMethod(self, @selector(applicationDidBecomeActive:));
+    swizzled = class_getInstanceMethod(self, @selector(swizzled_applicationDidBecomeActive:));
+    method_exchangeImplementations(original, swizzled);
+
+    original = class_getInstanceMethod(self, @selector(application: didRegisterForRemoteNotificationsWithDeviceToken:));
+    swizzled = class_getInstanceMethod(self, @selector(swizzled_application: didRegisterForRemoteNotificationsWithDeviceToken:));
+    method_exchangeImplementations(original, swizzled);
+
+    original = class_getInstanceMethod(self, @selector(application: didFailToRegisterForRemoteNotificationsWithError:));
+    swizzled = class_getInstanceMethod(self, @selector(swizzled_application: didFailToRegisterForRemoteNotificationsWithError:));
+    method_exchangeImplementations(original, swizzled);
+
+    original = class_getInstanceMethod(self, @selector(application: didReceiveRemoteNotification:));
+    swizzled = class_getInstanceMethod(self, @selector(swizzled_application: didReceiveRemoteNotification:));
+    method_exchangeImplementations(original, swizzled);
+    
+    original = class_getInstanceMethod(self, @selector(userNotificationCenter: willPresentNotification: withCompletionHandler:));
+    swizzled = class_getInstanceMethod(self, @selector(swizzled_userNotificationCenter: willPresentNotification: withCompletionHandler:));
+    method_exchangeImplementations(original, swizzled);
+    
+    original = class_getInstanceMethod(self, @selector(application: didRegisterUserNotificationSettings:));
+    swizzled = class_getInstanceMethod(self, @selector(swizzled_application: didRegisterUserNotificationSettings:));
+    method_exchangeImplementations(original, swizzled);
+
 }
 
 - (BOOL) swizzled_application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -37,6 +65,11 @@
   //Popdeem Setup
   NSError *keyError;
   NSString *popdeemApiKey = [PDUtils getPopdeemApiKey:&keyError];
+    [PopdeemSDK registerForPushNotificationsApplication:application];
+
+  if ([[UIApplication sharedApplication] isRegisteredForRemoteNotifications]) {
+    [[UIApplication sharedApplication] registerForRemoteNotifications];
+  }
   if (popdeemApiKey != nil) {
     [PopdeemSDK withAPIKey:popdeemApiKey];
     NSString *popdeemThemeName = [PDUtils getThemeFileName];
@@ -50,10 +83,48 @@
   return result;
 }
 
-- (BOOL) application:(UIApplication *)application
+- (void) swizzled_application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+  [self swizzled_application:application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
+	[PopdeemSDK application:application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
+}
+
+
+- (void) swizzled_application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+  [self swizzled_application:application didFailToRegisterForRemoteNotificationsWithError:error];
+	[PopdeemSDK application:application didFailToRegisterForRemoteNotificationsWithError:error];
+}
+
+- (void) swizzled_application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+  if ([[userInfo objectForKey:@"sender"] isEqualToString:@"popdeem"]) {
+    [PopdeemSDK handleRemoteNotification:userInfo];
+    return;
+  } else {
+    [self swizzled_application:application didReceiveRemoteNotification:userInfo];
+  }
+}
+
+- (void)swizzled_application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings {
+    [self swizzled_application:application didRegisterUserNotificationSettings:notificationSettings];
+    [application registerForRemoteNotifications];
+}
+
+-(void)swizzled_userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler{
+    NSDictionary *userInfo = notification.request.content.userInfo;
+    if ([[userInfo objectForKey:@"sender"] isEqualToString:@"popdeem"]) {
+        [PopdeemSDK handleRemoteNotification:userInfo];
+        return;
+    } else {
+        [self swizzled_userNotificationCenter:center willPresentNotification:notification withCompletionHandler:completionHandler];
+    }
+}
+
+- (BOOL) swizzled_application:(UIApplication *)application
              openURL:(NSURL *)url
    sourceApplication:(NSString *)sourceApplication
           annotation:(id)annotation {
+
+  BOOL result = [self swizzled_application:application openURL:url sourceApplication:sourceApplication annotation:annotation];
+  if (result) return result;
 
   BOOL wasHandled = [[FBSDKApplicationDelegate sharedInstance] application:application
                                                                    openURL:url
@@ -69,7 +140,8 @@
   return NO;
 }
 
-- (void) applicationDidBecomeActive:(UIApplication *)application {
+- (void) swizzled_applicationDidBecomeActive:(UIApplication *)application {
+  [self swizzled_applicationDidBecomeActive: application];
   [FBSDKAppEvents activateApp];
 }
 

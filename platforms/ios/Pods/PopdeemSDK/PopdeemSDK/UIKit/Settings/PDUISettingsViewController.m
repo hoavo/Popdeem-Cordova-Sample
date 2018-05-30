@@ -21,6 +21,7 @@
 #import "PDUIModalLoadingView.h"
 #import "PDUILogoutTableViewCell.h"
 #import "PDUserAPIService.h"
+#import "PDCustomer.h"
 
 #define kSocialNib @"SocialNib"
 #define kLogoutNib @"LogoutNib"
@@ -37,7 +38,7 @@
 - (instancetype) initFromNib {
 	NSBundle *podBundle = [NSBundle bundleForClass:[PopdeemSDK class]];
 	if (self = [self initWithNibName:@"PDUISettingsViewController" bundle:podBundle]) {
-		self.view.backgroundColor = [UIColor clearColor];
+//    self.view.backgroundColor = [UIColor clearColor];
 		return self;
 	}
 	return nil;
@@ -71,8 +72,39 @@
 	[self.tableHeaderImageView.layer setCornerRadius:self.tableHeaderImageView.frame.size.width/2];
 	[self.tableHeaderImageView setClipsToBounds:YES];
 	[self.tableView reloadData];
-	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 	// Do any additional setup after loading the view from its nib.
+  [self styleNavbar];
+}
+
+- (void) styleNavbar {
+  if (PopdeemThemeHasValueForKey(@"popdeem.nav")) {
+    self.navigationController.navigationBar.translucent = NO;
+    [self.navigationController.navigationBar setBarTintColor:PopdeemColor(PDThemeColorPrimaryApp)];
+    [self.navigationController.navigationBar setTintColor:PopdeemColor(PDThemeColorPrimaryInverse)];
+    
+    UIFont *headerFont;
+    if (PopdeemThemeHasValueForKey(PDThemeFontNavbar)) {
+      headerFont = PopdeemFont(PDThemeFontNavbar, 22.0f);
+    } else {
+      headerFont = PopdeemFont(PDThemeFontBold, 17.0f);
+    }
+    
+    [self.navigationController.navigationBar setTitleTextAttributes:@{
+                                                                      NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryInverse),
+                                                                      NSFontAttributeName : headerFont
+                                                                      }];
+    
+    [self.navigationController.navigationItem.rightBarButtonItem setTitleTextAttributes:@{
+                                                                                          NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryInverse),
+                                                                                          NSFontAttributeName : PopdeemFont(PDThemeFontNavbar, 17.0f)}
+                                                                               forState:UIControlStateNormal];
+    if (PopdeemThemeHasValueForKey(@"popdeem.images.navigationBar")){
+      [self.navigationController.navigationBar setBackgroundImage:PopdeemImage(@"popdeem.images.navigationBar") forBarMetrics:UIBarMetricsDefault];
+    }
+    if (@available(iOS 11.0, *)) {
+      self.navigationController.navigationBar.translucent = YES;
+    }
+  }
 }
 
 - (void) viewDidLayoutSubviews {
@@ -154,14 +186,17 @@
         if (image) {
           dispatch_async(dispatch_get_main_queue(), ^{
             UIImage *profileImage = [UIImage imageWithData:data];
-            [_profileImageView setImage:profileImage];
-            [_profileImageView setHidden:NO];
+            [self.profileImageView setImage:profileImage];
+            [self.profileImageView setHidden:NO];
             [self.view setNeedsDisplay];
           });
         }
       }
     }];
     [task resume];
+  } else {
+    //Default
+    [self.profileImageView setImage:PopdeemImage(@"pdui_default_user_image")];
   }
 }
 
@@ -193,7 +228,11 @@
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	switch (section) {
   case 0:
-			return 3;
+      if ([[PDCustomer sharedInstance] usesTwitter]) {
+        return 3;
+      } else {
+        return 2;
+      }
 			break;
 	case 1:
 			return 1;
@@ -244,7 +283,11 @@
 					[socialCell setSocialNetwork:PDSocialMediaTypeFacebook];
 					break;
 				case 1:
-					[socialCell setSocialNetwork:PDSocialMediaTypeTwitter];
+          if ([[PDCustomer sharedInstance] usesTwitter]) {
+            [socialCell setSocialNetwork:PDSocialMediaTypeTwitter];
+          } else {
+            [socialCell setSocialNetwork:PDSocialMediaTypeInstagram];
+          }
 					break;
 				case 2:
 					[socialCell setSocialNetwork:PDSocialMediaTypeInstagram];

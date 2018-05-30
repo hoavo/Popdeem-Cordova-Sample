@@ -1,5 +1,13 @@
 #!/bin/sh
 set -e
+set -u
+set -o pipefail
+
+if [ -z ${UNLOCALIZED_RESOURCES_FOLDER_PATH+x} ]; then
+    # If UNLOCALIZED_RESOURCES_FOLDER_PATH is not set, then there's nowhere for us to copy
+    # resources to, so exit 0 (signalling the script phase was successful).
+    exit 0
+fi
 
 mkdir -p "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
 
@@ -12,7 +20,7 @@ XCASSET_FILES=()
 # was originally proposed here: https://lists.samba.org/archive/rsync/2008-February/020158.html
 RSYNC_PROTECT_TMP_FILES=(--filter "P .*.??????")
 
-case "${TARGETED_DEVICE_FAMILY}" in
+case "${TARGETED_DEVICE_FAMILY:-}" in
   1,2)
     TARGET_DEVICE_ARGS="--target-device ipad --target-device iphone"
     ;;
@@ -146,6 +154,9 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduikit_camera.png"
   install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduikit_camera@2x.png"
   install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduikit_camera@3x.png"
+  install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduikit_default_login_blue.png"
+  install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduikit_default_login_blue@2x.png"
+  install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduikit_default_login_blue@3x.png"
   install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduikit_default_user.png"
   install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduikit_deselectedCheck.png"
   install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduikit_deselectedCheck@2x.png"
@@ -222,6 +233,9 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduikit_x@2x.png"
   install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduikit_x@3x copy.png"
   install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduikit_x_icon.png"
+  install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduikit_x_white.png"
+  install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduikit_x_white@2x.png"
+  install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduikit_x_white@3x.png"
   install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduirewardfacebookicon.png"
   install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduirewardfacebookicon@2x.png"
   install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduirewardfacebookicon@3x.png"
@@ -234,6 +248,9 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/PDUI_Back.png"
   install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/PDUI_Back@2x.png"
   install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/PDUI_Back@3x.png"
+  install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pdui_default_user_image.png"
+  install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pdui_default_user_image@2x.png"
+  install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pdui_default_user_image@3x.png"
   install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/PDUI_IGBG.png"
   install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/PDUI_IGBG@2x.png"
   install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/PDUI_IGBG@3x.png"
@@ -248,6 +265,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Settings/PDUISettingsViewController.xib"
   install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Settings/PDUISocialSettingsTableViewCell.xib"
   install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Twitter/Login/PDUITwitterLoginViewController.xib"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/TOCropViewController/TOCropViewControllerBundle.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle"
@@ -312,6 +330,9 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduikit_camera.png"
   install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduikit_camera@2x.png"
   install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduikit_camera@3x.png"
+  install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduikit_default_login_blue.png"
+  install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduikit_default_login_blue@2x.png"
+  install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduikit_default_login_blue@3x.png"
   install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduikit_default_user.png"
   install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduikit_deselectedCheck.png"
   install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduikit_deselectedCheck@2x.png"
@@ -388,6 +409,9 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduikit_x@2x.png"
   install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduikit_x@3x copy.png"
   install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduikit_x_icon.png"
+  install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduikit_x_white.png"
+  install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduikit_x_white@2x.png"
+  install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduikit_x_white@3x.png"
   install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduirewardfacebookicon.png"
   install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduirewardfacebookicon@2x.png"
   install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pduirewardfacebookicon@3x.png"
@@ -400,6 +424,9 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/PDUI_Back.png"
   install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/PDUI_Back@2x.png"
   install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/PDUI_Back@3x.png"
+  install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pdui_default_user_image.png"
+  install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pdui_default_user_image@2x.png"
+  install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/pdui_default_user_image@3x.png"
   install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/PDUI_IGBG.png"
   install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/PDUI_IGBG@2x.png"
   install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Resources/PDUI_IGBG@3x.png"
@@ -414,6 +441,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Settings/PDUISettingsViewController.xib"
   install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Settings/PDUISocialSettingsTableViewCell.xib"
   install_resource "${PODS_ROOT}/PopdeemSDK/PopdeemSDK/UIKit/Twitter/Login/PDUITwitterLoginViewController.xib"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/TOCropViewController/TOCropViewControllerBundle.bundle"
 fi
 
 mkdir -p "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
@@ -424,7 +452,7 @@ if [[ "${ACTION}" == "install" ]] && [[ "${SKIP_INSTALL}" == "NO" ]]; then
 fi
 rm -f "$RESOURCES_TO_COPY"
 
-if [[ -n "${WRAPPER_EXTENSION}" ]] && [ "`xcrun --find actool`" ] && [ -n "$XCASSET_FILES" ]
+if [[ -n "${WRAPPER_EXTENSION}" ]] && [ "`xcrun --find actool`" ] && [ -n "${XCASSET_FILES:-}" ]
 then
   # Find all other xcassets (this unfortunately includes those of path pods and other targets).
   OTHER_XCASSETS=$(find "$PWD" -iname "*.xcassets" -type d)
@@ -434,5 +462,9 @@ then
     fi
   done <<<"$OTHER_XCASSETS"
 
-  printf "%s\0" "${XCASSET_FILES[@]}" | xargs -0 xcrun actool --output-format human-readable-text --notices --warnings --platform "${PLATFORM_NAME}" --minimum-deployment-target "${!DEPLOYMENT_TARGET_SETTING_NAME}" ${TARGET_DEVICE_ARGS} --compress-pngs --compile "${BUILT_PRODUCTS_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
+  if [ -z ${ASSETCATALOG_COMPILER_APPICON_NAME+x} ]; then
+    printf "%s\0" "${XCASSET_FILES[@]}" | xargs -0 xcrun actool --output-format human-readable-text --notices --warnings --platform "${PLATFORM_NAME}" --minimum-deployment-target "${!DEPLOYMENT_TARGET_SETTING_NAME}" ${TARGET_DEVICE_ARGS} --compress-pngs --compile "${BUILT_PRODUCTS_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
+  else
+    printf "%s\0" "${XCASSET_FILES[@]}" | xargs -0 xcrun actool --output-format human-readable-text --notices --warnings --platform "${PLATFORM_NAME}" --minimum-deployment-target "${!DEPLOYMENT_TARGET_SETTING_NAME}" ${TARGET_DEVICE_ARGS} --compress-pngs --compile "${BUILT_PRODUCTS_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}" --app-icon "${ASSETCATALOG_COMPILER_APPICON_NAME}" --output-partial-info-plist "${TARGET_BUILD_DIR}/assetcatalog_generated_info.plist"
+  fi
 fi

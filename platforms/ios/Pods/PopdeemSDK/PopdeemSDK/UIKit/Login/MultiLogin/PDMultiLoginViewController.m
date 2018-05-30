@@ -23,6 +23,7 @@
 #import "PDUIHomeViewController.h"
 #import "PDUIRewardTableViewCell.h"
 #import "PDUIDirectToSocialHomeHandler.h"
+#import "PDCustomer.h"
 
 @interface PDMultiLoginViewController ()
 @property (nonatomic, retain) PDMultiLoginViewModel* viewModel;
@@ -34,48 +35,22 @@
 
 @implementation PDMultiLoginViewController
 
-- (instancetype) initFromNib {
+- (instancetype) initFromNibWithReward:(PDReward*)reward {
   NSBundle *podBundle = [NSBundle bundleForClass:[PopdeemSDK class]];
   if (self = [self initWithNibName:@"PDMultiLoginViewController" bundle:podBundle]) {
     self.view.backgroundColor = [UIColor whiteColor];
+    self.reward = reward;
     return self;
   }
   return nil;
 }
 
-- (void) setupSocialLoginReward:(PDReward*)reward {
-  float width = self.view.frame.size.width;
-  if (width > 400) {
-    width = 375;
-  }
-  _rewardCell = [[PDUIRewardTableViewCell alloc] initWithFrame:CGRectMake(0, 0, width, 100) reward:reward];
-  if (_rewardCell.logoImageView.image == nil) {
-    NSURL *url = [NSURL URLWithString:reward.coverImageUrl];
-    NSURLSessionTask *task2 = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-      if (data) {
-        UIImage *image = [UIImage imageWithData:data];
-        if (image) {
-          dispatch_async(dispatch_get_main_queue(), ^{
-            _rewardCell.logoImageView.image = image;
-            reward.coverImage = image;
-          });
-        }
-      }
-    }];
-    [task2 resume];
-  }
-  [_rewardView addSubview:_rewardCell];
-  [_rewardView setHidden:NO];
-  [_titleLabel setHidden:YES];
-  [_bodyLabel setHidden:YES];
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (void) viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
   
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillEnterForeground:) name:UIApplicationWillEnterForegroundNotification object:nil];
 	//View Setup
-	_viewModel = [[PDMultiLoginViewModel alloc] initForViewController:self];
+	_viewModel = [[PDMultiLoginViewModel alloc] initForViewController:self reward:_reward];
 	[_viewModel setup];
 	
 	[_titleLabel setText:_viewModel.titleString];
@@ -87,29 +62,30 @@
 	[_bodyLabel setTextColor:_viewModel.bodyColor];
 	[_bodyLabel setFont:_viewModel.bodyFont];
 	
-	[_twitterLoginButton setBackgroundColor:_viewModel.twitterButtonColor];
-	[_twitterLoginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-  [_twitterLoginButton.titleLabel setFont:PopdeemFont(PDThemeFontPrimary, 15)];
-  _twitterLoginButton.layer.cornerRadius = 5.0;
-  _twitterLoginButton.clipsToBounds = YES;
+  if (![[PDCustomer sharedInstance] usesTwitter]) {
+    [_twitterLoginButton setHidden:YES];
+    [_twitterLoginButton setEnabled:NO];
+    _twitterButtonHeightConstraint.constant = 0;
+    _twitterButtonBottomGapLayoutConstraint.constant = 0;
+  } else {
+    [_twitterLoginButton setBackgroundColor:_viewModel.twitterButtonColor];
+    [_twitterLoginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [_twitterLoginButton.titleLabel setFont:PopdeemFont(PDThemeFontPrimary, 15)];
+    _twitterLoginButton.layer.cornerRadius = 5.0;
+    _twitterLoginButton.clipsToBounds = YES;
+  }
 	
 	[_instagramLoginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
   _instagramLoginButton.layer.cornerRadius = 5.0;
   _instagramLoginButton.clipsToBounds = YES;
-  UIImage *image = [UIImage imageNamed:@"PDUI_IGBG"];
-  if (image == nil) {
-    NSBundle *podBundle = [NSBundle bundleForClass:[PopdeemSDK class]];
-    NSString *imagePath = [podBundle pathForResource:@"PDUI_IGBG" ofType:@"png"];
-    image = [UIImage imageWithContentsOfFile:imagePath];
-  }
   [_instagramLoginButton.titleLabel setFont:PopdeemFont(PDThemeFontPrimary, 15)];
-  [_instagramLoginButton setBackgroundImage:image forState:UIControlStateNormal];
+  [_instagramLoginButton setBackgroundColor:_viewModel.instagramButtonColor];
 	
 	//Facebook setup
   _facebookLoginButton.layer.cornerRadius = 5.0;
   _facebookLoginButton.clipsToBounds = YES;
-  [_facebookLoginButton setTitle:@"Log in with Facebook" forState:UIControlStateNormal];
-  [self.facebookLoginButton.titleLabel setFont:PopdeemFont(PDThemeFontPrimary, 15)];
+  [_facebookLoginButton setTitle:_viewModel.facebookButtonText forState:UIControlStateNormal];
+  [self.facebookLoginButton.titleLabel setFont:_viewModel.facebookButtonFont];
   
   if (_viewModel.image) {
     [self.imageView setImage:_viewModel.image];
@@ -127,28 +103,8 @@
   }
 	
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cancelButtonPressed:) name:InstagramLoginuserDismissed object:nil];
-}
-
-- (void) viewWillAppear:(BOOL)animated {
-  NSArray *rewards = [PDRewardStore allRewards];
-  if (rewards.count == 0) {
-    PDRewardAPIService *service = [[PDRewardAPIService alloc] init];
-    [service getAllRewardsWithCompletion:^(NSError *error) {
-      for (PDReward* reward in [PDRewardStore allRewards]){
-        if (reward.action == PDRewardActionSocialLogin) {
-          [self setupSocialLoginReward:reward];
-          break;
-        }
-      }
-    }];
-  } else {
-    for (PDReward* reward in [PDRewardStore allRewards]){
-      if (reward.action == PDRewardActionSocialLogin) {
-        [self setupSocialLoginReward:reward];
-        break;
-      }
-    }
-  }
+  
+  [_titleLabel setNumberOfLines:0];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -185,13 +141,12 @@
 	[manager registerWithTwitter:^{
 		//Continue to next stage of app, login has happened.
 		[self proceedWithTwitterLoggedInUser];
-    _twitterValid = YES;
+        _twitterValid = YES;
 	} failure:^(NSError *error) {
-    _twitterValid = NO;
-    dispatch_async(dispatch_get_main_queue(), ^{
-      [_loadingView hideAnimated:YES];
-    });
-		//Show some error, something went wrong
+        _twitterValid = NO;
+        dispatch_async(dispatch_get_main_queue(), ^{
+          [_loadingView hideAnimated:YES];
+        });
 	}];
 }
 
@@ -207,16 +162,9 @@
 }
 
 - (void) proceedWithTwitterLoggedInUser {
-  dispatch_async(dispatch_get_main_queue(), ^{
-    [_loadingView hideAnimated:YES];
-  });
 	[self addUserToUserDefaults:[PDUser sharedInstance]];
 	AbraLogEvent(ABRA_EVENT_LOGIN, @{@"Source" : @"Login Takeover"});
-  [[NSNotificationCenter defaultCenter] postNotificationName:PDUserDidLogin
-                                                      object:nil];
-	[self dismissViewControllerAnimated:YES completion:^{
-    [[NSNotificationCenter defaultCenter] postNotificationName:DirectToSocialHome object:nil];
-  }];
+    [self proceedWithLocationCheck];
 }
 
 - (void) addUserToUserDefaults:(PDUser*)user {
@@ -231,14 +179,9 @@
 	[service registerUserWithInstagramId:identifier accessToken:accessToken fullName:@"" userName:userName profilePicture:@"" success:^(PDUser *user){
 		[self addUserToUserDefaults:user];
 		AbraLogEvent(ABRA_EVENT_LOGIN, @{@"Source" : @"Login Takeover"});
-    dispatch_async(dispatch_get_main_queue(), ^{
-      [_loadingView hideAnimated:YES];
-      [[NSNotificationCenter defaultCenter] postNotificationName:PDUserDidLogin
-                                                          object:nil];
-      [self dismissViewControllerAnimated:YES completion:^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:DirectToSocialHome object:nil];
-      }];
-    });
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self proceedWithLocationCheck];
+        });
 	} failure:^(NSError* error){
     dispatch_async(dispatch_get_main_queue(), ^{
       [_loadingView hideAnimated:YES];
@@ -273,9 +216,7 @@
                                                                      @"public_profile",
                                                                      @"email",
                                                                      @"user_birthday",
-                                                                     @"user_posts",
-                                                                     @"user_friends",
-                                                                     @"user_education_history"]
+                                                                     @"user_posts"]
                                                registerWithPopdeem:YES
                                                            success:^(void) {
                                                              dispatch_async(dispatch_get_main_queue(), ^{
@@ -289,21 +230,58 @@
 }
 
 - (void) facebookLoginSuccess {
-  dispatch_async(dispatch_get_main_queue(), ^{
-    [_loadingView hideAnimated:YES];
-  });
-  [[NSNotificationCenter defaultCenter] postNotificationName:PDUserDidLogin
-                                                      object:nil];
   AbraLogEvent(ABRA_EVENT_LOGIN, @{@"Source" : @"Login Takeover"});
-  [self dismissViewControllerAnimated:YES completion:^{
-    [[NSNotificationCenter defaultCenter] postNotificationName:DirectToSocialHome object:nil];
-  }];
+  [self proceedWithLocationCheck];
 }
 
 - (void) facebookLoginFailure {
   dispatch_async(dispatch_get_main_queue(), ^{
     [_loadingView hideAnimated:YES];
   });
+}
+
+- (void) proceedWithLocationCheck {
+    NSString *model = [[UIDevice currentDevice] model];
+    if ([model isEqualToString:@"iPhone Simulator"]) {
+        NSLog(@"SIMULATOR");
+    }
+    _locationManager = [[CLLocationManager alloc] init];
+    [_locationManager requestWhenInUseAuthorization];
+    _locationManager.distanceFilter = kCLDistanceFilterNone;
+    _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    _locationManager.delegate = self;
+    [_locationManager startUpdatingLocation];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+    NSLog(@"Location Denied");
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [_loadingView hideAnimated:YES];
+    });
+    [self dismissViewControllerAnimated:YES completion:^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:DirectToSocialHome object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:PDUserDidLogin
+                                                            object:nil];
+    }];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
+    NSLog(@"Location Updated");
+    CLLocation *location = [locations lastObject];
+    PDGeoLocation pdLoc = PDGeoLocationMake(location.coordinate.latitude, location.coordinate.longitude);
+    [[PDUser sharedInstance] setLastLocation:pdLoc];
+    PDUserAPIService *service = [[PDUserAPIService alloc] init];
+    [service updateUserWithCompletion:^(PDUser *user, NSError *error) {
+        PDLog(@"User Location Updated from Login");
+    }];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [_loadingView hideAnimated:YES];
+    });
+    [self dismissViewControllerAnimated:YES completion:^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:DirectToSocialHome object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:PDUserDidLogin
+                                                            object:nil];
+    }];
 }
 
 @end
