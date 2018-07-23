@@ -39,6 +39,9 @@
 #import "PDRealm.h"
 #import "PDCustomerAPIService.h"
 #import "PDStringsHelper.h"
+#import "PDCustomer.h"
+#import <TwitterKit/TWTRKit.h>
+
 
 @interface PopdeemSDK()
   @property (nonatomic, strong)id uiKitCore;
@@ -125,6 +128,9 @@
   PDCustomerAPIService *service = [[PDCustomerAPIService alloc] init];
   [service getCustomerWithCompletion:^(NSError *error) {
     PDLog(@"Fetched Customer");
+    if ([[PDCustomer sharedInstance] twitterConsumerKey] && [[PDCustomer sharedInstance] twitterConsumerSecret]) {
+      [[Twitter sharedInstance] startWithConsumerKey:[[PDCustomer sharedInstance] twitterConsumerKey] consumerSecret:[[PDCustomer sharedInstance] twitterConsumerSecret]];
+    }
   }];
 }
 
@@ -135,10 +141,6 @@
 + (void) testingWithAPIKey:(NSString*)apiKey {
   PopdeemSDK *SDK = [[self class] sharedInstance];
   [SDK setApiKey:apiKey];
-}
-
-+ (void) setTwitterOAuthToken:(NSString*)token verifier:(NSString*) verifier {
-  [[PDSocialMediaManager manager] setOAuthToken:token oauthVerifier:verifier];
 }
 
 + (void) enableSocialLoginWithNumberOfPrompts:(NSInteger) noOfPrompts {
@@ -258,10 +260,18 @@
 + (BOOL) canOpenUrl:(NSURL*)url	
   sourceApplication:(NSString *)sourceApplication
          annotation:(nullable id)annotation {
+
+  return [PopdeemSDK application:[UIApplication sharedApplication] canOpenUrl:url options:@{}];
+}
+
++ (BOOL) application:(UIApplication*)application canOpenUrl:(NSURL *)url options:(NSDictionary*)options {
   if ([[url scheme] isEqualToString:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"TwitterCallbackScheme"]]) {
     return YES;
   }
   if ([[url scheme] isEqualToString:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"FacebookNamespace"]]) {
+    return YES;
+  }
+  if ([[url scheme] rangeOfString:@"twitterkit"].location != NSNotFound) {
     return YES;
   }
   for (NSString *scheme in [[[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleURLTypes"] firstObject] objectForKey:@"CFBundleURLSchemes"]) {
@@ -279,17 +289,39 @@
   return NO;
 }
 
++ (BOOL) application:(UIApplication*)application openURL:(NSURL *)url options:(NSDictionary<NSString *, id> *)options {
+  BOOL twitterHandled = [[Twitter sharedInstance] application:application openURL:url options:options];
+  if (twitterHandled) {
+    return twitterHandled;
+  }
+  
+  if ([[url scheme] isEqualToString:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"FacebookNamespace"]]) {
+    return [PopdeemSDK processReferral:application url:url sourceApplication:@"" annotation:nil];
+  }
+
+  for (NSString *scheme in [[[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleURLTypes"] firstObject] objectForKey:@"CFBundleURLSchemes"]) {
+    NSError *error = NULL;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"^fb"
+                                                                           options:NSRegularExpressionCaseInsensitive
+                                                                             error:&error];
+    NSUInteger numberOfMatches = [regex numberOfMatchesInString:scheme
+                                                        options:0
+                                                          range:NSMakeRange(0, [scheme length])];
+    if (numberOfMatches > 0) {
+      return [PopdeemSDK processReferral:application url:url sourceApplication:@"" annotation:nil];
+    }
+  }
+  return YES;
+}
+
 + (BOOL) application:(UIApplication *)application
              openURL:(NSURL *)url
    sourceApplication:(NSString *)sourceApplication
           annotation:(nullable id)annotation {
-  //Twitter Login Callback
-  if ([[url scheme] isEqualToString:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"TwitterCallbackScheme"]]) {
-    return [PopdeemSDK handleTwitterCallback:url sourceApplication:sourceApplication annotation:annotation];
-  }
+  
   //Facebook Deep Linking Handling
   if ([[url scheme] isEqualToString:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"FacebookNamespace"]]) {
-    return [PopdeemSDK processReferral:application url:url sourceApplication:sourceApplication annotation:annotation];
+    return [PopdeemSDK processReferral:application url:url sourceApplication:@"" annotation:nil];
   }
   for (NSString *scheme in [[[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleURLTypes"] firstObject] objectForKey:@"CFBundleURLSchemes"]) {
     NSError *error = NULL;
@@ -300,28 +332,12 @@
                                                         options:0
                                                           range:NSMakeRange(0, [scheme length])];
     if (numberOfMatches > 0) {
-      return [PopdeemSDK processReferral:application url:url sourceApplication:sourceApplication annotation:annotation];
+      return [PopdeemSDK processReferral:application url:url sourceApplication:@"" annotation:nil];
     }
   }
   return YES;
 }
 
-+ (BOOL) handleTwitterCallback:(NSURL *)url
-             sourceApplication:(NSString *)sourceApplication
-                    annotation:(id)annotation {
-  NSDictionary *d = [PopdeemSDK parametersDictionaryFromQueryString:[url query]];
-  PDSocialMediaManager *man = [PDSocialMediaManager manager];
-  if (d[@"denied"]) {
-    //User denied
-    PDLog(@"User cancelled");
-    [man userCancelledTwitterLogin];
-  } else {
-    NSString *token = d[@"oauth_token"];
-    NSString *verifier = d[@"oauth_verifier"];
-    [man setOAuthToken:token oauthVerifier:verifier];
-  }
-  return YES;
-}
 
 + (BOOL) processReferral:(UIApplication *)application
                      url:(NSURL *)url

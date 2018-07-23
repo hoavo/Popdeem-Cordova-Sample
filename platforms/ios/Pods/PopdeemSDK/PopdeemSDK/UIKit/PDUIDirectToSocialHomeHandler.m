@@ -21,6 +21,11 @@
   UIViewController *topController = [PDUIKitUtils topViewController];
   [topController setModalPresentationStyle:UIModalPresentationOverFullScreen];
   
+  if ([topController isKindOfClass:[PDUIHomeViewController class]]) {
+    return;
+  }
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
   PDUIHomeViewController *homeVc = [[PDUIHomeViewController alloc] initFromNib];
   homeVc.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(dismiss)];
   
@@ -35,7 +40,7 @@
   
   [topController presentViewController:_navController animated:YES completion:^{
   }];
-  
+#pragma clang diagnostic pop
 }
 
 @end

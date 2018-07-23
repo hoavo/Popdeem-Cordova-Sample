@@ -226,18 +226,19 @@
 		return;
 	}
 	PDSocialMediaManager *manager = [PDSocialMediaManager manager];
+  __weak typeof(self) weakSelf = self;
 	[manager isLoggedInWithInstagram:^(BOOL isLoggedIn){
 		if (!isLoggedIn) {
 			dispatch_async(dispatch_get_main_queue(), ^{
-				PDUIInstagramLoginViewController *instaVC = [[PDUIInstagramLoginViewController alloc] initForParent:_viewController.navigationController delegate:self connectMode:YES];
+				PDUIInstagramLoginViewController *instaVC = [[PDUIInstagramLoginViewController alloc] initForParent:weakSelf.viewController.navigationController delegate:weakSelf connectMode:YES];
 				if (!instaVC) {
 					return;
 				}
-				_viewController.definesPresentationContext = YES;
+				weakSelf.viewController.definesPresentationContext = YES;
 				instaVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
 				instaVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
 				[[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
-				[_viewController presentViewController:instaVC animated:YES completion:^(void){}];
+				[weakSelf.viewController presentViewController:instaVC animated:YES completion:^(void){}];
 			});
 		}
 	}];
@@ -297,20 +298,21 @@
 }
 
 - (void) keyboardWillShow:(NSNotification*)notification {
+  __weak typeof(self) weakSelf = self;
 	[UIView animateWithDuration:1.0
 												delay:0.0
 											options: UIViewAnimationOptionCurveEaseInOut
 									 animations:^{
-										 [_viewController keyboardUp];
+										 [weakSelf.viewController keyboardUp];
 									 } completion:^(BOOL finished){
                    
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
-                     UIBarButtonItem *typingDone = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:_viewController action:@selector(hiderTap)];
+                     UIBarButtonItem *typingDone = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:weakSelf.viewController action:@selector(hiderTap)];
 #pragma clang diagnostic pop
                      //
-                     self.viewController.navigationItem.rightBarButtonItem = typingDone;
-                     self.viewController.navigationItem.hidesBackButton = YES;
+                     weakSelf.viewController.navigationItem.rightBarButtonItem = typingDone;
+                     weakSelf.viewController.navigationItem.hidesBackButton = YES;
 
                    }];
   [self.viewController.view setNeedsLayout];
@@ -363,10 +365,6 @@
 }
 
 - (void) validateFacebookOptionsAndClaim {
-	if (![[FBSDKAccessToken currentAccessToken] hasGranted:@"publish_actions"]) {
-		[self loginWithWritePerms];
-		return;
-	}
   if (_reward.forcedTag && !_hashtagValidated) {
     UIAlertView *hashAV = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.claim.hashtagMissing.title", @"Oops!")
                                                      message:[NSString stringWithFormat:translationForKey(@"popdeem.claim.hashtagMissing.message", @"Looks like you have forgotten to add the required hashtag %@, please add this to your message before posting to Facebook"),_reward.instagramForcedTag]
@@ -432,10 +430,11 @@
 }
 
 - (void) validateTwitter {
+  __weak typeof(self) weakSelf = self;
 	[[PDSocialMediaManager manager] verifyTwitterCredentialsCompletion:^(BOOL connected, NSError *error) {
 		if (!connected) {
 			[self connectTwitter:^(){
-				[_viewController.claimButtonView setUserInteractionEnabled:YES];
+				[weakSelf.viewController.claimButtonView setUserInteractionEnabled:YES];
 			} failure:^(NSError *error) {
 				UIAlertView *av = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.common.error", @"Error")
 																										 message:translationForKey(@"popdeem.claim.twitter.notconnected", @"Twitter not connected, you must connect your twitter account in order to post to Twitter")
@@ -444,10 +443,10 @@
 																					 otherButtonTitles: nil];
 				[av show];
 			}];
-			[_viewController.claimButtonView setUserInteractionEnabled:YES];
+			[weakSelf.viewController.claimButtonView setUserInteractionEnabled:YES];
 			return;
 		}
-		[_viewController.claimButtonView setUserInteractionEnabled:YES];
+		[weakSelf.viewController.claimButtonView setUserInteractionEnabled:YES];
 	}];
 }
 
@@ -568,13 +567,13 @@
 	
 	__block NSInteger rewardId = _reward.identifier;
 	//location?
-  if (!_willInstagram) {
+  if (_willTweet) {
     [client claimReward:_reward.identifier
                location:_location withMessage:message
           taggedFriends:taggedFriends
-                  image:_image facebook:_willFacebook
+                  image:_image facebook:NO
                 twitter:_willTweet
-              instagram:_willInstagram
+              instagram:NO
                 success:^(){
 
                   [self didClaimRewardId:rewardId];
@@ -582,17 +581,34 @@
                 } failure:^(NSError *error){
                   [self PDAPIClient:client didFailWithError:error];
                 }];
+  } else if (_willFacebook) {
+      //Use Facebook Share Dialog
+      if (_image) {
+          //Photo Share
+          FBSDKSharePhoto *photo = [[FBSDKSharePhoto alloc] init];
+          photo.image = _image;
+          photo.userGenerated = YES;
+          FBSDKSharePhotoContent *content = [[FBSDKSharePhotoContent alloc] init];
+//          content.photos = @[photo];
+          content.hashtag = [FBSDKHashtag hashtagWithString:_reward.forcedTag];
+          FBSDKShareDialog *dialog = [[FBSDKShareDialog alloc] init];
+          dialog.fromViewController = self.viewController;
+          dialog.shareContent = content;
+          dialog.mode = FBSDKShareDialogModeShareSheet;
+          dialog.delegate = self;
+          [dialog show];
+      }
   } else {
     if (_willInstagram) {
       [[NSNotificationCenter defaultCenter] postNotificationName:InstagramPostMade object:self userInfo:@{@"rewardId" : @(_reward.identifier)}];
     }
   }
 	
-  _loadingView = [[PDUIModalLoadingView alloc] initForView:self.viewController.view
-                                                 titleText:translationForKey(@"popdeem.claim.reward.claiming", @"Claiming Reward")
-                                           descriptionText:translationForKey(@"popdeem.claim.reward.claiming.message", @"This could take up to 30 seconds")];
-  [_loadingView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.8]];
-  [_loadingView showAnimated:YES];
+//  _loadingView = [[PDUIModalLoadingView alloc] initForView:self.viewController.view
+//                                                 titleText:translationForKey(@"popdeem.claim.reward.claiming", @"Claiming Reward")
+//                                           descriptionText:translationForKey(@"popdeem.claim.reward.claiming.message", @"This could take up to 30 seconds")];
+//  [_loadingView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.8]];
+//  [_loadingView showAnimated:YES];
 
 }
 
@@ -816,20 +832,27 @@
 }
 
 - (void)selectPhoto {
+  if ([PHPhotoLibrary authorizationStatus] == PHAuthorizationStatusNotDetermined || [PHPhotoLibrary authorizationStatus] == PHAuthorizationStatusDenied) {
+    [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
+      UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+      picker.delegate = self;
+      picker.allowsEditing = NO;
+      picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+      picker.modalPresentationStyle = UIModalPresentationOverFullScreen;
+      picker.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+      dispatch_async(dispatch_get_main_queue(), ^{
+        [self.viewController presentViewController:picker animated:YES completion:NULL];
+      });
+    }];
+  } else {
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-    picker.delegate = _viewController;
+    picker.delegate = self;
     picker.allowsEditing = NO;
     picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     picker.modalPresentationStyle = UIModalPresentationOverFullScreen;
     picker.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    _didGoToImagePicker = YES;
-    __weak typeof(_viewController) weakController = _viewController;
-    [_viewController presentViewController:picker animated:YES completion:^{
-        weakController.spoofView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, weakController.navigationController.view.frame.size.width, weakController.navigationController.view.frame.size.height)];
-        weakController.spoofView.backgroundColor = [UIColor blackColor];
-        [weakController.navigationController.view addSubview:weakController.spoofView];
-    }];
-    
+    [self.viewController presentViewController:picker animated:YES completion:NULL];
+  }
 }
 
 - (void) addPhotoToLibrary:(NSDictionary*)info {
@@ -844,6 +867,11 @@
       PDLog(@"Saved Image");
     }
   }];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+  [picker dismissViewControllerAnimated:NO completion:NULL];
+  [_viewController.spoofView removeFromSuperview];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
@@ -1001,4 +1029,17 @@
 	}
 	return chosen;
 }
+
+- (void)sharer:(id<FBSDKSharing>)sharer didFailWithError:(NSError *)error {
+    PDLog(@"FB Error: %@", error.localizedDescription);
+}
+
+- (void)sharer:(id<FBSDKSharing>)sharer didCompleteWithResults:(NSDictionary *)results {
+    PDLog(@"FB Complete: %@", results);
+}
+
+- (void) sharerDidCancel:(id<FBSDKSharing>)sharer {
+    PDLog(@"FB Cancelled");
+}
+
 @end

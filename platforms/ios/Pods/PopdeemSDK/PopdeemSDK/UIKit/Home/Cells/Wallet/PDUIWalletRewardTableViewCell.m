@@ -30,6 +30,7 @@
 		[self setBackgroundColor:PopdeemColor(PDThemeColorTableViewCellBackground)];
 		self.contentView.backgroundColor = PopdeemColor(PDThemeColorTableViewCellBackground);
 	}
+  [self.arrowImageView setImage:PopdeemImage(@"pduikit_arrow_g")];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -44,6 +45,7 @@
 }
 
 - (void) setupForReward:(PDReward*)reward {
+  [self.arrowImageView setImage:PopdeemImage(@"pduikit_arrow_g")];
 	if (_brandTheme) {
 		_primaryAppColor = PopdeemColorFromHex(_brandTheme.primaryAppColor);
 		_primaryFontColor = PopdeemColorFromHex(_brandTheme.primaryTextColor);
@@ -55,7 +57,8 @@
 	}
 	
 	[_titleLabel setTextColor:_primaryFontColor];
-	
+
+  [self.arrowImageView setHidden:NO];
 	self.clipsToBounds = YES;
 
 	if (reward.coverImageUrl) {
@@ -77,6 +80,7 @@
 	switch (reward.type) {
 		case PDRewardTypeSweepstake:
 			labelLineTwo = translationForKey(@"popdeem.wallet.sweepstake.redeemText", @"You have been entered in this competition.");
+      [self.arrowImageView setHidden:NO];
 			break;
     case PDRewardTypeCredit:
 		case PDRewardTypeCoupon:
@@ -86,10 +90,10 @@
         formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"d MMM"];
         stringDate = [formatter stringFromDate:creditDate];
-        labelLineTwo = [NSString stringWithFormat:@"%@ was added to your account on %@",reward.creditString, stringDate];
+        labelLineTwo = [NSString stringWithFormat:translationForKey(@"popdeem.wallet.creditString", @"%@ was added to your account on %@"),reward.creditString, stringDate];
         [self.arrowImageView setHidden:YES];
       } else {
-        [self.arrowImageView setHidden:NO ];
+        [self.arrowImageView setHidden:NO];
         labelLineTwo = translationForKey(@"popdeem.wallet.coupon.redeemText", @"Redeem at the point of sale.");
       }
 			break;
@@ -147,7 +151,7 @@
   } else {
     [_infoLabel setFrame:infoLabelRect];
   }
-  [_infoLabel setNumberOfLines:1];
+  [_infoLabel setNumberOfLines:2];
   [_infoLabel setAttributedText:infoString];
   CGSize infoSize = [_infoLabel sizeThatFits:CGSizeMake(labelWidth, MAXFLOAT)];
   CGRect infoLabelFrame = _infoLabel.frame;

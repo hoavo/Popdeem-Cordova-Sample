@@ -22,6 +22,7 @@
 #import "PDUILogoutTableViewCell.h"
 #import "PDUserAPIService.h"
 #import "PDCustomer.h"
+#import <TwitterKit/TWTRKit.h>
 
 #define kSocialNib @"SocialNib"
 #define kLogoutNib @"LogoutNib"
@@ -73,10 +74,11 @@
 	[self.tableHeaderImageView setClipsToBounds:YES];
 	[self.tableView reloadData];
 	// Do any additional setup after loading the view from its nib.
-  [self styleNavbar];
+  
 }
 
 - (void) styleNavbar {
+  [self.view setBackgroundColor:PopdeemColor(PDThemeColorViewBackground)];
   if (PopdeemThemeHasValueForKey(@"popdeem.nav")) {
     self.navigationController.navigationBar.translucent = NO;
     [self.navigationController.navigationBar setBarTintColor:PopdeemColor(PDThemeColorPrimaryApp)];
@@ -102,6 +104,7 @@
       [self.navigationController.navigationBar setBackgroundImage:PopdeemImage(@"popdeem.images.navigationBar") forBarMetrics:UIBarMetricsDefault];
     }
     if (@available(iOS 11.0, *)) {
+      self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentAutomatic;
       self.navigationController.navigationBar.translucent = YES;
     }
   }
@@ -112,6 +115,7 @@
 }
 
 - (void) viewDidAppear:(BOOL)animated {
+  [self styleNavbar];
 	AbraLogEvent(ABRA_EVENT_PAGE_VIEWED, @{ABRA_PROPERTYNAME_SOURCE_PAGE : ABRA_PROPERTYVALUE_PAGE_SETTINGS});
 }
 
@@ -345,9 +349,10 @@
                                        }));  }];
   UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
     PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    __weak typeof(self) weakSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
       [cell.socialSwitch setOn:YES];
-      [_tableView reloadData];
+      [weakSelf.tableView reloadData];
     });
   }];
   UIAlertController *ac = [UIAlertController alertControllerWithTitle:@"Disconnect Facebook Account" message:@"This action will disconnect your Facebook account. Are you sure you wish to proceed?" preferredStyle:UIAlertControllerStyleAlert];
@@ -376,7 +381,13 @@
 	UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
 		PDSocialAPIService *socialService = [[PDSocialAPIService alloc] init];
 		[socialService disconnectTwitterAccountWithCompletion:^(NSError *err){
-			
+      if (!err) {
+        TWTRSessionStore *store = [[Twitter sharedInstance] sessionStore];
+        for (TWTRSession *session in store.existingUserSessions) {
+          NSString *userID = session.userID;
+          [store logOutUserID:userID];
+        }
+      }
 		}];
 		AbraLogEvent(ABRA_EVENT_DISCONNECT_SOCIAL_ACCOUNT, (@{
 																													ABRA_PROPERTYNAME_SOCIAL_NETWORK : ABRA_PROPERTYVALUE_SOCIAL_NETWORK_TWITTER,
@@ -657,6 +668,13 @@
   if ([account isEqualToString:@"twitter"]) {
     PDSocialAPIService *twService = [[PDSocialAPIService alloc] init];
     [twService disconnectTwitterAccountWithCompletion:^(NSError *err){
+      if (!err) {
+        TWTRSessionStore *store = [[Twitter sharedInstance] sessionStore];
+        for (TWTRSession *session in store.existingUserSessions) {
+          NSString *userID = session.userID;
+          [store logOutUserID:userID];
+        }
+      }
       PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
       dispatch_async(dispatch_get_main_queue(), ^{
         [cell.socialSwitch setOn:NO];

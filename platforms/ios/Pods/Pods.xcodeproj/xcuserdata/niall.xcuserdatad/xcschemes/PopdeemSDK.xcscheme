@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F5AEBDE796C19254472030CE69F36CA6"
+               BlueprintIdentifier = "DBEC3C7D39935785D495FE8088E63E03"
                BlueprintName = "PopdeemSDK"
                ReferencedContainer = "container:Pods.xcodeproj"
                BuildableName = "libPopdeemSDK.a">

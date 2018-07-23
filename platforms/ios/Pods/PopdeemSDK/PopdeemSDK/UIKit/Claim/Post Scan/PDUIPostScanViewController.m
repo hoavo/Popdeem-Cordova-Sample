@@ -17,6 +17,10 @@
 #import "DGActivityIndicatorView.h"
 #import "PDBackgroundScan.h"
 #import "PDUIClaimViewController.h"
+#import "PDUIClaimV2ViewController.h"
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wimplicit-retain-self"
 
 @interface PDUIPostScanViewController () {
   CFAbsoluteTime scanStartTime;
@@ -62,7 +66,6 @@
 }
 
 - (void) scan {
-  
   PDBackgroundScan *scan = [[PDBackgroundScan alloc] init];
   [scan scanNetwork:_network reward:_reward success:^(BOOL validated, PDBGScanResponseModel *response){
     if (validated == YES) {
@@ -366,7 +369,7 @@
 
 - (IBAction)backToRewardButtonPressed:(id)sender {
   for (UIViewController *controller in self.navigationController.viewControllers) {
-    if ([controller isKindOfClass:[PDUIClaimViewController class]]) {
+    if ([controller isKindOfClass:[PDUIClaimV2ViewController class]] || [controller isKindOfClass:[PDUIClaimViewController class]]) {
       [self.navigationController popToViewController:controller
                                             animated:YES];
       break;
@@ -375,11 +378,15 @@
 }
 
 - (void) didClaimRewardId:(NSInteger)rewardId {
-  
-  UIAlertView *av = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.claim.reward.claimed", @"Reward Claimed!") message:translationForKey(@"popdeem.claim.reward.success", @"You can view your reward in your wallet") delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-  [av setTag:9];
-  [av show];
-  
+  for (UIViewController *controller in self.navigationController.viewControllers) {
+    if ([controller isKindOfClass:[PDUIHomeViewController class]]) {
+      PDUIHomeViewController *cont = (PDUIHomeViewController*)controller;
+      [cont setDidClaim:YES];
+      [self.navigationController popToViewController:controller
+                                            animated:YES];
+      break;
+    }
+  }
 }
 
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -442,3 +449,4 @@
 */
 
 @end
+#pragma clang diagnostic pop

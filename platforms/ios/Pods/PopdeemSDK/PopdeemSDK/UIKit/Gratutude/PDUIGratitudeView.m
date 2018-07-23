@@ -177,14 +177,19 @@
     //Return 1
     NSString *titleKey = [NSString stringWithFormat:@"%@.title.%i",stringKey, 1];
     NSString *bodyKey = [NSString stringWithFormat:@"%@.body.%i",stringKey, 1];
-    title = translationForKey(titleKey, @"You're Brilliant!");
-    body = translationForKey(bodyKey, @"Unlock new rewards and VIP offers as you move up in status.");
+    if (self.reward.creditString != nil) {
+      title = translationForKey(titleKey, @"You're Brilliant!");
+      body = [NSString stringWithFormat:translationForKey(bodyKey, @"%@ was added to your account."), self.reward.creditString];
+    } else {
+      title = translationForKey(titleKey, @"You're Brilliant!");
+      body = translationForKey(bodyKey, @"Unlock new rewards and VIP offers as you move up in status.");
+    }
     NSString *imageString = [NSString stringWithFormat:imageKey, 1];
     image = PopdeemImage(imageString);
   } else {
     //Return next item in cycle
-    NSString *titleKey = [NSString stringWithFormat:@"%@.title.%ld",stringKey, variationNumber];
-    NSString *bodyKey = [NSString stringWithFormat:@"%@.body.%ld",stringKey, variationNumber];
+    NSString *titleKey = [NSString stringWithFormat:@"%@.title.%ld",stringKey, (long)variationNumber];
+    NSString *bodyKey = [NSString stringWithFormat:@"%@.body.%ld",stringKey, (long)variationNumber];
     if (self.reward.creditString != nil) {
       title = translationForKey(titleKey, @"You're Brilliant!");
       body = [NSString stringWithFormat:translationForKey(bodyKey, @"%@ was added to your account."), self.reward.creditString];
@@ -230,7 +235,7 @@
 
 - (NSString*)body {
   if ([[PDCustomer sharedInstance] usesAmbassadorFeatures]) {
-    NSInteger incrementPoints = [[PDCustomer sharedInstance] incrementAdvocacyPoints];
+    NSInteger incrementPoints = [[[PDCustomer sharedInstance] incrementAdvocacyPoints] integerValue];
     switch (_type) {
       case PDGratitudeTypeShare:
         return [NSString stringWithFormat:translationForKey(@"popdeem.gratitude.share.bodyText", @"Thanks for sharing. You earned an additional %d points to your account and moved up in status."), incrementPoints];
@@ -245,13 +250,13 @@
   } else {
     switch (_type) {
       case PDGratitudeTypeShare:
-        return [NSString stringWithFormat:translationForKey(@"popdeem.gratitude.share.bodyText", @"Thanks for sharing, your reward has been added to your profile. Enjoy!")];
+        return [NSString stringWithFormat:@"%@", translationForKey(@"popdeem.gratitude.share.bodyText", @"Thanks for sharing, your reward has been added to your profile. Enjoy!")];
         break;
       case PDGratitudeTypeConnect:
-        return [NSString stringWithFormat:translationForKey(@"popdeem.gratitude.connect.bodyText", @"Thanks for connecting, start sharing to earn more rewards and enter amazing competitions.")];
+        return [NSString stringWithFormat:@"%@", translationForKey(@"popdeem.gratitude.connect.bodyText", @"Thanks for connecting, start sharing to earn more rewards and enter amazing competitions.")];
         break;
       default:
-        return [NSString stringWithFormat:translationForKey(@"popdeem.gratitude.share.bodyText", @"Thanks for sharing, your reward has been added to your profile. Enjoy!")];
+        return [NSString stringWithFormat:@"%@", translationForKey(@"popdeem.gratitude.share.bodyText", @"Thanks for sharing, your reward has been added to your profile. Enjoy!")];
         break;
     }
   }
@@ -299,7 +304,7 @@
 }
 
 - (UIImage*) image {
-  int variations = 0;
+  NSInteger variations = 0;
   NSString *imageKey;
   switch (self.type) {
     case PDGratitudeTypeShare:
