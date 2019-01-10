@@ -42,6 +42,7 @@
 #import "PDCustomer.h"
 #import "PDUIClaimV2ViewController.h"
 
+
 #define kPlaceholderCell @"PlaceholderCell"
 #define kRewardWithRulesTableViewCell @"RewardWithRulesCell"
 #define kRewardV2Cell @"RewardV2Cell"
@@ -68,9 +69,12 @@
 @property (nonatomic, retain) UIColor *startingNavColor;
 @property (nonatomic, retain) UIColor *startingNavTextColor;
 @property (nonatomic, retain) UIView *historySectionView;
+
 @end
 
 @implementation PDUIHomeViewController
+
+
 
 - (instancetype) initFromNib {
   NSBundle *podBundle = [NSBundle bundleForClass:[PopdeemSDK class]];
@@ -162,7 +166,7 @@
   UINib *tierCell = [UINib nibWithNibName:@"PDUITierEventTableViewCell" bundle:podBundle];
   [[self tableView] registerNib:tierCell forCellReuseIdentifier:kTierCell];
   
-  
+    
 }
 
 - (void) viewDidDisappear:(BOOL)animated {
@@ -173,6 +177,11 @@
 }
 
 - (void)viewDidLoad {
+    
+    //UIView *noActionPopup = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 600)];
+    //noActionPopup.backgroundColor = UIColor.blueColor;
+    //[self.tableView addSubview:noActionPopup];
+    
   firstLaunch = YES;
   if (_brandVendorSearchTerm != nil) {
     _brand = [PDBrandStore findBrandBySearchTerm:_brandVendorSearchTerm];
@@ -217,6 +226,11 @@
     [tvbg setImage:PopdeemImage(@"popdeem.images.tableViewBackgroundImage")];
     [self.tableView setBackgroundView:tvbg];
   }
+    
+    // fix for scroll glitch iOS 11
+    self.tableView.estimatedRowHeight = 0;
+    self.tableView.estimatedSectionHeaderHeight = 0;
+    self.tableView.estimatedSectionFooterHeight = 0;
   
   self.refreshControl = [[UIRefreshControl alloc]init];
   [self.refreshControl setTintColor:[UIColor darkGrayColor]];
@@ -272,7 +286,7 @@
   
   _historySectionView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 40)];
   UILabel *historyTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, self.view.frame.size.width - 40, 40)];
-  [historyTitleLabel setText:@"MY HISTORY"];
+  [historyTitleLabel setText:translationForKey(@"popdeem.profile.myHistoryText", @"MY HISTORY")];
   [historyTitleLabel setFont:PopdeemFont(PDThemeFontBold, 12)];
   [historyTitleLabel setTextColor:[UIColor blackColor]];
   [_historySectionView addSubview:historyTitleLabel];
@@ -344,7 +358,7 @@
     _didClaim = NO;
     [_segmentedControl setSelectedSegmentIndex:2];
     [_model fetchWallet];
-    _model.rewards = [PDRewardStore orderedByDate];
+    _model.rewards = [PDRewardStore orderedByDistanceFromUser];
     [_model fetchWallet];
     [self.tableView reloadData];
     [self.tableView reloadInputViews];
@@ -661,13 +675,13 @@
         } else {
           if (indexPath.row == 0) {
             PDUIProfileButtonTableViewCell *socialAccountCell = [[self tableView] dequeueReusableCellWithIdentifier:kProfileButtonCell];
-            [socialAccountCell.label setText:@"Connect Social Media Accounts"];
+            [socialAccountCell.label setText:translationForKey(@"popdeem.profile.connectSocialAccountsText", @"Connect Social Media Accounts")];
             socialAccountCell.shouldShowBadge = NO;
             return socialAccountCell;
           }
           if (indexPath.row == 1) {
             PDUIProfileButtonTableViewCell *messagesCell = [[self tableView] dequeueReusableCellWithIdentifier:kProfileButtonCell];
-            [messagesCell.label setText:@"Messages"];
+            [messagesCell.label setText:translationForKey(@"popdeem.profile.messagesTitleText", @"Messages")];
             messagesCell.shouldShowBadge = YES;
             if ([PDMessageStore unreadCount] > 0) {
               [messagesCell showBadge:YES];
@@ -982,11 +996,11 @@
             return;
           }
           
-          UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Redeem Reward Now?"
-                                                       message:@"You will be presented with a countdown timer you must show the merchant."
+          UIAlertView *av = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.redeem.redeemNowText", @"Redeem Reward Now?")
+                                                       message:translationForKey(@"popdeem.redeem.redeemSureText", @"Are you sure you want to redeem this now?")
                                                       delegate:self
-                                             cancelButtonTitle:@"Cancel"
-                                             otherButtonTitles:@"Redeem", nil];
+                                             cancelButtonTitle:translationForKey(@"popdeem.redeem.cancelText", @"Cancel")
+                                             otherButtonTitles:translationForKey(@"popdeem.redeem.redeemText", @"Redeem"), nil];
           [av setTag:400];
           [av show];
           
@@ -1038,6 +1052,8 @@
   }
 }
 
+
+
 - (void) processClaimForIndexPath:(NSIndexPath*)indexPath {
   if (![[PDUser sharedInstance] isRegistered]) {
     PDUISocialLoginHandler *loginHandler = [[PDUISocialLoginHandler alloc] init];
@@ -1058,7 +1074,11 @@
       [loginHandler presentLoginModal];
       return;
     }
-    [self.model claimNoAction:reward closestLocation:nil];
+    
+      _noActionView = [[PDUINoActionRewardView alloc] initForView:self.navigationController.view reward:reward homeVC:self];
+      [_noActionView showAnimated:YES];
+      
+
   } else {
       PDUIClaimV2ViewController *claimController = [[PDUIClaimV2ViewController alloc] initFromNib];
     claimController.closestLocation = _closestLocation;
@@ -1072,6 +1092,12 @@
     [[self navigationController] pushViewController:claimController animated:YES];
   }
 }
+
+
+- (void) claimNoActionReward:(PDReward*)reward {
+    [self.model claimNoAction:reward closestLocation:nil];
+}
+
 
 - (void) scrollToIndexPath:(NSIndexPath*)path {
   [self.tableView scrollRectToVisible:[self.tableView rectForRowAtIndexPath:path] animated:YES];
@@ -1154,7 +1180,7 @@
 
 - (void) showConnect {
   PDUIGratitudeViewController *gViewController = [[PDUIGratitudeViewController alloc] initWithType:PDGratitudeTypeConnect];
-  
+
   [self presentViewController:gViewController animated:NO completion:^{
     
   }];
@@ -1247,7 +1273,7 @@
 - (void) moveToSection:(NSInteger)section {
   if (section < 3) {
     [self.segmentedControl setSelectedSegmentIndex:section];
-    [self scrollToIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    //[self scrollToIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     [self.tableView reloadData];
     [self.tableView reloadInputViews];
   }

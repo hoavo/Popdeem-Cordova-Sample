@@ -15,6 +15,8 @@
 #import "PDRFeedItem.h"
 #import "PDUIGratitudeViewController.h"
 #import "PDLocationStore.h"
+//#import "PDUIHomeViewController.h"
+
 
 @interface PDUIHomeViewModel(){
 }
@@ -192,7 +194,7 @@
 - (void) fetchAllWallet {
 	__weak typeof(self) weakSelf = self;
 	[[PDAPIClient sharedInstance] getRewardsInWalletSuccess:^() {
-        weakSelf.wallet = [PDWallet orderedByDateMulti];
+    weakSelf.wallet = [PDWallet orderedByDateMulti];
     [[NSNotificationCenter defaultCenter] postNotificationName:ShouldUpdateTableView object:nil];
 	} failure:^(NSError *error) {
 		//TODO: Handle Error
@@ -379,6 +381,7 @@
                                         [weakSelf.controller.loadingView hideAnimated:YES];
                                       }
                                       [weakSelf.controller moveToSection:2];
+                                      [self fetchWallet];
                                     } failure:^(NSError *error) {
                                       PDLog(@"An error occurred when Claiming No Action Reward;");
                                       [weakSelf.controller.loadingView hideAnimated:YES];

@@ -22,7 +22,7 @@
 
 #import "TOCropToolbar.h"
 
-#define TOCROPTOOLBAR_DEBUG_SHOWING_BUTTONS_CONTAINER_RECT     0   // convenience debug toggle
+#define TOCROPTOOLBAR_DEBUG_SHOWING_BUTTONS_CONTAINER_RECT 0   // convenience debug toggle
 
 @interface TOCropToolbar()
 
@@ -67,22 +67,14 @@
         self.reverseContentLayout = [[[NSLocale preferredLanguages] objectAtIndex:0] hasPrefix:@"ar"];
     }
     
-    // In CocoaPods, strings are stored in a separate bundle from the main one
-    NSBundle *resourceBundle = nil;
-    NSBundle *classBundle = [NSBundle bundleForClass:[self class]];
-    NSURL *resourceBundleURL = [classBundle URLForResource:@"TOCropViewControllerBundle" withExtension:@"bundle"];
-    if (resourceBundleURL) {
-        resourceBundle = [[NSBundle alloc] initWithURL:resourceBundleURL];
-    }
-    else {
-        resourceBundle = classBundle;
-    }
+    // Get the resource bundle depending on the framework/dependency manager we're using
+    NSBundle *resourceBundle = TO_CROP_VIEW_RESOURCE_BUNDLE_FOR_OBJECT(self);
     
     _doneTextButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [_doneTextButton setTitle: _doneTextButtonTitle ?
         _doneTextButtonTitle : NSLocalizedStringFromTableInBundle(@"Done",
-                                                                  @"TOCropViewControllerLocalizable",
-                                                                  resourceBundle,
+																  @"TOCropViewControllerLocalizable",
+																  resourceBundle,
                                                                   nil)
                      forState:UIControlStateNormal];
     [_doneTextButton setTitleColor:[UIColor colorWithRed:1.0f green:0.8f blue:0.0f alpha:1.0f] forState:UIControlStateNormal];
@@ -101,8 +93,8 @@
     
     [_cancelTextButton setTitle: _cancelTextButtonTitle ?
         _cancelTextButtonTitle : NSLocalizedStringFromTableInBundle(@"Cancel",
-                                                                    @"TOCropViewControllerLocalizable",
-                                                                    resourceBundle,
+																	@"TOCropViewControllerLocalizable",
+																	resourceBundle,
                                                                     nil)
                        forState:UIControlStateNormal];
     [_cancelTextButton.titleLabel setFont:[UIFont systemFontOfSize:17.0f]];
@@ -228,7 +220,9 @@
             [buttonsInOrderHorizontally addObject:self.rotateCounterclockwiseButton];
         }
         
-        [buttonsInOrderHorizontally addObject:self.resetButton];
+        if (!self.resetButtonHidden) {
+            [buttonsInOrderHorizontally addObject:self.resetButton];
+        }
         
         if (!self.clampButtonHidden) {
             [buttonsInOrderHorizontally addObject:self.clampButton];
@@ -237,7 +231,6 @@
         if (!self.rotateClockwiseButtonHidden) {
             [buttonsInOrderHorizontally addObject:self.rotateClockwiseButton];
         }
-        
         [self layoutToolbarButtons:buttonsInOrderHorizontally withSameButtonSize:buttonSize inContainerRect:containerRect horizontally:YES];
     }
     else {
@@ -265,7 +258,9 @@
             [buttonsInOrderVertically addObject:self.rotateCounterclockwiseButton];
         }
         
-        [buttonsInOrderVertically addObject:self.resetButton];
+        if (!self.resetButtonHidden) {
+            [buttonsInOrderVertically addObject:self.resetButton];
+        }
         
         if (!self.clampButtonHidden) {
             [buttonsInOrderVertically addObject:self.clampButton];
@@ -282,22 +277,24 @@
 // The convenience method for calculating button's frame inside of the container rect
 - (void)layoutToolbarButtons:(NSArray *)buttons withSameButtonSize:(CGSize)size inContainerRect:(CGRect)containerRect horizontally:(BOOL)horizontally
 {
-    NSInteger count = buttons.count;
-    CGFloat fixedSize = horizontally ? size.width : size.height;
-    CGFloat maxLength = horizontally ? CGRectGetWidth(containerRect) : CGRectGetHeight(containerRect);
-    CGFloat padding = (maxLength - fixedSize * count) / (count + 1);
-    
-    for (NSInteger i = 0; i < count; i++) {
-        UIView *button = buttons[i];
-        CGFloat sameOffset = horizontally ? fabs(CGRectGetHeight(containerRect)-CGRectGetHeight(button.bounds)) : fabs(CGRectGetWidth(containerRect)-CGRectGetWidth(button.bounds));
-        CGFloat diffOffset = padding + i * (fixedSize + padding);
-        CGPoint origin = horizontally ? CGPointMake(diffOffset, sameOffset) : CGPointMake(sameOffset, diffOffset);
-        if (horizontally) {
-            origin.x += CGRectGetMinX(containerRect);
-        } else {
-            origin.y += CGRectGetMinY(containerRect);
+    if (buttons.count > 0){
+        NSInteger count = buttons.count;
+        CGFloat fixedSize = horizontally ? size.width : size.height;
+        CGFloat maxLength = horizontally ? CGRectGetWidth(containerRect) : CGRectGetHeight(containerRect);
+        CGFloat padding = (maxLength - fixedSize * count) / (count + 1);
+        
+        for (NSInteger i = 0; i < count; i++) {
+            UIView *button = buttons[i];
+            CGFloat sameOffset = horizontally ? fabs(CGRectGetHeight(containerRect)-CGRectGetHeight(button.bounds)) : fabs(CGRectGetWidth(containerRect)-CGRectGetWidth(button.bounds));
+            CGFloat diffOffset = padding + i * (fixedSize + padding);
+            CGPoint origin = horizontally ? CGPointMake(diffOffset, sameOffset) : CGPointMake(sameOffset, diffOffset);
+            if (horizontally) {
+                origin.x += CGRectGetMinX(containerRect);
+            } else {
+                origin.y += CGRectGetMinY(containerRect);
+            }
+            button.frame = (CGRect){origin, size};
         }
-        button.frame = (CGRect){origin, size};
     }
 }
 
@@ -595,6 +592,16 @@
     [self setNeedsLayout];
 }
 
+- (void)setResetButtonHidden:(BOOL)resetButtonHidden
+{
+    if (_resetButtonHidden == resetButtonHidden) {
+        return;
+    }
+    
+    _resetButtonHidden = resetButtonHidden;
+    
+    [self setNeedsLayout];
+}
 - (UIButton *)rotateButton
 {
     return self.rotateCounterclockwiseButton;

@@ -165,5 +165,4 @@
     </platform>
     <engine name="ios" spec="^4.5.4" />
     <engine name="android" spec="^7.0.0" />
-    <plugin name="popdeem-cordova-plugin" spec="^0.9.46" />
 </widget>

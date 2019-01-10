@@ -17,12 +17,11 @@
     "elementtree": "^0.1.7",
     "lodash": "^4.17.4",
     "plist": "^2.1.0",
-    "popdeem-cordova-plugin": "^0.9.46"
+    "popdeem-cordova-plugin": "^0.1.15"
   },
   "cordova": {
     "plugins": {
-      "cordova-plugin-whitelist": {},
-      "popdeem-cordova-plugin": {}
+      "cordova-plugin-whitelist": {}
     },
     "platforms": [
       "ios",

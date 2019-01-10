@@ -11,10 +11,10 @@ PODS:
     - FBSDKCoreKit
   - FBSDKShareKit (4.29.0):
     - FBSDKCoreKit
-  - JSONModel (1.7.0)
-  - PopdeemSDK (1.1.28):
-    - PopdeemSDK/Core (= 1.1.28)
-  - PopdeemSDK/Core (1.1.28):
+  - JSONModel (1.8.0)
+  - PopdeemSDK (1.1.40):
+    - PopdeemSDK/Core (= 1.1.40)
+  - PopdeemSDK/Core (1.1.40):
     - Bolts
     - FBSDKCoreKit
     - FBSDKLoginKit
@@ -24,20 +24,20 @@ PODS:
     - Shimmer
     - TOCropViewController
     - TwitterKit
-  - Realm (3.7.4):
-    - Realm/Headers (= 3.7.4)
-  - Realm/Headers (3.7.4)
+  - Realm (3.13.0):
+    - Realm/Headers (= 3.13.0)
+  - Realm/Headers (3.13.0)
   - Shimmer (1.0.2)
-  - TOCropViewController (2.3.6)
+  - TOCropViewController (2.4.0)
   - TwitterCore (3.2.0)
-  - TwitterKit (3.4.0):
-    - TwitterCore (>= 3.1.0)
+  - TwitterKit (3.4.2):
+    - TwitterCore (>= 3.2.0)
 
 DEPENDENCIES:
   - FBSDKCoreKit (< 4.30)
   - FBSDKLoginKit (< 4.30)
   - FBSDKShareKit (< 4.30)
-  - PopdeemSDK (= 1.1.28)
+  - PopdeemSDK (= 1.1.40)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -58,14 +58,14 @@ SPEC CHECKSUMS:
   FBSDKCoreKit: 6f139173dc63a1deaff4430a55f2fe5bb222d2af
   FBSDKLoginKit: 56a057ca6822535ea0faa25f57a7c41edb697fd4
   FBSDKShareKit: 18a2cd118aef11dd657fe7e8b64bae5c719088b2
-  JSONModel: 840bc0fcffb24b8454d2c026bf26fea454b8e98d
-  PopdeemSDK: 8daeb8cf1dcac3d1ca261199713820762f13b494
-  Realm: a469bb59e33f9926102ccaea4349822c53b9117e
+  JSONModel: 02ab723958366a3fd27da57ea2af2113658762e9
+  PopdeemSDK: 89191ab23db010281c47708152ef27efdfb32dfc
+  Realm: 5edd2ee65406aef591a4f9895de5a3440e51b3d8
   Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
-  TOCropViewController: 6d972f2c609372312648f96758e13a7f689efbc0
+  TOCropViewController: 368d8df3ea43b62c3dc5a61f11b9048274d240bd
   TwitterCore: 8cbc9ad34d91c63a0035ea05bfbfc0d7ca72a28c
-  TwitterKit: bc7bd086b9b724a1d888745a054e1d0b1ecc4f3f
+  TwitterKit: 5e4f41d70b9abdb41df5467f52d7aa2c0fd26ebb
 
-PODFILE CHECKSUM: 9d5ab246d6c799c8b0fd01344ff383ed6d1bf56d
+PODFILE CHECKSUM: 6ef0ea272c43adeec6b4b443ef4a16804fcb2b26
 
 COCOAPODS: 1.5.3

@@ -45,8 +45,8 @@
 - (void) refreshFacebookFriendsCallback:(void(^)(BOOL response))callback {
     
     [[[FBSDKGraphRequest alloc] initWithGraphPath:@"/me/taggable_friends?limit=5000"
-                                      parameters:@{@"fields": @"id, name"}
-                                      HTTPMethod:@"GET"]
+                                       parameters:@{@"fields": @"id, name"}
+                                       HTTPMethod:@"GET"]
      startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
          if (!error) {
              [[PDUser taggableFriends] removeAllObjects];
@@ -67,15 +67,15 @@
                  return [first compare:second];
              }];
              
-           [[PDUser taggableFriends] removeAllObjects];
-           [[PDUser taggableFriends] addObjectsFromArray:sortedArray];
+             [[PDUser taggableFriends] removeAllObjects];
+             [[PDUser taggableFriends] addObjectsFromArray:sortedArray];
              callback(YES);
          } else {
              PDLogError(@"Error fetching facebook friends %@",error.localizedDescription);
              callback(NO);
          }
          
-    }];
+     }];
 }
 
 - (void) gatherUserLikesCallback:(void(^)(BOOL response))callback {
