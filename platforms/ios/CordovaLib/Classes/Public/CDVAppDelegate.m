@@ -97,6 +97,27 @@
 
     return YES;
 }
+- (BOOL)application:(UIApplication*)application openURL:(NSURL *)url options:(NSDictionary<NSString *, id> *)options
+{
+    if (!url) {
+        return NO;
+    }
+
+    NSMutableDictionary * openURLData = [[NSMutableDictionary alloc] init];
+
+    [openURLData setValue:url forKey:@"url"];
+
+    if (options) {
+        [openURLData setValue:options forKey:@"options"];
+    }
+
+
+    // all plugins will get the notification, and their handlers will be called
+    [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:CDVPluginHandleOpenURLNotification object:url]];
+    [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:CDVPluginHandleOpenURLWithAppSourceAndAnnotationNotification object:openURLData]];
+
+    return YES;
+}
 
 #if __IPHONE_OS_VERSION_MAX_ALLOWED < 90000  
 - (NSUInteger)application:(UIApplication*)application supportedInterfaceOrientationsForWindow:(UIWindow*)window
