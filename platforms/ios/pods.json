@@ -1,26 +1,26 @@
 {
-    "FBSDKShareKit": {
-        "name": "FBSDKShareKit",
-        "type": "podspec",
-        "spec": "< 4.30",
-        "count": 2
-    },
     "PopdeemSDK": {
         "name": "PopdeemSDK",
         "type": "podspec",
-        "spec": "1.1.40",
+        "spec": "1.1.42",
         "count": 1
     },
     "FBSDKCoreKit": {
         "name": "FBSDKCoreKit",
         "type": "podspec",
-        "spec": "< 4.30",
+        "spec": "4.38.0",
         "count": 1
     },
     "FBSDKLoginKit": {
         "name": "FBSDKLoginKit",
         "type": "podspec",
-        "spec": "< 4.30",
+        "spec": "4.38.0",
+        "count": 1
+    },
+    "FBSDKShareKit": {
+        "name": "FBSDKShareKit",
+        "type": "podspec",
+        "spec": "4.38.0",
         "count": 1
     }
 }
