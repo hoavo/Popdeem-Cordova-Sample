@@ -1,8 +1,8 @@
 {
   "_from": "popdeem-cordova-plugin",
-  "_id": "popdeem-cordova-plugin@0.9.46",
+  "_id": "popdeem-cordova-plugin@0.1.16",
   "_inBundle": false,
-  "_integrity": "sha512-WQdrPbhmlt1bMio4n5L3e1gdULK85dqdCztszb6uhVp9L8SaFcF0lOyNWjMR7bTnnhXnQw/ewZM+pNL86FiKbg==",
+  "_integrity": "sha512-+355FW1E98dc5WyPvWF9tyzBYBBXh9kIMESNMpUXtkl4xHzzn1C0VeyMEJ9tpPob31Wwr7P0gAtZYFi6o/TY1w==",
   "_location": "/popdeem-cordova-plugin",
   "_phantomChildren": {},
   "_requested": {
@@ -19,10 +19,10 @@
     "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/popdeem-cordova-plugin/-/popdeem-cordova-plugin-0.9.46.tgz",
-  "_shasum": "2e684adb4ab09846c4bb571dcb0212017186389c",
+  "_resolved": "https://registry.npmjs.org/popdeem-cordova-plugin/-/popdeem-cordova-plugin-0.1.16.tgz",
+  "_shasum": "c537f032e4c6c7caf395e1a5405677a7de189519",
   "_spec": "popdeem-cordova-plugin",
-  "_where": "/Users/niall/Developer/Personal/Cordova/Popdeem3",
+  "_where": "/Users/hoarelia/Temp/Popdeem-Cordova-Sample",
   "author": {
     "name": "Niall Quinn"
   },
@@ -52,5 +52,5 @@
     "type": "git",
     "url": "git+https://github.com/NQuinn27/Popdeem-Cordova-Plugin.git"
   },
-  "version": "0.9.46"
+  "version": "0.1.16"
 }
