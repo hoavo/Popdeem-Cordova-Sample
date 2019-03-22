@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		0207DA581B56EA530066E2B4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0207DA571B56EA530066E2B4 /* Images.xcassets */; };
 		1D3623260D0F684500981E51 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate.m */; };
@@ -24,6 +23,20 @@
 		C1F4A43F549148CEB5DF5E6D /* Popdeem.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F97B9D2899B4A4391035CE7 /* Popdeem.m */; };
 		FEAFE056947AF43B180B6944 /* libPods-HelloCordova.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E3A7B622807B57BD5BB70F1 /* libPods-HelloCordova.a */; };
 		FED4A5294A07443AB70F6CBE /* Ribs_Burgers_Header@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C1DF8276B494640898BCEED /* Ribs_Burgers_Header@3x.png */; };
+		8D57976D81B54081AFA4AD16 /* theme.json in Resources */ = {isa = PBXBuildFile; fileRef = 632BEB66ED924CABACE77666 /* theme.json */; };
+		FD8F2DC48AB147E3AE280043 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CCAE2441F28948D0BC57E746 /* Localizable.strings */; };
+		75F1CD7B9DF34612B77B9AE0 /* theme.json in Resources */ = {isa = PBXBuildFile; fileRef = 9F932295CCDF4390B66DE331 /* theme.json */; };
+		49FA9404FDCB402C910BA737 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9B0BB01B136B4E618BC3AD09 /* Localizable.strings */; };
+		68B3513A50354EDBB6F222D9 /* theme.json in Resources */ = {isa = PBXBuildFile; fileRef = 7462845E8BBA4135B161F92C /* theme.json */; };
+		4AAEC2D8664F42C6881C7031 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84468503E0BD4B3EB9F03D3D /* Localizable.strings */; };
+		EFDD92387AD24FC19C4B2DEF /* theme.json in Resources */ = {isa = PBXBuildFile; fileRef = 272BF06F77B1415AA4AEAF7D /* theme.json */; };
+		840787CC369E4C268BD7027C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4D8662AF7AA74DE98F3A02D0 /* Localizable.strings */; };
+		5AA9475B63C84621A22B7661 /* theme.json in Resources */ = {isa = PBXBuildFile; fileRef = 83EFD21CC420408DB665BD75 /* theme.json */; };
+		C9CD075101E6455AAC758043 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DD10A620BCA54CF7859C9AB7 /* Localizable.strings */; };
+		60C0264C33404E3CA5D96B04 /* theme.json in Resources */ = {isa = PBXBuildFile; fileRef = B4981E0D63174D23A0261F08 /* theme.json */; };
+		635F9C5012F74E7F894E7A6B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 65F16C9729BA48ACB6F95284 /* Localizable.strings */; };
+		CD219410CB1A4705BD00CAFC /* theme.json in Resources */ = {isa = PBXBuildFile; fileRef = 8BFF98E66FCD4341B54979D1 /* theme.json */; };
+		25EC2ACFFBE649C797FD4D50 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 22A06BB8A2D4487EBBE532BA /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +96,20 @@
 		ED33DF2A687741AEAF9F8254 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		F73887AB89214D1FA264F23E /* AppDelegate+popdeem.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = "AppDelegate+popdeem.h"; path = "popdeem-cordova-plugin/PopdeemPlugin/AppDelegate+popdeem.h"; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = HelloCordova/config.xml; sourceTree = "<group>"; };
+		632BEB66ED924CABACE77666 /* theme.json */ = {isa = PBXFileReference; name = "theme.json"; path = "theme.json"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		CCAE2441F28948D0BC57E746 /* Localizable.strings */ = {isa = PBXFileReference; name = "Localizable.strings"; path = "Localizable.strings"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = text.plist.strings; explicitFileType = undefined; includeInIndex = 0; };
+		9F932295CCDF4390B66DE331 /* theme.json */ = {isa = PBXFileReference; name = "theme.json"; path = "theme.json"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		9B0BB01B136B4E618BC3AD09 /* Localizable.strings */ = {isa = PBXFileReference; name = "Localizable.strings"; path = "Localizable.strings"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = text.plist.strings; explicitFileType = undefined; includeInIndex = 0; };
+		7462845E8BBA4135B161F92C /* theme.json */ = {isa = PBXFileReference; name = "theme.json"; path = "theme.json"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		84468503E0BD4B3EB9F03D3D /* Localizable.strings */ = {isa = PBXFileReference; name = "Localizable.strings"; path = "Localizable.strings"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = text.plist.strings; explicitFileType = undefined; includeInIndex = 0; };
+		272BF06F77B1415AA4AEAF7D /* theme.json */ = {isa = PBXFileReference; name = "theme.json"; path = "theme.json"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		4D8662AF7AA74DE98F3A02D0 /* Localizable.strings */ = {isa = PBXFileReference; name = "Localizable.strings"; path = "Localizable.strings"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = text.plist.strings; explicitFileType = undefined; includeInIndex = 0; };
+		83EFD21CC420408DB665BD75 /* theme.json */ = {isa = PBXFileReference; name = "theme.json"; path = "theme.json"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		DD10A620BCA54CF7859C9AB7 /* Localizable.strings */ = {isa = PBXFileReference; name = "Localizable.strings"; path = "Localizable.strings"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = text.plist.strings; explicitFileType = undefined; includeInIndex = 0; };
+		B4981E0D63174D23A0261F08 /* theme.json */ = {isa = PBXFileReference; name = "theme.json"; path = "theme.json"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		65F16C9729BA48ACB6F95284 /* Localizable.strings */ = {isa = PBXFileReference; name = "Localizable.strings"; path = "Localizable.strings"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = text.plist.strings; explicitFileType = undefined; includeInIndex = 0; };
+		8BFF98E66FCD4341B54979D1 /* theme.json */ = {isa = PBXFileReference; name = "theme.json"; path = "theme.json"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		22A06BB8A2D4487EBBE532BA /* Localizable.strings */ = {isa = PBXFileReference; name = "Localizable.strings"; path = "Localizable.strings"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = text.plist.strings; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +196,20 @@
 				546891703CA54969A96433CF /* Ribs_Burgers_LoginImage.png */,
 				A43C8F85301E4F8A8B41D220 /* Ribs_Burgers_LoginImage@2x.png */,
 				35E812FDC01C44D8AAD0C571 /* Ribs_Burgers_LoginImage@3x.png */,
+				632BEB66ED924CABACE77666 /* theme.json */,
+				CCAE2441F28948D0BC57E746 /* Localizable.strings */,
+				9F932295CCDF4390B66DE331 /* theme.json */,
+				9B0BB01B136B4E618BC3AD09 /* Localizable.strings */,
+				7462845E8BBA4135B161F92C /* theme.json */,
+				84468503E0BD4B3EB9F03D3D /* Localizable.strings */,
+				272BF06F77B1415AA4AEAF7D /* theme.json */,
+				4D8662AF7AA74DE98F3A02D0 /* Localizable.strings */,
+				83EFD21CC420408DB665BD75 /* theme.json */,
+				DD10A620BCA54CF7859C9AB7 /* Localizable.strings */,
+				B4981E0D63174D23A0261F08 /* theme.json */,
+				65F16C9729BA48ACB6F95284 /* Localizable.strings */,
+				8BFF98E66FCD4341B54979D1 /* theme.json */,
+				22A06BB8A2D4487EBBE532BA /* Localizable.strings */,
 			);
 			name = Resources;
 			path = HelloCordova/Resources;
@@ -315,6 +356,20 @@
 				36932DD076EF4DB99BF27DD4 /* Ribs_Burgers_LoginImage.png in Resources */,
 				53847903FB704172BB6B2277 /* Ribs_Burgers_LoginImage@2x.png in Resources */,
 				5D4FFA4A769A44ECA5F9E79A /* Ribs_Burgers_LoginImage@3x.png in Resources */,
+				8D57976D81B54081AFA4AD16 /* theme.json in Resources */,
+				FD8F2DC48AB147E3AE280043 /* Localizable.strings in Resources */,
+				75F1CD7B9DF34612B77B9AE0 /* theme.json in Resources */,
+				49FA9404FDCB402C910BA737 /* Localizable.strings in Resources */,
+				68B3513A50354EDBB6F222D9 /* theme.json in Resources */,
+				4AAEC2D8664F42C6881C7031 /* Localizable.strings in Resources */,
+				EFDD92387AD24FC19C4B2DEF /* theme.json in Resources */,
+				840787CC369E4C268BD7027C /* Localizable.strings in Resources */,
+				5AA9475B63C84621A22B7661 /* theme.json in Resources */,
+				C9CD075101E6455AAC758043 /* Localizable.strings in Resources */,
+				60C0264C33404E3CA5D96B04 /* theme.json in Resources */,
+				635F9C5012F74E7F894E7A6B /* Localizable.strings in Resources */,
+				CD219410CB1A4705BD00CAFC /* theme.json in Resources */,
+				25EC2ACFFBE649C797FD4D50 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

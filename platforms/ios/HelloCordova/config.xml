@@ -19,6 +19,9 @@
         <param name="ios-package" value="CDVGestureHandler" />
         <param name="onload" value="true" />
     </feature>
+    <feature name="Popdeem">
+        <param name="ios-package" value="Popdeem" />
+    </feature>
     <name>HelloCordova</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
@@ -73,6 +76,15 @@
     <config-file parent="FacebookUrlSchemeSuffix" target="*-Info.plist">
         <string>ribsburgers</string>
     </config-file>
+    <config-file parent="TwitterAppConsumerKey" target="*-Info.plist">
+        <string>ATNUdmskpUiRfY64Gnr4Zzmzk</string>
+    </config-file>
+    <config-file parent="TwitterAppConsumerSecret" target="*-Info.plist">
+        <string>Aa5ZgP7MZhJefj23Xdc8vGgJmxx8cCa5kaVZiF56ovFd8m8gJ9</string>
+    </config-file>
+    <config-file parent="TwitterCallbackScheme" target="*-Info.plist">
+        <string>popdeemtwitterribsburgers</string>
+    </config-file>
     <config-file parent="InstagramClientId" target="*-Info.plist">
         <string>721403853f784eea86023a9e96ccde44</string>
     </config-file>
@@ -88,7 +100,7 @@
                 <key>CFBundleURLSchemes</key>
                 <array>
                     <string>fb1528213564167350ribsburgers</string>
-                    <string>twitterkit-ATNUdmskpUiRfY64Gnr4Zzmzk</string>
+                    <string>popdeemtwitterribsburgers</string>
                 </array>
             </dict>
         </array>
@@ -105,13 +117,19 @@
     <config-file parent="LSApplicationQueriesSchemes" target="*-Info.plist">
         <array>
             <string>instagram</string>
-            <string>fb</string>
             <string>fbapi</string>
-            <string>fb-messenger-share-api</string>
+            <string>fbapi20130214</string>
+            <string>fbapi20130410</string>
+            <string>fbapi20130702</string>
+            <string>fbapi20131010</string>
+            <string>fbapi20131219</string>
+            <string>fbapi20140410</string>
+            <string>fbapi20140116</string>
+            <string>fbapi20150313</string>
+            <string>fbapi20150629</string>
+            <string>fbauth</string>
             <string>fbauth2</string>
-            <string>fbshareextension</string>
-            <string>twitter</string>
-            <string>twitterauth</string>
+            <string>fb-messenger-api20140430</string>
         </array>
     </config-file>
     <resource-file src="Popdeem/theme.json" target="Resources/theme.json" />
@@ -135,8 +153,4 @@
     <preference name="PageLength" value="0" />
     <preference name="PaginationBreakingMode" value="page" />
     <preference name="PaginationMode" value="unpaginated" />
-    <preference name="deployment-target" value="7.0" />
-    <feature name="Popdeem">
-        <param name="ios-package" value="Popdeem" />
-    </feature>
 </widget>
